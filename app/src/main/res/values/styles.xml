@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentOverlay">@null</item>
         <!--取消全局阴影-->
-        <item name="android:overScrollMode">never</item>
+        <!--<item name="android:overScrollMode">never</item>-->
         <!--取消ActionBar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

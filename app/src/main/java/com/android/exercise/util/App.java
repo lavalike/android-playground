@@ -3,8 +3,7 @@ package com.android.exercise.util;
 import android.app.Activity;
 import android.app.Application;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by Administrator on 2016/4/12.
@@ -15,7 +14,7 @@ public class App extends Application {
     /**
      * 存储所有打开的Activity
      */
-    private List<Activity> mActivityList;
+    private Stack<Activity> mActivityStack;
 
     @Override
     public void onCreate() {
@@ -37,11 +36,18 @@ public class App extends Application {
      * @param activity
      */
     public void addActivity(Activity activity) {
-        if (mActivityList == null)
-            mActivityList = new ArrayList<>();
-//        if (mActivityList.contains(activity))
-//            mActivityList.remove(activity);
-        mActivityList.add(activity);
+        if (mActivityStack == null)
+            mActivityStack = new Stack<>();
+        mActivityStack.push(activity);
+    }
+
+    /**
+     * 移除顶部Activity
+     */
+    public void removeTop() {
+        if (mActivityStack != null) {
+            mActivityStack.pop();
+        }
     }
 
     /**
@@ -50,9 +56,9 @@ public class App extends Application {
      * @param activity
      */
     public void removeActivity(Activity activity) {
-        if (mActivityList != null) {
-            if (mActivityList.contains(activity)) {
-                mActivityList.remove(activity);
+        if (mActivityStack != null) {
+            if (mActivityStack.contains(activity)) {
+                mActivityStack.remove(activity);
             }
         }
     }
@@ -61,8 +67,8 @@ public class App extends Application {
      * 清空所有Activity
      */
     public void removeAllActivity() {
-        if (mActivityList != null) {
-            mActivityList.clear();
+        if (mActivityStack != null) {
+            mActivityStack.clear();
         }
     }
 

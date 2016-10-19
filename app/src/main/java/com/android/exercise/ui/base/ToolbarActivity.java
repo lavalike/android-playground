@@ -1,14 +1,19 @@
 package com.android.exercise.ui.base;
 
 import android.support.annotation.LayoutRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.android.exercise.R;
+import com.android.exercise.util.App;
+import com.android.exercise.util.T;
 
 /**
  * 处理Toolbar相关
@@ -35,14 +40,30 @@ public class ToolbarActivity extends AppCompatActivity {
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         if (showToolbar()) {
             initContentView(view);
-            super.setContentView(mRootView);
-            mInflater = LayoutInflater.from(this);
-            View toolbarView = mInflater.inflate(R.layout.toolbar_layout, mRootView);
-            mToolbar = (Toolbar) toolbarView.findViewById(R.id.id_tool_bar);
-            setSupportActionBar(mToolbar);
+            initToolbar();
         } else {
             super.setContentView(view);
         }
+    }
+
+    private void initToolbar() {
+        super.setContentView(mRootView);
+        mInflater = LayoutInflater.from(this);
+        View toolbarView = mInflater.inflate(R.layout.toolbar_layout, mRootView);
+        mToolbar = (Toolbar) toolbarView.findViewById(R.id.id_tool_bar);
+        setSupportActionBar(mToolbar);
+        onSetupToolbar(mToolbar, getSupportActionBar());
+    }
+
+    /**
+     * 设置Toolbar的数据，也可以设置自定义toolBar视图 如需则交给子类去实现
+     *
+     * @param toolbar
+     * @param actionBar 为了兼容性，设置title、subTitle等使用actionBar
+     */
+    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
+        // 注意：此段代码在子类的onCreate()方法的setContentView(layoutResId)中执行
+        // 特别注意其他View与toolBar的交互
     }
 
     /**
