@@ -1,9 +1,8 @@
 package com.android.exercise.common.toolbar;
 
 import android.app.Activity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-
-import com.android.exercise.R;
 
 /**
  * 自定义Toolbar基类
@@ -12,22 +11,19 @@ import com.android.exercise.R;
 
 public abstract class BaseToolBarHolder implements View.OnClickListener {
 
-    protected android.support.v7.widget.Toolbar mToolbar;
-
     protected Activity mActivity;
-
-    public View mBackView;
+    protected Toolbar mToolbar;
 
     private OnClickListener mOnClickListener;
 
-    public BaseToolBarHolder(final Activity activity, android.support.v7.widget.Toolbar mToolbar) {
+    public BaseToolBarHolder(final Activity activity, Toolbar toolbar) {
         this.mActivity = activity;
-        this.mToolbar = mToolbar;
-        mToolbar.showOverflowMenu();
-        mToolbar.setContentInsetsRelative(0, 0);
+        this.mToolbar = toolbar;
+        toolbar.showOverflowMenu();
+        toolbar.setContentInsetsRelative(0, 0);
         //加载自定义布局
-        View.inflate(activity, getToolBarLayoutResId(), mToolbar);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        View.inflate(mActivity, getToolBarLayoutResId(), mToolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
@@ -41,10 +37,10 @@ public abstract class BaseToolBarHolder implements View.OnClickListener {
     /**
      * 设置ToolBar所有可点击控件的点击监听
      *
-     * @param mOnClickListener
+     * @param onClickListener
      */
-    public void setAllOnClickListener(OnClickListener mOnClickListener) {
-        this.mOnClickListener = mOnClickListener;
+    public void setAllOnClickListener(OnClickListener onClickListener) {
+        this.mOnClickListener = onClickListener;
     }
 
     /**
@@ -62,6 +58,14 @@ public abstract class BaseToolBarHolder implements View.OnClickListener {
      * @return
      */
     protected abstract int getToolBarLayoutResId();
+
+    /**
+     * 获取右边自定义菜单
+     *
+     * @param <T>
+     * @return
+     */
+    protected abstract <T extends View> T getRightMenu();
 
 
     @Override

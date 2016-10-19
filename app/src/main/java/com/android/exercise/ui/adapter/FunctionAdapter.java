@@ -1,4 +1,4 @@
-package com.android.exercise.adapter;
+package com.android.exercise.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.adapter.base.BaseRecyclerAdapter;
+import com.android.exercise.ui.adapter.base.BaseRecyclerAdapter;
 
 import java.util.List;
 

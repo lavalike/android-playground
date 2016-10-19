@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.exercise.R;
-import com.android.exercise.adapter.FunctionAdapter;
-import com.android.exercise.common.toolbar.CommonToolbar;
+import com.android.exercise.common.toolbar.ToolBarRightTextHolder;
+import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -39,7 +39,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new CommonToolbar(this, toolbar, "练习");
+        ToolBarRightTextHolder holder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.app_name), "菜单", false);
+        holder.getRightMenu().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "菜单", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
