@@ -5,11 +5,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
 
 import com.android.exercise.R;
-import com.android.exercise.common.toolbar.ToolBarRightTextHolder;
+import com.android.exercise.common.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.base.BaseActivity;
 
@@ -39,13 +37,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        ToolBarRightTextHolder holder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.app_name), "菜单", false);
-        holder.getRightMenu().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, "菜单", Toast.LENGTH_SHORT).show();
-            }
-        });
+        new ToolBarCommonHolder(this, toolbar, getString(R.string.app_name), false);
     }
 
     /**
