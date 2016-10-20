@@ -12,7 +12,7 @@ import com.android.exercise.R;
  * Created by wangzhen on 16/10/19.
  */
 
-public class ToolBarRightTextHolder extends BaseBarHolder {
+public class ToolBarRightTextHolder extends BaseToolBarHolder {
 
     private TextView tv_title;
     private TextView tv_menu;
