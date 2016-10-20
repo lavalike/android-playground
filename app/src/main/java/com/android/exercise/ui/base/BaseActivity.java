@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.android.exercise.util.App;
+import com.android.exercise.util.manager.AppManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -28,7 +28,7 @@ public class BaseActivity extends ToolbarActivity {
         mContext = this;
         // 禁止横屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        App.get().addActivity(this);
+        AppManager.get().addActivity(this);
     }
 
     /**
@@ -123,6 +123,6 @@ public class BaseActivity extends ToolbarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        App.get().removeActivity(this);
+        AppManager.get().removeActivity(this);
     }
 }

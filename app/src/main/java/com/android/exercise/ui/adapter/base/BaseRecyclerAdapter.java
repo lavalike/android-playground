@@ -1,8 +1,9 @@
 package com.android.exercise.ui.adapter.base;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -13,26 +14,50 @@ import java.util.List;
 
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
 
-    public List<T> mDatas;
-    public OnRecyclerItemClickListener mListener;
+    protected Context mContext;
+    protected LayoutInflater mInflater;
+    protected List<T> mDatas;
+    protected OnRecyclerItemClickListener mItemClickListener;
 
     public void setOnItemClickListener(OnRecyclerItemClickListener listener) {
-        this.mListener = listener;
+        this.mItemClickListener = listener;
     }
 
-    public BaseRecyclerAdapter(List<T> list) {
+    public BaseRecyclerAdapter(Context context, List<T> list) {
+        this.mContext = context;
+        this.mInflater = LayoutInflater.from(mContext);
         this.mDatas = list;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        setItemEvent(holder);
+        onMyBindViewHolder(holder, position);
     }
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+    /**
+     * 设置item点击事件
+     *
+     * @param holder
+     */
+    private void setItemEvent(final RecyclerView.ViewHolder holder) {
+        if (mItemClickListener != null) {
+            holder.itemView.setTag(holder);
+            holder.itemView.setOnClickListener(innerClickListener);
+        }
     }
+
+    public abstract void onMyBindViewHolder(RecyclerView.ViewHolder holder, int position);
+
+    private View.OnClickListener innerClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (mItemClickListener != null) {
+                RecyclerView.ViewHolder holder = (RecyclerView.ViewHolder) v.getTag();
+                mItemClickListener.onItemClick(v, holder.getLayoutPosition(), mDatas.get(holder.getLayoutPosition()));
+            }
+        }
+    };
 
     @Override
     public int getItemCount() {

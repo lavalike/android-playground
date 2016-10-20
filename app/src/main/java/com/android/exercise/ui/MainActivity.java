@@ -5,11 +5,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.common.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.adapter.FunctionAdapter;
+import com.android.exercise.ui.adapter.base.BaseRecyclerAdapter;
 import com.android.exercise.ui.base.BaseActivity;
+import com.android.exercise.util.T;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +48,18 @@ public class MainActivity extends BaseActivity {
      */
     private void initData() {
         mList = new ArrayList<>();
-        for (int i = 0; i < 20; i++)
-            mList.add("动画");
+        mList.add("流式布局");
 
         GridLayoutManager manager = new GridLayoutManager(mContext, 3);
         recyclerview.setLayoutManager(manager);
 
-        mAdapter = new FunctionAdapter(mContext, mList);
+        mAdapter = new FunctionAdapter<>(mContext, mList);
+        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, Object data) {
+                T.get(mContext).toast(position + ":" + data.toString());
+            }
+        });
         recyclerview.setAdapter(mAdapter);
     }
 }
