@@ -6,6 +6,10 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.android.exercise.base.manager.AppManager;
+import com.android.exercise.common.greendao.DatabaseLoader;
+
+import org.xutils.DbManager;
+import org.xutils.x;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -16,21 +20,43 @@ import io.realm.RealmConfiguration;
  */
 public class App extends MultiDexApplication {
 
+    //SQLite配置
+    private static DbManager.DaoConfig db_config;
+
     @Override
     public void onCreate() {
         super.onCreate();
         Realm.init(this);
+        //初始化Realm
         RealmConfiguration config = new RealmConfiguration
                 .Builder()
                 .name("AndroidExercise.realm")
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(config);
+        //初始化GreenDao
+        DatabaseLoader.init(this);
+        //初始化xUtils3
+        x.Ext.init(this);
     }
 
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+    }
+
+    /**
+     * 获取Db的Config
+     *
+     * @return
+     */
+    public static DbManager.DaoConfig getDbConfig() {
+        if (db_config == null) {
+            synchronized (App.class) {
+                db_config = new DbManager.DaoConfig().setDbName("ExerciseDemo.db");
+            }
+        }
+        return db_config;
     }
 
     /**

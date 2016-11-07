@@ -12,6 +12,7 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.common.toolbar.ToolBarCommonHolder;
+import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(getString(R.string.item_realm));
+        mList.add(getString(R.string.item_greendao));
 
         mAdapter = new FunctionAdapter<>(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
@@ -71,6 +73,9 @@ public class MainActivity extends BaseActivity {
         switch (data) {
             case "Realm":
                 startActivity(new Intent(mContext, RealmActivity.class));
+                break;
+            case "GreenDao":
+                startActivity(new Intent(mContext, GreendaoActivity.class));
                 break;
         }
 

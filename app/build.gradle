@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'realm-android'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 23
@@ -20,7 +21,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
+greendao {
+    // 指定数据库schema版本号，迁移等操作会用到
+    schemaVersion 1
+
+    // 通过gradle插件生成的数据库相关文件的包名，默认为你的entity所在的包名
+    daoPackage 'com.android.exercise.db.greendao'
+
+    // 自定义生成数据库文件的目录
+    targetGenDir 'src/main/java'
 }
 
 dependencies {
@@ -30,4 +41,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'org.greenrobot:greendao-generator:3.2.0'
+    compile 'org.xutils:xutils:3.3.36'
 }
