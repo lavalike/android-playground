@@ -1,4 +1,4 @@
-package com.android.exercise.ui.base;
+package com.android.exercise.base;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.android.exercise.util.manager.AppManager;
+import com.android.exercise.base.manager.AppManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

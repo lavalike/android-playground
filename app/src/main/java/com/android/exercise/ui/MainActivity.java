@@ -1,5 +1,6 @@
 package com.android.exercise.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,11 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.android.exercise.R;
+import com.android.exercise.base.BaseActivity;
+import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.common.toolbar.ToolBarCommonHolder;
+import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
-import com.android.exercise.ui.adapter.base.BaseRecyclerAdapter;
-import com.android.exercise.ui.base.BaseActivity;
-import com.android.exercise.util.T;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initData();
+        initRecycler();
+        initList();
+    }
+
+    private void initRecycler() {
+        GridLayoutManager manager = new GridLayoutManager(mContext, 3);
+        recyclerview.setLayoutManager(manager);
     }
 
     @Override
@@ -46,20 +53,26 @@ public class MainActivity extends BaseActivity {
     /**
      * 添加数据
      */
-    private void initData() {
+    private void initList() {
         mList = new ArrayList<>();
-        mList.add("流式布局");
-
-        GridLayoutManager manager = new GridLayoutManager(mContext, 3);
-        recyclerview.setLayoutManager(manager);
+        mList.add(getString(R.string.item_realm));
 
         mAdapter = new FunctionAdapter<>(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(View view, int position, Object data) {
-                T.get(mContext).toast(position + ":" + data.toString());
+                redirect(position, (String) data);
             }
         });
         recyclerview.setAdapter(mAdapter);
+    }
+
+    private void redirect(int position, String data) {
+        switch (data) {
+            case "Realm":
+                startActivity(new Intent(mContext, RealmActivity.class));
+                break;
+        }
+
     }
 }

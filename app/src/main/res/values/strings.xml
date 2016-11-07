@@ -3,4 +3,7 @@
     <!--菜单-->
     <string name="action_about">关于</string>
 
+    <string name="item_flowlayout">流式布局</string>
+    <string name="item_realm">Realm</string>
+
 </resources>

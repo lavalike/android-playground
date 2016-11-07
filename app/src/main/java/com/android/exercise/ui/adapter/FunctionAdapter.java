@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.ui.adapter.base.BaseRecyclerAdapter;
+import com.android.exercise.base.BaseRecyclerAdapter;
 
 import java.util.List;
 

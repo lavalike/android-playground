@@ -1,8 +1,8 @@
-package com.android.exercise.util.manager;
+package com.android.exercise.base.manager;
 
 import android.app.Activity;
 
-import com.android.exercise.util.App;
+import com.android.exercise.base.App;
 
 import java.util.Stack;
 

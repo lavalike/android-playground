@@ -1,11 +1,14 @@
-package com.android.exercise.util;
+package com.android.exercise.base;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
-import com.android.exercise.util.manager.AppManager;
+import com.android.exercise.base.manager.AppManager;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * 自定义Application
@@ -16,6 +19,13 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration
+                .Builder()
+                .name("AndroidExercise.realm")
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(config);
     }
 
     protected void attachBaseContext(Context base) {

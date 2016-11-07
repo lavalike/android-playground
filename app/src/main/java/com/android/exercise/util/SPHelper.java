@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.android.exercise.util.manager.AppManager;
+import com.android.exercise.base.App;
+import com.android.exercise.base.manager.AppManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
