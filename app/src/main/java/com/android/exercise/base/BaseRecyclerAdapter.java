@@ -17,9 +17,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
     protected Context mContext;
     protected LayoutInflater mInflater;
     protected List<T> mDatas;
-    protected OnRecyclerItemClickListener mItemClickListener;
+    protected OnRecyclerItemClickListener<T> mItemClickListener;
 
-    public void setOnItemClickListener(OnRecyclerItemClickListener listener) {
+    public void setOnItemClickListener(OnRecyclerItemClickListener<T> listener) {
         this.mItemClickListener = listener;
     }
 
@@ -64,7 +64,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
         return mDatas == null ? 0 : mDatas.size();
     }
 
-    public interface OnRecyclerItemClickListener {
-        void onItemClick(View view, int position, Object data);
+    public interface OnRecyclerItemClickListener<T> {
+        void onItemClick(View view, int position, T data);
     }
 }

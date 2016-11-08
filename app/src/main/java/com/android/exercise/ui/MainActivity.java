@@ -14,6 +14,7 @@ import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.common.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.RealmActivity;
+import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class MainActivity extends BaseActivity {
         mList = new ArrayList<>();
         mList.add(getString(R.string.item_realm));
         mList.add(getString(R.string.item_greendao));
+        mList.add(getString(R.string.item_retrofit));
 
         mAdapter = new FunctionAdapter<>(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
@@ -76,6 +78,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "GreenDao":
                 startActivity(new Intent(mContext, GreendaoActivity.class));
+                break;
+            case "Retrofit 2.0":
+                startActivity(new Intent(mContext, RetrofitActivity.class));
                 break;
         }
 
