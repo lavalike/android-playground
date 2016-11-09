@@ -1,6 +1,12 @@
 package com.android.exercise.base.retrofit;
 
+import android.app.Activity;
+
+import com.android.exercise.R;
 import com.android.exercise.base.manager.AppManager;
+import com.android.exercise.util.NetworkUtil;
+
+import java.net.SocketTimeoutException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,8 +35,7 @@ public abstract class APIBaskTask<T> implements Callback<T> {
             if (response.code() == 200) {
                 mCallback.onSuccess(response.body());
             } else {
-                mCallback.onError(response.errorBody().toString());
-                AppManager.get().getActivity();
+                mCallback.onFailure();
             }
         } else {
             mCallback.onFailure();
@@ -40,7 +45,14 @@ public abstract class APIBaskTask<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        mCallback.onError(t.getMessage());
+        Activity activity = AppManager.get().getActivity();
+        if (!NetworkUtil.isNetworkAvailable(activity)) {
+            mCallback.onError(activity.getString(R.string.error_network_failure));
+        } else if (t instanceof SocketTimeoutException) {
+            mCallback.onError(activity.getString(R.string.error_network_timeout));
+        } else {
+            mCallback.onError(t.getMessage());
+        }
         mCallback.onAfter();
     }
 

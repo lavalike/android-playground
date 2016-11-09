@@ -1,7 +1,6 @@
 package com.android.exercise.ui.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -24,7 +23,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
 
 /**
  * Retrofit 2.0
@@ -92,7 +90,7 @@ public class RetrofitActivity extends BaseActivity {
      * 加载数据
      */
     public void loadList() {
-        Call call = new GithubReposTask(new APICallback<List<GithubBean>>() {
+        new GithubReposTask(new APICallback<List<GithubBean>>() {
 
             @Override
             public void onError(String error) {
@@ -106,7 +104,8 @@ public class RetrofitActivity extends BaseActivity {
                     @Override
                     public void onItemClick(View view, int position, GithubBean data) {
                         String reposUrl = data.getHtml_url();
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(reposUrl));
+                        Intent intent = new Intent(mContext, HtmlActivity.class);
+                        intent.putExtra("url", reposUrl);
                         startActivity(intent);
                     }
                 });

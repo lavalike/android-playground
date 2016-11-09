@@ -3,6 +3,10 @@
     <!--菜单-->
     <string name="action_about">关于</string>
 
+    <!--通用提示信息-->
+    <string name="error_network_failure">无网络</string>
+    <string name="error_network_timeout">网络连接超时</string>
+
     <string name="item_realm">Realm</string>
     <string name="item_greendao">GreenDao</string>
     <string name="item_retrofit">Retrofit 2.0</string>

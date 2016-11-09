@@ -2,14 +2,17 @@ package com.android.exercise.base;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.android.exercise.base.manager.AppManager;
+import com.android.exercise.util.PermissionManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -18,9 +21,10 @@ import java.lang.reflect.Method;
  * Activity基类
  * Created by Administrator on 2016/4/12.
  */
-public class BaseActivity extends ToolbarActivity {
+public class BaseActivity extends ToolbarActivity implements PermissionManager.OnBaseCallback {
 
     public Context mContext;
+    private PermissionManager.OnPermissionCallback mCallback;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +57,31 @@ public class BaseActivity extends ToolbarActivity {
 
         return false;
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //权限被授予
+                if (mCallback != null) {
+                    mCallback.onGranted();
+                }
+            } else {
+                //权限被拒绝
+                if (mCallback != null) {
+                    mCallback.onDenied();
+                }
+            }
+
+        }
+    }
+
+    @Override
+    public void setPermissionCallback(PermissionManager.OnPermissionCallback callback) {
+        mCallback = callback;
+    }
+
 
     /**
      * 设置状态栏图标为深色和魅族特定的文字风格，Flyme4.0以上
