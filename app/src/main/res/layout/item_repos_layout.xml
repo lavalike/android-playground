@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
-    <com.android.exercise.view.CircleImageView
+    <com.android.exercise.ui.widget.CircleImageView
         android:id="@+id/iv_item_repos_avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"

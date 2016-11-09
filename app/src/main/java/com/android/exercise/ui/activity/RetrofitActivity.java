@@ -13,21 +13,18 @@ import android.view.View;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
-import com.android.exercise.base.manager.APIManager;
-import com.android.exercise.common.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.retrofit.APICallback;
+import com.android.exercise.base.task.GithubReposTask;
+import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.GithubBean;
-import com.android.exercise.service.GithubService;
 import com.android.exercise.ui.adapter.ReposAdapter;
+import com.android.exercise.util.T;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Retrofit 2.0
@@ -95,37 +92,31 @@ public class RetrofitActivity extends BaseActivity {
      * 加载数据
      */
     public void loadList() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(APIManager.getBaseUrl())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        GithubService service = retrofit.create(GithubService.class);
-        Call<List<GithubBean>> call = service.listRepos("lavalike");
-        call.enqueue(new Callback<List<GithubBean>>() {
+        Call call = new GithubReposTask(new APICallback<List<GithubBean>>() {
+
             @Override
-            public void onResponse(Call<List<GithubBean>> call, Response<List<GithubBean>> response) {
-                stopLoading();
-                if (response.code() == 200) {
-                    List<GithubBean> list = response.body();
-                    if (list != null) {
-                        mReposAdapter = new ReposAdapter(mContext, list);
-                        mReposAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<GithubBean>() {
-                            @Override
-                            public void onItemClick(View view, int position, GithubBean data) {
-                                String reposUrl = data.getHtml_url();
-                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(reposUrl));
-                                startActivity(intent);
-                            }
-                        });
-                        recyclerRepos.setAdapter(mReposAdapter);
+            public void onError(String error) {
+                T.get(mContext).toast(error);
+            }
+
+            @Override
+            protected void onSuccess(List<GithubBean> list) {
+                mReposAdapter = new ReposAdapter(mContext, list);
+                mReposAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<GithubBean>() {
+                    @Override
+                    public void onItemClick(View view, int position, GithubBean data) {
+                        String reposUrl = data.getHtml_url();
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(reposUrl));
+                        startActivity(intent);
                     }
-                }
+                });
+                recyclerRepos.setAdapter(mReposAdapter);
             }
 
             @Override
-            public void onFailure(Call<List<GithubBean>> call, Throwable t) {
-
+            public void onAfter() {
+                stopLoading();
             }
-        });
+        }).exe("lavalike");
     }
 }

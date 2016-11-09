@@ -6,7 +6,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.android.exercise.base.manager.AppManager;
-import com.android.exercise.common.greendao.DatabaseLoader;
+import com.android.exercise.base.greendao.DBLoader;
 
 import org.xutils.DbManager;
 import org.xutils.x;
@@ -35,7 +35,7 @@ public class App extends MultiDexApplication {
                 .build();
         Realm.setDefaultConfiguration(config);
         //初始化GreenDao
-        DatabaseLoader.init(this);
+        DBLoader.init(this);
         //初始化xUtils3
         x.Ext.init(this);
     }

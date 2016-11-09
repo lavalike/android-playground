@@ -11,7 +11,7 @@ import android.view.View;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
-import com.android.exercise.common.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;

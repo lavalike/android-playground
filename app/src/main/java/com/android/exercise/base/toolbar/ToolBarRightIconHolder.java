@@ -1,21 +1,22 @@
-package com.android.exercise.common.toolbar;
+package com.android.exercise.base.toolbar;
 
 import android.app.Activity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 
 /**
- * 常用布局 ：左返回-标题中-右文字
+ * 常用布局 ：左返回-标题中-右图标
  * Created by wangzhen on 16/10/19.
  */
 
-public class ToolBarRightTextHolder extends BaseToolBarHolder {
+public class ToolBarRightIconHolder extends BaseToolBarHolder {
 
     private TextView tv_title;
-    private TextView tv_menu;
+    private ImageView iv_menu;
 
     /**
      * @param activity
@@ -23,10 +24,10 @@ public class ToolBarRightTextHolder extends BaseToolBarHolder {
      * @param title
      * @param canBack
      */
-    public ToolBarRightTextHolder(Activity activity, Toolbar toolbar, String title, String menu, boolean canBack) {
+    public ToolBarRightIconHolder(Activity activity, Toolbar toolbar, String title, int resId, boolean canBack) {
         super(activity, toolbar);
         tv_title.setText(title);
-        tv_menu.setText(menu);
+        iv_menu.setImageResource(resId);
         if (!canBack) {
             //去除返回箭头
             mToolbar.setNavigationIcon(null);
@@ -37,19 +38,19 @@ public class ToolBarRightTextHolder extends BaseToolBarHolder {
         }
     }
 
-    public TextView getRightMenu() {
-        return tv_menu;
+    public ImageView getRightMenu() {
+        return iv_menu;
     }
 
     @Override
     protected void initView() {
-        tv_title = findById(R.id.tv_toolbar_right_text_title);
-        tv_menu = findById(R.id.tv_toolbar_right_text_menu);
+        tv_title = findById(R.id.tv_toolbar_right_icon_title);
+        iv_menu = findById(R.id.iv_toolbar_right_icon_menu);
     }
 
     @Override
     protected int getToolBarLayoutResId() {
-        return R.layout.layout_toolbar_right_text;
+        return R.layout.layout_toolbar_right_icon;
     }
 
 }

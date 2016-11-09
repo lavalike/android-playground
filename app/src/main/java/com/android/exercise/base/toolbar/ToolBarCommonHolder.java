@@ -1,4 +1,4 @@
-package com.android.exercise.common.toolbar;
+package com.android.exercise.base.toolbar;
 
 import android.app.Activity;
 import android.support.v7.widget.Toolbar;

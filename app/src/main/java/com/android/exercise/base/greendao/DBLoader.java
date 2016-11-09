@@ -1,4 +1,4 @@
-package com.android.exercise.common.greendao;
+package com.android.exercise.base.greendao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,7 +12,7 @@ import com.android.exercise.util.C;
  * Created by wangzhen on 16/11/7.
  */
 
-public class DatabaseLoader {
+public class DBLoader {
 
     private static SQLiteDatabase db;
     private static DaoSession mDaoSession;

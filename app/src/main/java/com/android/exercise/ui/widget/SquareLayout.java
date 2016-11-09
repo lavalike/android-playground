@@ -1,4 +1,4 @@
-package com.android.exercise.view;
+package com.android.exercise.ui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

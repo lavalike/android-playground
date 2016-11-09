@@ -8,8 +8,8 @@ import android.view.View;
 import com.android.exercise.R;
 import com.android.exercise.base.App;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.common.greendao.DatabaseLoader;
-import com.android.exercise.common.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.greendao.DBLoader;
+import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.db.greendao.UserDao;
 import com.android.exercise.domain.greendao.Man;
 import com.android.exercise.domain.greendao.User;
@@ -39,7 +39,7 @@ public class GreendaoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greendao);
         ButterKnife.bind(this);
-        mUserDao = DatabaseLoader.getSession().getUserDao();
+        mUserDao = DBLoader.getSession().getUserDao();
     }
 
     @Override
