@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_greendao));
         mList.add(getString(R.string.item_retrofit));
 
-        mAdapter = new FunctionAdapter<>(mContext, mList);
+        mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(View view, int position, Object data) {

@@ -2,12 +2,14 @@ package com.android.exercise.base.retrofit;
 
 import com.android.exercise.base.manager.APIManager;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Retrofit
+ * Retrofit 管理类
  * Created by wangzhen on 16/11/9.
  */
 
@@ -20,6 +22,7 @@ public class RetrofitManager {
         //初始化OkHttp相关,如配置拦截器
         mClient = new OkHttpClient.Builder()
 //                .addInterceptor()
+                .connectTimeout(1000 * 5, TimeUnit.MILLISECONDS)
                 .build();
     }
 

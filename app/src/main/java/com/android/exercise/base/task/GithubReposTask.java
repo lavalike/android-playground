@@ -1,9 +1,9 @@
 package com.android.exercise.base.task;
 
-import com.android.exercise.base.retrofit.APIBaskTask;
-import com.android.exercise.base.retrofit.APICallback;
 import com.android.exercise.base.retrofit.APIService;
+import com.android.exercise.base.retrofit.RetrofitCallback;
 import com.android.exercise.base.retrofit.RetrofitManager;
+import com.android.exercise.base.retrofit.callback.CommonCallback;
 import com.android.exercise.domain.GithubBean;
 
 import java.util.List;
@@ -15,9 +15,9 @@ import retrofit2.Call;
  * Created by wangzhen on 16/11/9.
  */
 
-public class GithubReposTask extends APIBaskTask<List<GithubBean>> {
+public class GithubReposTask extends RetrofitCallback<List<GithubBean>> {
 
-    public GithubReposTask(APICallback<List<GithubBean>> callback) {
+    public GithubReposTask(CommonCallback<List<GithubBean>> callback) {
         super(callback);
     }
 

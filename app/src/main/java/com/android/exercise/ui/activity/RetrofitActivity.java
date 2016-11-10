@@ -7,12 +7,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
-import com.android.exercise.base.retrofit.APICallback;
+import com.android.exercise.base.recycler.wrapper.HeaderAndFooterWrapper;
+import com.android.exercise.base.retrofit.callback.CommonCallback;
 import com.android.exercise.base.task.GithubReposTask;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.GithubBean;
@@ -35,6 +37,7 @@ public class RetrofitActivity extends BaseActivity {
     @BindView(R.id.swipe_repos)
     SwipeRefreshLayout swipeRepos;
     private ReposAdapter mReposAdapter;
+    private View mHeaderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +93,7 @@ public class RetrofitActivity extends BaseActivity {
      * 加载数据
      */
     public void loadList() {
-        new GithubReposTask(new APICallback<List<GithubBean>>() {
+        new GithubReposTask(new CommonCallback<List<GithubBean>>() {
 
             @Override
             public void onError(String error) {
@@ -98,7 +101,8 @@ public class RetrofitActivity extends BaseActivity {
             }
 
             @Override
-            protected void onSuccess(List<GithubBean> list) {
+            public void onSuccess(List<GithubBean> list) {
+                mHeaderView = LayoutInflater.from(mContext).inflate(R.layout.activity_greendao, null);
                 mReposAdapter = new ReposAdapter(mContext, list);
                 mReposAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<GithubBean>() {
                     @Override
@@ -109,7 +113,10 @@ public class RetrofitActivity extends BaseActivity {
                         startActivity(intent);
                     }
                 });
-                recyclerRepos.setAdapter(mReposAdapter);
+                //添加头部
+                HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mReposAdapter);
+                wrapper.addHeaderView(mHeaderView);
+                recyclerRepos.setAdapter(wrapper);
             }
 
             @Override

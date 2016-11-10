@@ -1,11 +1,13 @@
-package com.android.exercise.base.retrofit;
+package com.android.exercise.base.retrofit.callback;
+
+import com.android.exercise.base.retrofit.APIInterface;
 
 /**
  * 普通回调接口的实现 GET POST请求
  * Created by wangzhen on 16/11/9.
  */
 
-public abstract class APICallback<T> implements APIInterface {
+public abstract class CommonCallback<T> implements APIInterface {
     @Override
     public void onFailure() {
 
@@ -16,7 +18,7 @@ public abstract class APICallback<T> implements APIInterface {
      *
      * @param data
      */
-    protected abstract void onSuccess(T data);
+    public abstract void onSuccess(T data);
 
     @Override
     public void onError(String error) {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by Administrator on 2016/10/18.
  */
 
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
+public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
 
     protected Context mContext;
     protected LayoutInflater mInflater;
@@ -34,6 +35,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
         setItemEvent(holder);
         onMyBindViewHolder(holder, position);
     }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return onMyCreateViewHolder(parent, viewType);
+    }
+
+    public abstract VH onMyCreateViewHolder(ViewGroup parent, int viewType);
 
     /**
      * 设置item点击事件
@@ -66,5 +74,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
 
     public interface OnRecyclerItemClickListener<T> {
         void onItemClick(View view, int position, T data);
+    }
+
+    public class HeaderViewHolder extends RecyclerView.ViewHolder {
+
+        public HeaderViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 }

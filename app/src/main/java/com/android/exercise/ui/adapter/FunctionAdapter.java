@@ -15,14 +15,15 @@ import java.util.List;
  * 主页功能
  * Created by Administrator on 2016/4/12.
  */
-public class FunctionAdapter<T> extends BaseRecyclerAdapter {
+public class FunctionAdapter extends BaseRecyclerAdapter<String, FunctionAdapter.FunctionViewHolder> {
 
-    public FunctionAdapter(Context context, List<T> list) {
+
+    public FunctionAdapter(Context context, List<String> list) {
         super(context, list);
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FunctionViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_function_layout, parent, false);
         FunctionViewHolder holder = new FunctionViewHolder(view);
         return holder;
@@ -31,7 +32,7 @@ public class FunctionAdapter<T> extends BaseRecyclerAdapter {
     @Override
     public void onMyBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         FunctionViewHolder viewHolder = (FunctionViewHolder) holder;
-        String title = (String) mDatas.get(position);
+        String title = mDatas.get(position);
         viewHolder.tv_title.setText(title);
     }
 

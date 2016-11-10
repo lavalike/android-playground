@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.android.exercise.R;
 import com.android.exercise.base.manager.AppManager;
+import com.android.exercise.base.retrofit.callback.CommonCallback;
 import com.android.exercise.util.NetworkUtil;
 
 import java.net.SocketTimeoutException;
@@ -17,26 +18,22 @@ import retrofit2.Response;
  * Created by wangzhen on 16/11/9.
  */
 
-public abstract class APIBaskTask<T> implements Callback<T> {
+public abstract class RetrofitCallback<T> implements Callback<T> {
 
-    private APICallback<T> mCallback;
+    private CommonCallback<T> mCallback;
 
-    public APIBaskTask(APICallback<T> callback) {
-        this.mCallback = callback;
-        if (mCallback == null) {
+    public RetrofitCallback(CommonCallback<T> callback) {
+        if (callback == null) {
             throw new NullPointerException("mCallback == null");
         }
+        this.mCallback = callback;
         mCallback.onBefore();
     }
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        if (response != null && response.body() != null) {
-            if (response.code() == 200) {
-                mCallback.onSuccess(response.body());
-            } else {
-                mCallback.onFailure();
-            }
+        if (response.isSuccessful()) {
+            mCallback.onSuccess(response.body());
         } else {
             mCallback.onFailure();
         }

@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by wangzhen on 16/11/8.
  */
 
-public class ReposAdapter extends BaseRecyclerAdapter<GithubBean> {
+public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.ReposViewHolder> {
 
     public ReposAdapter(Context context, List<GithubBean> list) {
         super(context, list);
@@ -38,7 +38,7 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean> {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ReposViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_repos_layout, parent, false);
         return new ReposViewHolder(view);
     }
