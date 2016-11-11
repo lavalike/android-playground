@@ -30,10 +30,9 @@ public class FunctionAdapter extends BaseRecyclerAdapter<String, FunctionAdapter
     }
 
     @Override
-    public void onMyBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        FunctionViewHolder viewHolder = (FunctionViewHolder) holder;
+    public void onMyBindViewHolder(FunctionViewHolder holder, int position) {
         String title = mDatas.get(position);
-        viewHolder.tv_title.setText(title);
+        holder.tv_title.setText(title);
     }
 
     public class FunctionViewHolder extends RecyclerView.ViewHolder {

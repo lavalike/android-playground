@@ -13,6 +13,7 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.activity.GreendaoActivity;
+import com.android.exercise.ui.activity.LoadmoreActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
@@ -60,6 +61,7 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_realm));
         mList.add(getString(R.string.item_greendao));
         mList.add(getString(R.string.item_retrofit));
+        mList.add(getString(R.string.item_loadmore));
 
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
@@ -81,6 +83,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "Retrofit 2.0":
                 startActivity(new Intent(mContext, RetrofitActivity.class));
+                break;
+            case "加载更多":
+                startActivity(new Intent(mContext, LoadmoreActivity.class));
                 break;
         }
 

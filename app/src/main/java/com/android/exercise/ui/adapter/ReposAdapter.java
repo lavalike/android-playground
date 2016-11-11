@@ -29,12 +29,11 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.R
     }
 
     @Override
-    public void onMyBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ReposViewHolder reposHolder = (ReposViewHolder) holder;
+    public void onMyBindViewHolder(ReposViewHolder holder, int position) {
         GithubBean bean = mDatas.get(position);
-        reposHolder.tvItemReposName.setText(bean.getName());
-        reposHolder.tvItemReposUrl.setText(bean.getHtml_url());
-        Glide.with(mContext).load(bean.getOwner().getAvatar_url()).into(reposHolder.ivItemReposAvatar);
+        holder.tvItemReposName.setText(bean.getName());
+        holder.tvItemReposUrl.setText(bean.getHtml_url());
+        Glide.with(mContext).load(bean.getOwner().getAvatar_url()).into(holder.ivItemReposAvatar);
     }
 
     @Override

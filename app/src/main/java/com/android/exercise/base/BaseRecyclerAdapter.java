@@ -30,10 +30,22 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         this.mDatas = list;
     }
 
+    public void addData(T data) {
+        mDatas.add(data);
+    }
+
+    public void addData(int position, T data) {
+        mDatas.add(position, data);
+    }
+
+    public void addData(List<T> data) {
+        mDatas.addAll(data);
+    }
+
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         setItemEvent(holder);
-        onMyBindViewHolder(holder, position);
+        onMyBindViewHolder((VH) holder, position);
     }
 
     @Override
@@ -42,6 +54,8 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
     public abstract VH onMyCreateViewHolder(ViewGroup parent, int viewType);
+
+    public abstract void onMyBindViewHolder(VH holder, int position);
 
     /**
      * 设置item点击事件
@@ -54,8 +68,6 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
             holder.itemView.setOnClickListener(innerClickListener);
         }
     }
-
-    public abstract void onMyBindViewHolder(RecyclerView.ViewHolder holder, int position);
 
     private View.OnClickListener innerClickListener = new View.OnClickListener() {
         @Override
