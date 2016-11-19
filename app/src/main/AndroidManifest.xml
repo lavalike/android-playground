@@ -24,7 +24,8 @@
         <activity android:name=".ui.activity.GreendaoActivity" />
         <activity android:name=".ui.activity.RetrofitActivity" />
         <activity android:name=".ui.activity.HtmlActivity" />
-        <activity android:name=".ui.activity.LoadmoreActivity"></activity>
+        <activity android:name=".ui.activity.LoadmoreActivity" />
+        <activity android:name=".ui.activity.SlidingMenuActivity"></activity>
     </application>
 
 </manifest>

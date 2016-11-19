@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.android.exercise.R;
 
 /**
- * 支持上拉加载更多的
+ * 支持上拉加载更多的RecyclerView
  * Created by wangzhen on 16/11/11.
  */
 public class LoadMoreRecyclerView extends RecyclerView {

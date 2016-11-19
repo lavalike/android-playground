@@ -4,4 +4,9 @@
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
     </declare-styleable>
+
+    <!--自定义SlidingMenu属性-->
+    <declare-styleable name="SlidingMenu">
+        <attr name="menuRightPadding" format="dimension" />
+    </declare-styleable>
 </resources>

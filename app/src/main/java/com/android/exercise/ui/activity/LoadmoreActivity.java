@@ -29,7 +29,6 @@ public class LoadmoreActivity extends BaseActivity {
     LoadMoreRecyclerView recyclerMore;
     @BindView(R.id.swipe_loadmore)
     SwipeRefreshLayout swipeLoadmore;
-    private List<String> list;
     private MoreAdapter mMoreAdapter;
 
     @Override
@@ -39,10 +38,10 @@ public class LoadmoreActivity extends BaseActivity {
         ButterKnife.bind(this);
         initSwipeRefresh();
         setLoading(true);
-        init();
+        loadList();
     }
 
-    private void init() {
+    private void loadList() {
         mMoreAdapter = new MoreAdapter(mContext, getList());
         recyclerMore.setAdapter(mMoreAdapter);
         setLoading(false);
@@ -50,7 +49,7 @@ public class LoadmoreActivity extends BaseActivity {
 
     private void loadMore() {
         mMoreAdapter.addData(getList());
-        mMoreAdapter.notifyDataSetChanged();
+        mMoreAdapter.notifyItemRangeInserted(mMoreAdapter.getItemCount(), mMoreAdapter.getItemCount() + getList().size());
         recyclerMore.notifyMoreFinish(true);
     }
 
@@ -75,7 +74,7 @@ public class LoadmoreActivity extends BaseActivity {
         swipeLoadmore.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                init();
+                loadList();
             }
         });
         LinearLayoutManager manager = new LinearLayoutManager(mContext);

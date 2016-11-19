@@ -1,6 +1,7 @@
 package com.android.exercise.ui;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,7 +17,9 @@ import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.LoadmoreActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
+import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
+import com.android.exercise.util.DisplayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +49,16 @@ public class MainActivity extends BaseActivity {
     private void initRecycler() {
         GridLayoutManager manager = new GridLayoutManager(mContext, 3);
         recyclerview.setLayoutManager(manager);
+        recyclerview.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.left = DisplayUtil.dip2px(mContext, 0.5f);
+                outRect.right = DisplayUtil.dip2px(mContext, 0.5f);
+                outRect.top = DisplayUtil.dip2px(mContext, 0.5f);
+                outRect.bottom = DisplayUtil.dip2px(mContext, 0.5f);
+            }
+        });
     }
 
     @Override
@@ -62,18 +75,19 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_greendao));
         mList.add(getString(R.string.item_retrofit));
         mList.add(getString(R.string.item_loadmore));
+        mList.add(getString(R.string.item_slidingmenu));
 
         mAdapter = new FunctionAdapter(mContext, mList);
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
+        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
             @Override
-            public void onItemClick(View view, int position, Object data) {
-                redirect(position, (String) data);
+            public void onItemClick(View view, int position, String data) {
+                redirect(data);
             }
         });
         recyclerview.setAdapter(mAdapter);
     }
 
-    private void redirect(int position, String data) {
+    private void redirect(String data) {
         switch (data) {
             case "Realm":
                 startActivity(new Intent(mContext, RealmActivity.class));
@@ -86,6 +100,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "加载更多":
                 startActivity(new Intent(mContext, LoadmoreActivity.class));
+                break;
+            case "自定义侧滑菜单":
+                startActivity(new Intent(mContext, SlidingMenuActivity.class));
                 break;
         }
 
