@@ -13,6 +13,7 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.LoadmoreActivity;
@@ -78,6 +79,7 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_loadmore));
         mList.add(getString(R.string.item_slidingmenu));
         mList.add(getString(R.string.item_flowlayout));
+        mList.add(getString(R.string.item_accessibility));
 
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
@@ -108,6 +110,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "流式布局":
                 startActivity(new Intent(mContext, FlowLayoutActivity.class));
+                break;
+            case "自动化辅助":
+                startActivity(new Intent(mContext, AutoServiceActivity.class));
                 break;
         }
 

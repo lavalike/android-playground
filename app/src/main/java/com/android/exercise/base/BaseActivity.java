@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.util.PermissionManager;
@@ -25,6 +26,7 @@ public class BaseActivity extends ToolbarActivity implements PermissionManager.O
 
     public Context mContext;
     private PermissionManager.OnPermissionCallback mCallback;
+    protected String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +35,10 @@ public class BaseActivity extends ToolbarActivity implements PermissionManager.O
         // 禁止横屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         AppManager.get().addActivity(this);
+    }
+
+    protected void showToast(String text) {
+        Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
     }
 
     /**

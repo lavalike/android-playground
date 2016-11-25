@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 
     <application
         android:name=".base.App"
@@ -26,7 +27,23 @@
         <activity android:name=".ui.activity.HtmlActivity" />
         <activity android:name=".ui.activity.LoadmoreActivity" />
         <activity android:name=".ui.activity.SlidingMenuActivity" />
-        <activity android:name=".ui.activity.FlowLayoutActivity"></activity>
+        <activity android:name=".ui.activity.FlowLayoutActivity" />
+        <activity android:name=".ui.activity.AutoServiceActivity" />
+
+        <!-- 自动化辅助服务 -->
+        <service
+            android:name=".service.AutoService"
+            android:label="自动化辅助服务测试"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility" />
+
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
