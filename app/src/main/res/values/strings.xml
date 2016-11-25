@@ -13,5 +13,6 @@
     <string name="item_retrofit">Retrofit 2.0</string>
     <string name="item_loadmore">加载更多</string>
     <string name="item_slidingmenu">自定义侧滑菜单</string>
+    <string name="item_flowlayout">流式布局</string>
 
 </resources>
