@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_anim"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context="com.android.exercise.ui.activity.Anim24hActivity">
+
+    <!--右下角环形菜单-->
+    <FrameLayout
+        android:id="@+id/panel_circleMenu"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:alpha="0"
+        android:layout_gravity="bottom|end">
+
+        <Button
+            android:id="@+id/item_menu_service"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="top|end"
+            android:text="服" />
+
+        <Button
+            android:id="@+id/item_menu_news"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="top|end"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:text="新" />
+
+        <Button
+            android:id="@+id/item_menu_column"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="top|start"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:text="栏" />
+
+        <Button
+            android:id="@+id/item_menu_days"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="top|start"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="100dp"
+            android:text="日" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:text="+" />
+
+    </FrameLayout>
+
+    <!--九宫栏目面板-->
+    <TableLayout
+        android:id="@+id/panel_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:visibility="invisible">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/item1"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:visibility="invisible" >
+                <!--带色背景-->
+                <RelativeLayout
+                    android:id="@+id/anim_bg_days1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_bg" />
+
+                <!--圆角边框背影-->
+                <RelativeLayout
+                    android:id="@+id/anim_stroke_bg_days1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_stroke_bg" />
+
+                <!--椭圆-->
+                <RelativeLayout
+                    android:id="@+id/anim_oval_days1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:alpha="0"
+                    android:background="@drawable/bg_anim_oval_white" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/item2"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp"
+                android:visibility="invisible" >
+                <!--带色背景-->
+                <RelativeLayout
+                    android:id="@+id/anim_bg_news1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_bg" />
+
+                <!--圆角边框背影-->
+                <RelativeLayout
+                    android:id="@+id/anim_stroke_bg_news1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_stroke_bg" />
+
+                <!--椭圆-->
+                <RelativeLayout
+                    android:id="@+id/anim_oval_news1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:alpha="0"
+                    android:background="@drawable/bg_anim_oval_white" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/item_service"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp">
+
+                <!--带色背景-->
+                <RelativeLayout
+                    android:id="@+id/anim_bg_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_bg" />
+
+                <!--圆角边框背影-->
+                <RelativeLayout
+                    android:id="@+id/anim_stroke_bg_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_stroke_bg" />
+
+                <!--椭圆-->
+                <RelativeLayout
+                    android:id="@+id/anim_oval_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:alpha="0"
+                    android:background="@drawable/bg_anim_oval_white" />
+
+            </FrameLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp">
+
+            <RelativeLayout
+                android:id="@+id/item4"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+            <FrameLayout
+                android:id="@+id/item_column"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp">
+
+                <!--带色背景-->
+                <RelativeLayout
+                    android:id="@+id/anim_bg_column"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_bg" />
+
+                <!--圆角边框背影-->
+                <RelativeLayout
+                    android:id="@+id/anim_stroke_bg_column"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_24hanim_stroke_bg" />
+
+                <!--椭圆-->
+                <RelativeLayout
+                    android:id="@+id/anim_oval_column"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:alpha="0"
+                    android:background="@drawable/bg_anim_oval_white" />
+            </FrameLayout>
+
+            <RelativeLayout
+                android:id="@+id/item6"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp">
+
+            <RelativeLayout
+                android:id="@+id/item7"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+            <RelativeLayout
+                android:id="@+id/item8"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+            <RelativeLayout
+                android:id="@+id/item9"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <!--首页选择-->
+    <LinearLayout
+        android:id="@+id/panel_homepage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/item_days"
+            android:layout_width="150dp"
+            android:layout_height="200dp">
+
+            <!--带色背景-->
+            <RelativeLayout
+                android:id="@+id/anim_bg_days"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_24hanim_bg" />
+
+            <!--圆角边框背影-->
+            <RelativeLayout
+                android:id="@+id/anim_stroke_bg_days"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+            <!--椭圆-->
+            <RelativeLayout
+                android:id="@+id/anim_oval_days"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:alpha="0"
+                android:background="@drawable/bg_anim_oval_white" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/item_news"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp">
+
+            <!--带色背景-->
+            <RelativeLayout
+                android:id="@+id/anim_bg_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_24hanim_bg" />
+
+            <!--圆角边框背影-->
+            <RelativeLayout
+                android:id="@+id/anim_stroke_bg_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_24hanim_stroke_bg" />
+
+            <!--椭圆-->
+            <RelativeLayout
+                android:id="@+id/anim_oval_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:alpha="0"
+                android:background="@drawable/bg_anim_oval_white" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

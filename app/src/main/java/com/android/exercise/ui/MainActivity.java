@@ -13,6 +13,7 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_slidingmenu));
         mList.add(getString(R.string.item_flowlayout));
         mList.add(getString(R.string.item_accessibility));
-
+        mList.add(getString(R.string.item_24hanim));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
             @Override
@@ -113,6 +114,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "自动化辅助":
                 startActivity(new Intent(mContext, AutoServiceActivity.class));
+                break;
+            case "24小时动画":
+                startActivity(new Intent(mContext, Anim24hActivity.class));
                 break;
         }
 
