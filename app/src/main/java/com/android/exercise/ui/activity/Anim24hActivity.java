@@ -3,12 +3,14 @@ package com.android.exercise.ui.activity;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -18,7 +20,6 @@ import android.widget.TableLayout;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
-import com.android.exercise.util.DisplayUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -135,9 +136,11 @@ public class Anim24hActivity extends BaseActivity {
                 float scale = scalePanel * 0.35f + 0.65f;// 1~0.65
                 panelHomepage.setScaleX(scale);
                 panelHomepage.setScaleY(scale);
-                //显示下一步背景图
-                panelSecond.setVisibility(View.VISIBLE);
-                panelSecond.setAlpha(1 - scalePanel);
+                //显示九宫图
+                if (scalePanel <= 0.25) {//0.25~0
+                    float secondAlpha = scalePanel * 4;//1~0
+                    panelSecond.setAlpha(1 - secondAlpha);//0~1
+                }
             }
         });
         animatorY.addListener(new Animator.AnimatorListener() {
@@ -178,7 +181,8 @@ public class Anim24hActivity extends BaseActivity {
             }
         });
         AnimatorSet set = new AnimatorSet();
-        set.setDuration(1500);
+        set.setDuration(2000);
+//        set.setInterpolator(new AccelerateInterpolator());
         set.playTogether(animatorY);
         set.start();
     }
@@ -395,7 +399,10 @@ public class Anim24hActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                showToast("执行完毕");
+                Intent intent = new Intent(mContext, GreendaoActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.anim_zoomin, R.anim.anim_zoomout);
             }
 
             @Override

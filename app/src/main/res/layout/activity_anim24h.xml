@@ -67,7 +67,7 @@
         android:layout_gravity="center"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:visibility="invisible">
+        android:alpha="0">
 
         <TableRow
             android:layout_width="match_parent"
