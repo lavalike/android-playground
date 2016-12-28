@@ -1,63 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_anim"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context="com.android.exercise.ui.activity.Anim24hActivity">
-
-    <!--右下角环形菜单-->
-    <FrameLayout
-        android:id="@+id/panel_circleMenu"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:alpha="0"
-        android:layout_gravity="bottom|end">
-
-        <Button
-            android:id="@+id/item_menu_service"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="top|end"
-            android:text="服" />
-
-        <Button
-            android:id="@+id/item_menu_news"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="top|end"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            android:text="新" />
-
-        <Button
-            android:id="@+id/item_menu_column"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="top|start"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
-            android:text="栏" />
-
-        <Button
-            android:id="@+id/item_menu_days"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="top|start"
-            android:layout_marginRight="100dp"
-            android:layout_marginTop="100dp"
-            android:text="日" />
-
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:text="+" />
-
-    </FrameLayout>
 
     <!--九宫栏目面板-->
     <TableLayout
@@ -65,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:alpha="0"
         android:clipChildren="false"
-        android:clipToPadding="false"
-        android:alpha="0">
+        android:clipToPadding="false">
 
         <TableRow
             android:layout_width="match_parent"
@@ -77,7 +25,7 @@
                 android:id="@+id/item1"
                 android:layout_width="97.5dp"
                 android:layout_height="130dp"
-                android:visibility="invisible" >
+                android:alpha="0">
                 <!--带色背景-->
                 <RelativeLayout
                     android:id="@+id/anim_bg_days1"
@@ -90,7 +38,7 @@
                     android:id="@+id/anim_stroke_bg_days1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/selector_24hanim_stroke_bg" />
+                    android:background="@drawable/selector_day_small_bg" />
 
                 <!--椭圆-->
                 <RelativeLayout
@@ -107,7 +55,7 @@
                 android:layout_width="97.5dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="13dp"
-                android:visibility="invisible" >
+                android:alpha="0">
                 <!--带色背景-->
                 <RelativeLayout
                     android:id="@+id/anim_bg_news1"
@@ -120,7 +68,7 @@
                     android:id="@+id/anim_stroke_bg_news1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/selector_24hanim_stroke_bg" />
+                    android:background="@drawable/selector_news_small_bg" />
 
                 <!--椭圆-->
                 <RelativeLayout
@@ -142,15 +90,14 @@
                 <RelativeLayout
                     android:id="@+id/anim_bg_service"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/selector_24hanim_bg" />
+                    android:layout_height="match_parent"/>
 
                 <!--圆角边框背影-->
                 <RelativeLayout
                     android:id="@+id/anim_stroke_bg_service"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/selector_24hanim_stroke_bg" />
+                    android:background="@mipmap/service" />
 
                 <!--椭圆-->
                 <RelativeLayout
@@ -174,7 +121,7 @@
                 android:id="@+id/item4"
                 android:layout_width="97.5dp"
                 android:layout_height="130dp"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
+                android:background="@mipmap/me" />
 
             <FrameLayout
                 android:id="@+id/item_column"
@@ -194,7 +141,7 @@
                     android:id="@+id/anim_stroke_bg_column"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/selector_24hanim_stroke_bg" />
+                    android:background="@mipmap/column" />
 
                 <!--椭圆-->
                 <RelativeLayout
@@ -211,7 +158,7 @@
                 android:layout_width="97.5dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="13dp"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
+                android:background="@mipmap/newspaper" />
 
         </TableRow>
 
@@ -221,24 +168,25 @@
             android:layout_marginTop="13dp">
 
             <RelativeLayout
-                android:id="@+id/item7"
-                android:layout_width="97.5dp"
-                android:layout_height="130dp"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
-
-            <RelativeLayout
                 android:id="@+id/item8"
                 android:layout_width="97.5dp"
                 android:layout_height="130dp"
-                android:layout_marginLeft="13dp"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
+                android:background="@mipmap/set_up" />
 
             <RelativeLayout
                 android:id="@+id/item9"
                 android:layout_width="97.5dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="13dp"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
+                android:background="@mipmap/microsoft" />
+
+            <RelativeLayout
+                android:id="@+id/item7"
+                android:layout_width="97.5dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="13dp"
+                android:alpha="0"
+                android:background="@mipmap/search" />
 
         </TableRow>
 
@@ -254,65 +202,106 @@
         android:clipToPadding="false"
         android:orientation="horizontal">
 
+        <!--日子-->
         <FrameLayout
             android:id="@+id/item_days"
             android:layout_width="150dp"
             android:layout_height="200dp">
 
-            <!--带色背景-->
+            <!--带图片背景-->
             <RelativeLayout
-                android:id="@+id/anim_bg_days"
+                android:id="@+id/item_bg_big_days"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/selector_24hanim_bg" />
-
-            <!--圆角边框背影-->
-            <RelativeLayout
-                android:id="@+id/anim_stroke_bg_days"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
-
-            <!--椭圆-->
-            <RelativeLayout
-                android:id="@+id/anim_oval_days"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:alpha="0"
-                android:background="@drawable/bg_anim_oval_white" />
+                android:background="@drawable/selector_day_big_bg" />
         </FrameLayout>
 
+        <!--新闻-->
         <FrameLayout
             android:id="@+id/item_news"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:layout_marginLeft="20dp">
 
-            <!--带色背景-->
+            <!--带图片背景-->
             <RelativeLayout
-                android:id="@+id/anim_bg_news"
+                android:id="@+id/item_bg_big_news"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/selector_24hanim_bg" />
-
-            <!--圆角边框背影-->
-            <RelativeLayout
-                android:id="@+id/anim_stroke_bg_news"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/selector_24hanim_stroke_bg" />
-
-            <!--椭圆-->
-            <RelativeLayout
-                android:id="@+id/anim_oval_news"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:alpha="0"
-                android:background="@drawable/bg_anim_oval_white" />
+                android:background="@drawable/selector_news_big_bg" />
         </FrameLayout>
 
     </LinearLayout>
+
+    <!--上方提示-->
+    <ImageView
+        android:id="@+id/iv_homepage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-180dp"
+        android:contentDescription="上方提示"
+        android:src="@mipmap/homepage" />
+
+    <!--下方提示-->
+    <ImageView
+        android:id="@+id/iv_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:contentDescription="下方提示"
+        android:src="@mipmap/word" />
+
+    <!--右下角环形菜单-->
+    <FrameLayout
+        android:id="@+id/panel_circleMenu"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="bottom|end"
+        android:alpha="0">
+
+        <ImageView
+            android:id="@+id/item_menu_service"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:src="@mipmap/ic_tab_menu_service" />
+
+        <ImageView
+            android:id="@+id/item_menu_news"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="12dp"
+            android:src="@mipmap/ic_menu_news" />
+
+        <ImageView
+            android:id="@+id/item_menu_column"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|start"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_tab_menu_column" />
+
+        <ImageView
+            android:id="@+id/item_menu_days"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|start"
+            android:layout_marginRight="110dp"
+            android:layout_marginTop="110dp"
+            android:src="@mipmap/ic_menu_day" />
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_anim_cancel" />
+
+    </FrameLayout>
 
 </FrameLayout>

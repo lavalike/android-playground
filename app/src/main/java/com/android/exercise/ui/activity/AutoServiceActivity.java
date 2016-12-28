@@ -10,16 +10,12 @@ import android.view.View;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
-import com.android.exercise.ui.widget.AnimView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AutoServiceActivity extends BaseActivity {
-
-    @BindView(R.id.animView)
-    AnimView animView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

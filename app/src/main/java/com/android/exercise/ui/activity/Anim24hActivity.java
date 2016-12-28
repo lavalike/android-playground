@@ -8,11 +8,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -47,15 +45,13 @@ public class Anim24hActivity extends BaseActivity {
     FrameLayout itemColumn;
 
     @BindView(R.id.item_menu_service)
-    Button itemMenuService;
+    ImageView itemMenuService;
     @BindView(R.id.item_menu_news)
-    Button itemMenuNews;
+    ImageView itemMenuNews;
     @BindView(R.id.item_menu_column)
-    Button itemMenuColumn;
+    ImageView itemMenuColumn;
     @BindView(R.id.item_menu_days)
-    Button itemMenuDays;
-    @BindView(R.id.container_anim)
-    FrameLayout containerAnim;
+    ImageView itemMenuDays;
     @BindView(R.id.item1)
     FrameLayout item1;
     @BindView(R.id.item2)
@@ -64,12 +60,18 @@ public class Anim24hActivity extends BaseActivity {
     RelativeLayout item4;
     @BindView(R.id.item6)
     RelativeLayout item6;
-    @BindView(R.id.item7)
-    RelativeLayout item7;
     @BindView(R.id.item8)
     RelativeLayout item8;
     @BindView(R.id.item9)
     RelativeLayout item9;
+    @BindView(R.id.item_bg_big_days)
+    RelativeLayout itemBgBigDays;
+    @BindView(R.id.item_bg_big_news)
+    RelativeLayout itemBgBigNews;
+    @BindView(R.id.iv_homepage)
+    ImageView ivHomepage;
+    @BindView(R.id.iv_word)
+    ImageView ivWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +98,11 @@ public class Anim24hActivity extends BaseActivity {
                 itemNews.setSelected(true);
                 startDaysNewsPanelAnim();
                 break;
+        }
+        if (itemDays.isSelected()) {
+            item1.setSelected(true);
+        } else {
+            item2.setSelected(true);
         }
         //禁用点击事件
         itemDays.setEnabled(false);
@@ -136,10 +143,15 @@ public class Anim24hActivity extends BaseActivity {
                 float scale = scalePanel * 0.35f + 0.65f;// 1~0.65
                 panelHomepage.setScaleX(scale);
                 panelHomepage.setScaleY(scale);
+
+                //隐藏提示语
+                ivHomepage.setAlpha(scalePanel - 0.5f);
+                ivWord.setAlpha(scalePanel - 0.5f);
+
                 //显示九宫图
                 if (scalePanel <= 0.25) {//0.25~0
                     float secondAlpha = scalePanel * 4;//1~0
-                    panelSecond.setAlpha(1 - secondAlpha);//0~1
+                    panelSecond.setAlpha(1 - secondAlpha);//0~1n
                 }
             }
         });
@@ -151,23 +163,16 @@ public class Anim24hActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if (itemDays.isSelected()) {
-                    item1.setSelected(true);
-                } else {
-                    item2.setSelected(true);
-                }
-                itemDays.setVisibility(View.INVISIBLE);
-                itemNews.setVisibility(View.INVISIBLE);
-
-                item1.setVisibility(View.VISIBLE);
-                item2.setVisibility(View.VISIBLE);
-
+                item1.animate().alpha(1).setDuration(800).start();
+                item2.animate().alpha(1).setDuration(800).start();
+                itemDays.animate().alpha(0).setDuration(450).start();
+                itemNews.animate().alpha(0).setDuration(450).start();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         startTransformAnim();
                     }
-                }, 1000);
+                }, 1500);
             }
 
             @Override
@@ -182,7 +187,6 @@ public class Anim24hActivity extends BaseActivity {
         });
         AnimatorSet set = new AnimatorSet();
         set.setDuration(2000);
-//        set.setInterpolator(new AccelerateInterpolator());
         set.playTogether(animatorY);
         set.start();
     }
@@ -249,12 +253,6 @@ public class Anim24hActivity extends BaseActivity {
         float translateColumnX = menuColumnX - columnX;
         float translateColumnY = menuColumnY - columnY;
 
-        //获取方框实际宽高
-        final int mWidth = itemService.getWidth();
-        final int mHeight = itemService.getHeight();
-        //宽与高差值
-        final float mDiffer = mHeight - mWidth;
-
         //将中心点修改到左上角
         item1.setPivotX(0);
         item1.setPivotY(0);
@@ -300,7 +298,6 @@ public class Anim24hActivity extends BaseActivity {
                 float scale_ = scale - 0.5f;
                 item4.setAlpha(scale_);
                 item6.setAlpha(scale_);
-                item7.setAlpha(scale_);
                 item8.setAlpha(scale_);
                 item9.setAlpha(scale_);
 
@@ -310,7 +307,6 @@ public class Anim24hActivity extends BaseActivity {
                 //等比例缩小
                 float shrinkScaleX = scale * 0.55f + 0.45f;//1~0.45
                 float shrinkScaleY = scale * 0.67f + 0.33f;//1~0.33
-                Log.d(TAG, "缩放比例：" + shrinkScaleX);
                 item1.setScaleX(shrinkScaleX);
                 item1.setScaleY(shrinkScaleY);
 
