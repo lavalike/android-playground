@@ -18,6 +18,7 @@ import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.LoadmoreActivity;
+import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
@@ -77,6 +78,7 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_realm));
         mList.add(getString(R.string.item_greendao));
         mList.add(getString(R.string.item_retrofit));
+        mList.add(getString(R.string.item_okhttp));
         mList.add(getString(R.string.item_loadmore));
         mList.add(getString(R.string.item_slidingmenu));
         mList.add(getString(R.string.item_flowlayout));
@@ -102,6 +104,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "Retrofit 2.0":
                 startActivity(new Intent(mContext, RetrofitActivity.class));
+                break;
+            case "OKHttp":
+                startActivity(new Intent(mContext, OKHttpActivity.class));
                 break;
             case "加载更多":
                 startActivity(new Intent(mContext, LoadmoreActivity.class));

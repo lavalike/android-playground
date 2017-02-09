@@ -44,7 +44,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ui.activity.Anim24hActivity"></activity>
+        <activity android:name=".ui.activity.Anim24hActivity" />
+        <activity android:name=".ui.activity.OKHttpActivity"></activity>
     </application>
 
 </manifest>

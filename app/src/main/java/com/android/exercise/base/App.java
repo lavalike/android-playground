@@ -7,6 +7,8 @@ import android.support.multidex.MultiDexApplication;
 
 import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.base.greendao.DBLoader;
+import com.android.exercise.base.okhttp.OKHttpManager;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.xutils.DbManager;
 import org.xutils.x;
@@ -38,6 +40,7 @@ public class App extends MultiDexApplication {
         DBLoader.init(this);
         //初始化xUtils3
         x.Ext.init(this);
+        OkHttpUtils.initClient(OKHttpManager.getClient());
     }
 
     protected void attachBaseContext(Context base) {
