@@ -22,6 +22,7 @@ import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
+import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.util.DisplayUtil;
 
@@ -84,6 +85,7 @@ public class MainActivity extends BaseActivity {
         mList.add(getString(R.string.item_flowlayout));
         mList.add(getString(R.string.item_accessibility));
         mList.add(getString(R.string.item_24hanim));
+        mList.add(getString(R.string.item_threadpool));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
             @Override
@@ -122,6 +124,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case "24小时动画":
                 startActivity(new Intent(mContext, Anim24hActivity.class));
+                break;
+            case "线程池":
+                startActivity(new Intent(mContext, ThreadPoolActivity.class));
                 break;
         }
 

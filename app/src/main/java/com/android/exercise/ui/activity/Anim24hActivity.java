@@ -6,8 +6,6 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,7 +15,6 @@ import android.widget.TableLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,8 +78,8 @@ public class Anim24hActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_24hanim), true);
+    public boolean showToolbar() {
+        return false;
     }
 
     @OnClick({R.id.item_days, R.id.item_news})

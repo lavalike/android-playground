@@ -18,5 +18,6 @@
     <string name="item_flowlayout">流式布局</string>
     <string name="item_accessibility">自动化辅助</string>
     <string name="item_24hanim">24小时动画</string>
+    <string name="item_threadpool">线程池</string>
 
 </resources>

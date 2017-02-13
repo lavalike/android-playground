@@ -13,10 +13,7 @@ import com.android.exercise.domain.CibaBean;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
-import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
-
-import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
