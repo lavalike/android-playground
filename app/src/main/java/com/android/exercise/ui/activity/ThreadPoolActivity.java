@@ -1,10 +1,14 @@
 package com.android.exercise.ui.activity;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
@@ -15,11 +19,21 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ThreadPoolActivity extends BaseActivity {
 
+    @BindView(R.id.tv_threadpool_log)
+    TextView tvThreadpoolLog;
+    private StringBuilder stringBuilder;
+    private ExecutorService cachedExecutor;
+    private ExecutorService fixedExecutor;
+    private ScheduledExecutorService scheduledExecutor;
+    private ExecutorService singleExecutor;
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +43,8 @@ public class ThreadPoolActivity extends BaseActivity {
 
     @OnClick({R.id.btn_cachedthreadpool, R.id.btn_fixedthreadpool, R.id.btn_scheduledthreadpool, R.id.btn_singlethreadpool})
     public void onClick(View view) {
+        shutdown();
+        stringBuilder = new StringBuilder();
         switch (view.getId()) {
             case R.id.btn_cachedthreadpool:
                 cachedThreadPool();
@@ -45,18 +61,36 @@ public class ThreadPoolActivity extends BaseActivity {
         }
     }
 
+    private void shutdown() {
+        if (cachedExecutor != null && !cachedExecutor.isShutdown()) {
+            cachedExecutor.shutdown();
+        }
+        if (fixedExecutor != null && !fixedExecutor.isShutdown()) {
+            fixedExecutor.shutdown();
+        }
+        if (scheduledExecutor != null && !scheduledExecutor.isShutdown()) {
+            scheduledExecutor.shutdown();
+        }
+        if (singleExecutor != null && !singleExecutor.isShutdown()) {
+            singleExecutor.shutdown();
+        }
+    }
+
     /**
      * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
      */
     private void singleThreadPool() {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        singleExecutor = Executors.newSingleThreadExecutor();
         for (int i = 0; i < 10; i++) {
             final int index = i;
-            executorService.execute(new Runnable() {
+            singleExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Log.e(TAG, "singleThreadPool:" + index);
+                        stringBuilder.append("singleThreadPool:" + index + "\n");
+                        Message message = Message.obtain();
+                        message.obj = stringBuilder.toString();
+                        handler.sendMessage(message);
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -70,18 +104,23 @@ public class ThreadPoolActivity extends BaseActivity {
      * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
      */
     private void scheduledThreadPool() {
-        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
-        scheduledExecutorService.schedule(new Runnable() {
+        scheduledExecutor = Executors.newScheduledThreadPool(5);
+        scheduledExecutor.schedule(new Runnable() {
             @Override
             public void run() {
-                Log.e(TAG, "scheduledThreadPool延迟3秒");
+                stringBuilder.append("scheduledThreadPool延迟3秒\n");
+                Message message = Message.obtain();
+                message.obj = stringBuilder.toString();
+                handler.sendMessage(message);
             }
         }, 3, TimeUnit.SECONDS);
-        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+        scheduledExecutor.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                Log.e(TAG, "scheduledThreadPool延迟1秒，每3秒执行一次" +
-                        "");
+                stringBuilder.append("scheduledThreadPool延迟1秒，每3秒执行一次\n");
+                Message message = Message.obtain();
+                message.obj = stringBuilder.toString();
+                handler.sendMessage(message);
             }
         }, 1, 3, TimeUnit.SECONDS);
     }
@@ -90,14 +129,17 @@ public class ThreadPoolActivity extends BaseActivity {
      * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
      */
     private void fixedThreadPool() {
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+        fixedExecutor = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 10; i++) {
             final int index = i;
-            executor.execute(new Runnable() {
+            fixedExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Log.e(TAG, "fixedThreadPool:" + index);
+                        stringBuilder.append("fixedThreadPool:" + index + "\n");
+                        Message message = Message.obtain();
+                        message.obj = stringBuilder.toString();
+                        handler.sendMessage(message);
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -112,22 +154,33 @@ public class ThreadPoolActivity extends BaseActivity {
      * 线程池为无限大，当执行第二个任务时第一个任务已经完成，会复用执行第一个任务的线程，而不用每次新建线程。
      */
     private void cachedThreadPool() {
-        ExecutorService executor = Executors.newCachedThreadPool();
+        cachedExecutor = Executors.newCachedThreadPool();
         for (int i = 0; i < 10; i++) {
             final int index = i;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            executor.execute(new Runnable() {
+            cachedExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    Log.e(TAG, "cachedThreadPool:" + index);
+                    try {
+                        stringBuilder.append("cachedThreadPool:" + index + "\n");
+                        Message message = Message.obtain();
+                        message.obj = stringBuilder.toString();
+                        handler.sendMessage(message);
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
     }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            String log = (String) msg.obj;
+            tvThreadpoolLog.setText(log);
+        }
+    };
 
     @Override
     protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
