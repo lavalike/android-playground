@@ -13,8 +13,10 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.domain.ItemBean;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
+import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.LoadmoreActivity;
@@ -40,7 +42,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     private FunctionAdapter mAdapter;
-    private List<String> mList;
+    private List<ItemBean> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,59 +78,27 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
-        mList.add(getString(R.string.item_realm));
-        mList.add(getString(R.string.item_greendao));
-        mList.add(getString(R.string.item_retrofit));
-        mList.add(getString(R.string.item_okhttp));
-        mList.add(getString(R.string.item_loadmore));
-        mList.add(getString(R.string.item_slidingmenu));
-        mList.add(getString(R.string.item_flowlayout));
-        mList.add(getString(R.string.item_accessibility));
-        mList.add(getString(R.string.item_24hanim));
-        mList.add(getString(R.string.item_threadpool));
+        mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_loadmore), LoadmoreActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
+        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override
-            public void onItemClick(View view, int position, String data) {
-                redirect(data);
+            public void onItemClick(View view, int position, ItemBean data) {
+                Class<?> targetClass = data.getTargetClass();
+                if (targetClass != null) {
+                    startActivity(new Intent(mContext, targetClass));
+                }
             }
         });
         recyclerview.setAdapter(mAdapter);
-    }
-
-    private void redirect(String data) {
-        switch (data) {
-            case "Realm":
-                startActivity(new Intent(mContext, RealmActivity.class));
-                break;
-            case "GreenDao":
-                startActivity(new Intent(mContext, GreendaoActivity.class));
-                break;
-            case "Retrofit 2.0":
-                startActivity(new Intent(mContext, RetrofitActivity.class));
-                break;
-            case "OKHttp":
-                startActivity(new Intent(mContext, OKHttpActivity.class));
-                break;
-            case "加载更多":
-                startActivity(new Intent(mContext, LoadmoreActivity.class));
-                break;
-            case "自定义侧滑菜单":
-                startActivity(new Intent(mContext, SlidingMenuActivity.class));
-                break;
-            case "流式布局":
-                startActivity(new Intent(mContext, FlowLayoutActivity.class));
-                break;
-            case "自动化辅助":
-                startActivity(new Intent(mContext, AutoServiceActivity.class));
-                break;
-            case "24小时动画":
-                startActivity(new Intent(mContext, Anim24hActivity.class));
-                break;
-            case "线程池":
-                startActivity(new Intent(mContext, ThreadPoolActivity.class));
-                break;
-        }
-
     }
 }

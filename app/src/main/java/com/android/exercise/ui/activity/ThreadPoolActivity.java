@@ -1,7 +1,5 @@
 package com.android.exercise.ui.activity;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,7 +31,6 @@ public class ThreadPoolActivity extends BaseActivity {
     private ScheduledExecutorService scheduledExecutor;
     private ExecutorService singleExecutor;
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseRecyclerAdapter;
+import com.android.exercise.domain.ItemBean;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -17,10 +18,10 @@ import java.util.List;
  * 主页功能
  * Created by Administrator on 2016/4/12.
  */
-public class FunctionAdapter extends BaseRecyclerAdapter<String, FunctionAdapter.FunctionViewHolder> {
+public class FunctionAdapter extends BaseRecyclerAdapter<ItemBean, FunctionAdapter.FunctionViewHolder> {
 
 
-    public FunctionAdapter(Context context, List<String> list) {
+    public FunctionAdapter(Context context, List<ItemBean> list) {
         super(context, list);
     }
 
@@ -33,8 +34,8 @@ public class FunctionAdapter extends BaseRecyclerAdapter<String, FunctionAdapter
 
     @Override
     public void onMyBindViewHolder(FunctionViewHolder holder, int position) {
-        String title = mDatas.get(position);
-        holder.tv_title.setText(title);
+        ItemBean item = mDatas.get(position);
+        holder.tv_title.setText(item.getItemName());
         Glide.with(mContext)
                 .load("http://pic.58pic.com/58pic/15/45/22/39g58PICA2i_1024.jpg")
                 .into(holder.iv_icon);
