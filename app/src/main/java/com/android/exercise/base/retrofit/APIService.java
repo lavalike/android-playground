@@ -1,14 +1,16 @@
 package com.android.exercise.base.retrofit;
 
+import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
@@ -25,4 +27,10 @@ public interface APIService {
      */
     @GET("users/{user}/repos")
     Call<List<GithubBean>> listRepos(@Path("user") String user);
+
+    @FormUrlEncoded
+    @POST
+    Call<AppBean> listApp(@Url String url, @Field("userinfo") String userInfo);
+
+
 }

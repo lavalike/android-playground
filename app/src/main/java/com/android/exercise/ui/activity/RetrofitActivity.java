@@ -14,17 +14,25 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.base.recycler.wrapper.HeaderAndFooterWrapper;
+import com.android.exercise.base.retrofit.APIService;
+import com.android.exercise.base.retrofit.RetrofitManager;
 import com.android.exercise.base.retrofit.callback.CommonCallback;
 import com.android.exercise.base.task.GithubReposTask;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
 import com.android.exercise.ui.adapter.ReposAdapter;
+import com.android.exercise.util.C;
 import com.android.exercise.util.T;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Retrofit 2.0
@@ -46,8 +54,6 @@ public class RetrofitActivity extends BaseActivity {
         ButterKnife.bind(this);
         initSwipe();
         initRecycler();
-        startLoading();
-        loadList();
     }
 
     private void initSwipe() {
@@ -55,7 +61,7 @@ public class RetrofitActivity extends BaseActivity {
         swipeRepos.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadList();
+                loadGithubList();
             }
         });
     }
@@ -92,7 +98,8 @@ public class RetrofitActivity extends BaseActivity {
     /**
      * 加载数据
      */
-    public void loadList() {
+    public void loadGithubList() {
+        startLoading();
         new GithubReposTask(new CommonCallback<List<GithubBean>>() {
 
             @Override
@@ -124,5 +131,37 @@ public class RetrofitActivity extends BaseActivity {
                 stopLoading();
             }
         }).exe("lavalike");
+    }
+
+    @OnClick({R.id.btn_github, R.id.btn_app})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_github:
+                loadGithubList();
+                break;
+            case R.id.btn_app:
+                loadAppList();
+                break;
+        }
+    }
+
+    private void loadAppList() {
+        String url = "http://10.100.60.70:8080/ZBCM/user8531Controller.do?functionList";
+        APIService apiService = RetrofitManager.getInstance().create(APIService.class);
+        Call<AppBean> call = apiService.listApp(url, C.USERINFO);
+        call.enqueue(new Callback<AppBean>() {
+            @Override
+            public void onResponse(Call<AppBean> call, Response<AppBean> response) {
+                AppBean bean = response.body();
+                if (bean != null) {
+                    showToast("共" + bean.getResult().size() + "条");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AppBean> call, Throwable t) {
+
+            }
+        });
     }
 }
