@@ -20,5 +20,6 @@
     <string name="item_24hanim">24小时动画</string>
     <string name="item_threadpool">线程池</string>
     <string name="item_dispatch">事件分发</string>
+    <string name="item_constraintlayout">Constraint</string>
 
 </resources>

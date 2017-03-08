@@ -47,7 +47,8 @@
         <activity android:name=".ui.activity.Anim24hActivity" />
         <activity android:name=".ui.activity.OKHttpActivity" />
         <activity android:name=".ui.activity.ThreadPoolActivity" />
-        <activity android:name=".ui.activity.DispatchActivity"></activity>
+        <activity android:name=".ui.activity.DispatchActivity" />
+        <activity android:name=".ui.activity.ConstraintLayoutActivity"></activity>
     </application>
 
 </manifest>

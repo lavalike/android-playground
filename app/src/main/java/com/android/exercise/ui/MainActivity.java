@@ -16,6 +16,7 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
+import com.android.exercise.ui.activity.ConstraintLayoutActivity;
 import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
@@ -89,6 +90,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
         mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override
