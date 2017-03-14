@@ -10,5 +10,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="@dimen/toolbar_height"
         android:theme="@style/ToolbarThemeWhite"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
         app:navigationIcon="?attr/homeAsUpIndicator" />
 </merge>

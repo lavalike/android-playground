@@ -48,7 +48,8 @@
         <activity android:name=".ui.activity.OKHttpActivity" />
         <activity android:name=".ui.activity.ThreadPoolActivity" />
         <activity android:name=".ui.activity.DispatchActivity" />
-        <activity android:name=".ui.activity.ConstraintLayoutActivity"></activity>
+        <activity android:name=".ui.activity.ConstraintLayoutActivity" />
+        <activity android:name=".ui.activity.DrawerSlideActivity"></activity>
     </application>
 
 </manifest>

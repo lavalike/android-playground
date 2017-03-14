@@ -18,6 +18,7 @@ import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
 import com.android.exercise.ui.activity.DispatchActivity;
+import com.android.exercise.ui.activity.DrawerSlideActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.LoadmoreActivity;
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override

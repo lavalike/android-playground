@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!--Toolbar高度-->
-    <dimen name="toolbar_height">57dp</dimen>
+    <dimen name="toolbar_height">55dp</dimen>
     <dimen name="toolbar_title_size">20sp</dimen>
     <dimen name="toolbar_menu_size">14sp</dimen>
 </resources>
