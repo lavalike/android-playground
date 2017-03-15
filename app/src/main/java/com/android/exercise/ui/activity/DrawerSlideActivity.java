@@ -85,11 +85,11 @@ public class DrawerSlideActivity extends BaseActivity {
 
             }
         });
-        View menuView = getLayoutInflater().inflate(R.layout.activity_greendao, null);
-        ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        View menuView = getLayoutInflater().inflate(R.layout.activity_greendao, navigationView, false);
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) menuView.getLayoutParams();
         int statusBarHeight = DisplayUtil.getStatusBarHeight(this);
-        marginLayoutParams.topMargin = statusBarHeight;
-        navigationView.addView(menuView, marginLayoutParams);
+        layoutParams.topMargin = statusBarHeight;
+        navigationView.addHeaderView(menuView);
     }
 
     @Override
