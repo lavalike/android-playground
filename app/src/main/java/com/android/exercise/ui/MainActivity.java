@@ -14,6 +14,7 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
+import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
@@ -93,6 +94,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
         mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override

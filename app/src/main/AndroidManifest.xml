@@ -49,7 +49,8 @@
         <activity android:name=".ui.activity.ThreadPoolActivity" />
         <activity android:name=".ui.activity.DispatchActivity" />
         <activity android:name=".ui.activity.ConstraintLayoutActivity" />
-        <activity android:name=".ui.activity.DrawerSlideActivity"></activity>
+        <activity android:name=".ui.activity.DrawerSlideActivity" />
+        <activity android:name=".ui.activity.AndServerActivity"></activity>
     </application>
 
 </manifest>
