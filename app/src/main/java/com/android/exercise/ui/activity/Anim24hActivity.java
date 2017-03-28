@@ -74,6 +74,7 @@ public class Anim24hActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anim24h);
+        setStatusBarMode(true);
         ButterKnife.bind(this);
     }
 

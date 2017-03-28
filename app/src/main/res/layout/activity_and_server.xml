@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_green_dark"
     android:orientation="vertical"
     tools:context="com.android.exercise.ui.activity.AndServerActivity">
 
@@ -17,5 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="关闭" />
+
+    <Button
+        android:id="@+id/btn_server_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
 </LinearLayout>

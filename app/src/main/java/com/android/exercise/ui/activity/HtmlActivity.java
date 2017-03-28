@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.util.IKey;
 import com.android.exercise.util.NetworkUtil;
 import com.android.exercise.util.T;
 
@@ -47,9 +48,8 @@ public class HtmlActivity extends BaseActivity {
     private ValueCallback<Uri[]> mUploadCallbackAboveL;
     private final static int FILECHOOSER_RESULTCODE = 1;
 
-
-    private Toolbar mToolbar;
     private String mUrl;
+    private ToolBarCommonHolder mToolbarHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class HtmlActivity extends BaseActivity {
             T.get(mContext).toast(getString(R.string.error_network_failure));
             return;
         }
-        mUrl = getIntent().getStringExtra("url");
+        mUrl = getIntent().getStringExtra(IKey.HTML_URL);
         if (!TextUtils.isEmpty(mUrl)) {
             configWebView();
             mWebView.loadUrl(mUrl);
@@ -105,14 +105,19 @@ public class HtmlActivity extends BaseActivity {
 
     @Override
     protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        mToolbar = toolbar;
-        new ToolBarCommonHolder(this, toolbar, "", true);
+        mToolbarHolder = new ToolBarCommonHolder(this, toolbar, "", true);
     }
 
     /**
      * 上传图片ChromeClient
      */
     public class UploadWebChromeClient extends WebChromeClient {
+
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+            mToolbarHolder.setTitle(title);
+        }
 
         @Override
         public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {

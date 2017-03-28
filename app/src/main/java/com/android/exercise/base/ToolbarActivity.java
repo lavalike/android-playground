@@ -1,8 +1,9 @@
 package com.android.exercise.base;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +11,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.android.exercise.R;
+import com.android.exercise.ui.widget.swipebacklayout.app.SwipeBackActivity;
 
 /**
  * 处理Toolbar相关
  * Created by Administrator on 2016/10/18.
  */
 
-public class ToolbarActivity extends AppCompatActivity {
+public class ToolbarActivity extends SwipeBackActivity {
 
     private Toolbar mToolbar;
     private LayoutInflater mInflater;
@@ -69,6 +71,8 @@ public class ToolbarActivity extends AppCompatActivity {
      */
     private void initContentView(View view) {
         mRootView = new FrameLayout(this);
+        //windows设置为PrimaryDark
+        mRootView.setBackgroundResource(R.color.colorPrimaryDark);
         mRootView.setFitsSystemWindows(true);
         FrameLayout.LayoutParams paramsRoot = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT);
@@ -78,6 +82,11 @@ public class ToolbarActivity extends AppCompatActivity {
         FrameLayout.LayoutParams paramsView = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT);
         paramsView.topMargin = toolbarSize;
+        Drawable background = view.getBackground();
+        if (background == null) {
+            //页面布局背景色设置为默认 #F9F9F9
+            view.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        }
         //将视图添加到父容器
         mRootView.addView(view, paramsView);
     }

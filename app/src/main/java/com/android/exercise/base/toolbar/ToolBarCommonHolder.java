@@ -2,6 +2,7 @@ package com.android.exercise.base.toolbar;
 
 import android.app.Activity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,6 +34,12 @@ public class ToolBarCommonHolder extends BaseToolBarHolder {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tv_title.getLayoutParams();
             params.rightMargin = 0;
             tv_title.setLayoutParams(params);
+        }
+    }
+
+    public void setTitle(String title) {
+        if (!TextUtils.isEmpty(title)) {
+            tv_title.setText(title);
         }
     }
 

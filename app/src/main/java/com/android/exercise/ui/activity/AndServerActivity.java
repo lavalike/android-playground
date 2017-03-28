@@ -1,18 +1,24 @@
 package com.android.exercise.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.util.IKey;
+import com.android.exercise.util.NetworkUtil;
 import com.yanzhenjie.andserver.AndServer;
 import com.yanzhenjie.andserver.Server;
 import com.yanzhenjie.andserver.website.AssetsWebsite;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,7 +28,13 @@ import butterknife.OnClick;
  */
 public class AndServerActivity extends BaseActivity {
 
+    @BindView(R.id.btn_server_msg)
+    Button btnServerMsg;
     private Server mServer;
+
+    private int SERVER_PORT = 8080;
+    private String ipAddress;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +48,7 @@ public class AndServerActivity extends BaseActivity {
         AssetsWebsite website = new AssetsWebsite(getAssets(), "/markdown.html");
         mServer = new AndServer.Build()
                 .website(website)
+                .port(SERVER_PORT)
                 .build()
                 .createServer();
     }
@@ -45,7 +58,7 @@ public class AndServerActivity extends BaseActivity {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_andServer), true);
     }
 
-    @OnClick({R.id.btn_startServer, R.id.btn_stopServer})
+    @OnClick({R.id.btn_startServer, R.id.btn_stopServer, R.id.btn_server_msg})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_startServer:
@@ -53,6 +66,13 @@ public class AndServerActivity extends BaseActivity {
                 break;
             case R.id.btn_stopServer:
                 stopServer();
+                break;
+            case R.id.btn_server_msg:
+                if (!TextUtils.isEmpty(url)) {
+                    Intent intent = new Intent(this, HtmlActivity.class);
+                    intent.putExtra(IKey.HTML_URL, url);
+                    startActivity(intent);
+                }
                 break;
         }
     }
@@ -74,8 +94,15 @@ public class AndServerActivity extends BaseActivity {
     private void checkRunning() {
         if (mServer.isRunning()) {
             Log.e(TAG, "Server Running.");
+            String ipAddress = NetworkUtil.getIPAddress(this);
+            if (!TextUtils.isEmpty(ipAddress)) {
+                btnServerMsg.setVisibility(View.VISIBLE);
+                url = "http://" + ipAddress + ":" + SERVER_PORT + "/markdown.html";
+                btnServerMsg.setText("点击访问:" + url);
+            }
         } else {
             Log.e(TAG, "Server Stopped.");
+            btnServerMsg.setVisibility(View.GONE);
         }
     }
 }

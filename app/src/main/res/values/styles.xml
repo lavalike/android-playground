@@ -12,9 +12,13 @@
         <!--取消ActionBar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <!--边缘手势样式兼容5.0以下系统-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+
         <!--全局溢出菜单样式-->
         <!--<item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>-->
-
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme"></style>
@@ -41,6 +45,13 @@
         <item name="android:progressDrawable">@drawable/bg_progress_drawable</item>
         <item name="android:minHeight">10dip</item>
         <item name="android:maxHeight">10dip</item>
+    </style>
+
+    <style name="SwipeBackLayout">
+        <item name="edge_size">50dip</item>
+        <item name="shadow_left">@drawable/shadow_left</item>
+        <item name="shadow_right">@drawable/shadow_right</item>
+        <item name="shadow_bottom">@drawable/shadow_bottom</item>
     </style>
 
 </resources>
