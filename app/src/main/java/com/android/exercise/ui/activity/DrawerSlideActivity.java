@@ -35,9 +35,7 @@ public class DrawerSlideActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_slide);
         ButterKnife.bind(this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
-        }
+        setSwipeBackEnable(false);
         initActionbar();
         initDrawerLayout();
     }
