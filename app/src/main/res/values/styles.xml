@@ -13,9 +13,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <!--边缘手势样式兼容5.0以下系统-->
+        <!--&lt;!&ndash;边缘手势样式兼容5.0以下系统&ndash;&gt;-->
         <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
 
         <!--全局溢出菜单样式-->
         <!--<item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>-->
