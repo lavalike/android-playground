@@ -45,7 +45,7 @@ public class AndServerActivity extends BaseActivity {
     }
 
     private void initServer() {
-        AssetsWebsite website = new AssetsWebsite(getAssets(), "/markdown.html");
+        AssetsWebsite website = new AssetsWebsite(getAssets(), "/speed.html");
         mServer = new AndServer.Build()
                 .website(website)
                 .port(SERVER_PORT)
@@ -97,7 +97,7 @@ public class AndServerActivity extends BaseActivity {
             String ipAddress = NetworkUtil.getIPAddress(this);
             if (!TextUtils.isEmpty(ipAddress)) {
                 btnServerMsg.setVisibility(View.VISIBLE);
-                url = "http://" + ipAddress + ":" + SERVER_PORT + "/markdown.html";
+                url = "http://" + ipAddress + ":" + SERVER_PORT + "/speed.html";
                 btnServerMsg.setText("点击访问:" + url);
             }
         } else {
