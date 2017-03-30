@@ -20,6 +20,12 @@
             android:layout_height="@dimen/toolbar_height"
             android:background="@color/colorPrimary"
             app:navigationIcon="@mipmap/ic_me" />
+
+        <Button
+            android:id="@+id/btn_openHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开隐藏功能" />
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
