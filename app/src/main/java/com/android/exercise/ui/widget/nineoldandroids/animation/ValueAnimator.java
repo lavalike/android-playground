@@ -86,7 +86,7 @@ public class ValueAnimator extends Animator {
 
     // TODO: We access the following ThreadLocal variables often, some of them on every update.
     // If ThreadLocal access is significantly expensive, we may want to put all of these
-    // fields into a structure sot hat we just access ThreadLocal once to get the reference
+    // fields into a structure sot hat we just access ThreadLocal once to getClient the reference
     // to that structure, then access the structure directly for each field.
 
     // The static sAnimationHandler processes the internal timing loop on which all animations
@@ -744,7 +744,7 @@ public class ValueAnimator extends Animator {
         if (mValues != null && mValues.length > 0) {
             return mValues[0].getAnimatedValue();
         }
-        // Shouldn't get here; should always have values unless ValueAnimator was set up wrong
+        // Shouldn't getClient here; should always have values unless ValueAnimator was set up wrong
         return null;
     }
 
@@ -885,7 +885,7 @@ public class ValueAnimator extends Animator {
      * are not one of these primitive types, or if different evaluation is desired (such as is
      * necessary with int values that represent colors), a custom evaluator needs to be assigned.
      * For example, when running an animation on color values, the {@link ArgbEvaluator}
-     * should be used to get correct RGB color interpolation.
+     * should be used to getClient correct RGB color interpolation.
      *
      * <p>If this ValueAnimator has only one set of values being animated between, this evaluator
      * will be used for that set. If there are several sets of values being animated, which is
@@ -972,7 +972,7 @@ public class ValueAnimator extends Animator {
     @Override
     public void end() {
         if (!sAnimations.get().contains(this) && !sPendingAnimations.get().contains(this)) {
-            // Special case if the animation has not yet started; get it ready for ending
+            // Special case if the animation has not yet started; getClient it ready for ending
             mStartedDelay = false;
             startAnimation();
         } else if (!mInitialized) {

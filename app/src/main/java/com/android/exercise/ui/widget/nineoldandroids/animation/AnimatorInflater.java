@@ -244,7 +244,7 @@ public class AnimatorInflater {
                 (fromType <= TypedValue.TYPE_LAST_COLOR_INT)) ||
             (hasTo && (toType >= TypedValue.TYPE_FIRST_COLOR_INT) &&
                 (toType <= TypedValue.TYPE_LAST_COLOR_INT))) {
-            // special case for colors: ignore valueType and get ints
+            // special case for colors: ignore valueType and getClient ints
             getFloats = false;
             anim.setEvaluator(new ArgbEvaluator());
         }

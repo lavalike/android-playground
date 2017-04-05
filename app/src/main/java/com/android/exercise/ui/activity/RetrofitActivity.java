@@ -3,30 +3,30 @@ package com.android.exercise.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.android.exercise.R;
+import com.android.exercise.base.APIService;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.BaseRecyclerAdapter;
-import com.android.exercise.base.recycler.wrapper.HeaderAndFooterWrapper;
-import com.android.exercise.base.retrofit.APIService;
 import com.android.exercise.base.retrofit.RetrofitManager;
-import com.android.exercise.base.retrofit.callback.CommonCallback;
 import com.android.exercise.base.retrofit.progress.Done;
 import com.android.exercise.base.retrofit.progress.ProgressListener;
-import com.android.exercise.base.task.GithubReposTask;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
 import com.android.exercise.ui.adapter.ReposAdapter;
+import com.android.exercise.ui.widget.LoadMoreRecyclerView;
 import com.android.exercise.util.C;
+import com.android.exercise.util.IKey;
 import com.android.exercise.util.T;
 
 import java.io.File;
@@ -50,11 +50,12 @@ import retrofit2.Response;
 public class RetrofitActivity extends BaseActivity {
 
     @BindView(R.id.recycler_repos)
-    RecyclerView recyclerRepos;
+    LoadMoreRecyclerView recyclerRepos;
     @BindView(R.id.swipe_repos)
     SwipeRefreshLayout swipeRepos;
     private ReposAdapter mReposAdapter;
     private View mHeaderView;
+    private List<GithubBean> mReposList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,49 +98,26 @@ public class RetrofitActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerRepos.setLayoutManager(manager);
+        recyclerRepos.setAutoLoadMoreEnable(true);
+        recyclerRepos.setLoadMoreListener(new LoadMoreRecyclerView.LoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mReposAdapter.addData(mReposList);
+                        mReposAdapter.notifyItemRangeInserted(mReposAdapter.getItemCount(), mReposList.size());
+                        recyclerRepos.notifyMoreFinish(true);
+                    }
+                }, 1000);
+            }
+        });
+        mHeaderView = LayoutInflater.from(mContext).inflate(R.layout.activity_greendao, recyclerRepos, false);
     }
 
     @Override
     protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_retrofit), true);
-    }
-
-    /**
-     * 加载数据
-     */
-    public void loadGithubList() {
-        startLoading();
-        new GithubReposTask(new CommonCallback<List<GithubBean>>() {
-
-            @Override
-            public void onError(String error) {
-                T.get(mContext).toast(error);
-            }
-
-            @Override
-            public void onSuccess(List<GithubBean> list) {
-                mHeaderView = LayoutInflater.from(mContext).inflate(R.layout.activity_greendao, null);
-                mReposAdapter = new ReposAdapter(mContext, list);
-                mReposAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<GithubBean>() {
-                    @Override
-                    public void onItemClick(View view, int position, GithubBean data) {
-                        String reposUrl = data.getHtml_url();
-                        Intent intent = new Intent(mContext, HtmlActivity.class);
-                        intent.putExtra("url", reposUrl);
-                        startActivity(intent);
-                    }
-                });
-                //添加头部
-                HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mReposAdapter);
-                wrapper.addHeaderView(mHeaderView);
-                recyclerRepos.setAdapter(wrapper);
-            }
-
-            @Override
-            public void onAfter() {
-                stopLoading();
-            }
-        }).exe("lavalike");
     }
 
     @OnClick({R.id.btn_github, R.id.btn_upload_multipartbody, R.id.btn_upload_multipartbodypart})
@@ -179,7 +157,16 @@ public class RetrofitActivity extends BaseActivity {
         }
         builder.setType(MultipartBody.FORM);
 
-        APIService api = RetrofitManager.get().create(APIService.class);
+        APIService api = RetrofitManager.getProgressClient(new ProgressListener() {
+            @Override
+            public void onProgress(long bytesRead, long contentLength, Done done) {
+                int progress = (int) (100 * bytesRead / contentLength);
+                Log.e(TAG, "文件上传：" + progress);
+                if (done == Done.FINISH_UP) {
+                    Log.e(TAG, "上传完成");
+                }
+            }
+        }).create(APIService.class);
         Call<ResponseBody> call = api.uploadFileMutilpartBody(url, builder.build());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -218,7 +205,11 @@ public class RetrofitActivity extends BaseActivity {
         APIService api = RetrofitManager.getProgressClient(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long contentLength, Done done) {
-
+                int progress = (int) (100 * bytesRead / contentLength);
+                Log.e(TAG, "文件上传：" + progress);
+                if (done == Done.FINISH_UP) {
+                    Log.e(TAG, "上传完成");
+                }
             }
         }).create(APIService.class);
         Call<ResponseBody> call = api.uploadFileMutilpartBodyPart(url, parts);
@@ -237,9 +228,46 @@ public class RetrofitActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 加载数据
+     */
+    public void loadGithubList() {
+        startLoading();
+        APIService mService = RetrofitManager.getClient().create(APIService.class);
+        Call<List<GithubBean>> call = mService.listRepos("lavalike");
+        call.enqueue(new Callback<List<GithubBean>>() {
+            @Override
+            public void onResponse(Call<List<GithubBean>> call, Response<List<GithubBean>> response) {
+                stopLoading();
+                if (response.isSuccessful()) {
+                    mReposList = response.body();
+                    mReposList.addAll(mReposList);
+                    mReposAdapter = new ReposAdapter(mContext, mReposList);
+                    mReposAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<GithubBean>() {
+                        @Override
+                        public void onItemClick(View view, int position, GithubBean data) {
+                            String reposUrl = data.getHtml_url();
+                            Intent intent = new Intent(mContext, HtmlActivity.class);
+                            intent.putExtra(IKey.HTML_URL, reposUrl);
+                            startActivity(intent);
+                        }
+                    });
+                    recyclerRepos.setAdapter(mReposAdapter);
+                    recyclerRepos.addHeaderView(mHeaderView);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GithubBean>> call, Throwable t) {
+                stopLoading();
+                T.get(mContext).toast(t.getMessage());
+            }
+        });
+    }
+
     private void loadAppList() {
         String url = "http://10.100.60.70:8080/ZBCM/user8531Controller.do?functionList";
-        APIService apiService = RetrofitManager.get().create(APIService.class);
+        APIService apiService = RetrofitManager.getClient().create(APIService.class);
         Call<AppBean> call = apiService.listApp(url, C.USERINFO);
         call.enqueue(new Callback<AppBean>() {
             @Override

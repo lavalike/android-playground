@@ -128,7 +128,7 @@ class FloatKeyframeSet extends KeyframeSet {
             }
             prevKeyframe = nextKeyframe;
         }
-        // shouldn't get here
+        // shouldn't getClient here
         return ((Number) mKeyframes.get(mNumKeyframes - 1).getValue()).floatValue();
     }
 

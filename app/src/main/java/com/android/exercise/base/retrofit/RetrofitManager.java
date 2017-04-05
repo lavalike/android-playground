@@ -16,26 +16,48 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitManager {
-    public static Retrofit get() {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(1000 * 5, TimeUnit.MILLISECONDS)
-                .build();
+    /**
+     * 获取Retrofit实例
+     *
+     * @return
+     */
+    public static Retrofit getClient() {
         return new Retrofit.Builder()
                 .baseUrl(APIManager.getBaseUrl())
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
+                .client(getOkHttpClient())
                 .build();
     }
 
+    /**
+     * 获取带进度回调的Retrofit实例
+     *
+     * @param listener
+     * @return
+     */
     public static Retrofit getProgressClient(ProgressListener listener) {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(1000 * 5, TimeUnit.MILLISECONDS)
-                .addInterceptor(new ProgressInterceptor(listener))
-                .build();
         return new Retrofit.Builder()
                 .baseUrl(APIManager.getBaseUrl())
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
+                .client(
+                        getOkHttpClient()
+                                .newBuilder()
+                                .addInterceptor(new ProgressInterceptor(listener))
+                                .build()
+                )
                 .build();
+    }
+
+    /**
+     * 获取OkHttp实例
+     *
+     * @return
+     */
+    private static OkHttpClient getOkHttpClient() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(1000 * 5, TimeUnit.MILLISECONDS);
+        builder.readTimeout(1000 * 5, TimeUnit.MILLISECONDS);
+        builder.writeTimeout(1000 * 5, TimeUnit.MILLISECONDS);
+        return builder.build();
     }
 }

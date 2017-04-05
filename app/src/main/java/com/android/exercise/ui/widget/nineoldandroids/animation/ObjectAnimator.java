@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * This subclass of {@link ValueAnimator} provides support for animating properties on target objects.
  * The constructors of this class take parameters to define the target object that will be animated
- * as well as the name of the property that will be animated. Appropriate set/get functions
+ * as well as the name of the property that will be animated. Appropriate set/getClient functions
  * are then determined internally and the animation will call these functions as necessary to
  * animate the property.
  *

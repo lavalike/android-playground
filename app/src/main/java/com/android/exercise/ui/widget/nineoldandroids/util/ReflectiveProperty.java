@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
  */
 class ReflectiveProperty<T, V> extends Property<T, V> {
 
-    private static final String PREFIX_GET = "get";
+    private static final String PREFIX_GET = "getClient";
     private static final String PREFIX_IS = "is";
     private static final String PREFIX_SET = "set";
     private Method mSetter;
@@ -39,7 +39,7 @@ class ReflectiveProperty<T, V> extends Property<T, V> {
      *
      * @param propertyHolder The class on which the methods or field are found
      * @param name The name of the property, where this name is capitalized and appended to
-     * "get" and "is to search for the appropriate methods. If the get/is methods are not found,
+     * "getClient" and "is to search for the appropriate methods. If the getClient/is methods are not found,
      * the constructor will search for a field with that exact name.
      */
     public ReflectiveProperty(Class<T> propertyHolder, Class<V> valueType, String name) {
@@ -168,7 +168,7 @@ class ReflectiveProperty<T, V> extends Property<T, V> {
                 throw new AssertionError();
             }
         }
-        // Should not get here: there should always be a non-null getter or field
+        // Should not getClient here: there should always be a non-null getter or field
         throw new AssertionError();
     }
 

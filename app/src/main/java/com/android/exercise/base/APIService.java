@@ -1,4 +1,4 @@
-package com.android.exercise.base.retrofit;
+package com.android.exercise.base;
 
 import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;

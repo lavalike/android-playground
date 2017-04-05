@@ -820,7 +820,7 @@ public final class AnimatorSet extends Animator {
             }
         } else {
             // Doesn't need sorting, but still need to add in the nodeDependencies list
-            // because these get removed as the event listeners fire and the dependencies
+            // because these getClient removed as the event listeners fire and the dependencies
             // are satisfied
             int numNodes = mNodes.size();
             for (int i = 0; i < numNodes; ++i) {

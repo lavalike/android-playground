@@ -132,6 +132,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
         private boolean mIsHeaderEnable;
         private int mHeaderResId;
+        private View mHeaderView;
 
         public AutoLoadAdapter(RecyclerView.Adapter adapter) {
             mInternalAdapter = adapter;
@@ -164,8 +165,9 @@ public class LoadMoreRecyclerView extends RecyclerView {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             if (viewType == TYPE_HEADER) {
-                return new HeaderViewHolder(LayoutInflater.from(parent.getContext()).inflate(
-                        mHeaderResId, parent, false));
+//                return new HeaderViewHolder(LayoutInflater.from(parent.getContext()).inflate(
+//                        mHeaderResId, parent, false));
+                return new HeaderViewHolder(mHeaderView);
             }
             if (viewType == TYPE_FOOTER) {
                 return new FooterViewHolder(
@@ -217,6 +219,10 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
         public void addHeaderView(int resId) {
             mHeaderResId = resId;
+        }
+
+        public void addHeaderView(View headerView) {
+            mHeaderView = headerView;
         }
     }
 
@@ -324,6 +330,10 @@ public class LoadMoreRecyclerView extends RecyclerView {
      */
     public void addHeaderView(int resId) {
         mAutoLoadAdapter.addHeaderView(resId);
+    }
+
+    public void addHeaderView(View headerView) {
+        mAutoLoadAdapter.addHeaderView(headerView);
     }
 
     /**

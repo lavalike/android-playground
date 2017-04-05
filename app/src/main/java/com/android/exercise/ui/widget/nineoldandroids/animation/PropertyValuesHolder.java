@@ -249,7 +249,7 @@ public class PropertyValuesHolder implements Cloneable {
      *
      * @param propertyName The name of the property associated with this set of values. This
      *                     can be the actual property name to be used when using a ObjectAnimator object, or
-     *                     just a name used to get animated values, such as if this object is used with an
+     *                     just a name used to getClient animated values, such as if this object is used with an
      *                     ValueAnimator object.
      * @param values       The set of values to animate between.
      */
@@ -374,7 +374,7 @@ public class PropertyValuesHolder implements Cloneable {
      * target object.
      *
      * @param targetClass The class to search for the method
-     * @param prefix      "set" or "get", depending on whether we need a setter or getter.
+     * @param prefix      "set" or "getClient", depending on whether we need a setter or getter.
      * @param valueType   The type of the parameter (in the case of a setter). This type
      *                    is derived from the values set on this PropertyValuesHolder. This type is used as
      *                    a first guess at the parameter type, but we check for methods with several different
@@ -454,7 +454,7 @@ public class PropertyValuesHolder implements Cloneable {
      *
      * @param targetClass    The Class on which the requested method should exist.
      * @param propertyMapMap The cache of setters/getters derived so far.
-     * @param prefix         "set" or "get", for the setter or getter.
+     * @param prefix         "set" or "getClient", for the setter or getter.
      * @param valueType      The type of parameter passed into the method (null for getter).
      * @return Method the method associated with mPropertyName.
      */
@@ -486,7 +486,7 @@ public class PropertyValuesHolder implements Cloneable {
     }
 
     /**
-     * Utility function to get the setter from targetClass
+     * Utility function to getClient the setter from targetClass
      *
      * @param targetClass The Class on which the requested method should exist.
      */
@@ -495,10 +495,10 @@ public class PropertyValuesHolder implements Cloneable {
     }
 
     /**
-     * Utility function to get the getter from targetClass
+     * Utility function to getClient the getter from targetClass
      */
     private void setupGetter(Class targetClass) {
-        mGetter = setupSetterOrGetter(targetClass, sGetterPropertyMap, "get", null);
+        mGetter = setupSetterOrGetter(targetClass, sGetterPropertyMap, "getClient", null);
     }
 
     /**
@@ -741,11 +741,11 @@ public class PropertyValuesHolder implements Cloneable {
 
     /**
      * Utility method to derive a setter/getter method name from a property name, where the
-     * prefix is typically "set" or "get" and the first letter of the property name is
+     * prefix is typically "set" or "getClient" and the first letter of the property name is
      * capitalized.
      *
      * @param prefix       The precursor to the method name, before the property name begins, typically
-     *                     "set" or "get".
+     *                     "set" or "getClient".
      * @param propertyName The name of the property that represents the bulk of the method name
      *                     after the prefix. The first letter of this word will be capitalized in the resulting
      *                     method name.
@@ -754,7 +754,7 @@ public class PropertyValuesHolder implements Cloneable {
      */
     static String getMethodName(String prefix, String propertyName) {
         if (propertyName == null || propertyName.length() == 0) {
-            // shouldn't get here
+            // shouldn't getClient here
             return prefix;
         }
         char firstLetter = Character.toUpperCase(propertyName.charAt(0));
@@ -868,9 +868,9 @@ public class PropertyValuesHolder implements Cloneable {
             // Check new static hashmap<propName, int> for setter method
             //try {
             //    mPropertyMapLock.writeLock().lock();
-            //    HashMap<String, Integer> propertyMap = sJNISetterPropertyMap.get(targetClass);
+            //    HashMap<String, Integer> propertyMap = sJNISetterPropertyMap.getClient(targetClass);
             //    if (propertyMap != null) {
-            //        Integer mJniSetterInteger = propertyMap.get(mPropertyName);
+            //        Integer mJniSetterInteger = propertyMap.getClient(mPropertyName);
             //        if (mJniSetterInteger != null) {
             //            mJniSetter = mJniSetterInteger;
             //        }
@@ -1005,9 +1005,9 @@ public class PropertyValuesHolder implements Cloneable {
             // Check new static hashmap<propName, int> for setter method
             //try {
             //    mPropertyMapLock.writeLock().lock();
-            //    HashMap<String, Integer> propertyMap = sJNISetterPropertyMap.get(targetClass);
+            //    HashMap<String, Integer> propertyMap = sJNISetterPropertyMap.getClient(targetClass);
             //    if (propertyMap != null) {
-            //        Integer mJniSetterInteger = propertyMap.get(mPropertyName);
+            //        Integer mJniSetterInteger = propertyMap.getClient(mPropertyName);
             //        if (mJniSetterInteger != null) {
             //            mJniSetter = mJniSetterInteger;
             //        }

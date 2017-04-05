@@ -8,9 +8,7 @@ import okhttp3.Response;
 
 /**
  * 自定义ProgressInterceptor(进度过滤器)
- *
- * @author a_liYa
- * @date 16/8/6 19:46.
+ * Created by wangzhen on 2017/4/5.
  */
 public class ProgressInterceptor implements Interceptor {
 

@@ -43,7 +43,7 @@ public abstract class Property<T, V> {
      *     <li>a public <code>name</code> field on the class
      * </ul>
      *
-     * <p>If either of the get/is method alternatives is found on the class, but an appropriate
+     * <p>If either of the getClient/is method alternatives is found on the class, but an appropriate
      * <code>setName()</code> method is not found, the <code>Property</code> will be
      * {@link #isReadOnly() readOnly}. Calling the {@link #set(Object, Object)} method on such
      * a property is allowed, but will have no effect.</p>

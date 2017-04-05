@@ -207,7 +207,7 @@ class ViewPropertyAnimatorPreHC extends ViewPropertyAnimator {
 
     /**
      * Constructor, called by View. This is private by design, as the user should only
-     * get a ViewPropertyAnimator by calling View.animate().
+     * getClient a ViewPropertyAnimator by calling View.animate().
      *
      * @param view The View associated with this ViewPropertyAnimator
      */
@@ -246,7 +246,7 @@ class ViewPropertyAnimatorPreHC extends ViewPropertyAnimator {
         if (mDurationSet) {
             return mDuration;
         } else {
-            // Just return the default from ValueAnimator, since that's what we'd get if
+            // Just return the default from ValueAnimator, since that's what we'd getClient if
             // the value has not been set otherwise
             return new ValueAnimator().getDuration();
         }
@@ -257,7 +257,7 @@ class ViewPropertyAnimatorPreHC extends ViewPropertyAnimator {
         if (mStartDelaySet) {
             return mStartDelay;
         } else {
-            // Just return the default from ValueAnimator (0), since that's what we'd get if
+            // Just return the default from ValueAnimator (0), since that's what we'd getClient if
             // the value has not been set otherwise
             return 0;
         }
