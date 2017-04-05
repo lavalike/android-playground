@@ -23,7 +23,7 @@ public class GithubReposTask extends RetrofitCallback<List<GithubBean>> {
 
     @Override
     public Call exe(String... params) {
-        APIService mService = RetrofitManager.getInstance().create(APIService.class);
+        APIService mService = RetrofitManager.get().create(APIService.class);
         Call<List<GithubBean>> call = mService.listRepos(params[0]);
         call.enqueue(this);
         return call;

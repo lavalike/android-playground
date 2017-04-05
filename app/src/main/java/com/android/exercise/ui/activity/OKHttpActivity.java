@@ -15,10 +15,18 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.io.IOException;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import retrofit2.http.FormUrlEncoded;
 
 public class OKHttpActivity extends BaseActivity {
 
@@ -71,6 +79,27 @@ public class OKHttpActivity extends BaseActivity {
                 .url("http://open.iciba.com/dsapi/")
                 .build()
                 .execute(new CibaCallback());
+//        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), "");
+//        FormBody formBody=new FormBody.Builder()
+//                .add("","")
+//                .build();
+//        Request request = new Request.Builder()
+//                .url("")
+//                .post(body)
+//                .build();
+//        OkHttpClient okHttpClient = new OkHttpClient();
+//        Call call = okHttpClient.newCall(request);
+//        call.enqueue(new okhttp3.Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//            }
+//        });
     }
 
     class CibaCallback extends Callback<CibaBean> {

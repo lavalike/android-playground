@@ -12,25 +12,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.android.exercise.ui.widget.FlowLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/btn_github"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Github" />
 
             <Button
-                android:id="@+id/btn_app"
-                android:layout_width="0dp"
+                android:id="@+id/btn_upload_multipartbody"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="APP列表" />
-        </LinearLayout>
+                android:text="MultipartBody上传" />
+
+            <Button
+                android:id="@+id/btn_upload_multipartbodypart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MultipartBody.Part上传" />
+        </com.android.exercise.ui.widget.FlowLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_repos"
