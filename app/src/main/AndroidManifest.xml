@@ -26,7 +26,7 @@
         <activity android:name=".ui.activity.GreendaoActivity" />
         <activity android:name=".ui.activity.RetrofitActivity" />
         <activity android:name=".ui.activity.HtmlActivity" />
-        <activity android:name=".ui.activity.LoadmoreActivity" />
+        <activity android:name=".ui.activity.RecyclerActivity" />
         <activity android:name=".ui.activity.SlidingMenuActivity" />
         <activity android:name=".ui.activity.FlowLayoutActivity" />
         <activity android:name=".ui.activity.AutoServiceActivity" />
@@ -51,7 +51,7 @@
         <activity android:name=".ui.activity.DispatchActivity" />
         <activity android:name=".ui.activity.ConstraintLayoutActivity" />
         <activity android:name=".ui.activity.DrawerSlideActivity" />
-        <activity android:name=".ui.activity.AndServerActivity"></activity>
+        <activity android:name=".ui.activity.AndServerActivity" />
     </application>
 
 </manifest>

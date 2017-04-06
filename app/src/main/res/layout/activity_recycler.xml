@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_loadmore"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.exercise.ui.activity.RecyclerActivity">
+
+    <com.android.exercise.ui.widget.recyclerview.ZRecyclerView
+        android:id="@+id/recycler_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!---->
+
+    <!--<com.android.exercise.ui.widget.RecyclerViewHeader-->
+    <!--android:id="@+id/recycler_header"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal|top">-->
+
+    <!--<include layout="@layout/activity_anim24h" />-->
+
+    <!--</com.android.exercise.ui.widget.RecyclerViewHeader>-->
+
+    <!--</FrameLayout>-->
+
+</android.support.v4.widget.SwipeRefreshLayout>

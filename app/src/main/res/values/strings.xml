@@ -23,5 +23,6 @@
     <string name="item_constraintlayout">Constraint</string>
     <string name="item_drawerslide">DrawerLayout</string>
     <string name="item_andServer">AndServer</string>
+    <string name="item_myRecycler">MyRecycler</string>
 
 </resources>

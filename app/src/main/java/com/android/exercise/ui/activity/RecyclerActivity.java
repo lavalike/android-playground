@@ -5,16 +5,15 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.BaseRecyclerAdapter;
-import com.android.exercise.base.recycler.wrapper.HeaderAndFooterWrapper;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.adapter.MoreAdapter;
+import com.android.exercise.ui.widget.recyclerview.ZRecyclerView;
 import com.android.exercise.util.T;
 
 import java.util.ArrayList;
@@ -27,19 +26,20 @@ import butterknife.ButterKnife;
  * 加载更多
  * created by wangzhen on 2016/11/11
  */
-public class LoadmoreActivity extends BaseActivity {
+public class RecyclerActivity extends BaseActivity {
 
     @BindView(R.id.recycler_more)
-    RecyclerView recyclerMore;
+    ZRecyclerView recyclerMore;
     @BindView(R.id.swipe_loadmore)
     SwipeRefreshLayout swipeLoadmore;
     private MoreAdapter mMoreAdapter;
     private Handler handler = new Handler();
+    private int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loadmore);
+        setContentView(R.layout.activity_recycler);
         ButterKnife.bind(this);
         initSwipeRefresh();
         setLoading(true);
@@ -50,6 +50,7 @@ public class LoadmoreActivity extends BaseActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                index = 0;
                 mMoreAdapter = new MoreAdapter(mContext, getList());
                 mMoreAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
                     @Override
@@ -57,10 +58,11 @@ public class LoadmoreActivity extends BaseActivity {
                         T.get(mContext).toast(data);
                     }
                 });
-                HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mMoreAdapter);
-                View mHeaderView = getLayoutInflater().inflate(R.layout.activity_anim24h, recyclerMore, false);
-                wrapper.addHeaderView(mHeaderView);
-                recyclerMore.setAdapter(wrapper);
+                recyclerMore.setAdapter(mMoreAdapter);
+                recyclerMore.setHeaderEnable(true);
+                View mHeaderView = getLayoutInflater().inflate(R.layout.activity_anim24h, swipeLoadmore, false);
+                recyclerMore.addHeaderView(mHeaderView);
+                recyclerMore.notifyMoreFinish(true);
                 setLoading(false);
             }
         }, 1500);
@@ -70,10 +72,12 @@ public class LoadmoreActivity extends BaseActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                index = mMoreAdapter.getItemCount();
                 mMoreAdapter.addData(getList());
                 mMoreAdapter.notifyItemRangeInserted(mMoreAdapter.getItemCount() + 1, getList().size());
+                recyclerMore.notifyMoreFinish(true);
             }
-        }, 1500);
+        }, 100);
     }
 
     /**
@@ -81,7 +85,7 @@ public class LoadmoreActivity extends BaseActivity {
      */
     private List<String> getList() {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = index; i < index + 20; i++) {
             list.add(String.valueOf(i));
         }
         return list;
@@ -103,6 +107,13 @@ public class LoadmoreActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerMore.setLayoutManager(manager);
+        recyclerMore.setAutoLoadMoreEnable(true);
+        recyclerMore.setLoadMoreListener(new ZRecyclerView.LoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                loadMore();
+            }
+        });
     }
 
     /**

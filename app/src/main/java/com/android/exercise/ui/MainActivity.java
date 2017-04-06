@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.ui.activity.AndServerActivity;
@@ -22,7 +22,7 @@ import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.DrawerSlideActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
-import com.android.exercise.ui.activity.LoadmoreActivity;
+import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
         mList.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_loadmore), LoadmoreActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
         mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
         mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));

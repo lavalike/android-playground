@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.base.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.domain.GithubBean;
 import com.bumptech.glide.Glide;
 

@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.android.exercise.R;
 import com.android.exercise.base.APIService;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.base.retrofit.RetrofitManager;
 import com.android.exercise.base.retrofit.progress.Done;
 import com.android.exercise.base.retrofit.progress.ProgressListener;
