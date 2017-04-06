@@ -5,13 +5,17 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.base.BaseRecyclerAdapter;
+import com.android.exercise.base.recycler.wrapper.HeaderAndFooterWrapper;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.adapter.MoreAdapter;
-import com.android.exercise.ui.widget.LoadMoreRecyclerView;
+import com.android.exercise.util.T;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +30,11 @@ import butterknife.ButterKnife;
 public class LoadmoreActivity extends BaseActivity {
 
     @BindView(R.id.recycler_more)
-    LoadMoreRecyclerView recyclerMore;
+    RecyclerView recyclerMore;
     @BindView(R.id.swipe_loadmore)
     SwipeRefreshLayout swipeLoadmore;
     private MoreAdapter mMoreAdapter;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +47,33 @@ public class LoadmoreActivity extends BaseActivity {
     }
 
     private void loadList() {
-        mMoreAdapter = new MoreAdapter(mContext, getList());
-        recyclerMore.setAdapter(mMoreAdapter);
-        setLoading(false);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mMoreAdapter = new MoreAdapter(mContext, getList());
+                mMoreAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
+                    @Override
+                    public void onItemClick(View view, int position, String data) {
+                        T.get(mContext).toast(data);
+                    }
+                });
+                HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mMoreAdapter);
+                View mHeaderView = getLayoutInflater().inflate(R.layout.activity_anim24h, recyclerMore, false);
+                wrapper.addHeaderView(mHeaderView);
+                recyclerMore.setAdapter(wrapper);
+                setLoading(false);
+            }
+        }, 1500);
     }
 
     private void loadMore() {
-        mMoreAdapter.addData(getList());
-        mMoreAdapter.notifyItemRangeInserted(mMoreAdapter.getItemCount(), mMoreAdapter.getItemCount() + getList().size());
-        recyclerMore.notifyMoreFinish(true);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mMoreAdapter.addData(getList());
+                mMoreAdapter.notifyItemRangeInserted(mMoreAdapter.getItemCount() + 1, getList().size());
+            }
+        }, 1500);
     }
 
     /**
@@ -80,18 +103,6 @@ public class LoadmoreActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerMore.setLayoutManager(manager);
-        recyclerMore.setAutoLoadMoreEnable(true);
-        recyclerMore.setLoadMoreListener(new LoadMoreRecyclerView.LoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadMore();
-                    }
-                }, 1000);
-            }
-        });
     }
 
     /**

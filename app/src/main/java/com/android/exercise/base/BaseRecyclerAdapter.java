@@ -18,6 +18,13 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     protected Context mContext;
     protected LayoutInflater mInflater;
     protected List<T> mDatas;
+
+    private View mHeaderView;
+    private View mFooterView;
+    public static final int TYPE_HEADER = 0;  //说明是带有Header的
+    public static final int TYPE_FOOTER = 1;  //说明是带有Footer的
+    public static final int TYPE_NORMAL = 2;  //说明是不带有header和footer的
+
     protected OnRecyclerItemClickListener<T> mItemClickListener;
 
     public void setOnItemClickListener(OnRecyclerItemClickListener<T> listener) {
@@ -44,12 +51,20 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-        setItemEvent(holder);
-        onMyBindViewHolder((VH) holder, position);
+        if (getItemViewType(position) == TYPE_NORMAL) {
+            setItemEvent(holder);
+            onMyBindViewHolder((VH) holder, position);
+        }
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (mHeaderView != null && viewType == TYPE_HEADER) {
+            return new HeaderViewHolder(mHeaderView);
+        }
+        if (mFooterView != null && viewType == TYPE_FOOTER) {
+            return new FooterViewHolder(mFooterView);
+        }
         return onMyCreateViewHolder(parent, viewType);
     }
 
@@ -80,8 +95,29 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     };
 
     @Override
+    public int getItemViewType(int position) {
+        if (mHeaderView == null && mFooterView == null) {
+            return TYPE_NORMAL;
+        }
+        if (position == 0) {
+            return TYPE_HEADER;
+        }
+        if (position == getItemCount() - 1) {
+            return TYPE_FOOTER;
+        }
+        return TYPE_NORMAL;
+    }
+
+    @Override
     public int getItemCount() {
-        return mDatas == null ? 0 : mDatas.size();
+        if (mHeaderView == null && mFooterView == null) {
+            return mDatas.size();
+        } else if (mHeaderView != null && mFooterView == null) {
+            return mDatas.size() + 1;
+        } else if (mHeaderView == null && mFooterView != null) {
+            return mDatas.size() + 1;
+        } else
+            return mDatas.size() + 2;
     }
 
     public interface OnRecyclerItemClickListener<T> {
@@ -93,5 +129,22 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         public HeaderViewHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public class FooterViewHolder extends RecyclerView.ViewHolder {
+
+        public FooterViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    public void setHeaderView(View headerView) {
+        this.mHeaderView = headerView;
+        notifyItemInserted(0);
+    }
+
+    public void setFooterView(View footerView) {
+        this.mFooterView = footerView;
+        notifyItemInserted(getItemCount() - 1);
     }
 }

@@ -3,14 +3,14 @@ package com.android.exercise.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.exercise.R;
@@ -24,7 +24,6 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
 import com.android.exercise.ui.adapter.ReposAdapter;
-import com.android.exercise.ui.widget.LoadMoreRecyclerView;
 import com.android.exercise.util.C;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.T;
@@ -50,11 +49,12 @@ import retrofit2.Response;
 public class RetrofitActivity extends BaseActivity {
 
     @BindView(R.id.recycler_repos)
-    LoadMoreRecyclerView recyclerRepos;
+    RecyclerView recyclerRepos;
     @BindView(R.id.swipe_repos)
     SwipeRefreshLayout swipeRepos;
+    @BindView(R.id.tv_upload_progress)
+    TextView tvUploadProgress;
     private ReposAdapter mReposAdapter;
-    private View mHeaderView;
     private List<GithubBean> mReposList;
 
     @Override
@@ -98,21 +98,6 @@ public class RetrofitActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerRepos.setLayoutManager(manager);
-        recyclerRepos.setAutoLoadMoreEnable(true);
-        recyclerRepos.setLoadMoreListener(new LoadMoreRecyclerView.LoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mReposAdapter.addData(mReposList);
-                        mReposAdapter.notifyItemRangeInserted(mReposAdapter.getItemCount(), mReposList.size());
-                        recyclerRepos.notifyMoreFinish(true);
-                    }
-                }, 1000);
-            }
-        });
-        mHeaderView = LayoutInflater.from(mContext).inflate(R.layout.activity_greendao, recyclerRepos, false);
     }
 
     @Override
@@ -143,12 +128,12 @@ public class RetrofitActivity extends BaseActivity {
         //文件路径
         File file1 = new File(Environment.getExternalStorageDirectory(), "123.jpg");
         File file2 = new File(Environment.getExternalStorageDirectory(), "456.jpg");
-        File file3 = new File(Environment.getExternalStorageDirectory(), "video.mp4");
+//        File file3 = new File(Environment.getExternalStorageDirectory(), "video.mp4");
 
         List<File> files = new ArrayList<>();
         files.add(file1);
         files.add(file2);
-        files.add(file3);
+//        files.add(file3);
 
         //MultipartBody方式上传
         MultipartBody.Builder builder = new MultipartBody.Builder();
@@ -160,10 +145,25 @@ public class RetrofitActivity extends BaseActivity {
         APIService api = RetrofitManager.getProgressClient(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long contentLength, Done done) {
-                int progress = (int) (100 * bytesRead / contentLength);
-                Log.e(TAG, "文件上传：" + progress);
+                if (done == Done.PROCESS_UP) {
+                    final int progress = (int) (100 * bytesRead / contentLength);
+                    Log.e(TAG, "文件上传：" + progress);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvUploadProgress.setText("文件上传：" + progress);
+                        }
+                    });
+                }
                 if (done == Done.FINISH_UP) {
                     Log.e(TAG, "上传完成");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            tvUploadProgress.setText("上传完成");
+                        }
+                    });
                 }
             }
         }).create(APIService.class);
@@ -171,9 +171,7 @@ public class RetrofitActivity extends BaseActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RetrofitActivity.this, "上传成功：" + response.body(), Toast.LENGTH_SHORT).show();
-                }
+
             }
 
             @Override
@@ -191,24 +189,39 @@ public class RetrofitActivity extends BaseActivity {
         //文件路径
         File file1 = new File(Environment.getExternalStorageDirectory(), "123.jpg");
         File file2 = new File(Environment.getExternalStorageDirectory(), "456.jpg");
-        File file3 = new File(Environment.getExternalStorageDirectory(), "video.mp4");
+//        File file3 = new File(Environment.getExternalStorageDirectory(), "video.mp4");
 
         //MultipartBody.Part方式上传
         MultipartBody.Part part1 = MultipartBody.Part.createFormData("file", file1.getName(), RequestBody.create(null, file1));
         MultipartBody.Part part2 = MultipartBody.Part.createFormData("file", file2.getName(), RequestBody.create(null, file2));
-        MultipartBody.Part part3 = MultipartBody.Part.createFormData("file", file3.getName(), RequestBody.create(null, file3));
+//        MultipartBody.Part part3 = MultipartBody.Part.createFormData("file", file3.getName(), RequestBody.create(null, file3));
         List<MultipartBody.Part> parts = new ArrayList<>();
         parts.add(part1);
         parts.add(part2);
-        parts.add(part3);
+//        parts.add(part3);
 
         APIService api = RetrofitManager.getProgressClient(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long contentLength, Done done) {
-                int progress = (int) (100 * bytesRead / contentLength);
-                Log.e(TAG, "文件上传：" + progress);
+                if (done == Done.PROCESS_UP) {
+                    final int progress = (int) (100 * bytesRead / contentLength);
+                    Log.e(TAG, "文件上传：" + progress);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tvUploadProgress.setText("文件上传：" + progress);
+                        }
+                    });
+                }
                 if (done == Done.FINISH_UP) {
                     Log.e(TAG, "上传完成");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            tvUploadProgress.setText("上传完成");
+                        }
+                    });
                 }
             }
         }).create(APIService.class);
@@ -216,9 +229,7 @@ public class RetrofitActivity extends BaseActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RetrofitActivity.this, "上传成功：" + response.body(), Toast.LENGTH_SHORT).show();
-                }
+
             }
 
             @Override
@@ -253,7 +264,6 @@ public class RetrofitActivity extends BaseActivity {
                         }
                     });
                     recyclerRepos.setAdapter(mReposAdapter);
-                    recyclerRepos.addHeaderView(mHeaderView);
                 }
             }
 
