@@ -2,4 +2,5 @@
 <resources>
 
     <item name="id_back" type="id" />
+    <item name="id_tag" type="id" />
 </resources>

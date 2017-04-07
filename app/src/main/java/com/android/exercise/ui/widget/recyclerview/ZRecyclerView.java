@@ -191,6 +191,7 @@ public class ZRecyclerView extends RecyclerView {
         public void onBindViewHolder(ViewHolder holder, int position) {
             int type = getItemViewType(position);
             if (type != TYPE_FOOTER && type != TYPE_HEADER) {
+                //真实位置，如果有HeaderView，要减去HeaderView所占的位置数据
                 int pos = mHeaderView == null ? position : position - 1;
                 mInternalAdapter.onBindViewHolder(holder, pos);
             }

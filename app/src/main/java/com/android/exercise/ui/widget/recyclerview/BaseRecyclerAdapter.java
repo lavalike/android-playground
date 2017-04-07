@@ -45,7 +45,7 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        setItemEvent(holder);
+        setItemEvent(holder, position);
         onMyBindViewHolder((VH) holder, position);
     }
 
@@ -62,10 +62,11 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
      * 设置item点击事件
      *
      * @param holder
+     * @param position
      */
-    private void setItemEvent(final RecyclerView.ViewHolder holder) {
+    private void setItemEvent(final RecyclerView.ViewHolder holder, int position) {
         if (mItemClickListener != null) {
-            holder.itemView.setTag(holder);
+            holder.itemView.setTag(position);
             holder.itemView.setOnClickListener(innerClickListener);
         }
     }
@@ -74,8 +75,8 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         @Override
         public void onClick(View v) {
             if (mItemClickListener != null) {
-                RecyclerView.ViewHolder holder = (RecyclerView.ViewHolder) v.getTag();
-                mItemClickListener.onItemClick(v, holder.getLayoutPosition(), mDatas.get(holder.getLayoutPosition()));
+                int realPosition = (int) v.getTag();
+                mItemClickListener.onItemClick(v, realPosition, mDatas.get(realPosition));
             }
         }
     };
