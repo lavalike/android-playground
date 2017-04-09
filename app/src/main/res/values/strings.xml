@@ -24,5 +24,6 @@
     <string name="item_drawerslide">DrawerLayout</string>
     <string name="item_andServer">AndServer</string>
     <string name="item_myRecycler">MyRecycler</string>
+    <string name="item_aidl">AIDL</string>
 
 </resources>

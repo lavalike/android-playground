@@ -18,22 +18,12 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
         <!--<item name="android:windowIsTranslucent">true</item>-->
 
-        <!--全局溢出菜单样式-->
-        <!--<item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>-->
+        <!--全局Activity动画 左右切换-->
+        <!--<item name="android:windowAnimationStyle">@style/ActivityAnimation</item>-->
+
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme"></style>
-
-
-    <!--溢出菜单样式 -->
-    <style name="OverflowMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
-        <item name="overlapAnchor">false</item>
-        <item name="android:dropDownWidth">wrap_content</item>
-        <!--<item name="android:paddingRight">5dp</item>-->
-        <!--<item name="android:popupBackground">?attr/colorPrimary</item>-->
-        <!--<item name="android:dropDownVerticalOffset">28dip</item>-->
-        <!--<item name="android:dropDownHorizontalOffset">0dip</item>-->
-    </style>
 
     <!--返回键为白色-->
     <style name="ToolbarThemeWhite">
@@ -53,6 +43,14 @@
         <item name="shadow_left">@drawable/shadow_left</item>
         <item name="shadow_right">@drawable/shadow_right</item>
         <item name="shadow_bottom">@drawable/shadow_bottom</item>
+    </style>
+
+    <!-- Activity切换动画 - 样式 -->
+    <style name="ActivityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
     </style>
 
 </resources>

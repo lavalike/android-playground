@@ -52,6 +52,12 @@
         <activity android:name=".ui.activity.ConstraintLayoutActivity" />
         <activity android:name=".ui.activity.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
+        <activity android:name=".ui.activity.AIDLActivity" />
+
+        <service
+            android:name=".service.IRemoteService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

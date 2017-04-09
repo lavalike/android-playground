@@ -11,9 +11,9 @@ import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
+import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
@@ -22,13 +22,14 @@ import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.DrawerSlideActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
-import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
+import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.DisplayUtil;
 
 import java.util.ArrayList;
@@ -96,6 +97,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
         mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override
