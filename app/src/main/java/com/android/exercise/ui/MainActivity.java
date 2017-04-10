@@ -27,6 +27,7 @@ import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
+import com.android.exercise.ui.activity.RippleActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
@@ -100,6 +101,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override

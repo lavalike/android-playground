@@ -59,7 +59,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ui.activity.MinaActivity"></activity>
+        <activity android:name=".ui.activity.MinaActivity" />
+        <activity android:name=".ui.activity.RippleActivity"></activity>
     </application>
 
 </manifest>

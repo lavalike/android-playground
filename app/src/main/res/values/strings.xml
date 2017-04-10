@@ -26,5 +26,6 @@
     <string name="item_myRecycler">MyRecycler</string>
     <string name="item_aidl">AIDL</string>
     <string name="item_mina">MINA</string>
+    <string name="item_ripple">Ripple</string>
 
 </resources>
