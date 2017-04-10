@@ -57,7 +57,9 @@
         <service
             android:name=".service.IRemoteService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".ui.activity.MinaActivity"></activity>
     </application>
 
 </manifest>

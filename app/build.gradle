@@ -37,13 +37,16 @@ greendao {
 def SUPPORT_VERSION = "25.2.0"
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:' + SUPPORT_VERSION
     compile 'com.android.support:recyclerview-v7:' + SUPPORT_VERSION
     compile 'com.android.support:design:' + SUPPORT_VERSION
     compile('com.alibaba.android:vlayout:1.0.3@aar') {
         transitive = true
     }
+    compile files('src/main/libs/mina-core-2.0.0.jar')
+    compile files('src/main/libs/slf4j-api-1.5.11.jar')
+    compile files('src/main/libs/slf4j-simple-1.5.2.jar')
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:8.1.0'

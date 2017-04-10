@@ -25,5 +25,6 @@
     <string name="item_andServer">AndServer</string>
     <string name="item_myRecycler">MyRecycler</string>
     <string name="item_aidl">AIDL</string>
+    <string name="item_mina">MINA</string>
 
 </resources>

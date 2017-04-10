@@ -22,6 +22,7 @@ import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.DrawerSlideActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
+import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
@@ -98,6 +99,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override
