@@ -8,6 +8,7 @@ import android.support.multidex.MultiDexApplication;
 import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.base.greendao.DBLoader;
 import com.android.exercise.base.okhttp.OKHttpManager;
+import com.android.exercise.util.AppUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.xutils.DbManager;
@@ -28,6 +29,7 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppUtil.init(this);
         Realm.init(this);
         //初始化Realm
         RealmConfiguration config = new RealmConfiguration
