@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.domain.ItemBean;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -18,37 +18,62 @@ import java.util.List;
  * 主页功能
  * Created by Administrator on 2016/4/12.
  */
-public class FunctionAdapter extends BaseRecyclerAdapter<ItemBean, FunctionAdapter.FunctionViewHolder> {
-
+public class FunctionAdapter extends BaseRecyclerAdapter<ItemBean, RecyclerView.ViewHolder> {
 
     public FunctionAdapter(Context context, List<ItemBean> list) {
         super(context, list);
     }
 
     @Override
-    public FunctionViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_function_layout, parent, false);
-        FunctionViewHolder holder = new FunctionViewHolder(view);
-        return holder;
+    public RecyclerView.ViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == ItemBean.TYPE_TITLE) {
+            View view = mInflater.inflate(R.layout.item_function_title_layout, parent, false);
+            return new TitleViewHolder(view);
+        } else {
+            View view = mInflater.inflate(R.layout.item_function_layout, parent, false);
+            return new ItemViewHolder(view);
+        }
     }
 
     @Override
-    public void onMyBindViewHolder(FunctionViewHolder holder, int position) {
-        ItemBean item = mDatas.get(position);
-        holder.tv_title.setText(item.getItemName());
-        Glide.with(mContext)
-                .load("http://pic.58pic.com/58pic/15/45/22/39g58PICA2i_1024.jpg")
-                .into(holder.iv_icon);
+    public void onMyBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ItemBean itemBean = mDatas.get(position);
+        if (holder instanceof TitleViewHolder) {
+            TitleViewHolder titleHolder = (TitleViewHolder) holder;
+            titleHolder.tv_title.setText(itemBean.getItemName() + "▼");
+        } else if (holder instanceof ItemViewHolder) {
+            ItemViewHolder itemHolder = (ItemViewHolder) holder;
+            itemHolder.tv_name.setText(itemBean.getItemName());
+            Glide.with(mContext)
+                    .load("http://pic.58pic.com/58pic/15/45/22/39g58PICA2i_1024.jpg")
+                    .into(itemHolder.iv_icon);
+        }
     }
 
-    public class FunctionViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemViewType(int position) {
+        ItemBean bean = mDatas.get(position);
+        return bean.getItemType();
+    }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
         public ImageView iv_icon;
+        public TextView tv_name;
+
+        public ItemViewHolder(View view) {
+            super(view);
+            this.tv_name = (TextView) view.findViewById(R.id.item_name);
+            this.iv_icon = (ImageView) view.findViewById(R.id.item_icon);
+        }
+    }
+
+
+    public class TitleViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_title;
 
-        public FunctionViewHolder(View view) {
+        public TitleViewHolder(View view) {
             super(view);
             this.tv_title = (TextView) view.findViewById(R.id.item_title);
-            this.iv_icon = (ImageView) view.findViewById(R.id.item_icon);
         }
     }
 }

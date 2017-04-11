@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
-import com.android.exercise.util.DisplayUtil;
+import com.android.exercise.util.UIUtils;
 import com.android.exercise.util.T;
 
 import java.util.ArrayList;
@@ -101,7 +101,7 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
         });
         View menuView = getLayoutInflater().inflate(R.layout.activity_greendao, navigationView, false);
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) menuView.getLayoutParams();
-        int statusBarHeight = DisplayUtil.getStatusBarHeight(this);
+        int statusBarHeight = UIUtils.getStatusBarHeight(this);
         layoutParams.topMargin = statusBarHeight;
         navigationView.addHeaderView(menuView);
     }

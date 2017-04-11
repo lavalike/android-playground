@@ -32,7 +32,7 @@ import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.android.exercise.util.DisplayUtil;
+import com.android.exercise.util.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,16 +61,30 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initRecycler() {
-        GridLayoutManager manager = new GridLayoutManager(mContext, 3);
+        final GridLayoutManager manager = new GridLayoutManager(mContext, 3);
+        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (mAdapter != null) {
+                    int type = mAdapter.getItemViewType(position);
+                    if (type == ItemBean.TYPE_TITLE) {
+                        return manager.getSpanCount();
+                    } else {
+                        return 1;
+                    }
+                }
+                return 1;
+            }
+        });
         recyclerview.setLayoutManager(manager);
         recyclerview.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
-                outRect.left = DisplayUtil.dip2px(mContext, 0.5f);
-                outRect.right = DisplayUtil.dip2px(mContext, 0.5f);
-                outRect.top = DisplayUtil.dip2px(mContext, 0.5f);
-                outRect.bottom = DisplayUtil.dip2px(mContext, 0.5f);
+                outRect.left = UIUtils.dip2px(mContext, 0.5f);
+                outRect.right = UIUtils.dip2px(mContext, 0.5f);
+                outRect.top = UIUtils.dip2px(mContext, 0.5f);
+                outRect.bottom = UIUtils.dip2px(mContext, 0.5f);
             }
         });
     }
@@ -85,30 +99,37 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
+        mList.add(new ItemBean("数据库"));
         mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
         mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
+        mList.add(new ItemBean("网络请求"));
         mList.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
+        mList.add(new ItemBean("其他开源库"));
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
+        mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
+        mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override
             public void onItemClick(View view, int position, ItemBean data) {
-                Class<?> targetClass = data.getTargetClass();
-                if (targetClass != null) {
-                    startActivity(new Intent(mContext, targetClass));
+                if (mAdapter.getItemViewType(position) == ItemBean.TYPE_ITEM) {
+                    Class<?> targetClass = data.getTargetClass();
+                    if (targetClass != null) {
+                        startActivity(new Intent(mContext, targetClass));
+                    }
                 }
             }
         });

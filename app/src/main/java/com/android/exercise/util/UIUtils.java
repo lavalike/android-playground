@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
  * dp、sp 转换为 px 的工具类
  * Created by wangzhen on 16/4/5.
  */
-public class DisplayUtil {
+public class UIUtils {
     /**
      * 将px值转换为dip或dp值，保证尺寸大小不变
      *
