@@ -44,9 +44,10 @@ public class FunctionAdapter extends BaseRecyclerAdapter<ItemBean, RecyclerView.
         } else if (holder instanceof ItemViewHolder) {
             ItemViewHolder itemHolder = (ItemViewHolder) holder;
             itemHolder.tv_name.setText(itemBean.getItemName());
-            Glide.with(mContext)
-                    .load("http://pic.58pic.com/58pic/15/45/22/39g58PICA2i_1024.jpg")
-                    .into(itemHolder.iv_icon);
+//            Glide.with(mContext)
+//                    .load("http://pic.58pic.com/58pic/15/45/22/39g58PICA2i_1024.jpg")
+//                    .into(itemHolder.iv_icon);
+            Glide.with(mContext).load(R.mipmap.ic_burger).into(itemHolder.iv_icon);
         }
     }
 
