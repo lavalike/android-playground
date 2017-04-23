@@ -60,7 +60,9 @@
             android:exported="true" />
 
         <activity android:name=".ui.activity.MinaActivity" />
-        <activity android:name=".ui.activity.RippleActivity"></activity>
+        <activity android:name=".ui.activity.RippleActivity" />
+        <activity android:name=".ui.activity.ViewActivity" />
+        <activity android:name=".ui.activity.RxJavaActivity"></activity>
     </application>
 
 </manifest>

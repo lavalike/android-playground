@@ -28,8 +28,10 @@ import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.RippleActivity;
+import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
+import com.android.exercise.ui.activity.ViewActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.UIUtils;
@@ -102,6 +104,8 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean("数据库"));
         mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
         mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
+        mList.add(new ItemBean("Rx系列"));
+        mList.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
         mList.add(new ItemBean("网络请求"));
         mList.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
@@ -121,6 +125,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override

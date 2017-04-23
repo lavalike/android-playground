@@ -27,5 +27,7 @@
     <string name="item_aidl">AIDL</string>
     <string name="item_mina">MINA</string>
     <string name="item_ripple">Ripple</string>
+    <string name="item_view">View</string>
+    <string name="item_rxjava">RxJava</string>
 
 </resources>

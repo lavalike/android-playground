@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_dog"
+    tools:context="com.android.exercise.ui.activity.ViewActivity">
+
+    <com.android.exercise.ui.widget.progress.HorizontalProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:max="100"
+        android:progress="60"
+        app:progress_reach_color="@android:color/holo_blue_dark"
+        app:progress_reach_height="5dp"
+        app:progress_text_color="@android:color/holo_red_light"
+        app:progress_text_offset="5dp"
+        app:progress_text_size="12sp"
+        app:progress_unreach_color="@android:color/holo_blue_bright"
+        app:progress_unreach_height="5dp" />
+
+</RelativeLayout>
