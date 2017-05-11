@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.service.PollService;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
@@ -39,6 +40,8 @@ public class RxJavaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
         ButterKnife.bind(this);
+//        startService(new Intent(this, PollService.class));
+        PollService.setServiceAlarm(this, true);
     }
 
     @Override
