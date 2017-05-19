@@ -22,6 +22,15 @@ public class ToolBarCommonHolder extends BaseToolBarHolder {
      * @param activity
      * @param toolbar
      * @param title
+     */
+    public ToolBarCommonHolder(Activity activity, Toolbar toolbar, String title) {
+        this(activity, toolbar, title, true);
+    }
+
+    /**
+     * @param activity
+     * @param toolbar
+     * @param title
      * @param canBack
      */
     public ToolBarCommonHolder(Activity activity, Toolbar toolbar, String title, boolean canBack) {

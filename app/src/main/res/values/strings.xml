@@ -29,5 +29,6 @@
     <string name="item_ripple">Ripple</string>
     <string name="item_view">View</string>
     <string name="item_rxjava">RxJava</string>
+    <string name="item_window">window</string>
 
 </resources>

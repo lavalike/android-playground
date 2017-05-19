@@ -32,6 +32,7 @@ import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.activity.ViewActivity;
+import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.UIUtils;
@@ -114,6 +115,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
         mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
         mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
         mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
