@@ -30,6 +30,7 @@ import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.RippleActivity;
 import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
+import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.activity.ViewActivity;
 import com.android.exercise.ui.activity.WindowActivity;
@@ -128,6 +129,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
             @Override

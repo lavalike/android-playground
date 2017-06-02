@@ -74,7 +74,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.activity.WindowActivity"></activity>
+        <activity android:name=".ui.activity.WindowActivity" />
+        <activity android:name=".ui.activity.TextLinkActivity"></activity>
     </application>
 
 </manifest>
