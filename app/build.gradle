@@ -41,7 +41,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:' + SUPPORT_VERSION
     compile 'com.android.support:recyclerview-v7:' + SUPPORT_VERSION
     compile 'com.android.support:design:' + SUPPORT_VERSION
-    compile('com.alibaba.android:vlayout:1.0.3@aar') {
+    compile('com.alibaba.android:vlayout:1.0.3@aar')
+    {
         transitive = true
     }
     compile files('src/main/libs/mina-core-2.0.0.jar')
@@ -63,4 +64,5 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    compile project(':linktextview')
 }
