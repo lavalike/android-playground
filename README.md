@@ -1,4 +1,4 @@
-项目初始化
+Android新技术实践
 
 添加gradle依赖：
 >  compile 'com.wangzhen:LinkTextView:1.0.0'
