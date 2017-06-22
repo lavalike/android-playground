@@ -10,6 +10,9 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath "io.realm:realm-gradle-plugin:2.1.1"
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.0'
+
+        //上传jcenter
+        classpath 'com.novoda:bintray-release:0.3.4'
     }
 }
 
