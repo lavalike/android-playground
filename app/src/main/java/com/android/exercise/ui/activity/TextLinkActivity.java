@@ -1,6 +1,7 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
@@ -33,7 +34,7 @@ public class TextLinkActivity extends BaseActivity {
         tvLinkHtml.setOnLinkClickListener(new LinkTextView.OnLinkClickListener() {
             @Override
             public void onClick(String url) {
-                showToast("您点击了：" + url);
+                showToast(url);
             }
         });
     }
