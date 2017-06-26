@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.domain.GithubBean;
-import com.bumptech.glide.Glide;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.android.exercise.util.GlideApp;
 
 import java.util.List;
 
@@ -33,7 +33,11 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.R
         GithubBean bean = mDatas.get(position);
         holder.tvItemReposName.setText(bean.getName());
         holder.tvItemReposUrl.setText(bean.getHtml_url());
-        Glide.with(mContext).load(bean.getOwner().getAvatar_url()).into(holder.ivItemReposAvatar);
+        GlideApp.with(mContext)
+                .load(bean.getOwner().getAvatar_url())
+                .placeholder(R.drawable.ic_placeholder)
+                .error(R.drawable.ic_placeholder)
+                .into(holder.ivItemReposAvatar);
     }
 
     @Override

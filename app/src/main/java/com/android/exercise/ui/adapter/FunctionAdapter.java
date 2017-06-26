@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.android.exercise.R;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.bumptech.glide.Glide;
+import com.android.exercise.util.GlideApp;
 
 import java.util.List;
 
@@ -44,10 +44,11 @@ public class FunctionAdapter extends BaseRecyclerAdapter<ItemBean, RecyclerView.
         } else if (holder instanceof ItemViewHolder) {
             ItemViewHolder itemHolder = (ItemViewHolder) holder;
             itemHolder.tv_name.setText(itemBean.getItemName());
-//            Glide.with(mContext)
-//                    .load("http://pic.58pic.com/58pic/15/45/22/39g58PICA2i_1024.jpg")
-//                    .into(itemHolder.iv_icon);
-            Glide.with(mContext).load(R.mipmap.ic_burger).into(itemHolder.iv_icon);
+            GlideApp.with(mContext)
+                    .load(R.mipmap.ic_burger)
+                    .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_placeholder)
+                    .into(itemHolder.iv_icon);
         }
     }
 
