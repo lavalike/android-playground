@@ -19,10 +19,15 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     protected LayoutInflater mInflater;
     protected List<T> mDatas;
 
-    protected OnRecyclerItemClickListener<T> mItemClickListener;
+    protected OnItemClickListener<T> mClickListener;
+    protected OnItemLongClickListener<T> mLongClickListener;
 
-    public void setOnItemClickListener(OnRecyclerItemClickListener<T> listener) {
-        this.mItemClickListener = listener;
+    public void setItemClickListener(OnItemClickListener<T> listener) {
+        this.mClickListener = listener;
+    }
+
+    public void setItemLongClickListener(OnItemLongClickListener<T> listener) {
+        this.mLongClickListener = listener;
     }
 
     public BaseRecyclerAdapter(Context context, List<T> list) {
@@ -65,19 +70,34 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
      * @param position
      */
     private void setItemEvent(final RecyclerView.ViewHolder holder, int position) {
-        if (mItemClickListener != null) {
+        if (mClickListener != null) {
             holder.itemView.setTag(position);
             holder.itemView.setOnClickListener(innerClickListener);
+        }
+        if (mLongClickListener != null) {
+            holder.itemView.setTag(position);
+            holder.itemView.setOnLongClickListener(innerLongClickListener);
         }
     }
 
     private View.OnClickListener innerClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mItemClickListener != null) {
+            if (mClickListener != null) {
                 int realPosition = (int) v.getTag();
-                mItemClickListener.onItemClick(v, realPosition, mDatas.get(realPosition));
+                mClickListener.onClick(v, realPosition, mDatas.get(realPosition));
             }
+        }
+    };
+
+    private View.OnLongClickListener innerLongClickListener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            if (mLongClickListener != null) {
+                int realPosition = (int) v.getTag();
+                mLongClickListener.onLongClick(v, realPosition, mDatas.get(realPosition));
+            }
+            return true;
         }
     };
 
@@ -86,7 +106,11 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         return mDatas.size();
     }
 
-    public interface OnRecyclerItemClickListener<T> {
-        void onItemClick(View view, int position, T data);
+    public interface OnItemClickListener<T> {
+        void onClick(View view, int position, T data);
+    }
+
+    public interface OnItemLongClickListener<T> {
+        void onLongClick(View view, int position, T data);
     }
 }

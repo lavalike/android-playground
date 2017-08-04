@@ -52,9 +52,9 @@ public class RecyclerActivity extends BaseActivity {
             public void run() {
                 index = 0;
                 mMoreAdapter = new MoreAdapter(mContext, getList());
-                mMoreAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<String>() {
+                mMoreAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
                     @Override
-                    public void onItemClick(View view, int position, String data) {
+                    public void onClick(View view, int position, String data) {
                         T.get(mContext).toast(data);
                     }
                 });

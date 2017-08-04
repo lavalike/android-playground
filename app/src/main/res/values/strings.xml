@@ -31,5 +31,6 @@
     <string name="item_text_link">TextView链接</string>
     <string name="item_rxjava">RxJava</string>
     <string name="item_window">window</string>
+    <string name="item_recycler_touch">ItemTouchHelper</string>
 
 </resources>

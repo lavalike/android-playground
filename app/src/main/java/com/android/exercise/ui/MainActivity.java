@@ -26,6 +26,7 @@ import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
+import com.android.exercise.ui.activity.RecyclerTouchActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.RippleActivity;
 import com.android.exercise.ui.activity.RxJavaActivity;
@@ -116,6 +117,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
         mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
         mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
         mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
@@ -131,9 +133,9 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<ItemBean>() {
+        mAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<ItemBean>() {
             @Override
-            public void onItemClick(View view, int position, ItemBean data) {
+            public void onClick(View view, int position, ItemBean data) {
                 if (mAdapter.getItemViewType(position) == ItemBean.TYPE_ITEM) {
                     Class<?> targetClass = data.getTargetClass();
                     if (targetClass != null) {

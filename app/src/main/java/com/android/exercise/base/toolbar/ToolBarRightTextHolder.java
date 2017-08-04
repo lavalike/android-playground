@@ -17,6 +17,10 @@ public class ToolBarRightTextHolder extends BaseToolBarHolder {
     private TextView tv_title;
     private TextView tv_menu;
 
+    public ToolBarRightTextHolder(Activity activity, Toolbar toolbar, String title, String menu) {
+        this(activity, toolbar, title, menu, true);
+    }
+
     /**
      * @param activity
      * @param toolbar

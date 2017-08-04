@@ -75,7 +75,8 @@
         </receiver>
 
         <activity android:name=".ui.activity.WindowActivity" />
-        <activity android:name=".ui.activity.TextLinkActivity"></activity>
+        <activity android:name=".ui.activity.TextLinkActivity" />
+        <activity android:name=".ui.activity.RecyclerTouchActivity"></activity>
     </application>
 
 </manifest>

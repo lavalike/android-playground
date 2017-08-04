@@ -254,9 +254,9 @@ public class RetrofitActivity extends BaseActivity {
                     mReposList = response.body();
                     mReposList.addAll(mReposList);
                     mReposAdapter = new ReposAdapter(mContext, mReposList);
-                    mReposAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener<GithubBean>() {
+                    mReposAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GithubBean>() {
                         @Override
-                        public void onItemClick(View view, int position, GithubBean data) {
+                        public void onClick(View view, int position, GithubBean data) {
                             String reposUrl = data.getHtml_url();
                             Intent intent = new Intent(mContext, HtmlActivity.class);
                             intent.putExtra(IKey.HTML_URL, reposUrl);
