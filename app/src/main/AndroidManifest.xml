@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".base.App"
@@ -76,7 +77,8 @@
 
         <activity android:name=".ui.activity.WindowActivity" />
         <activity android:name=".ui.activity.TextLinkActivity" />
-        <activity android:name=".ui.activity.RecyclerTouchActivity"></activity>
+        <activity android:name=".ui.activity.RecyclerTouchActivity" />
+        <activity android:name=".ui.activity.RecorderActivity"></activity>
     </application>
 
 </manifest>

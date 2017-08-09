@@ -49,9 +49,10 @@ dependencies {
     compile files('src/main/libs/slf4j-api-1.5.11.jar')
     compile files('src/main/libs/slf4j-simple-1.5.2.jar')
     //    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //    compile 'com.jakewharton:butterknife:8.8.0'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton:butterknife:8.1.0'
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'org.greenrobot:greendao-generator:3.2.0'
     compile 'org.xutils:xutils:3.3.36'
@@ -65,8 +66,9 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.wangzhen:LinkTextView:1.0.0'
     compile 'com.wangzhen:GradientLayout:1.0.0'
-    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
-    compile 'com.github.bumptech.glide:compiler:4.0.0-RC1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
+    compile 'com.github.bumptech.glide:glide:4.0.0'
+    compile 'com.github.bumptech.glide:compiler:4.0.0'
+    compile 'com.jakewharton:butterknife:8.1.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
 }

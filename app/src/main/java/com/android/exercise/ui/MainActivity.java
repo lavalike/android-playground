@@ -25,6 +25,7 @@ import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.RealmActivity;
+import com.android.exercise.ui.activity.RecorderActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.RecyclerTouchActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
@@ -104,6 +105,21 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
+        mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
+        mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
         mList.add(new ItemBean("数据库"));
         mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
         mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
@@ -116,22 +132,9 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
-        mList.add(new ItemBean("布局类"));
-        mList.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
-        mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean("其他"));
         mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
         mAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<ItemBean>() {
             @Override

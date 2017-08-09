@@ -32,5 +32,6 @@
     <string name="item_rxjava">RxJava</string>
     <string name="item_window">window</string>
     <string name="item_recycler_touch">ItemTouchHelper</string>
+    <string name="item_recorder">Recorder</string>
 
 </resources>
