@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.exercise.R;
 import com.android.exercise.domain.CommentBean;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
  * 盖楼Adapter
  * Created by wangzhen on 2017/8/10.
  */
-public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.FloorViewHolder> {
+public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.FloorViewHolder> implements FloorView.IItemClickListener {
 
     public FloorAdapter(Context context, List<CommentBean> list) {
         super(context, list);
@@ -48,9 +49,14 @@ public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.
             holder.floorView.setVisibility(View.GONE);
         } else {
             holder.floorView.setVisibility(View.VISIBLE);
-            holder.floorView.setBounderDrawable(mContext.getResources().getDrawable(R.drawable.bg_bounder_floor));
+            holder.floorView.setItemClickListener(this);
             holder.floorView.build(floorList);
         }
+    }
+
+    @Override
+    public void onItemClick(CommentBean data) {
+        Toast.makeText(mContext, data.getContent(), Toast.LENGTH_SHORT).show();
     }
 
     class FloorViewHolder extends RecyclerView.ViewHolder {

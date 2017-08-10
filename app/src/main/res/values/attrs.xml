@@ -35,4 +35,9 @@
         <attr name="progress_text_size" format="dimension" />
         <attr name="progress_text_offset" format="dimension" />
     </declare-styleable>
+
+    <!--盖楼-->
+    <declare-styleable name="FloorView">
+        <attr name="bounder_drawable" format="reference" />
+    </declare-styleable>
 </resources>

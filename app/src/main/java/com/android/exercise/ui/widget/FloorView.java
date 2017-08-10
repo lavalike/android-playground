@@ -1,9 +1,11 @@
 package com.android.exercise.ui.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,9 @@ public class FloorView extends LinearLayout {
     private LayoutInflater mInflater;
     //边框背景
     private Drawable bounderDrawable;
+    private IItemClickListener mItemListener;
+    //楼层是否展开
+    private boolean isExpanded;
 
     public FloorView(Context context) {
         this(context, null);
@@ -41,6 +46,14 @@ public class FloorView extends LinearLayout {
         setOrientation(LinearLayout.VERTICAL);
         density = (int) (2.0F * context.getResources().getDisplayMetrics().density);
         mInflater = LayoutInflater.from(context);
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.FloorView);
+        int resourceId = typedArray.getResourceId(R.styleable.FloorView_bounder_drawable, -1);
+        if (resourceId == -1) {
+            this.bounderDrawable = ContextCompat.getDrawable(context, R.drawable.bg_bounder_floor);
+        } else {
+            this.bounderDrawable = ContextCompat.getDrawable(context, resourceId);
+        }
+        typedArray.recycle();
     }
 
     /**
@@ -60,7 +73,11 @@ public class FloorView extends LinearLayout {
     public void build(List<CommentBean> floorData) {
         if (floorData == null || floorData.size() == 0) return;
         this.mDatas = floorData;
-        innerBuild();
+//        if (isExpanded()) {
+//            expandAll();
+//        } else {
+            innerBuild();
+//        }
     }
 
     private void innerBuild() {
@@ -117,6 +134,7 @@ public class FloorView extends LinearLayout {
         tvName.setText(data.getName());
         tvFloor.setText(String.valueOf(data.getBuildLevel()));
         tvContent.setText(data.getContent());
+        view.setTag(R.id.id_tag, data);
         view.setOnClickListener(innerNormalItemClickListener);
         return view;
     }
@@ -138,7 +156,10 @@ public class FloorView extends LinearLayout {
     private OnClickListener innerNormalItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (mItemListener != null) {
+                CommentBean data = (CommentBean) v.getTag(R.id.id_tag);
+                mItemListener.onItemClick(data);
+            }
         }
     };
 
@@ -148,13 +169,39 @@ public class FloorView extends LinearLayout {
     private OnClickListener innerHiddenItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            removeAllViews();
-            for (CommentBean mData : mDatas) {
-                addView(buildNormalItem(mData));
-            }
-            layoutChildren();
+            expandAll();
         }
     };
+
+    /**
+     * 展开所有楼层
+     */
+    private void expandAll() {
+        removeAllViews();
+        for (CommentBean mData : mDatas) {
+            addView(buildNormalItem(mData));
+        }
+        layoutChildren();
+        isExpanded = true;
+    }
+
+    /**
+     * 设置是否展开所有楼层
+     *
+     * @param isExpanded
+     */
+    public void setExpanded(boolean isExpanded) {
+        this.isExpanded = isExpanded;
+    }
+
+    /**
+     * 是否展开所有楼层
+     *
+     * @return
+     */
+    public boolean isExpanded() {
+        return isExpanded;
+    }
 
     /**
      * 绘制连框背景
@@ -172,5 +219,18 @@ public class FloorView extends LinearLayout {
             }
         }
         super.dispatchDraw(canvas);
+    }
+
+    private int dip2px(float dipValue) {
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
+
+    public void setItemClickListener(IItemClickListener listener) {
+        mItemListener = listener;
+    }
+
+    public interface IItemClickListener {
+        void onItemClick(CommentBean data);
     }
 }
