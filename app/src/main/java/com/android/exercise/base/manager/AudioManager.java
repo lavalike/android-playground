@@ -124,7 +124,8 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
     /**
      * 删除生成的录音文件
      */
-    private void deleteRecordFile() {
+    public void deleteRecordFile() {
+        if (TextUtils.isEmpty(mCurrRecordFilePath)) return;
         File file = new File(mCurrRecordFilePath);
         if (file.exists())
             file.delete();
@@ -151,6 +152,7 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
                 }
             }
         } else {
+            deleteRecordFile();
             if (mRecordStateListener != null) {
                 mRecordStateListener.onError("mMediaRecorder为null");
             }

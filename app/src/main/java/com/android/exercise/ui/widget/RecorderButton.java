@@ -213,6 +213,7 @@ public class RecorderButton extends AppCompatButton {
      */
     private void checkRecordFile() {
         if (mRecordTotalTime < RECORD_MIN_DURATION) {
+            mAudioManager.deleteRecordFile();
             mDialogManager.tooShort();
             return;
         }
