@@ -1,5 +1,6 @@
 package com.android.exercise.base.manager;
 
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -20,15 +21,22 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
     private static AudioManager mInstance;
     private MediaRecorder mMediaRecorder;
     private AudioRecordStateListener mRecordStateListener;
+    private AudioPlayStateListener mPlayStateListener;
     //录音保存目录
     private String mDir;
     //是否准备完毕
     private boolean isPrepared;
     //当前录音文件完整路径
     private String mCurrRecordFilePath;
+    private MediaPlayer mMediaPlayer;
+    private int mCurrPlayPosition;
 
     public void setRecordStateListener(AudioRecordStateListener listener) {
         this.mRecordStateListener = listener;
+    }
+
+    public void setPlayStateListener(AudioPlayStateListener listener) {
+        this.mPlayStateListener = listener;
     }
 
 
@@ -160,28 +168,73 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
     }
 
     @Override
-    public void preparePlay() {
-
-    }
-
-    @Override
-    public void startPlay() {
-
+    public void startPlay(String path) {
+        if (TextUtils.isEmpty(path)) return;
+        if (mMediaPlayer == null) {
+            mMediaPlayer = new MediaPlayer();
+        } else {
+            mMediaPlayer.reset();
+        }
+        mCurrPlayPosition = 0;
+        try {
+            mMediaPlayer.setDataSource(path);
+            mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if (mPlayStateListener != null) {
+                        mPlayStateListener.onComplete();
+                    }
+                }
+            });
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+            if (mPlayStateListener != null) {
+                mPlayStateListener.onPrepared();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void pausePlay() {
-
+        if (mMediaPlayer != null) {
+            if (mMediaPlayer.isPlaying()) {
+                mMediaPlayer.pause();
+                mCurrPlayPosition = mMediaPlayer.getCurrentPosition();
+            }
+        }
     }
 
     @Override
     public void resumePlay() {
-
+        if (mMediaPlayer != null) {
+            mMediaPlayer.seekTo(mCurrPlayPosition);
+            mMediaPlayer.start();
+        }
     }
 
     @Override
     public void stopPlay() {
+        if (mMediaPlayer != null) {
+            try {
+                mMediaPlayer.stop();
+                mMediaPlayer.release();
+                mMediaPlayer = null;
+            } catch (RuntimeException e) {
+                if (mPlayStateListener != null) {
+                    mPlayStateListener.onError(e.getMessage());
+                }
+            }
+        }
+    }
 
+    /**
+     * 全部销毁
+     */
+    public void onDestroy() {
+        stopRecord();
+        stopPlay();
     }
 
     public interface AudioRecordStateListener {
@@ -197,6 +250,25 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
 
         /**
          * 发生错误
+         */
+        void onError(String error);
+    }
+
+    public interface AudioPlayStateListener {
+        /**
+         * 准备完毕
+         */
+        void onPrepared();
+
+        /**
+         * 播放完毕
+         */
+        void onComplete();
+
+        /**
+         * 播放出错
+         *
+         * @param error
          */
         void onError(String error);
     }

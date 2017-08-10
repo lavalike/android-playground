@@ -31,14 +31,9 @@ public interface IAudioCallback {
      */
     interface IPlayCallback {
         /**
-         * 播放前准备工作
-         */
-        void preparePlay();
-
-        /**
          * 开始播放
          */
-        void startPlay();
+        void startPlay(String path);
 
         /**
          * 暂停播放
