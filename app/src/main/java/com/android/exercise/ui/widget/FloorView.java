@@ -25,7 +25,8 @@ public class FloorView extends LinearLayout {
     private final int density;
     private List<CommentBean> mDatas;
     private LayoutInflater mInflater;
-    private Drawable drawable;
+    //边框背景
+    private Drawable bounderDrawable;
 
     public FloorView(Context context) {
         this(context, null);
@@ -42,10 +43,20 @@ public class FloorView extends LinearLayout {
         mInflater = LayoutInflater.from(context);
     }
 
+    /**
+     * 设置边框背景
+     *
+     * @param drawable 背景
+     */
     public void setBounderDrawable(Drawable drawable) {
-        this.drawable = drawable;
+        this.bounderDrawable = drawable;
     }
 
+    /**
+     * 生成楼层
+     *
+     * @param floorData 楼层数据
+     */
     public void build(List<CommentBean> floorData) {
         if (floorData == null || floorData.size() == 0) return;
         this.mDatas = floorData;
@@ -72,6 +83,9 @@ public class FloorView extends LinearLayout {
         layoutChildren();
     }
 
+    /**
+     * 缩进楼层
+     */
     private void layoutChildren() {
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -142,14 +156,19 @@ public class FloorView extends LinearLayout {
         }
     };
 
+    /**
+     * 绘制连框背景
+     *
+     * @param canvas 画布
+     */
     @Override
     protected void dispatchDraw(Canvas canvas) {
         int childCount = getChildCount();
-        if (drawable != null && childCount > 0) {
-            for (int i = childCount - 1; i >= 0; i--) {
+        if (bounderDrawable != null && childCount > 0) {
+            for (int i = 0; i < childCount; i++) {
                 View child = getChildAt(i);
-                drawable.setBounds(child.getLeft(), child.getLeft(), child.getRight(), child.getBottom());
-                drawable.draw(canvas);
+                bounderDrawable.setBounds(child.getLeft(), child.getLeft(), child.getRight(), child.getBottom());
+                bounderDrawable.draw(canvas);
             }
         }
         super.dispatchDraw(canvas);
