@@ -48,17 +48,17 @@ public class RecorderActivity extends BaseActivity {
         mAudioManager.setPlayStateListener(new AudioManager.AudioPlayStateListener() {
             @Override
             public void onPrepared() {
-
+                showToast("开始播放");
             }
 
             @Override
             public void onComplete() {
-
+                showToast("播放完毕");
             }
 
             @Override
             public void onError(String error) {
-
+                showToast("播放出错：" + error);
             }
         });
     }
@@ -72,7 +72,8 @@ public class RecorderActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_play:
-                String path = Environment.getExternalStorageDirectory() + File.separator + "bluelotus.mp3";
+//                String path = Environment.getExternalStorageDirectory() + File.separator + "bluelotus.mp3";
+                String path = "http://10.100.47.155:8080/ServletDemo/bluelotus.mp3";
                 mAudioManager.startPlay(path);
                 break;
             case R.id.btn_pause:

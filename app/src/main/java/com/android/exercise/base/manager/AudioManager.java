@@ -108,7 +108,9 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
                 mRecordStateListener.onPrepared();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            if (mRecordStateListener != null) {
+                mRecordStateListener.onError(e.getMessage());
+            }
         }
     }
 
@@ -169,7 +171,12 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
 
     @Override
     public void startPlay(String path) {
-        if (TextUtils.isEmpty(path)) return;
+        if (TextUtils.isEmpty(path)) {
+            if (mPlayStateListener != null) {
+                mPlayStateListener.onError("invalid music url");
+            }
+            return;
+        }
         if (mMediaPlayer == null) {
             mMediaPlayer = new MediaPlayer();
         } else {
@@ -177,22 +184,31 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
         }
         mCurrPlayPosition = 0;
         try {
+            mMediaPlayer.setAudioStreamType(android.media.AudioManager.STREAM_MUSIC);
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
+                    stopPlay();
                     if (mPlayStateListener != null) {
                         mPlayStateListener.onComplete();
                     }
                 }
             });
+            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mMediaPlayer.start();
+                    if (mPlayStateListener != null) {
+                        mPlayStateListener.onPrepared();
+                    }
+                }
+            });
             mMediaPlayer.prepare();
-            mMediaPlayer.start();
-            if (mPlayStateListener != null) {
-                mPlayStateListener.onPrepared();
-            }
         } catch (Exception e) {
-            e.printStackTrace();
+            if (mPlayStateListener != null) {
+                mPlayStateListener.onError(e.getMessage());
+            }
         }
     }
 
