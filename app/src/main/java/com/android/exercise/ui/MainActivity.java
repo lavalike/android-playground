@@ -20,6 +20,7 @@ import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
 import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.DrawerSlideActivity;
+import com.android.exercise.ui.activity.FloorActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.MinaActivity;
@@ -106,6 +107,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_floor), FloorActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));

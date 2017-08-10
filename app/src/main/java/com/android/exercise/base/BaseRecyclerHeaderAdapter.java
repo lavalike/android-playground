@@ -81,8 +81,8 @@
 //        return mDatas;
 //    }
 //
-//    public void setDatas(List<T> datas) {
-//        setDatas(datas, false);
+//    public void build(List<T> datas) {
+//        build(datas, false);
 //    }
 //
 //    /**
@@ -344,7 +344,7 @@
 //     * @param mDatas       数据集合
 //     * @param isAutoNotify 是否自动刷新
 //     */
-//    public void setDatas(List<T> mDatas, boolean isAutoNotify) {
+//    public void build(List<T> mDatas, boolean isAutoNotify) {
 //        this.mDatas = mDatas;
 //        if (isAutoNotify)
 //            notifyDataSetChanged();
