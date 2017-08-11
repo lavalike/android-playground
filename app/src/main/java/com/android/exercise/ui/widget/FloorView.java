@@ -108,10 +108,7 @@ public class FloorView extends LinearLayout {
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            int factor = MIN_LEVEL - i;
-            if (i > MIN_LEVEL) {
-                factor = 0;
-            }
+            int factor = i > MIN_LEVEL ? 0 : (MIN_LEVEL - i);
             int margin = factor * density;
             params.leftMargin = margin;
             params.rightMargin = margin;
