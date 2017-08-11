@@ -25,8 +25,23 @@ import butterknife.ButterKnife;
  */
 public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.FloorViewHolder> implements FloorView.IItemClickListener {
 
+    private List<CommentBean> floorList;
+
     public FloorAdapter(Context context, List<CommentBean> list) {
         super(context, list);
+        init();
+    }
+
+    private void init() {
+        floorList = new ArrayList<>();
+        CommentBean bean;
+        for (int i = 1; i <= 7; i++) {
+            bean = new CommentBean();
+            bean.setBuildLevel(i);
+            bean.setName("用户" + i);
+            bean.setContent("评论内容" + i);
+            floorList.add(bean);
+        }
     }
 
     @Override
@@ -36,15 +51,6 @@ public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.
 
     @Override
     public void onMyBindViewHolder(FloorViewHolder holder, int position) {
-        List<CommentBean> floorList = new ArrayList<>();
-        CommentBean bean;
-        for (int i = 1; i <= 7; i++) {
-            bean = new CommentBean();
-            bean.setBuildLevel(i);
-            bean.setName("用户" + i);
-            bean.setContent("评论内容" + i);
-            floorList.add(bean);
-        }
         if (floorList == null || floorList.size() == 0) {
             holder.floorView.setVisibility(View.GONE);
         } else {

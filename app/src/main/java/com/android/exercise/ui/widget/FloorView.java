@@ -76,7 +76,7 @@ public class FloorView extends LinearLayout {
 //        if (isExpanded()) {
 //            expandAll();
 //        } else {
-            innerBuild();
+        innerBuild();
 //        }
     }
 
@@ -108,9 +108,9 @@ public class FloorView extends LinearLayout {
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            int factor = childCount - i;
+            int factor = MIN_LEVEL - i;
             if (i > MIN_LEVEL) {
-                factor = childCount - MIN_LEVEL;
+                factor = 0;
             }
             int margin = factor * density;
             params.leftMargin = margin;
@@ -212,7 +212,8 @@ public class FloorView extends LinearLayout {
     protected void dispatchDraw(Canvas canvas) {
         int childCount = getChildCount();
         if (bounderDrawable != null && childCount > 0) {
-            for (int i = 0; i < childCount; i++) {
+            //倒序绘制背景，以防背景叠加遮挡
+            for (int i = childCount - 1; i >= 0; i--) {
                 View child = getChildAt(i);
                 bounderDrawable.setBounds(child.getLeft(), child.getLeft(), child.getRight(), child.getBottom());
                 bounderDrawable.draw(canvas);
