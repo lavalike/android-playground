@@ -80,7 +80,8 @@
         <activity android:name=".ui.activity.RecyclerTouchActivity" />
         <activity android:name=".ui.activity.RecorderActivity" />
         <activity android:name=".ui.activity.FloorActivity" />
-        <activity android:name=".ui.activity.EditViewActivity"></activity>
+        <activity android:name=".ui.activity.EditViewActivity" />
+        <activity android:name=".ui.activity.WaveActivity"></activity>
     </application>
 
 </manifest>

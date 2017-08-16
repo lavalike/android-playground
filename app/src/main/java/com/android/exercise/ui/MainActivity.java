@@ -37,6 +37,7 @@ import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.activity.ViewActivity;
+import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
@@ -108,6 +109,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         mList.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_floor), FloorActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
