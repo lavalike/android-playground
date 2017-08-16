@@ -24,11 +24,11 @@ public class PasswordView extends AppCompatEditText {
     private int maxCount = 6;//默认长度
     private RectF mRectF = new RectF();//边框Rectf
     private Paint mPaintBorder;
-    private int mBorderCorner = dip2px(4);//边框圆角
+    private int mBorderCorner = dip2px(2);//边框圆角
     private int mColorBorder = Color.GRAY;//边框颜色
-    private int mBorderWidth = dip2px(2);//边框宽度
+    private int mBorderWidth = dip2px(1);//边框宽度
     private Paint mPaintDivider;
-    private int mDividerWidth = dip2px(2);//分隔线宽度
+    private int mDividerWidth = dip2px(1);//分隔线宽度
     private int mColorDivider = Color.GRAY;//分隔线颜色
     private int mDividerStartX;
     private static int textLength = 0;//文字长度
