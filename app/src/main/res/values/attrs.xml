@@ -40,4 +40,16 @@
     <declare-styleable name="FloorView">
         <attr name="bounder_drawable" format="reference" />
     </declare-styleable>
+
+    <!--密码输入框-->
+    <declare-styleable name="PasswordView">
+        <attr name="pv_max_count" format="integer" />
+        <attr name="pv_border_width" format="dimension" />
+        <attr name="pv_border_corner" format="dimension" />
+        <attr name="pv_border_color" format="reference" />
+        <attr name="pv_divider_width" format="dimension" />
+        <attr name="pv_divider_color" format="reference" />
+        <attr name="pv_dot_radius" format="dimension" />
+        <attr name="pv_dot_color" format="reference" />
+    </declare-styleable>
 </resources>

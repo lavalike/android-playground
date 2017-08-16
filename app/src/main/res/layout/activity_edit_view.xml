@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.android.exercise.ui.activity.EditViewActivity">
+
+    <com.android.exercise.ui.widget.PasswordView
+        android:id="@+id/password_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        app:pv_border_color="@android:color/darker_gray"
+        app:pv_border_corner="2dp"
+        app:pv_border_width="1dp"
+        app:pv_divider_color="@android:color/darker_gray"
+        app:pv_divider_width="1dp"
+        app:pv_dot_color="@android:color/black"
+        app:pv_dot_radius="4dp" />
+
+    <Button
+        android:id="@+id/btn_getpwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取密码" />
+
+</LinearLayout>

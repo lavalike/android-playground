@@ -34,5 +34,6 @@
     <string name="item_recycler_touch">ItemTouchHelper</string>
     <string name="item_recorder">Recorder</string>
     <string name="item_floor">评论盖楼</string>
+    <string name="item_edit_view">EditView</string>
 
 </resources>
