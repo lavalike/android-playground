@@ -35,7 +35,7 @@ public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.
     private void init() {
         floorList = new ArrayList<>();
         CommentBean bean;
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 10; i++) {
             bean = new CommentBean();
             bean.setBuildLevel(i);
             bean.setName("用户" + i);

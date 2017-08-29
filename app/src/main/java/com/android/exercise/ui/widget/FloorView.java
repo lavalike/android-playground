@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class FloorView extends LinearLayout {
     //最小楼层，大于该层数需要手动展开隐藏楼层
-    private static final int MIN_LEVEL = 4;
+    private static final int MIN_LEVEL = 6;
     private final int density;
     private List<CommentBean> mDatas;
     private LayoutInflater mInflater;
@@ -105,10 +105,11 @@ public class FloorView extends LinearLayout {
      */
     private void layoutChildren() {
         int childCount = getChildCount();
+        LayoutParams params;
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
-            LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            int factor = i > MIN_LEVEL ? 0 : (MIN_LEVEL - i);
+            params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            int factor = i > childCount - MIN_LEVEL ? (childCount - i + 1) : MIN_LEVEL;
             int margin = factor * density;
             params.leftMargin = margin;
             params.rightMargin = margin;
