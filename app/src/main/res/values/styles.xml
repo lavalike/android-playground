@@ -16,7 +16,7 @@
 
         <!--&lt;!&ndash;边缘手势样式兼容5.0以下系统&ndash;&gt;-->
         <item name="android:colorBackgroundCacheHint">@null</item>
-        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowIsTranslucent">true</item>
 
         <!--全局Activity动画 左右切换-->
         <!--<item name="android:windowAnimationStyle">@style/ActivityAnimation</item>-->

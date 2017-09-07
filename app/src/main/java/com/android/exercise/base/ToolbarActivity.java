@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.ui.widget.swipebacklayout.app.SwipeBackActivity;
+import com.android.exercise.util.TranslucentUtils;
 
 /**
  * 处理Toolbar相关
@@ -42,6 +43,7 @@ public class ToolbarActivity extends SwipeBackActivity {
         } else {
             super.setContentView(view);
         }
+//        TranslucentUtils.apply(getWindow());
     }
 
     private void initToolbar() {
