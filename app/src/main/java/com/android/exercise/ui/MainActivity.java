@@ -16,6 +16,7 @@ import com.android.exercise.domain.ItemBean;
 import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
+import com.android.exercise.ui.activity.AnimViewActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
 import com.android.exercise.ui.activity.DispatchActivity;
@@ -109,6 +110,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         mList.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_floor), FloorActivity.class));

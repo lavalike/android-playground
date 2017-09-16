@@ -36,5 +36,6 @@
     <string name="item_floor">评论盖楼</string>
     <string name="item_edit_view">EditView</string>
     <string name="item_wave_view">WaveView</string>
+    <string name="item_anim_view">AnimView</string>
 
 </resources>

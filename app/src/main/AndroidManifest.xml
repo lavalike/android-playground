@@ -81,7 +81,8 @@
         <activity android:name=".ui.activity.RecorderActivity" />
         <activity android:name=".ui.activity.FloorActivity" />
         <activity android:name=".ui.activity.EditViewActivity" />
-        <activity android:name=".ui.activity.WaveActivity"></activity>
+        <activity android:name=".ui.activity.WaveActivity" />
+        <activity android:name=".ui.activity.AnimViewActivity"></activity>
     </application>
 
 </manifest>
