@@ -34,6 +34,7 @@ import com.android.exercise.ui.activity.RecyclerTouchActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.RippleActivity;
 import com.android.exercise.ui.activity.RxJavaActivity;
+import com.android.exercise.ui.activity.ScrollActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
@@ -110,6 +111,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_scrollview), ScrollActivity.class));
         mList.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         mList.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));

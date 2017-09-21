@@ -37,5 +37,6 @@
     <string name="item_edit_view">EditView</string>
     <string name="item_wave_view">WaveView</string>
     <string name="item_anim_view">AnimView</string>
+    <string name="item_scrollview">扩展ScrollView</string>
 
 </resources>

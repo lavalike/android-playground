@@ -82,7 +82,8 @@
         <activity android:name=".ui.activity.FloorActivity" />
         <activity android:name=".ui.activity.EditViewActivity" />
         <activity android:name=".ui.activity.WaveActivity" />
-        <activity android:name=".ui.activity.AnimViewActivity"></activity>
+        <activity android:name=".ui.activity.AnimViewActivity" />
+        <activity android:name=".ui.activity.ScrollActivity"></activity>
     </application>
 
 </manifest>
