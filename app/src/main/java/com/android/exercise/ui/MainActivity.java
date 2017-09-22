@@ -27,6 +27,7 @@ import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
+import com.android.exercise.ui.activity.PorterDuffActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecorderActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
@@ -110,6 +111,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity.class));
         mList.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         mList.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));
