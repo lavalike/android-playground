@@ -52,4 +52,10 @@
         <attr name="pv_dot_radius" format="dimension" />
         <attr name="pv_dot_color" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="LoadingView">
+        <attr name="lv_background_image" format="reference" />
+        <attr name="lv_mask_color" format="color" />
+        <attr name="lv_mask_width" format="dimension" />
+    </declare-styleable>
 </resources>
