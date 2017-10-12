@@ -58,4 +58,9 @@
         <attr name="lv_mask_color" format="color" />
         <attr name="lv_mask_width" format="dimension" />
     </declare-styleable>
+    
+    <declare-styleable name="RevealView">
+        <attr name="rl_mask_color" format="reference" />
+        <attr name="rl_src" format="reference" />
+    </declare-styleable>
 </resources>

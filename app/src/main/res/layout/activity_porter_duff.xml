@@ -9,9 +9,19 @@
     android:padding="20dp"
     tools:context="com.android.exercise.ui.activity.PorterDuffActivity">
 
+    <com.android.exercise.ui.widget.RevealView
+        android:id="@+id/revealView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:rl_mask_color="@android:color/holo_blue_dark"
+        app:rl_src="@mipmap/ic_ice" />
+
+
     <com.android.exercise.ui.widget.LoadingView
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
         app:lv_background_image="@mipmap/ic_loading_logo"
         app:lv_mask_color="@android:color/darker_gray"
         app:lv_mask_width="50dp" />
