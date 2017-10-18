@@ -24,6 +24,7 @@ import com.android.exercise.ui.activity.DrawerSlideActivity;
 import com.android.exercise.ui.activity.EditViewActivity;
 import com.android.exercise.ui.activity.FloorActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
+import com.android.exercise.ui.activity.FrameAnimationActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
@@ -40,6 +41,7 @@ import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.activity.ViewActivity;
+import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
@@ -111,6 +113,9 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
+        mList.add(new ItemBean("动画基础"));
+        mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
         mList.add(new ItemBean("自定义控件"));
         mList.add(new ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity.class));
         mList.add(new ItemBean(getString(R.string.item_scrollview), ScrollActivity.class));

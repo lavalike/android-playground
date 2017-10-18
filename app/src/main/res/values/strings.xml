@@ -39,4 +39,6 @@
     <string name="item_anim_view">AnimView</string>
     <string name="item_porter_duff">PorterDuff.Mode</string>
     <string name="item_scrollview">扩展ScrollView</string>
+    <string name="item_view_animation">View动画</string>
+    <string name="item_frame_animation">Frame动画</string>
 </resources>

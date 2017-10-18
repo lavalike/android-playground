@@ -83,8 +83,10 @@
         <activity android:name=".ui.activity.EditViewActivity" />
         <activity android:name=".ui.activity.WaveActivity" />
         <activity android:name=".ui.activity.AnimViewActivity" />
-        <activity android:name=".ui.activity.PorterDuffActivity"></activity>
-        <activity android:name=".ui.activity.ScrollActivity"></activity>
+        <activity android:name=".ui.activity.PorterDuffActivity" />
+        <activity android:name=".ui.activity.ScrollActivity" />
+        <activity android:name=".ui.activity.ViewAnimationActivity" />
+        <activity android:name=".ui.activity.FrameAnimationActivity"></activity>
     </application>
 
 </manifest>

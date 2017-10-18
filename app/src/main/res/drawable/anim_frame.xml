@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@mipmap/img_miao1"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao2"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao3"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao4"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao5"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao6"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao7"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao8"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao9"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao10"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao11"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao12"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao13"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao14"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao15"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao16"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao17"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao18"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao20"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao21"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao22"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao23"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao24"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao25"
+        android:duration="80" />
+    <item
+        android:drawable="@mipmap/img_miao26"
+        android:duration="80" />
+
+</animation-list>
