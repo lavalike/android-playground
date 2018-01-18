@@ -41,4 +41,5 @@
     <string name="item_scrollview">扩展ScrollView</string>
     <string name="item_view_animation">View动画</string>
     <string name="item_frame_animation">Frame动画</string>
+    <string name="item_pull_layout">弹性布局</string>
 </resources>

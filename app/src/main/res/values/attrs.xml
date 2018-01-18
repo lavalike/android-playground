@@ -58,9 +58,18 @@
         <attr name="lv_mask_color" format="color" />
         <attr name="lv_mask_width" format="dimension" />
     </declare-styleable>
-    
+
     <declare-styleable name="RevealView">
         <attr name="rl_mask_color" format="reference" />
         <attr name="rl_src" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PullLayout">
+        <attr name="pl_factor" format="float" />
+        <attr name="pl_direction">
+            <enum name="none" value="0" />
+            <enum name="top" value="1" />
+        </attr>
+        <attr name="pl_behind_view" format="reference" />
     </declare-styleable>
 </resources>

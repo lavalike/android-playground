@@ -29,6 +29,7 @@ import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.PorterDuffActivity;
+import com.android.exercise.ui.activity.PullActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecorderActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
@@ -117,6 +118,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
         mList.add(new ItemBean("自定义控件"));
+        mList.add(new ItemBean(getString(R.string.item_pull_layout), PullActivity.class));
         mList.add(new ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity.class));
         mList.add(new ItemBean(getString(R.string.item_scrollview), ScrollActivity.class));
         mList.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
