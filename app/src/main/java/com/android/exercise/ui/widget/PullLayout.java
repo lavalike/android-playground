@@ -108,11 +108,42 @@ public class PullLayout extends FrameLayout {
                         originalRect.right,
                         originalRect.bottom + offset
                 );
+                //如何滚动过程中往回滚动，则禁用内容滚动
+                if (lastDeltaY >= deltaY)
+                    disableContentScroll();
                 lastDeltaY = deltaY;
                 isMoved = true;
             }
         }
     }
+
+    private void disableContentScroll() {
+        contentView.setOnTouchListener(disableScrollListener);
+    }
+
+    private void enableContentScroll() {
+        contentView.setOnTouchListener(enableScrollListener);
+    }
+
+    /**
+     * 禁用View内容滚动
+     */
+    OnTouchListener disableScrollListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return true;
+        }
+    };
+
+    /**
+     * 启用View内容滚动
+     */
+    OnTouchListener enableScrollListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return false;
+        }
+    };
 
     /**
      * 闭合动画
@@ -132,6 +163,7 @@ public class PullLayout extends FrameLayout {
             }
         });
         animator.start();
+        enableContentScroll();
         isMoved = false;
     }
 
@@ -160,3 +192,4 @@ public class PullLayout extends FrameLayout {
         static int DIRECTION_TOP = 1;
     }
 }
+
