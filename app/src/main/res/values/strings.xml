@@ -45,4 +45,5 @@
     <string name="item_pull_layout">弹性布局</string>
     <string name="item_ice_switch">页面切换动画</string>
     <string name="item_ad_window">广告弹窗</string>
+    <string name="item_webview">WebView</string>
 </resources>

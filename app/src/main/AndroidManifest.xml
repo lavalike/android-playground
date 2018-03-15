@@ -96,7 +96,8 @@
         <activity android:name=".ui.activity.ElasticActivity" />
         <activity android:name=".ui.activity.BroadcastActivity" />
         <activity android:name=".ui.activity.PageSwitchActivity" />
-        <activity android:name=".ui.activity.ADWindowActivity"></activity>
+        <activity android:name=".ui.activity.ADWindowActivity" />
+        <activity android:name=".ui.activity.WebActivity"></activity>
     </application>
 
 </manifest>

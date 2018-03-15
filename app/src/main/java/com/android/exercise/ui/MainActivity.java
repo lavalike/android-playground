@@ -47,6 +47,7 @@ import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.activity.ViewActivity;
 import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.WaveActivity;
+import com.android.exercise.ui.activity.WebActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
@@ -117,9 +118,8 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
-        mList.add(new ItemBean("动画基础"));
-        mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
+        mList.add(new ItemBean("WebView&JS"));
+        mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
         mList.add(new ItemBean("自定义控件"));
         mList.add(new ItemBean(getString(R.string.item_ad_window), ADWindowActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ice_switch), PageSwitchActivity.class));
@@ -144,6 +144,9 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
         mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
         mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
+        mList.add(new ItemBean("动画基础"));
+        mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
         mList.add(new ItemBean("数据库"));
         mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
         mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
