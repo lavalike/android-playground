@@ -63,4 +63,9 @@
         <attr name="rl_mask_color" format="reference" />
         <attr name="rl_src" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="PageSwitchView">
+        <attr name="psv_color" format="reference" />
+        <attr name="psv_duration" format="integer" />
+    </declare-styleable>
 </resources>

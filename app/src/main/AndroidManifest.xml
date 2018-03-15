@@ -74,6 +74,12 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receiver.GInsightReceiver">
+            <intent-filter>
+                <action android:name="com.getui.gis.action.100" />
+                <action android:name="com.getui.gis.action.200" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".ui.activity.WindowActivity" />
         <activity android:name=".ui.activity.TextLinkActivity" />
@@ -87,7 +93,10 @@
         <activity android:name=".ui.activity.ScrollActivity" />
         <activity android:name=".ui.activity.ViewAnimationActivity" />
         <activity android:name=".ui.activity.FrameAnimationActivity" />
-        <activity android:name=".ui.activity.ElasticActivity"></activity>
+        <activity android:name=".ui.activity.ElasticActivity" />
+        <activity android:name=".ui.activity.BroadcastActivity" />
+        <activity android:name=".ui.activity.PageSwitchActivity" />
+        <activity android:name=".ui.activity.ADWindowActivity"></activity>
     </application>
 
 </manifest>
