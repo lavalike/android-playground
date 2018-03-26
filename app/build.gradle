@@ -5,7 +5,7 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "com.android.exercise"
@@ -14,6 +14,11 @@ android {
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
+
+        ndk {
+            moduleName "HelloJNI"
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+        }
     }
     buildTypes {
         release {

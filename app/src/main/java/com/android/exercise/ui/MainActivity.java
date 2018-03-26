@@ -29,6 +29,7 @@ import com.android.exercise.ui.activity.FloorActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.FrameAnimationActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
+import com.android.exercise.ui.activity.JNIActivity;
 import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.PageSwitchActivity;
@@ -118,6 +119,8 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
+        mList.add(new ItemBean("JNI"));
+        mList.add(new ItemBean(getString(R.string.item_jni), JNIActivity.class));
         mList.add(new ItemBean("WebView&JS"));
         mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
         mList.add(new ItemBean("自定义控件"));
