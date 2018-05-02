@@ -8,9 +8,30 @@
     tools:context="com.android.exercise.ui.activity.AnnotationActivity">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="运行时注解" />
+
+    <TextView
         android:id="@+id/tv_reflect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="反射注解" />
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="编译时注解" />
+
+
+    <TextView
+        android:id="@+id/tv_build"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
 </LinearLayout>
