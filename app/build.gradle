@@ -78,13 +78,12 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile 'com.github.lavalike:ElasticLayout:0.0.1'
     compile 'com.wangzhen:LintChecker:0.0.1'
-//    compile project(':annotationProcessor')
-    compile files('libs/annotationProcessor.jar')
+    compile files('libs/processors.jar')
 }
 
 task processorTask(type: Exec) {
-    commandLine 'cp', '../annotationProcessor/build/libs/annotationProcessor.jar', 'libs/'
+    commandLine 'cp', '../processors/build/libs/processors.jar', 'libs/'
 }
 
-processorTask.dependsOn(':annotationProcessor:build')
+processorTask.dependsOn(':processors:build')
 preBuild.dependsOn(processorTask)
