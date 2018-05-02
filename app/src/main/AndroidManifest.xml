@@ -98,7 +98,8 @@
         <activity android:name=".ui.activity.PageSwitchActivity" />
         <activity android:name=".ui.activity.ADWindowActivity" />
         <activity android:name=".ui.activity.WebActivity" />
-        <activity android:name=".ui.activity.JNIActivity"></activity>
+        <activity android:name=".ui.activity.JNIActivity" />
+        <activity android:name=".ui.activity.AnnotationActivity"></activity>
     </application>
 
 </manifest>

@@ -47,4 +47,5 @@
     <string name="item_ad_window">广告弹窗</string>
     <string name="item_webview">WebView</string>
     <string name="item_jni">jni</string>
+    <string name="item_annotation">annotation</string>
 </resources>

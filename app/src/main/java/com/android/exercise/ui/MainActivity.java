@@ -18,6 +18,7 @@ import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AnimViewActivity;
+import com.android.exercise.ui.activity.AnnotationActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.BroadcastActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
@@ -53,6 +54,7 @@ import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.UIUtils;
+import com.google.auto.service.AutoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,11 +121,10 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
-        mList.add(new ItemBean("JNI"));
+        mList.add(new ItemBean("注解"));
+        mList.add(new ItemBean(getString(R.string.item_annotation), AnnotationActivity.class));
+        mList.add(new ItemBean("自定义"));
         mList.add(new ItemBean(getString(R.string.item_jni), JNIActivity.class));
-        mList.add(new ItemBean("WebView&JS"));
-        mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
-        mList.add(new ItemBean("自定义控件"));
         mList.add(new ItemBean(getString(R.string.item_ad_window), ADWindowActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ice_switch), PageSwitchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_pull_layout), ElasticActivity.class));
@@ -146,7 +147,6 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
         mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
         mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
         mList.add(new ItemBean("动画基础"));
         mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
@@ -158,11 +158,14 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean("网络请求"));
         mList.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
-        mList.add(new ItemBean("其他开源库"));
+        mList.add(new ItemBean("开源库"));
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
+        mList.add(new ItemBean("IPC"));
+        mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean("其他"));
+        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
         mList.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
         mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));

@@ -77,4 +77,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile 'com.github.lavalike:ElasticLayout:0.0.1'
+    compile 'com.wangzhen:LintChecker:0.0.1'
 }
