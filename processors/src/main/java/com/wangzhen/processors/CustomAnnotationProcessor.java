@@ -1,9 +1,9 @@
-package com.wangzhen.processor;
+package com.wangzhen.processors;
 
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import com.wangzhen.annotation.CustomAnnotation;
+import com.wangzhen.annotations.CustomAnnotation;
 
 import java.io.IOException;
 import java.util.Set;
@@ -19,7 +19,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
-@SupportedAnnotationTypes("com.wangzhen.annotation.CustomAnnotation")
+@SupportedAnnotationTypes("com.wangzhen.annotations.CustomAnnotation")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class CustomAnnotationProcessor extends AbstractProcessor {
 
@@ -44,7 +44,7 @@ public class CustomAnnotationProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.PUBLIC)
                     .addMethod(method).build();
 
-            JavaFile javaFile = JavaFile.builder("com.wangzhen.annotation.processor.generated", typeSpec).build();
+            JavaFile javaFile = JavaFile.builder("com.wangzhen.annotations.generated", typeSpec).build();
 
             try {
                 javaFile.writeTo(filer);

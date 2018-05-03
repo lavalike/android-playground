@@ -1,4 +1,4 @@
-package com.wangzhen.annotation;
+package com.wangzhen.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

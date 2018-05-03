@@ -1,1 +1,1 @@
-include ':app', ':processors'
+include ':app', ':processors', ':annotations'
