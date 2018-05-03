@@ -99,7 +99,8 @@
         <activity android:name=".ui.activity.ADWindowActivity" />
         <activity android:name=".ui.activity.WebActivity" />
         <activity android:name=".ui.activity.JNIActivity" />
-        <activity android:name=".ui.activity.AnnotationActivity"></activity>
+        <activity android:name=".ui.activity.RuntimeAnnotationActivity" />
+        <activity android:name=".ui.activity.CompileAnnotationActivity"></activity>
     </application>
 
 </manifest>

@@ -5,20 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.android.exercise.ui.activity.AnnotationActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="运行时注解" />
-
-    <TextView
-        android:id="@+id/tv_reflect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
+    tools:context="com.android.exercise.ui.activity.RuntimeAnnotationActivity">
 
     <TextView
         android:layout_width="wrap_content"

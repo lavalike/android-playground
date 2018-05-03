@@ -18,7 +18,8 @@ import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AnimViewActivity;
-import com.android.exercise.ui.activity.AnnotationActivity;
+import com.android.exercise.ui.activity.CompileAnnotationActivity;
+import com.android.exercise.ui.activity.RuntimeAnnotationActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.BroadcastActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
@@ -54,7 +55,6 @@ import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.UIUtils;
-import com.google.auto.service.AutoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +122,8 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("注解"));
-        mList.add(new ItemBean(getString(R.string.item_annotation), AnnotationActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));
         mList.add(new ItemBean("自定义"));
         mList.add(new ItemBean(getString(R.string.item_jni), JNIActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ad_window), ADWindowActivity.class));
