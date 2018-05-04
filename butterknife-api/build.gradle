@@ -24,14 +24,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('libs/processors.jar')
-    compile project(':annotations')
+    compile files('libs/butterknife-processors.jar')
+    compile project(':butterknife-annotations')
 }
 
 
 task processorTask(type: Exec) {
-    commandLine 'cp', '../processors/build/libs/processors.jar', 'libs/'
+    commandLine 'cp', '../butterknife-processors/build/libs/butterknife-processors.jar', 'libs/'
 }
 
-processorTask.dependsOn(':processors:build')
+processorTask.dependsOn(':butterknife-processors:build')
 preBuild.dependsOn(processorTask)

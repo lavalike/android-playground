@@ -1,1 +1,1 @@
-include ':app', ':annotations', ':processors', ':butterknife-api'
+include ':app', ':butterknife-annotations', ':butterknife-processors', ':butterknife-api'
