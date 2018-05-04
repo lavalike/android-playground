@@ -8,18 +8,21 @@ import android.widget.TextView;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.wangzhen.annotations.BindView;
 
 /**
  * 编译时注解
  */
 public class CompileAnnotationActivity extends BaseActivity {
 
-    private TextView tvBuild;
+    @BindView(R.id.tv_build)
+    public TextView tvBuild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compile_annotation);
+//        ButterKnife.bind(this);
         tvBuild = (TextView) findViewById(R.id.tv_build);
 //        tvBuild.setText("编译时注解动态生成GeneratedClass类，调用其方法getMessage(),结果为：" + new GeneratedClass().getMessage());
     }
