@@ -28,9 +28,9 @@ dependencies {
     compile project(':butterknife-annotations')
 }
 
-
-task processorTask(type: Exec) {
-    commandLine 'cp', '../butterknife-processors/build/libs/butterknife-processors.jar', 'libs/'
+task processorTask(type: Copy) {
+    from "../butterknife-processors/build/libs/butterknife-processors.jar"
+    into "libs/"
 }
 
 processorTask.dependsOn(':butterknife-processors:build')
