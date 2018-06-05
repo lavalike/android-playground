@@ -101,7 +101,8 @@
         <activity android:name=".ui.activity.JNIActivity" />
         <activity android:name=".ui.activity.RuntimeAnnotationActivity" />
         <activity android:name=".ui.activity.CompileAnnotationActivity" />
-        <activity android:name=".ui.activity.TextFormatActivity"></activity>
+        <activity android:name=".ui.activity.TextFormatActivity" />
+        <activity android:name=".ui.activity.HoverRecyclerViewActivity"></activity>
     </application>
 
 </manifest>

@@ -62,7 +62,7 @@ public class TextFormatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_format);
         ButterKnife.bind(this);
-        text = text.replace("\t", "\t\t\t\t");
+        text = text.replace("\t", "\t\t");
         tvFormat.setText(text);
     }
 

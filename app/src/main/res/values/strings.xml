@@ -50,4 +50,5 @@
     <string name="item_jni">jni</string>
     <string name="item_annotation_runtime">运行时注解</string>
     <string name="item_annotation_compile">编译时注解</string>
+    <string name="item_recycler_hover">分组悬停</string>
 </resources>
