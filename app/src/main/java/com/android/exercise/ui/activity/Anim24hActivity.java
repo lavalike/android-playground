@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.wangzhen.statusbar.DarkStatusBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,8 +75,8 @@ public class Anim24hActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anim24h);
-        setStatusBarMode(true);
         ButterKnife.bind(this);
+        DarkStatusBar.get().fitDark(this);
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.ui.widget.PageSwitchView;
 import com.android.exercise.util.UIUtils;
+import com.wangzhen.statusbar.DarkStatusBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +27,7 @@ public class PageSwitchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_switch);
         ButterKnife.bind(this);
-        setStatusBarMode(true);
+        DarkStatusBar.get().fitDark(this);
     }
 
     @Override

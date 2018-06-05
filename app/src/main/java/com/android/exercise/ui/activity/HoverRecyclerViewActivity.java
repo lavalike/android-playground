@@ -40,7 +40,7 @@ public class HoverRecyclerViewActivity extends BaseActivity implements HoverDeco
         recyclerView.addItemDecoration(hoverDecoration);
 
         list = new ArrayList<>();
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 110; i++) {
             list.add(i);
         }
         HoverAdapter adapter = new HoverAdapter(this, list);

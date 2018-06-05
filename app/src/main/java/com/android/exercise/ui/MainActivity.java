@@ -49,6 +49,7 @@ import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.TextFormatActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
+import com.android.exercise.ui.activity.TikTokActivity;
 import com.android.exercise.ui.activity.ViewActivity;
 import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.WaveActivity;
@@ -124,6 +125,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_hover), HoverRecyclerViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));
         mList.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
