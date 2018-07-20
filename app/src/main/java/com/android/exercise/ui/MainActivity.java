@@ -46,6 +46,7 @@ import com.android.exercise.ui.activity.RuntimeAnnotationActivity;
 import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.ScrollActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
+import com.android.exercise.ui.activity.StateButtonActivity;
 import com.android.exercise.ui.activity.TextFormatActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
@@ -125,6 +126,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_state_button), StateButtonActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_hover), HoverRecyclerViewActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));

@@ -103,7 +103,8 @@
         <activity android:name=".ui.activity.CompileAnnotationActivity" />
         <activity android:name=".ui.activity.TextFormatActivity" />
         <activity android:name=".ui.activity.HoverRecyclerViewActivity" />
-        <activity android:name=".ui.activity.TikTokActivity"></activity>
+        <activity android:name=".ui.activity.TikTokActivity" />
+        <activity android:name=".ui.activity.StateButtonActivity"></activity>
     </application>
 
 </manifest>

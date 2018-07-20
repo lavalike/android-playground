@@ -68,4 +68,17 @@
         <attr name="psv_color" format="reference" />
         <attr name="psv_duration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="StateButton">
+        <attr name="sb_text_normal" format="string" />
+        <attr name="sb_text_loading" format="string" />
+        <attr name="sb_text_success" format="string" />
+        <attr name="sb_text_color" format="color" />
+        <attr name="sb_text_size" format="dimension" />
+        <attr name="sb_text_icon_padding" format="dimension" />
+        <attr name="sb_icon_width" format="dimension" />
+        <attr name="sb_icon_height" format="dimension" />
+        <attr name="sb_icon_color" format="color" />
+        <attr name="sb_icon_stroke_width" format="dimension" />
+    </declare-styleable>
 </resources>

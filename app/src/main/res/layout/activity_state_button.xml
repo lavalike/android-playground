@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.activity.StateButtonActivity">
+
+    <com.android.exercise.ui.widget.StateButton
+        android:id="@+id/btn_state"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_state_button"
+        app:sb_icon_color="#3b424c"
+        app:sb_icon_height="20dp"
+        app:sb_icon_stroke_width="1dp"
+        app:sb_icon_width="20dp"
+        app:sb_text_color="#3b424c"
+        app:sb_text_icon_padding="8dp"
+        app:sb_text_loading="正在登录"
+        app:sb_text_normal="登录"
+        app:sb_text_success="登录成功" />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重置" />
+
+    <Button
+        android:id="@+id/btn_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始加载" />
+
+    <Button
+        android:id="@+id/btn_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载成功" />
+
+</LinearLayout>

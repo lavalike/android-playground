@@ -52,4 +52,5 @@
     <string name="item_annotation_compile">编译时注解</string>
     <string name="item_recycler_hover">分组悬停</string>
     <string name="item_recycler_tik_tok">抖音</string>
+    <string name="item_state_button">状态按钮</string>
 </resources>
