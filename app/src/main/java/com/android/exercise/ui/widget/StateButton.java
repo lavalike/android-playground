@@ -1,6 +1,7 @@
 package com.android.exercise.ui.widget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ public class StateButton extends LinearLayout {
     private float iconTextPadding;
     private int iconColor;
     private float iconStrokeWidth;
+    private ColorStateList textColorStateList;
 
     public StateButton(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -49,8 +51,9 @@ public class StateButton extends LinearLayout {
         textNormal = typedArray.getString(R.styleable.StateButton_sb_text_normal);
         textLoading = typedArray.getString(R.styleable.StateButton_sb_text_loading);
         textSuccess = typedArray.getString(R.styleable.StateButton_sb_text_success);
-        textSize = typedArray.getDimensionPixelSize(R.styleable.StateButton_sb_text_size, DEFAULT_TEXT_SIZE);
+        textSize = typedArray.getInteger(R.styleable.StateButton_sb_text_size, DEFAULT_TEXT_SIZE);
         textColor = typedArray.getColor(R.styleable.StateButton_sb_text_color, Color.BLACK);
+        textColorStateList = typedArray.getColorStateList(R.styleable.StateButton_sb_text_color_state_list);
         iconWidth = typedArray.getDimensionPixelSize(R.styleable.StateButton_sb_icon_width, DEFAULT_ICON_WIDTH);
         iconHeight = typedArray.getDimensionPixelSize(R.styleable.StateButton_sb_icon_width, DEFAULT_ICON_HEIGHT);
         iconTextPadding = typedArray.getDimensionPixelSize(R.styleable.StateButton_sb_text_icon_padding, 0);
@@ -65,7 +68,6 @@ public class StateButton extends LinearLayout {
     private void init() {
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER);
-        setClickable(false);
 
         stateProgress = new StateProgress(getContext());
         stateProgress.setPaintColor(iconColor);
@@ -75,6 +77,8 @@ public class StateButton extends LinearLayout {
         textView = new TextView(getContext());
         textView.setTextSize(textSize);
         textView.setTextColor(textColor);
+        if (textColorStateList != null)
+            textView.setTextColor(textColorStateList);
         textView.setText(textNormal);
 
         MarginLayoutParams marginLayoutParams = new MarginLayoutParams(iconWidth, iconHeight);
@@ -97,10 +101,17 @@ public class StateButton extends LinearLayout {
     }
 
     public void success() {
-        setClickable(true);
+        setClickable(false);
         stateProgress.setVisibility(View.VISIBLE);
         stateProgress.success();
         textView.setText(textSuccess);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (textView != null)
+            textView.setEnabled(enabled);
     }
 
     private int dip2px(float dipValue) {

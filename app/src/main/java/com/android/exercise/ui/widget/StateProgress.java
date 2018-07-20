@@ -1,5 +1,7 @@
 package com.android.exercise.ui.widget;
 
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,9 +12,6 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.android.exercise.ui.widget.nineoldandroids.animation.AnimatorSet;
-import com.android.exercise.ui.widget.nineoldandroids.animation.ValueAnimator;
 
 public class StateProgress extends View {
     private int minWidth = dip2px(50);
@@ -197,17 +196,17 @@ public class StateProgress extends View {
         reset();
         mState = StateEnum.Success;
         ValueAnimator circleAnimator = ValueAnimator.ofFloat(0f, 1f);
-        circleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        circleAnimator.addUpdateListener(new android.animation.ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
+            public void onAnimationUpdate(android.animation.ValueAnimator animation) {
                 circleProgress = (float) animation.getAnimatedValue();
                 invalidate();
             }
         });
         ValueAnimator checkMarkAnimator = ValueAnimator.ofFloat(0f, 1f);
-        checkMarkAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        checkMarkAnimator.addUpdateListener(new android.animation.ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
+            public void onAnimationUpdate(android.animation.ValueAnimator animation) {
                 checkMarkProgress = (float) animation.getAnimatedValue();
                 invalidate();
             }

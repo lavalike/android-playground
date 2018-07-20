@@ -74,7 +74,8 @@
         <attr name="sb_text_loading" format="string" />
         <attr name="sb_text_success" format="string" />
         <attr name="sb_text_color" format="color" />
-        <attr name="sb_text_size" format="dimension" />
+        <attr name="sb_text_color_state_list" format="reference" />
+        <attr name="sb_text_size" format="integer" />
         <attr name="sb_text_icon_padding" format="dimension" />
         <attr name="sb_icon_width" format="dimension" />
         <attr name="sb_icon_height" format="dimension" />
