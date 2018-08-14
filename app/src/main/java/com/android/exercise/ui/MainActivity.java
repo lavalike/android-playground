@@ -126,6 +126,8 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
+        mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
         mList.add(new ItemBean(getString(R.string.item_state_button), StateButtonActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity.class));
         mList.add(new ItemBean(getString(R.string.item_recycler_hover), HoverRecyclerViewActivity.class));
@@ -149,8 +151,6 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
         mList.add(new ItemBean("注解"));
         mList.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));

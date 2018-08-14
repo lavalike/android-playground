@@ -3,11 +3,15 @@ package com.android.exercise.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.ui.widget.FeedForegroundColorSpan;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +60,8 @@ public class TextFormatActivity extends BaseActivity {
             "\n";
     @BindView(R.id.tv_format)
     TextView tvFormat;
+    @BindView(R.id.tv_rich)
+    TextView tvRich;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,22 @@ public class TextFormatActivity extends BaseActivity {
         ButterKnife.bind(this);
         text = text.replace("\t", "\t\t");
         tvFormat.setText(text);
+        tvRich.setText(appendFeedSource("那些回不去的年少时光", "美丽的女子令人喜欢，坚强的女子令人敬重，当一个女子既美丽又坚强时，她将无往不胜。"));
+    }
+
+    private Spannable appendFeedSource(String source, String text) {
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        int start = builder.length();
+        builder.append("//");
+        builder.append("@");
+        builder.append(source);
+        builder.append("：");
+        int end = builder.length();
+        builder.append(text);
+        //改变文本颜色
+        ForegroundColorSpan foregroundColorSpan = new FeedForegroundColorSpan(R.color.color_00B2EE);
+        builder.setSpan(foregroundColorSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        return builder;
     }
 
     @Override
