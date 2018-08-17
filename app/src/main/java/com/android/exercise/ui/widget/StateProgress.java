@@ -102,9 +102,10 @@ public class StateProgress extends View {
         pathMeasure.getSegment(0, circleProgress * pathMeasure.getLength(), mPathCircleDst, true);
         canvas.drawPath(mPathCircleDst, paint);
         if (circleProgress == 1) {
-            pathCheckMark.moveTo(mWidth / 8 * 3, mWidth / 2);
-            pathCheckMark.lineTo(mWidth / 2, mWidth / 5 * 3);
-            pathCheckMark.lineTo(mWidth / 3 * 2, mWidth / 5 * 2);
+            pathCheckMark.moveTo(mWidth / 20 * 6, mWidth / 20 * 10);
+            pathCheckMark.lineTo(mWidth / 20 * 9, mWidth / 20 * 13);
+            pathCheckMark.lineTo(mWidth / 20 * 14, mWidth / 20 * 7);
+
             pathMeasure.nextContour();
             pathMeasure.setPath(pathCheckMark, false);
             pathMeasure.getSegment(0, checkMarkProgress * pathMeasure.getLength(), mPathCircleDst, true);

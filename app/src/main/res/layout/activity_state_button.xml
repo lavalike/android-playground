@@ -16,7 +16,7 @@
         android:background="@drawable/bg_state_button"
         app:sb_icon_color="#3b424c"
         app:sb_icon_height="20dp"
-        app:sb_icon_stroke_width="1dp"
+        app:sb_icon_stroke_width="1.5dp"
         app:sb_icon_width="20dp"
         app:sb_text_color="#3b424c"
         app:sb_text_icon_padding="8dp"

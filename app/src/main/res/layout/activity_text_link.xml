@@ -14,4 +14,9 @@
         android:layout_height="wrap_content"
         app:linkColor="@android:color/holo_red_dark" />
 
+    <ImageView
+        android:id="@+id/iv_gif"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+
 </LinearLayout>
