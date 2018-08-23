@@ -107,6 +107,10 @@ public class StateButton extends LinearLayout {
         textView.setText(textSuccess);
     }
 
+    public void setText(String text) {
+        textView.setText(text);
+    }
+
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
