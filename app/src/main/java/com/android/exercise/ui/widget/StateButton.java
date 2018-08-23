@@ -81,9 +81,9 @@ public class StateButton extends LinearLayout {
             textView.setTextColor(textColorStateList);
         textView.setText(textNormal);
 
-        MarginLayoutParams marginLayoutParams = new MarginLayoutParams(iconWidth, iconHeight);
-        marginLayoutParams.rightMargin = (int) iconTextPadding;
-        addView(stateProgress, marginLayoutParams);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(iconWidth, iconHeight);
+        layoutParams.setMargins(0, 0, (int) iconTextPadding, 0);
+        addView(stateProgress, layoutParams);
         addView(textView);
     }
 

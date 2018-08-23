@@ -17,7 +17,7 @@ public class StateProgress extends View {
     private int minWidth = dip2px(50);
     private int minHeight = dip2px(50);
     private Paint paint;
-    private float strokeWidth = dip2px(1);
+    private float strokeWidth = dip2px(1f);
     private int paintColor = Color.BLACK;
     private float mRadius;
     private int mWidth;
@@ -80,8 +80,8 @@ public class StateProgress extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
-        mRadius = mWidth / 2 - strokeWidth;
-        arcRectF = new RectF(strokeWidth / 2f, strokeWidth / 2f, mWidth - strokeWidth / 2f, mHeight - strokeWidth / 2f);
+        mRadius = mWidth / 2f - strokeWidth;
+        arcRectF = new RectF(strokeWidth, strokeWidth, mWidth - strokeWidth, mHeight - strokeWidth);
     }
 
     @Override
@@ -102,9 +102,17 @@ public class StateProgress extends View {
         pathMeasure.getSegment(0, circleProgress * pathMeasure.getLength(), mPathCircleDst, true);
         canvas.drawPath(mPathCircleDst, paint);
         if (circleProgress == 1) {
-            pathCheckMark.moveTo(mWidth / 20 * 6, mWidth / 20 * 10);
-            pathCheckMark.lineTo(mWidth / 20 * 9, mWidth / 20 * 13);
-            pathCheckMark.lineTo(mWidth / 20 * 14, mWidth / 20 * 7);
+            float x = mWidth * 1f / 20 * 6;
+            float y = mWidth * 1f / 20 * 10;
+            pathCheckMark.moveTo(x, y);
+
+            x = mWidth * 1f / 20 * 9;
+            y = mWidth * 1f / 20 * 13;
+            pathCheckMark.lineTo(x, y);
+
+            x = mWidth * 1f / 20 * 14;
+            y = mWidth * 1f / 20 * 7;
+            pathCheckMark.lineTo(x, y);
 
             pathMeasure.nextContour();
             pathMeasure.setPath(pathCheckMark, false);
