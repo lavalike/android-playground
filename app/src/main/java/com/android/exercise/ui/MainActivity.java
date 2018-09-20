@@ -13,6 +13,7 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
+import com.android.exercise.domain.NotificationBean;
 import com.android.exercise.ui.activity.ADWindowActivity;
 import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
@@ -31,8 +32,8 @@ import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.FrameAnimationActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.HoverRecyclerViewActivity;
-import com.android.exercise.ui.activity.JNIActivity;
 import com.android.exercise.ui.activity.MinaActivity;
+import com.android.exercise.ui.activity.NotificationActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.PageSwitchActivity;
 import com.android.exercise.ui.activity.PorterDuffActivity;
@@ -58,8 +59,10 @@ import com.android.exercise.ui.activity.WebActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,8 +85,16 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSwipeBackEnable(false);
+        initPush(getIntent());
         initRecycler();
         initList();
+    }
+
+    private void initPush(Intent intent) {
+        Serializable extra = intent.getSerializableExtra(IKey.PUSH_DATA);
+        if (extra instanceof NotificationBean) {
+            showToast(((NotificationBean) extra).getTitle());
+        }
     }
 
     private void initRecycler() {
@@ -126,6 +137,7 @@ public class MainActivity extends BaseActivity {
     private void initList() {
         mList = new ArrayList<>();
         mList.add(new ItemBean("布局类"));
+        mList.add(new ItemBean(getString(R.string.item_notification), NotificationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
         mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
         mList.add(new ItemBean(getString(R.string.item_state_button), StateButtonActivity.class));
@@ -168,7 +180,6 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean("IPC"));
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         mList.add(new ItemBean("其他"));
-        mList.add(new ItemBean(getString(R.string.item_jni), JNIActivity.class));
         mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
         mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
         mList.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
@@ -187,5 +198,11 @@ public class MainActivity extends BaseActivity {
             }
         });
         recyclerview.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        initPush(intent);
     }
 }

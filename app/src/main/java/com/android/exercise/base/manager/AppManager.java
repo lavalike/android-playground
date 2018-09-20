@@ -80,4 +80,11 @@ public class AppManager {
             mActivityStack.clear();
         }
     }
+
+    public int getCount() {
+        if (mActivityStack != null) {
+            return mActivityStack.size();
+        }
+        return 0;
+    }
 }

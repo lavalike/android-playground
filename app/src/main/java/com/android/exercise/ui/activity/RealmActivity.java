@@ -75,7 +75,7 @@ public class RealmActivity extends BaseActivity {
                     public void onChange(RealmResults<User> element) {
                         List<User> list = mRealm.copyFromRealm(element);
                         T.get(mContext).toast("异步查询共" + list.size() + "条");
-                        allAsync.removeChangeListeners();
+                        allAsync.removeAllChangeListeners();
                     }
                 });
                 break;
