@@ -25,6 +25,7 @@ import butterknife.OnClick;
 public class NotificationActivity extends BaseActivity {
 
     private INotification notification;
+    private int notifyId = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +40,47 @@ public class NotificationActivity extends BaseActivity {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_notification));
     }
 
-    @OnClick({R.id.btn_send_normal, R.id.btn_send_custom})
+    @OnClick({R.id.btn_send_normal, R.id.btn_send_custom, R.id.btn_send_big_text, R.id.btn_send_inbox, R.id.btn_send_big_picture})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_send_normal:
                 sendNormal();
                 break;
             case R.id.btn_send_custom:
-                sendCustom();
+                sendCustomLayout();
+                break;
+            case R.id.btn_send_big_text:
+                sendBigTextStyle();
+                break;
+            case R.id.btn_send_inbox:
+                sendInboxStyle();
+                break;
+            case R.id.btn_send_big_picture:
+                sendBigPictureStyle();
                 break;
         }
     }
 
-    private void sendCustom() {
+    private void sendBigPictureStyle() {
+        notification.createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID);
+        builder.setWhen(System.currentTimeMillis())
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                .setOngoing(false)
+                .setSmallIcon(R.mipmap.ic_burger)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
+                .setAutoCancel(true)
+                .setContentTitle("慕课网是什么MOOC")
+                .setContentText("专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。");
+        NotificationCompat.BigPictureStyle style = new NotificationCompat.BigPictureStyle();
+        style.bigPicture(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_5));
+        builder.setStyle(style);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        notification.getNotificationManager().notify(notifyId++, builder.build());
+    }
+
+    private void sendInboxStyle() {
         notification.createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID);
         builder.setWhen(System.currentTimeMillis())
@@ -60,11 +89,55 @@ public class NotificationActivity extends BaseActivity {
                 .setSmallIcon(R.mipmap.ic_burger)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
                 .setAutoCancel(true);
-        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notification_custom);
-        builder.setContent(remoteViews);
+        NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
+        style.setBigContentTitle("慕课网是什么MOOC")
+                .addLine("第二行")
+                .addLine("第三行")
+                .addLine("第四行")
+                .addLine("第五行")
+                .addLine("第六行")
+                .addLine("第七行")
+                .addLine("第八行");
+        builder.setStyle(style);
+        builder.setContentText("专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(pendingIntent);
-        notification.getNotificationManager().notify(100, builder.build());
+        notification.getNotificationManager().notify(notifyId++, builder.build());
+    }
+
+    private void sendBigTextStyle() {
+        notification.createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID);
+        builder.setWhen(System.currentTimeMillis())
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                .setOngoing(false)
+                .setSmallIcon(R.mipmap.ic_burger)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
+                .setAutoCancel(true)
+                .setContentTitle("慕课网是什么MOOC")
+                .setContentText("专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。");
+        builder.setStyle(new NotificationCompat.BigTextStyle());
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        notification.getNotificationManager().notify(notifyId++, builder.build());
+    }
+
+    private void sendCustomLayout() {
+        notification.createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID);
+        builder.setWhen(System.currentTimeMillis())
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                .setOngoing(false)
+                .setSmallIcon(R.mipmap.ic_burger)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
+                .setAutoCancel(true)
+                .setContentTitle("自定义布局title")
+                .setContentText("自定义布局text");
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notification_custom);
+        builder.setCustomBigContentView(remoteViews);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        notification.getNotificationManager().notify(notifyId++, builder.build());
     }
 
     private void sendNormal() {

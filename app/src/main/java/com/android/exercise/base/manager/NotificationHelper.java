@@ -72,7 +72,7 @@ public class NotificationHelper implements INotification {
      */
     private Notification createNotification(NotificationBean data) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
-        builder.setContentIntent(getDefaultIntent(data))
+        builder.setContentIntent(getBroadcastIntent(data))
                 .setWhen(System.currentTimeMillis())
                 .setPriority(Notification.PRIORITY_DEFAULT)
                 .setOngoing(false)
@@ -106,13 +106,13 @@ public class NotificationHelper implements INotification {
     }
 
     /**
-     * 获取通知栏点击意图
+     * 获取通知栏点击意图，使用广播
      * 1、当前App在运行，直接打开详情页
      * 2、当前App不在运行，开启MainActivity并携带数据，在其生命周期中开启对应的Activity
      *
      * @param action action
      */
-    private PendingIntent getDefaultIntent(NotificationBean action) {
+    private PendingIntent getBroadcastIntent(NotificationBean action) {
         Intent intent = new Intent(context, NotifyPushReceiver.class);
         intent.setAction(NotifyPushReceiver.ACTION);
         intent.putExtra(IKey.PUSH_DATA, action);

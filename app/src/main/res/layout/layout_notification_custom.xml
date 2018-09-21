@@ -4,19 +4,126 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自定义通知" />
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="自定义通知" />-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自定义通知2" />
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="自定义通知2" />-->
 
-    <Button
-        android:layout_width="wrap_content"
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="自定义通知3" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="自定义通知3" />
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!--头像、栏目名称等其他信息-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_item_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_burger" />
+
+            <TextView
+                android:id="@+id/tv_item_column_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/iv_item_avatar"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="栏目标题"
+                android:textColor="#3b424c"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <!--配图-->
+            <FrameLayout
+                android:id="@+id/layout_single_picture"
+                android:layout_width="145dp"
+                android:layout_height="104dp"
+                android:layout_marginRight="15dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/iv_item_single_pic"
+                    android:layout_width="145dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorPrimary" />
+            </FrameLayout>
+
+            <!--稿件信息-->
+            <!--正文-->
+            <TextView
+                android:id="@+id/tv_item_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/layout_single_picture"
+                android:layout_toEndOf="@+id/layout_single_picture"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="3"
+                android:text="婚纱照一辈子就一次，就应该多看看，选择适合自己的，也不能太大众化的，我的婚纱照就是在南城的星缘视觉拍的，蛮不错，婚纱照一辈子就一次，就应该多看看，选择适合自己的，也不能太大众化的，我的婚纱照就是在南城的星缘视觉拍的，蛮不错"
+                android:textColor="#3b424c"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/layout_other_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/layout_single_picture"
+                android:layout_toEndOf="@+id/layout_single_picture">
+
+                <TextView
+                    android:id="@+id/tv_item_read_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:ellipsize="end"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:text="1089阅读"
+                    android:textColor="#a0a4a9"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/iv_item_more"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/ic_burger" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
