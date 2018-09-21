@@ -23,10 +23,10 @@ import com.android.exercise.util.IKey;
  * Created by wangzhen on 2018/9/19.
  */
 public class NotificationHelper implements INotification {
-    private static NotificationHelper mInstance;
+    private static INotification mInstance;
     private static int notify_id = 0;
-    private static final String CHANNEL_ID = "channel_id_24h";
-    private static final String CHANNEL_NAME = "浙江24小时";
+    public static final String CHANNEL_ID = "channel_id_24h";
+    public static final String CHANNEL_NAME = "浙江24小时";
     private static final long NO_DISTURBING = 1500; // 免打扰间隔时间
     private static long mLastNotifyTime;
     private static NotificationManager notificationManager;
@@ -55,6 +55,7 @@ public class NotificationHelper implements INotification {
     @Override
     public void send(NotificationBean data) {
         if (data != null) {
+            createNotificationChannel();
             Notification notification = createNotification(data);
             if (notification != null) {
                 mLastNotifyTime = SystemClock.uptimeMillis();
@@ -70,19 +71,8 @@ public class NotificationHelper implements INotification {
      * @return Notification
      */
     private Notification createNotification(NotificationBean data) {
-        PendingIntent intent = getDefaultIntent(data);
-        if (intent == null) return null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-            channel.enableLights(true);
-            channel.setShowBadge(true);
-            channel.enableVibration(true);
-            channel.setLightColor(Color.YELLOW);
-            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-            getNotificationManager().createNotificationChannel(channel);
-        }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
-        builder.setContentIntent(intent)
+        builder.setContentIntent(getDefaultIntent(data))
                 .setWhen(System.currentTimeMillis())
                 .setPriority(Notification.PRIORITY_DEFAULT)
                 .setOngoing(false)
@@ -97,6 +87,22 @@ public class NotificationHelper implements INotification {
             builder.setDefaults(Notification.DEFAULT_ALL);
         }
         return builder.build();
+    }
+
+    /**
+     * 创建NotificationChannel
+     */
+    @Override
+    public void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.enableLights(true);
+            channel.setShowBadge(true);
+            channel.enableVibration(true);
+            channel.setLightColor(Color.YELLOW);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+            getNotificationManager().createNotificationChannel(channel);
+        }
     }
 
     /**
@@ -119,7 +125,8 @@ public class NotificationHelper implements INotification {
      *
      * @return NotificationManager
      */
-    private NotificationManager getNotificationManager() {
+    @Override
+    public NotificationManager getNotificationManager() {
         if (notificationManager == null) {
             notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         }

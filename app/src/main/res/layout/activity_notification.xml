@@ -16,6 +16,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="普通通知" />
+
+        <Button
+            android:id="@+id/btn_send_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义通知" />
     </LinearLayout>
 
 </LinearLayout>
