@@ -1,5 +1,7 @@
 package com.android.exercise.domain;
 
+import android.support.v4.app.NotificationCompat;
+
 import java.io.Serializable;
 
 /**
@@ -20,6 +22,12 @@ public class NotificationBean implements Serializable {
     private String summary;
     private int metaDataId;//媒立方稿件ID
     private int pushInfoId;//推送消息ID	用于网脉统计
+    /**
+     * BigTextStyle样式
+     *
+     * @see NotificationCompat.BigTextStyle
+     */
+    private boolean bigTextStyle;
 
     NotificationBean(Builder builder) {
         this.messageType = builder.messageType;
@@ -31,6 +39,7 @@ public class NotificationBean implements Serializable {
         this.summary = builder.summary;
         this.metaDataId = builder.metaDataId;
         this.pushInfoId = builder.pushInfoId;
+        this.bigTextStyle = builder.bigTextStyle;
     }
 
     public int getMetaDataId() {
@@ -105,6 +114,14 @@ public class NotificationBean implements Serializable {
         this.pushInfoId = pushInfoId;
     }
 
+    public boolean isBigTextStyle() {
+        return bigTextStyle;
+    }
+
+    public void setBigTextStyle(boolean bigTextStyle) {
+        this.bigTextStyle = bigTextStyle;
+    }
+
     public static class Builder {
         private int messageType;
         private int articleId;
@@ -115,6 +132,7 @@ public class NotificationBean implements Serializable {
         private String summary;
         private int metaDataId;
         private int pushInfoId;
+        private boolean bigTextStyle = false;
 
         public Builder setMessageType(int messageType) {
             this.messageType = messageType;
@@ -158,6 +176,11 @@ public class NotificationBean implements Serializable {
 
         public Builder setPushInfoId(int pushInfoId) {
             this.pushInfoId = pushInfoId;
+            return this;
+        }
+
+        public Builder setBigTextStyle(boolean bigTextStyle) {
+            this.bigTextStyle = bigTextStyle;
             return this;
         }
 

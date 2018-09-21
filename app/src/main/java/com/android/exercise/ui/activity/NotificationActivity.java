@@ -40,7 +40,7 @@ public class NotificationActivity extends BaseActivity {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_notification));
     }
 
-    @OnClick({R.id.btn_send_normal, R.id.btn_send_custom, R.id.btn_send_big_text, R.id.btn_send_inbox, R.id.btn_send_big_picture})
+    @OnClick({R.id.btn_send_normal, R.id.btn_send_custom, R.id.btn_send_big_text, R.id.btn_send_inbox, R.id.btn_send_big_picture, R.id.btn_delete})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_send_normal:
@@ -58,6 +58,10 @@ public class NotificationActivity extends BaseActivity {
             case R.id.btn_send_big_picture:
                 sendBigPictureStyle();
                 break;
+            case R.id.btn_delete:
+//                notification.getNotificationManager().cancelAll();
+                notification.getNotificationManager().cancel(--notifyId);
+                break;
         }
     }
 
@@ -70,8 +74,8 @@ public class NotificationActivity extends BaseActivity {
                 .setSmallIcon(R.mipmap.ic_burger)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
                 .setAutoCancel(true)
-                .setContentTitle("慕课网是什么MOOC")
-                .setContentText("专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。");
+                .setContentTitle("看完这篇文章，你的Linux基础就差不多了")
+                .setContentText("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层");
         NotificationCompat.BigPictureStyle style = new NotificationCompat.BigPictureStyle();
         style.bigPicture(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_5));
         builder.setStyle(style);
@@ -90,7 +94,7 @@ public class NotificationActivity extends BaseActivity {
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
                 .setAutoCancel(true);
         NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
-        style.setBigContentTitle("慕课网是什么MOOC")
+        style.setBigContentTitle("看完这篇文章，你的Linux基础就差不多了")
                 .addLine("第二行")
                 .addLine("第三行")
                 .addLine("第四行")
@@ -99,7 +103,7 @@ public class NotificationActivity extends BaseActivity {
                 .addLine("第七行")
                 .addLine("第八行");
         builder.setStyle(style);
-        builder.setContentText("专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。");
+        builder.setContentText("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(pendingIntent);
         notification.getNotificationManager().notify(notifyId++, builder.build());
@@ -114,8 +118,8 @@ public class NotificationActivity extends BaseActivity {
                 .setSmallIcon(R.mipmap.ic_burger)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger))
                 .setAutoCancel(true)
-                .setContentTitle("慕课网是什么MOOC")
-                .setContentText("专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。专注做好IT技能教育的MOOC，符合互联网发展潮流接地气儿的MOOC。我们免费，我们只教有用的，我们专心做教育。");
+                .setContentTitle("看完这篇文章，你的Linux基础就差不多了")
+                .setContentText("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层");
         builder.setStyle(new NotificationCompat.BigTextStyle());
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(pendingIntent);

@@ -81,6 +81,9 @@ public class NotificationHelper implements INotification {
                 .setAutoCancel(true)
                 .setContentTitle(data.getTitle())
                 .setContentText(data.getSummary());
+        if (data.isBigTextStyle()) {
+            builder.setStyle(new NotificationCompat.BigTextStyle());
+        }
         if (SystemClock.uptimeMillis() - mLastNotifyTime < NO_DISTURBING) {
             builder.setDefaults(Notification.DEFAULT_LIGHTS);
         } else {
