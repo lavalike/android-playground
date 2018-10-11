@@ -111,7 +111,17 @@
         <activity android:name=".ui.activity.HoverRecyclerViewActivity" />
         <activity android:name=".ui.activity.TikTokActivity" />
         <activity android:name=".ui.activity.StateButtonActivity" />
-        <activity android:name=".ui.activity.NotificationActivity"></activity>
+        <activity android:name=".ui.activity.NotificationActivity" />
+
+        <receiver android:name=".NewAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/new_app_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
