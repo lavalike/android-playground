@@ -1,0 +1,5 @@
+使用Buffer读写数据一般遵循以下四个步骤：
+写入数据到Buffer
+调用flip()方法
+从Buffer中读取数据
+调用clear()方法或者compact()方法
