@@ -122,6 +122,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/new_app_widget_info" />
         </receiver>
+
+        <activity android:name=".ui.activity.InvokeAppActivity" />
+        <activity android:name=".ui.activity.JniActivity"></activity>
     </application>
 
 </manifest>

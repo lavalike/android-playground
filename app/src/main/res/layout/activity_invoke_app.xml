@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.InvokeAppActivity">
+
+    <EditText
+        android:id="@+id/input_intent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:padding="16dp"
+        android:text="intent:#Intent;action=com.cmstop.qiwb.manufacturer.push;package=com.cmstop.qjwb;component=com.cmstop.qjwb/com.zbjt.zj24h.ui.activity.push.ManufacturerPushActivity;S.payload_key=HLoD5M90QAuEa7diYtOVhe6nJu35a/tGx9e9LV0JME3cfkF8OjD+S/zynataEqazU8sjr7F02yo9hxDyU1oXQ27VPFCs8T4d/+M5nCMDEfxyjYZ/Xya1XVh7sJ9vf13LAS/naQpQhseiuReK1sfxXgzG2o1F1UMPOJWt/awgn0ICizAz1frGEke6U7KdyrrkjfJlgt1rra/ZqKHO3FwZHvCQ/GdB8CnOi+WhmkqprlyKbr3ey55roEhX6CrMQoXyFgMoMwKYp8ymxTC1UpXDRvkTi23eQJSHYI8a5Fj7c7pWOEemY44PZduBbu0HRIIXG52VitcwoVY088m9BiQQ5ev8/FkdnEayQNAIuZw3JYpthZEdGzL/6O6M/UtlVE1CcgeFqGBJsyA7k8xxIhJLC36RqTIjyQ45WoouRvdrp8JwjyN/JN6J92e+FBCga36obziySv64GpbBHOfhEN67Zw==;end" />
+
+    <Button
+        android:id="@+id/btn_invoke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开" />
+</LinearLayout>
