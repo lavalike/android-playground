@@ -22,7 +22,7 @@ public class TitleViewHolder extends BaseViewHolder<TitleBean> {
 
     @Override
     protected void bindData() {
-        tv_title.setText(data.getTitle() + "▼");
+        tv_title.setText(data.getTitle());
     }
 
 }

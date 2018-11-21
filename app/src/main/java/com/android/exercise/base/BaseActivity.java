@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.util.PermissionManager;
+import com.wangzhen.statusbar.DarkStatusBar;
 
 /**
  * Activity基类
@@ -42,6 +43,13 @@ public class BaseActivity extends ToolbarActivity implements PermissionManager.O
 
     protected void logD(String msg) {
         Log.d(TAG, msg);
+    }
+
+    public void fitDarkStatus(boolean isDark) {
+        if (isDark)
+            DarkStatusBar.get().fitDark(this);
+        else
+            DarkStatusBar.get().fitLight(this);
     }
 
     @Override
