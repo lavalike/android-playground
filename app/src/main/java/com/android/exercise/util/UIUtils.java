@@ -2,6 +2,9 @@ package com.android.exercise.util;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import java.lang.reflect.Field;
@@ -103,4 +106,7 @@ public class UIUtils {
         return sbar;
     }
 
+    public static View inflate(int resourceId, ViewGroup parent, boolean attachToRoot) {
+        return LayoutInflater.from(parent.getContext()).inflate(resourceId, parent, attachToRoot);
+    }
 }

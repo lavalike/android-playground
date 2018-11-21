@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.android.exercise.R;
 import com.android.exercise.listener.ITouchCallback;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,12 +33,6 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
     }
 
     @Override
-    public void onMyBindViewHolder(TouchViewHolder holder, int position) {
-        String value = mDatas.get(position);
-        holder.tvTouch.setText(value);
-    }
-
-    @Override
     public boolean onMove(int fromPosition, int toPosition) {
         if (toPosition == 0) return false;
         Collections.swap(mDatas, fromPosition, toPosition);
@@ -57,7 +52,7 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
         viewHolder.itemView.animate().scaleX(1).scaleY(1).start();
     }
 
-    class TouchViewHolder extends RecyclerView.ViewHolder {
+    class TouchViewHolder extends BaseViewHolder<String> {
 
         @BindView(R.id.tv_touch)
         public TextView tvTouch;
@@ -65,6 +60,11 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
         public TouchViewHolder(ViewGroup parent) {
             super(mInflater.inflate(R.layout.item_touch_layout, parent, false));
             ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        protected void bindData() {
+            tvTouch.setText(data);
         }
     }
 }

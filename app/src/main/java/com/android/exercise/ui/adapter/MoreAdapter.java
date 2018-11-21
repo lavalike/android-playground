@@ -1,13 +1,12 @@
 package com.android.exercise.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 
 import java.util.List;
 
@@ -27,24 +26,22 @@ public class MoreAdapter extends BaseRecyclerAdapter<String, MoreAdapter.MoreVie
 
     @Override
     public MoreViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_1, null);
-        return new MoreViewHolder(view);
+        return new MoreViewHolder(parent);
     }
 
-    @Override
-    public void onMyBindViewHolder(MoreViewHolder holder, int position) {
-        String item = mDatas.get(position);
-        holder.tv.setText(item);
-    }
-
-    public class MoreViewHolder extends RecyclerView.ViewHolder {
+    public class MoreViewHolder extends BaseViewHolder<String> {
 
         @BindView(android.R.id.text1)
         TextView tv;
 
-        public MoreViewHolder(View itemView) {
-            super(itemView);
+        public MoreViewHolder(ViewGroup parent) {
+            super(LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_1, null));
             ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        protected void bindData() {
+            tv.setText(data);
         }
     }
 }

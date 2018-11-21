@@ -1,7 +1,6 @@
 package com.android.exercise.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import com.android.exercise.R;
 import com.android.exercise.domain.CommentBean;
 import com.android.exercise.ui.widget.FloorView;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,22 +50,11 @@ public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.
     }
 
     @Override
-    public void onMyBindViewHolder(FloorViewHolder holder, int position) {
-        if (floorList == null || floorList.size() == 0) {
-            holder.floorView.setVisibility(View.GONE);
-        } else {
-            holder.floorView.setVisibility(View.VISIBLE);
-            holder.floorView.setItemClickListener(this);
-            holder.floorView.build(floorList);
-        }
-    }
-
-    @Override
     public void onItemClick(CommentBean data) {
         Toast.makeText(mContext, data.getContent(), Toast.LENGTH_SHORT).show();
     }
 
-    class FloorViewHolder extends RecyclerView.ViewHolder {
+    class FloorViewHolder extends BaseViewHolder<CommentBean> {
 
         @BindView(R.id.tv_name)
         TextView tvName;
@@ -79,6 +68,17 @@ public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.
         public FloorViewHolder(ViewGroup parent) {
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment_layout, parent, false));
             ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        protected void bindData() {
+            if (floorList == null || floorList.size() == 0) {
+                floorView.setVisibility(View.GONE);
+            } else {
+                floorView.setVisibility(View.VISIBLE);
+                floorView.setItemClickListener(FloorAdapter.this);
+                floorView.build(floorList);
+            }
         }
     }
 }

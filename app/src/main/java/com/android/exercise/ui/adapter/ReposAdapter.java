@@ -1,9 +1,7 @@
 package com.android.exercise.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +9,7 @@ import android.widget.TextView;
 import com.android.exercise.R;
 import com.android.exercise.domain.GithubBean;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 import com.android.exercise.util.GlideApp;
 
 import java.util.List;
@@ -29,24 +28,11 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.R
     }
 
     @Override
-    public void onMyBindViewHolder(ReposViewHolder holder, int position) {
-        GithubBean bean = mDatas.get(position);
-        holder.tvItemReposName.setText(bean.getName());
-        holder.tvItemReposUrl.setText(bean.getHtml_url());
-        GlideApp.with(mContext)
-                .load(bean.getOwner().getAvatar_url())
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_placeholder)
-                .into(holder.ivItemReposAvatar);
-    }
-
-    @Override
     public ReposViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_repos_layout, parent, false);
-        return new ReposViewHolder(view);
+        return new ReposViewHolder(parent);
     }
 
-    public class ReposViewHolder extends RecyclerView.ViewHolder {
+    public class ReposViewHolder extends BaseViewHolder<GithubBean> {
         @BindView(R.id.iv_item_repos_avatar)
         ImageView ivItemReposAvatar;
         @BindView(R.id.tv_item_repos_name)
@@ -54,9 +40,20 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.R
         @BindView(R.id.tv_item_repos_url)
         TextView tvItemReposUrl;
 
-        public ReposViewHolder(View itemView) {
-            super(itemView);
+        public ReposViewHolder(ViewGroup parent) {
+            super(LayoutInflater.from(mContext).inflate(R.layout.item_repos_layout, parent, false));
             ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        protected void bindData() {
+            tvItemReposName.setText(data.getName());
+            tvItemReposUrl.setText(data.getHtml_url());
+            GlideApp.with(mContext)
+                    .load(data.getOwner().getAvatar_url())
+                    .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_placeholder)
+                    .into(ivItemReposAvatar);
         }
     }
 }

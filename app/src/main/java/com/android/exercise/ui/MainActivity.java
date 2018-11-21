@@ -14,6 +14,7 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.NotificationBean;
+import com.android.exercise.domain.TitleBean;
 import com.android.exercise.ui.activity.ADWindowActivity;
 import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
@@ -79,7 +80,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     private FunctionAdapter mAdapter;
-    private List<ItemBean> mList;
+    private List<Object> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class MainActivity extends BaseActivity {
             public int getSpanSize(int position) {
                 if (mAdapter != null) {
                     int type = mAdapter.getItemViewType(position);
-                    if (type == ItemBean.TYPE_TITLE) {
+                    if (type == FunctionAdapter.TYPE_TITLE) {
                         return manager.getSpanCount();
                     } else {
                         return 1;
@@ -138,7 +139,7 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mList = new ArrayList<>();
-        mList.add(new ItemBean("布局类"));
+        mList.add(new TitleBean("布局类"));
         mList.add(new ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity.class));
         mList.add(new ItemBean(getString(R.string.item_notification), NotificationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
@@ -166,15 +167,15 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
         mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
-        mList.add(new ItemBean("JNI"));
+        mList.add(new TitleBean("JNI"));
         mList.add(new ItemBean(getString(R.string.item_jni), JniActivity.class));
-        mList.add(new ItemBean("注解"));
+        mList.add(new TitleBean("注解"));
         mList.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));
-        mList.add(new ItemBean("动画基础"));
+        mList.add(new TitleBean("动画基础"));
         mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
         mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
-        mList.add(new ItemBean("开源库"));
+        mList.add(new TitleBean("开源库"));
         mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
         mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
         mList.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
@@ -182,20 +183,20 @@ public class MainActivity extends BaseActivity {
         mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
         mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
-        mList.add(new ItemBean("IPC"));
+        mList.add(new TitleBean("IPC"));
         mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
-        mList.add(new ItemBean("其他"));
+        mList.add(new TitleBean("其他"));
         mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
         mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
         mList.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
         mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
         mAdapter = new FunctionAdapter(mContext, mList);
-        mAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<ItemBean>() {
+        mAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<Object>() {
             @Override
-            public void onClick(View view, int position, ItemBean data) {
-                if (mAdapter.getItemViewType(position) == ItemBean.TYPE_ITEM) {
-                    Class<?> targetClass = data.getTargetClass();
+            public void onClick(View view, int position, Object data) {
+                if (mAdapter.getItemViewType(position) == FunctionAdapter.TYPE_ITEM) {
+                    Class<?> targetClass = ((ItemBean) data).getTargetClass();
                     if (targetClass != null) {
                         startActivity(new Intent(mContext, targetClass));
                     }

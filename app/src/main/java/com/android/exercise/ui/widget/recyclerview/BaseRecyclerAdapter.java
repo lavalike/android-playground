@@ -51,7 +51,11 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         setItemEvent(holder, position);
-        onMyBindViewHolder((VH) holder, position);
+        if (!onMyBindViewHolder((VH) holder, position)) {
+            if (holder instanceof BaseViewHolder) {
+                ((BaseViewHolder) holder).setData(mDatas.get(position));
+            }
+        }
     }
 
     @Override
@@ -61,7 +65,9 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
 
     public abstract VH onMyCreateViewHolder(ViewGroup parent, int viewType);
 
-    public abstract void onMyBindViewHolder(VH holder, int position);
+    public boolean onMyBindViewHolder(VH holder, int position) {
+        return false;
+    }
 
     /**
      * 设置item点击事件
