@@ -39,6 +39,7 @@ import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.NotificationActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.PageSwitchActivity;
+import com.android.exercise.ui.activity.PathActivity;
 import com.android.exercise.ui.activity.PorterDuffActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecorderActivity;
@@ -61,7 +62,6 @@ import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WebActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
 
@@ -80,7 +80,6 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     private FunctionAdapter mAdapter;
-    private List<Object> mList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,72 +137,67 @@ public class MainActivity extends BaseActivity {
      * 添加数据
      */
     private void initList() {
-        mList = new ArrayList<>();
-        mList.add(new TitleBean("布局类"));
-        mList.add(new ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_notification), NotificationActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_state_button), StateButtonActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_recycler_hover), HoverRecyclerViewActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_ad_window), ADWindowActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_ice_switch), PageSwitchActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_pull_layout), ElasticActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_scrollview), ScrollActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_floor), FloorActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
-        mList.add(new TitleBean("JNI"));
-        mList.add(new ItemBean(getString(R.string.item_jni), JniActivity.class));
-        mList.add(new TitleBean("注解"));
-        mList.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));
-        mList.add(new TitleBean("动画基础"));
-        mList.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
-        mList.add(new TitleBean("开源库"));
-        mList.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
-        mList.add(new TitleBean("IPC"));
-        mList.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
-        mList.add(new TitleBean("其他"));
-        mList.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
-        mList.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
-        mAdapter = new FunctionAdapter(mContext, mList);
-        mAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<Object>() {
-            @Override
-            public void onClick(View view, int position, Object data) {
-                if (mAdapter.getItemViewType(position) == FunctionAdapter.TYPE_ITEM) {
-                    Class<?> targetClass = ((ItemBean) data).getTargetClass();
-                    if (targetClass != null) {
-                        startActivity(new Intent(mContext, targetClass));
-                    }
-                }
-            }
-        });
+        mAdapter = new FunctionAdapter(mContext, generateList());
         recyclerview.setAdapter(mAdapter);
+    }
+
+    private List<Object> generateList() {
+        List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Path"));
+        list.add(new ItemBean(getString(R.string.item_path), PathActivity.class));
+        list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity.class));
+        list.add(new ItemBean(getString(R.string.item_notification), NotificationActivity.class));
+        list.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
+        list.add(new ItemBean(getString(R.string.item_text_link), TextLinkActivity.class));
+        list.add(new ItemBean(getString(R.string.item_state_button), StateButtonActivity.class));
+        list.add(new ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity.class));
+        list.add(new ItemBean(getString(R.string.item_recycler_hover), HoverRecyclerViewActivity.class));
+        list.add(new ItemBean(getString(R.string.item_recycler_touch), RecyclerTouchActivity.class));
+        list.add(new ItemBean(getString(R.string.item_window), WindowActivity.class));
+        list.add(new ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity.class));
+        list.add(new ItemBean(getString(R.string.item_loadmore), RecyclerActivity.class));
+        list.add(new ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity.class));
+        list.add(new ItemBean(getString(R.string.item_24hanim), Anim24hActivity.class));
+        list.add(new ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity.class));
+        list.add(new ItemBean(getString(R.string.item_constraintlayout), ConstraintLayoutActivity.class));
+        list.add(new ItemBean(getString(R.string.item_ad_window), ADWindowActivity.class));
+        list.add(new ItemBean(getString(R.string.item_ice_switch), PageSwitchActivity.class));
+        list.add(new ItemBean(getString(R.string.item_pull_layout), ElasticActivity.class));
+        list.add(new ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity.class));
+        list.add(new ItemBean(getString(R.string.item_scrollview), ScrollActivity.class));
+        list.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
+        list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
+        list.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));
+        list.add(new ItemBean(getString(R.string.item_floor), FloorActivity.class));
+        list.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
+        list.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
+        list.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
+        list.add(new TitleBean("JNI"));
+        list.add(new ItemBean(getString(R.string.item_jni), JniActivity.class));
+        list.add(new TitleBean("注解"));
+        list.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
+        list.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));
+        list.add(new TitleBean("动画基础"));
+        list.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
+        list.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
+        list.add(new TitleBean("开源库"));
+        list.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
+        list.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
+        list.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
+        list.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
+        list.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
+        list.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
+        list.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
+        list.add(new TitleBean("IPC"));
+        list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
+        list.add(new TitleBean("其他"));
+        list.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
+        list.add(new ItemBean(getString(R.string.item_webview), WebActivity.class));
+        list.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
+        list.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
+        list.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
+        return list;
     }
 
     @Override

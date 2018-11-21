@@ -10,9 +10,9 @@ import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.adapter.MoreAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.ui.widget.recyclerview.ZRecyclerView;
 import com.android.exercise.util.T;
 
@@ -54,7 +54,7 @@ public class RecyclerActivity extends BaseActivity {
                 mMoreAdapter = new MoreAdapter(mContext, getList());
                 mMoreAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
                     @Override
-                    public void onClick(View view, int position, String data) {
+                    public void onItemClick(View view, String data) {
                         T.get(mContext).toast(data);
                     }
                 });

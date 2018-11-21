@@ -58,7 +58,7 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
         public TextView tvTouch;
 
         public TouchViewHolder(ViewGroup parent) {
-            super(mInflater.inflate(R.layout.item_touch_layout, parent, false));
+            super(parent, R.layout.item_touch_layout);
             ButterKnife.bind(this, itemView);
         }
 

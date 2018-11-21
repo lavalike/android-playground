@@ -55,4 +55,5 @@
     <string name="item_state_button">状态按钮</string>
     <string name="item_notification">notification</string>
     <string name="item_invoke_app">调起24小时</string>
+    <string name="item_path">Path</string>
 </resources>

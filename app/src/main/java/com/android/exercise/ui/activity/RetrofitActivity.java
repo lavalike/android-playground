@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.android.exercise.R;
 import com.android.exercise.base.APIService;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.base.retrofit.RetrofitManager;
 import com.android.exercise.base.retrofit.progress.Done;
 import com.android.exercise.base.retrofit.progress.ProgressListener;
@@ -24,6 +23,7 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
 import com.android.exercise.ui.adapter.ReposAdapter;
+import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.C;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.T;
@@ -256,7 +256,7 @@ public class RetrofitActivity extends BaseActivity {
                     mReposAdapter = new ReposAdapter(mContext, mReposList);
                     mReposAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<GithubBean>() {
                         @Override
-                        public void onClick(View view, int position, GithubBean data) {
+                        public void onItemClick(View view, GithubBean data) {
                             String reposUrl = data.getHtml_url();
                             Intent intent = new Intent(mContext, HtmlActivity.class);
                             intent.putExtra(IKey.HTML_URL, reposUrl);

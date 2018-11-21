@@ -439,7 +439,7 @@
 //    private View.OnClickListener mInnerOnClickListener = new View.OnClickListener() {
 //
 //        @Override
-//        public void onClick(View v) {
+//        public void onItemClick(View v) {
 //            if (v.getTag(R.id.tag_holder) instanceof ViewHolder) {
 //                ViewHolder holder = (ViewHolder) v.getTag(R.id.tag_holder);
 //                if (mOnItemClickListener != null) {
@@ -460,7 +460,7 @@
 //    private View.OnLongClickListener mInnerOnLongClickListener = new View.OnLongClickListener() {
 //
 //        @Override
-//        public boolean onLongClick(View v) {
+//        public boolean onItemLongClick(View v) {
 //            if (v.getTag(R.id.tag_holder) instanceof ViewHolder) {
 //                ViewHolder holder = (ViewHolder) v.getTag(R.id.tag_holder);
 //                if (mOnItemLongClickListener != null) {

@@ -124,7 +124,8 @@
         </receiver>
 
         <activity android:name=".ui.activity.InvokeAppActivity" />
-        <activity android:name=".ui.activity.JniActivity"></activity>
+        <activity android:name=".ui.activity.JniActivity" />
+        <activity android:name=".ui.activity.PathActivity"></activity>
     </application>
 
 </manifest>

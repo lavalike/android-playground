@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.exercise.R;
+
 import java.util.List;
 
 /**
@@ -50,7 +52,7 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        setItemEvent(holder, position);
+        setItemEvent(holder);
         if (!onMyBindViewHolder((VH) holder, position)) {
             if (holder instanceof BaseViewHolder) {
                 ((BaseViewHolder) holder).setData(mDatas.get(position));
@@ -72,36 +74,50 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     /**
      * 设置item点击事件
      *
-     * @param holder
-     * @param position
+     * @param holder ViewHolder
      */
-    private void setItemEvent(final RecyclerView.ViewHolder holder, int position) {
-        if (mClickListener != null) {
-            holder.itemView.setTag(position);
+    private void setItemEvent(final RecyclerView.ViewHolder holder) {
+        holder.itemView.setTag(R.id.id_holder, holder);
+        if (mClickListener != null || holder instanceof OnItemClickListener) {
             holder.itemView.setOnClickListener(innerClickListener);
         }
-        if (mLongClickListener != null) {
-            holder.itemView.setTag(position);
+        if (mLongClickListener != null || holder instanceof OnItemLongClickListener) {
             holder.itemView.setOnLongClickListener(innerLongClickListener);
         }
     }
 
     private View.OnClickListener innerClickListener = new View.OnClickListener() {
+
         @Override
         public void onClick(View v) {
-            if (mClickListener != null) {
-                int realPosition = (int) v.getTag();
-                mClickListener.onClick(v, realPosition, mDatas.get(realPosition));
+            Object tag = v.getTag(R.id.id_holder);
+            if (tag instanceof RecyclerView.ViewHolder) {
+                RecyclerView.ViewHolder holder = (RecyclerView.ViewHolder) tag;
+                int position = holder.getLayoutPosition();
+                if (mClickListener != null) {
+                    mClickListener.onItemClick(v, mDatas.get(position));
+                }
+                if (holder instanceof OnItemClickListener) {
+                    ((OnItemClickListener) holder).onItemClick(holder.itemView, mDatas.get(position));
+                }
             }
         }
     };
 
     private View.OnLongClickListener innerLongClickListener = new View.OnLongClickListener() {
+
         @Override
         public boolean onLongClick(View v) {
-            if (mLongClickListener != null) {
-                int realPosition = (int) v.getTag();
-                mLongClickListener.onLongClick(v, realPosition, mDatas.get(realPosition));
+            Object tag = v.getTag(R.id.id_holder);
+            if (tag instanceof RecyclerView.ViewHolder) {
+                RecyclerView.ViewHolder holder = (RecyclerView.ViewHolder) tag;
+                int position = holder.getLayoutPosition();
+                if (mLongClickListener != null) {
+                    mLongClickListener.onItemLongClick(v, mDatas.get(position));
+                }
+                if (holder instanceof OnItemLongClickListener) {
+                    ((OnItemLongClickListener) holder).onItemLongClick(holder.itemView, mDatas.get(position));
+                }
             }
             return true;
         }
@@ -113,10 +129,10 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
     public interface OnItemClickListener<T> {
-        void onClick(View view, int position, T data);
+        void onItemClick(View view, T data);
     }
 
     public interface OnItemLongClickListener<T> {
-        void onLongClick(View view, int position, T data);
+        void onItemLongClick(View view, T data);
     }
 }

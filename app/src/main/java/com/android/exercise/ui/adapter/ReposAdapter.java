@@ -1,7 +1,6 @@
 package com.android.exercise.ui.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,7 +40,7 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.R
         TextView tvItemReposUrl;
 
         public ReposViewHolder(ViewGroup parent) {
-            super(LayoutInflater.from(mContext).inflate(R.layout.item_repos_layout, parent, false));
+            super(parent, R.layout.item_repos_layout);
             ButterKnife.bind(this, itemView);
         }
 

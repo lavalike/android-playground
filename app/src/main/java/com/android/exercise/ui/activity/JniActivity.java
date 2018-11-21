@@ -1,10 +1,13 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.jni.MyTest;
 
 public class JniActivity extends BaseActivity {
@@ -23,6 +26,11 @@ public class JniActivity extends BaseActivity {
         ((TextView) findViewById(R.id.tv_1)).setText(stringFromJNI());
         ((TextView) findViewById(R.id.tv_2)).setText(MyTest.stringFromJni());
         ((TextView) findViewById(R.id.tv_3)).setText("4 + 5 = " + MyTest.add(4, 5));
+    }
+
+    @Override
+    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
+        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_jni));
     }
 
     /**

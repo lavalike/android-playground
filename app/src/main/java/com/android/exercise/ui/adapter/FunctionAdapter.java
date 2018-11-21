@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.TitleBean;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 
@@ -34,8 +35,10 @@ public class FunctionAdapter extends BaseRecyclerAdapter<Object, RecyclerView.Vi
     public int getItemViewType(int position) {
         if (mDatas.get(position) instanceof TitleBean) {
             return TYPE_TITLE;
-        } else {
+        }
+        if (mDatas.get(position) instanceof ItemBean) {
             return TYPE_ITEM;
         }
+        return RecyclerView.NO_POSITION;
     }
 }

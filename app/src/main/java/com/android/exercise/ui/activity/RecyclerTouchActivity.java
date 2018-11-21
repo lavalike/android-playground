@@ -61,8 +61,7 @@ public class RecyclerTouchActivity extends BaseActivity {
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
         mAdapter.setItemLongClickListener(new BaseRecyclerAdapter.OnItemLongClickListener<String>() {
             @Override
-            public void onLongClick(View view, int position, String data) {
-                if (position == 0) return;
+            public void onItemLongClick(View view, String data) {
                 RecyclerView.ViewHolder viewHolder = mRecyclerView.getChildViewHolder(view);
                 itemTouchHelper.startDrag(viewHolder);
             }

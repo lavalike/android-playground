@@ -1,5 +1,6 @@
 package com.android.exercise.ui.widget.recyclerview;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +13,15 @@ import android.view.ViewGroup;
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
     public T data;
+    public Context context;
+
+    public BaseViewHolder(ViewGroup parent, int layoutId) {
+        this(inflate(layoutId, parent, false));
+    }
 
     public BaseViewHolder(View itemView) {
         super(itemView);
-    }
-
-    public BaseViewHolder(ViewGroup parent, int layoutId) {
-        super(inflate(layoutId, parent, false));
+        context = itemView.getContext();
     }
 
     private static View inflate(int layoutId, ViewGroup parent, boolean attachToRoot) {

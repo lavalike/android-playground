@@ -1,7 +1,6 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,8 +11,6 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.manager.AudioManager;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.widget.RecorderButton;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,8 +69,7 @@ public class RecorderActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_play:
-//                String path = Environment.getExternalStorageDirectory() + File.separator + "bluelotus.mp3";
-                String path = "http://10.100.47.155:8080/ServletDemo/bluelotus.mp3";
+                String path = "http://10.100.119.192:8080/wangzhen/audio/hby.mp3";
                 mAudioManager.startPlay(path);
                 break;
             case R.id.btn_pause:
