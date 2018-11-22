@@ -41,6 +41,7 @@ import com.android.exercise.ui.activity.OKHttpActivity;
 import com.android.exercise.ui.activity.PageSwitchActivity;
 import com.android.exercise.ui.activity.PathActivity;
 import com.android.exercise.ui.activity.PathMeasureActivity;
+import com.android.exercise.ui.activity.PathSearchActivity;
 import com.android.exercise.ui.activity.PorterDuffActivity;
 import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecorderActivity;
@@ -145,8 +146,9 @@ public class MainActivity extends BaseActivity {
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
         list.add(new TitleBean("Path"));
-        list.add(new ItemBean(getString(R.string.item_path), PathActivity.class));
+        list.add(new ItemBean(getString(R.string.item_path_search), PathSearchActivity.class));
         list.add(new ItemBean(getString(R.string.item_path_measure), PathMeasureActivity.class));
+        list.add(new ItemBean(getString(R.string.item_path), PathActivity.class));
         list.add(new TitleBean("布局类"));
         list.add(new ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity.class));
         list.add(new ItemBean(getString(R.string.item_notification), NotificationActivity.class));

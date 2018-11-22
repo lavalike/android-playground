@@ -57,4 +57,5 @@
     <string name="item_invoke_app">调起24小时</string>
     <string name="item_path">Path</string>
     <string name="item_path_measure">PathMeasure</string>
+    <string name="item_path_search">PathSearch</string>
 </resources>

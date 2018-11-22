@@ -82,4 +82,10 @@
         <attr name="sb_icon_color" format="color" />
         <attr name="sb_icon_stroke_width" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="PathSearchView">
+        <attr name="psv_radius" format="dimension" />
+        <attr name="psv_border_color" format="color" />
+        <attr name="psv_border_width" format="dimension" />
+    </declare-styleable>
 </resources>
