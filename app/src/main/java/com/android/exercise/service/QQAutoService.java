@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -19,15 +20,16 @@ import java.util.List;
 public class QQAutoService extends AccessibilityService {
     public static final int TYPE_PERSON = 0;
     public static final int TYPE_GROUP = 1;
-    private boolean isPersonExecuted = false;
-    private boolean isGroupExecuted = false;
+    private boolean isExecuted = false;
     private int type;
+    private String message;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         type = intent.getIntExtra("type", TYPE_PERSON);
-        isPersonExecuted = false;
-        isGroupExecuted = false;
+        message = intent.getStringExtra("message");
+        if (TextUtils.isEmpty(message)) message = "";
+        isExecuted = false;
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -44,8 +46,7 @@ public class QQAutoService extends AccessibilityService {
     }
 
     private void runQQGroup() {
-        if (!isGroupExecuted) {
-            isGroupExecuted = true;
+        if (!isExecuted) {
             //查找发消息按钮
             AccessibilityNodeInfo btnSend = findNodeByText("发消息");
             if (btnSend != null && btnSend.isEnabled()) {
@@ -59,7 +60,7 @@ public class QQAutoService extends AccessibilityService {
             //查找输入框
             AccessibilityNodeInfo nodeInput = findNodeById("com.tencent.mobileqq:id/input");
             if (nodeInput != null) {
-                setText(nodeInput, "Group " + System.currentTimeMillis());
+                setText(nodeInput, message);
             }
 
             try {
@@ -73,16 +74,16 @@ public class QQAutoService extends AccessibilityService {
             if (nodeButton != null && nodeButton.isEnabled()) {
                 nodeButton.performAction(AccessibilityNodeInfo.ACTION_CLICK);
             }
+            isExecuted = true;
         }
     }
 
     private void runQQ() {
-        if (!isPersonExecuted) {
-            isPersonExecuted = true;
+        if (!isExecuted) {
             //查找输入框
             AccessibilityNodeInfo nodeInput = findNodeById("com.tencent.mobileqq:id/input");
             if (nodeInput != null) {
-                setText(nodeInput, "Person " + System.currentTimeMillis());
+                setText(nodeInput, message);
             }
             try {
                 Thread.sleep(1000);
@@ -94,6 +95,7 @@ public class QQAutoService extends AccessibilityService {
             if (nodeButton != null && nodeButton.isEnabled()) {
                 nodeButton.performAction(AccessibilityNodeInfo.ACTION_CLICK);
             }
+            isExecuted = true;
         }
     }
 

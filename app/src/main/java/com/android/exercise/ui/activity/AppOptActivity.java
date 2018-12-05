@@ -50,6 +50,7 @@ public class AppOptActivity extends BaseActivity implements View.OnClickListener
                 if (isServiceRunning(QQ_SERVICE_NAME)) {
                     Intent intent = new Intent(this, QQAutoService.class);
                     intent.putExtra("type", QQAutoService.TYPE_PERSON);
+                    intent.putExtra("message", "Person " + System.currentTimeMillis());
                     startService(intent);
                     personChat("962453221");
                 } else {
@@ -60,6 +61,7 @@ public class AppOptActivity extends BaseActivity implements View.OnClickListener
                 if (isServiceRunning(QQ_SERVICE_NAME)) {
                     Intent intent = new Intent(this, QQAutoService.class);
                     intent.putExtra("type", QQAutoService.TYPE_GROUP);
+                    intent.putExtra("message", "Group " + System.currentTimeMillis());
                     startService(intent);
                     groupChat("185201202");
                 } else {
