@@ -20,6 +20,7 @@ import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AnimViewActivity;
+import com.android.exercise.ui.activity.AppOptActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.BroadcastActivity;
 import com.android.exercise.ui.activity.CompileAnnotationActivity;
@@ -145,6 +146,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Invoke"));
+        list.add(new ItemBean(getString(R.string.item_qq_auto_msg), AppOptActivity.class));
         list.add(new TitleBean("Path"));
         list.add(new ItemBean(getString(R.string.item_path_search), PathSearchActivity.class));
         list.add(new ItemBean(getString(R.string.item_path_measure), PathMeasureActivity.class));

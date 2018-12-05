@@ -8,6 +8,7 @@
     <string name="error_network_timeout">网络连接超时</string>
     <string name="tip_loading">加载中</string>
     <string name="tip_accessibility">AndroidExercise自动化辅助测试\n\t\tAccessibilityService是一个辅助类，可以监听我们手机的焦点，窗口变化，按钮点击等等。实现它的服务需要在手机设置里面->辅助功能在这里面找到你自己实现的辅助类，然后打开它就可以进行我们一系列的监听了。</string>
+    <string name="tip_qq_accessibility">QQ自动发消息辅助服务</string>
 
     <string name="item_realm">Realm</string>
     <string name="item_greendao">GreenDao</string>
@@ -58,4 +59,5 @@
     <string name="item_path">Path</string>
     <string name="item_path_measure">PathMeasure</string>
     <string name="item_path_search">PathSearch</string>
+    <string name="item_qq_auto_msg">QQ自动消息</string>
 </resources>
