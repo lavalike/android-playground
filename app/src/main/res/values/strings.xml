@@ -60,4 +60,5 @@
     <string name="item_path_measure">PathMeasure</string>
     <string name="item_path_search">PathSearch</string>
     <string name="item_qq_auto_msg">QQ自动消息</string>
+    <string name="item_bit_opt">位操作</string>
 </resources>

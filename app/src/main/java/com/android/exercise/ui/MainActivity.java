@@ -22,6 +22,7 @@ import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AnimViewActivity;
 import com.android.exercise.ui.activity.AppOptActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
+import com.android.exercise.ui.activity.BitOptActivity;
 import com.android.exercise.ui.activity.BroadcastActivity;
 import com.android.exercise.ui.activity.CompileAnnotationActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
@@ -146,6 +147,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("位操作"));
+        list.add(new ItemBean(getString(R.string.item_bit_opt), BitOptActivity.class));
         list.add(new TitleBean("Invoke"));
         list.add(new ItemBean(getString(R.string.item_qq_auto_msg), AppOptActivity.class));
         list.add(new TitleBean("Path"));

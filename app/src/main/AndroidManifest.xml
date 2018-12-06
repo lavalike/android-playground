@@ -141,7 +141,8 @@
         <activity android:name=".ui.activity.PathActivity" />
         <activity android:name=".ui.activity.PathMeasureActivity" />
         <activity android:name=".ui.activity.PathSearchActivity" />
-        <activity android:name=".ui.activity.AppOptActivity"></activity>
+        <activity android:name=".ui.activity.AppOptActivity" />
+        <activity android:name=".ui.activity.BitOptActivity"></activity>
     </application>
 
 </manifest>
