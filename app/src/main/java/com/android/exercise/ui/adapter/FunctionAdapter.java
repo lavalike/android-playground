@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.TitleBean;
+import com.android.exercise.ui.adapter.holder.ItemViewHolder;
+import com.android.exercise.ui.adapter.holder.TitleViewHolder;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 
 import java.util.List;

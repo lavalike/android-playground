@@ -35,6 +35,8 @@ import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.FrameAnimationActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.HoverRecyclerViewActivity;
+import com.android.exercise.ui.activity.ImageHtmlActivity;
+import com.android.exercise.ui.activity.ImageRecyclerActivity;
 import com.android.exercise.ui.activity.InvokeAppActivity;
 import com.android.exercise.ui.activity.JniActivity;
 import com.android.exercise.ui.activity.MinaActivity;
@@ -147,6 +149,9 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("加载多图"));
+        list.add(new ItemBean(getString(R.string.item_image_html), ImageHtmlActivity.class));
+        list.add(new ItemBean(getString(R.string.item_image_recycler), ImageRecyclerActivity.class));
         list.add(new TitleBean("位操作"));
         list.add(new ItemBean(getString(R.string.item_bit_opt), BitOptActivity.class));
         list.add(new TitleBean("Invoke"));

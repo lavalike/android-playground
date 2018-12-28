@@ -1,4 +1,4 @@
-package com.android.exercise.ui.adapter;
+package com.android.exercise.ui.adapter.holder;
 
 import android.view.ViewGroup;
 import android.widget.TextView;

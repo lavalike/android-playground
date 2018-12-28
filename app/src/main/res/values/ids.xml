@@ -4,4 +4,7 @@
     <item name="id_back" type="id" />
     <item name="id_tag" type="id" />
     <item name="id_holder" type="id" />
+    <item name="id_width" type="id" />
+    <item name="id_height" type="id" />
+    <item name="id_url" type="id" />
 </resources>

@@ -1,4 +1,4 @@
-package com.android.exercise.ui.adapter;
+package com.android.exercise.ui.adapter.holder;
 
 import android.content.Intent;
 import android.view.View;

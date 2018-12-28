@@ -61,4 +61,6 @@
     <string name="item_path_search">PathSearch</string>
     <string name="item_qq_auto_msg">QQ自动消息</string>
     <string name="item_bit_opt">位操作</string>
+    <string name="item_image_recycler">Recycler形式</string>
+    <string name="item_image_html">Html形式</string>
 </resources>

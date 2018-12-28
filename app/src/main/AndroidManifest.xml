@@ -142,7 +142,9 @@
         <activity android:name=".ui.activity.PathMeasureActivity" />
         <activity android:name=".ui.activity.PathSearchActivity" />
         <activity android:name=".ui.activity.AppOptActivity" />
-        <activity android:name=".ui.activity.BitOptActivity"></activity>
+        <activity android:name=".ui.activity.BitOptActivity" />
+        <activity android:name=".ui.activity.ImageRecyclerActivity" />
+        <activity android:name=".ui.activity.ImageHtmlActivity"></activity>
     </application>
 
 </manifest>
