@@ -3,6 +3,7 @@ package com.android.exercise.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.JsResult;
 import android.webkit.ValueCallback;
@@ -17,14 +18,17 @@ import com.android.exercise.base.toolbar.ToolBarRightTextHolder;
 import com.android.exercise.listener.IJSCallback;
 import com.android.exercise.ui.JSInterface;
 import com.android.exercise.ui.widget.dialog.ADWindowDialog;
+import com.android.exercise.util.IKey;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WebActivity extends BaseActivity implements IJSCallback {
+public class BrowserActivity extends BaseActivity implements IJSCallback {
 
     @BindView(R.id.webview)
     WebView webview;
+
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,9 @@ public class WebActivity extends BaseActivity implements IJSCallback {
         setContentView(R.layout.activity_web);
         ButterKnife.bind(this);
         config();
-        String path = "file:///android_asset/html/js.html";
-        webview.loadUrl(path);
+        url = getIntent().getStringExtra(IKey.HTML_URL);
+        if (TextUtils.isEmpty(url)) url = "file:///android_asset/html/js.html";
+        webview.loadUrl(url);
     }
 
     private void config() {
@@ -66,7 +71,6 @@ public class WebActivity extends BaseActivity implements IJSCallback {
                 });
             }
         });
-
     }
 
     @Override

@@ -41,7 +41,8 @@ public class ItemViewHolder extends BaseViewHolder<ItemBean> implements BaseRecy
     public void onItemClick(View view, ItemBean data) {
         Class<?> targetClass = data.getTargetClass();
         if (targetClass != null) {
-            context.startActivity(new Intent(context, targetClass));
+            Intent intent = new Intent(context, targetClass);
+            context.startActivity(intent);
         }
     }
 }

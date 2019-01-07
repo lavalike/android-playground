@@ -117,7 +117,7 @@
         <activity android:name=".ui.activity.BroadcastActivity" />
         <activity android:name=".ui.activity.PageSwitchActivity" />
         <activity android:name=".ui.activity.ADWindowActivity" />
-        <activity android:name=".ui.activity.WebActivity" />
+        <activity android:name=".ui.activity.BrowserActivity" />
         <activity android:name=".ui.activity.RuntimeAnnotationActivity" />
         <activity android:name=".ui.activity.CompileAnnotationActivity" />
         <activity android:name=".ui.activity.TextFormatActivity" />
