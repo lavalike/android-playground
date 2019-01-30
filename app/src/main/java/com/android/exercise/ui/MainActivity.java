@@ -63,6 +63,7 @@ import com.android.exercise.ui.activity.TextFormatActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
 import com.android.exercise.ui.activity.TikTokActivity;
+import com.android.exercise.ui.activity.VideoRecordActivity;
 import com.android.exercise.ui.activity.ViewActivity;
 import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.WaveActivity;
@@ -149,6 +150,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Camera"));
+        list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
         list.add(new TitleBean("加载多图"));
         list.add(new ItemBean(getString(R.string.item_image_html), ImageHtmlActivity.class));
         list.add(new ItemBean(getString(R.string.item_image_recycler), ImageRecyclerActivity.class));

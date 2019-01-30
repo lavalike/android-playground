@@ -25,6 +25,10 @@
 
     <style name="AppTheme" parent="AppBaseTheme"></style>
 
+    <style name="AppTheme.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <!--返回键为白色-->
     <style name="ToolbarThemeWhite">
         <item name="colorControlNormal">@color/white</item>

@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".base.App"
@@ -34,9 +36,7 @@
         <activity android:name=".ui.activity.RecyclerActivity" />
         <activity android:name=".ui.activity.SlidingMenuActivity" />
         <activity android:name=".ui.activity.FlowLayoutActivity" />
-        <activity android:name=".ui.activity.AutoServiceActivity" />
-
-        <!-- 自动化辅助服务 -->
+        <activity android:name=".ui.activity.AutoServiceActivity" /> <!-- 自动化辅助服务 -->
         <service
             android:name=".service.AutoService"
             android:label="自动化辅助服务测试"
@@ -48,8 +48,7 @@
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
-        </service>
-        <!-- QQ自动发消息辅助服务 -->
+        </service> <!-- QQ自动发消息辅助服务 -->
         <service
             android:name=".service.QQAutoService"
             android:label="QQ自动发消息"
@@ -117,7 +116,11 @@
         <activity android:name=".ui.activity.BroadcastActivity" />
         <activity android:name=".ui.activity.PageSwitchActivity" />
         <activity android:name=".ui.activity.ADWindowActivity" />
-        <activity android:name=".ui.activity.BrowserActivity" />
+        <activity android:name=".ui.activity.BrowserActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.activity.RuntimeAnnotationActivity" />
         <activity android:name=".ui.activity.CompileAnnotationActivity" />
         <activity android:name=".ui.activity.TextFormatActivity" />
@@ -144,7 +147,11 @@
         <activity android:name=".ui.activity.AppOptActivity" />
         <activity android:name=".ui.activity.BitOptActivity" />
         <activity android:name=".ui.activity.ImageRecyclerActivity" />
-        <activity android:name=".ui.activity.ImageHtmlActivity"></activity>
+        <activity android:name=".ui.activity.ImageHtmlActivity" />
+        <activity android:name=".ui.activity.VideoRecordActivity" />
+        <activity
+            android:name=".ui.activity.LimitedVideoActivity"
+            android:theme="@style/AppTheme.FullScreen" />
     </application>
 
 </manifest>

@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <com.android.exercise.ui.widget.RecorderButton
-        android:id="@+id/btn_record"
+        android:id="@+id/btn_system"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="bottom"

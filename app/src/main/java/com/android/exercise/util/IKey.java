@@ -10,4 +10,8 @@ public class IKey {
      * 推送数据
      */
     public static final String PUSH_DATA = "push_data";
+    /**
+     * 录像时长限制
+     */
+    public static final String VIDEO_RECORD_TIME_LIMITED = "video_record_time_limited";
 }

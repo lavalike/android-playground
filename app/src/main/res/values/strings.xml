@@ -63,4 +63,5 @@
     <string name="item_bit_opt">位操作</string>
     <string name="item_image_recycler">Recycler形式</string>
     <string name="item_image_html">Html形式</string>
+    <string name="item_camera_video">录视频</string>
 </resources>

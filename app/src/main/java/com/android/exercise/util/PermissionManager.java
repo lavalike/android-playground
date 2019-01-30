@@ -68,12 +68,13 @@ public class PermissionManager {
         }
     }
 
-    /**
-     * 手动开启权限
-     */
-    public static void managePermissionByHand(final Context context) {
+    public static void showAdvice(Context context) {
+        showAdvice(context, "需要开启权限才能使用此功能");
+    }
+
+    public static void showAdvice(final Context context, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("需要开启权限才能使用此功能");
+        builder.setMessage(msg);
         builder.setNegativeButton("取消", null);
         builder.setPositiveButton("设置", new DialogInterface.OnClickListener() {
             @Override

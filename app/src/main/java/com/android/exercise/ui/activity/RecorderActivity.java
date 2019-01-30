@@ -22,7 +22,7 @@ import butterknife.OnClick;
  */
 public class RecorderActivity extends BaseActivity {
 
-    @BindView(R.id.btn_record)
+    @BindView(R.id.btn_system)
     RecorderButton btnRecord;
     private AudioManager mAudioManager;
 
