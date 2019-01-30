@@ -28,15 +28,21 @@ import java.util.Locale;
  * Created by wangzhen on 2019/1/30.
  */
 public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
-    private static final int MSG_UPDATE_TIME = 0x01;
+    private static final int MSG_UPDATE_WHAT = 0x01;
     private static final long MSG_UPDATE_DELAY = 1000;
+    //视频比特率
+    private static final int VIDEO_ENCODING_BIT_RATE = 5 * 1024 * 1024;
     private Camera camera;
     private MediaRecorder mediaRecorder;
-    private String outputFile;//录像文件输出路径
-    private int maxSeconds = 0;//最大允许录制时长，0为不限制时长，单位：秒
-    private long runningSeconds = 0;//已经运行的时长，单位：秒
+    //录像文件输出路径
+    private String outputFile;
+    //最大允许录制时长，0为不限制时长，单位：秒
+    private int maxSeconds = 0;
+    //已经运行的时长，单位：秒
+    private long runningSeconds = 0;
     private Callback callback;
-    private boolean isRecording = false;//是否正在录像
+    //是否正在录像
+    private boolean isRecording = false;
 
     public CameraSurfaceView(Context context) {
         this(context, null);
@@ -60,7 +66,6 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         }
         if (mediaRecorder != null) {
             mediaRecorder.release();
-            mediaRecorder = null;
         }
         isRecording = false;
         camera = Camera.open();
@@ -186,6 +191,12 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         //设置视频编码格式
         mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
+        //向右旋转90度
+        mediaRecorder.setOrientationHint(90);
+        //设置视频尺寸
+        mediaRecorder.setVideoSize(1280, 720);
+        //设置视频比特率
+        mediaRecorder.setVideoEncodingBitRate(VIDEO_ENCODING_BIT_RATE);
         //设置视频输出路径
         mediaRecorder.setOutputFile(outputFile);
         try {
@@ -208,7 +219,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     public void stopRecord() {
         initCamera();
         onSurfaceChange(getHolder());
-        runningTimeHandler.removeMessages(MSG_UPDATE_TIME);
+        runningTimeHandler.removeMessages(MSG_UPDATE_WHAT);
         if (callback != null) {
             callback.onSuccess(outputFile);
         }
@@ -239,7 +250,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
      */
     private void startTimeRunning() {
         runningSeconds = 0;
-        runningTimeHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, MSG_UPDATE_DELAY);
+        runningTimeHandler.sendEmptyMessageDelayed(MSG_UPDATE_WHAT, MSG_UPDATE_DELAY);
     }
 
     /**
@@ -250,7 +261,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case MSG_UPDATE_TIME:
+                case MSG_UPDATE_WHAT:
                     runningSeconds++;
                     if (callback != null) {
                         callback.onUpdate(runningSeconds);
@@ -259,7 +270,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
                         stopRecord();
                     } else {
                         //延时1秒再次发送MSG_UPDATE_TIME
-                        runningTimeHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, MSG_UPDATE_DELAY);
+                        runningTimeHandler.sendEmptyMessageDelayed(MSG_UPDATE_WHAT, MSG_UPDATE_DELAY);
                     }
                     break;
             }
