@@ -1,6 +1,8 @@
 package com.android.exercise.util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.AssetManager;
 import android.text.Html;
 import android.text.Spannable;
@@ -73,5 +75,21 @@ public class AppUtil {
             builder.setSpan(linkSpan, spannable.getSpanStart(url), spannable.getSpanEnd(url), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return builder;
+    }
+
+    /**
+     * 通过Context获取真正的Activity
+     *
+     * @param ctx context
+     * @return activity
+     */
+    public static Activity getRealActivity(Context ctx) {
+        while (ctx instanceof ContextWrapper) {
+            if (ctx instanceof Activity) {
+                return (Activity) ctx;
+            }
+            ctx = ((ContextWrapper) ctx).getBaseContext();
+        }
+        return null;
     }
 }

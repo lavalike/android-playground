@@ -2,12 +2,14 @@ package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.exercise.R;
 import com.android.exercise.ui.widget.CameraSurfaceView;
+import com.android.exercise.util.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,15 +36,23 @@ public class LimitedVideoActivity extends AppCompatActivity implements CameraSur
         surfaceView.setCallback(this);
     }
 
-    @OnClick(R.id.btn_opt)
-    public void onViewClicked() {
-        if (surfaceView.isRecording()) {
-            btnOpt.setText("开始");
-            surfaceView.stopRecord();
-        } else {
-            btnOpt.setText("停止");
-            surfaceView.setMaxSeconds(10);
-            surfaceView.startRecord();
+    @OnClick({R.id.btn_opt, R.id.btn_switch})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_opt:
+                if (surfaceView.isRecording()) {
+                    btnOpt.setText("开始");
+                    surfaceView.stopRecord();
+                } else {
+                    btnOpt.setText("停止");
+                    surfaceView.setMaxSeconds(10);
+                    surfaceView.setVideoSize(UIUtils.getScreenHeight(this), UIUtils.getScreenWidth(this));
+                    surfaceView.startRecord();
+                }
+                break;
+            case R.id.btn_switch:
+                surfaceView.switchCamera();
+                break;
         }
     }
 

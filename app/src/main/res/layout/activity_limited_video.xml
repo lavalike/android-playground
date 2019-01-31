@@ -19,6 +19,15 @@
         android:textColor="@color/white"
         android:textSize="18sp" />
 
+    <ImageView
+        android:id="@+id/btn_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:src="@mipmap/ic_camera_switch" />
+
     <Button
         android:id="@+id/btn_opt"
         android:layout_width="80dp"

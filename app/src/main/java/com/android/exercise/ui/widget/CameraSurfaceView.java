@@ -2,6 +2,7 @@ package com.android.exercise.ui.widget;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.hardware.Camera;
 import android.media.MediaRecorder;
 import android.os.Environment;
@@ -13,8 +14,6 @@ import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
-import com.android.exercise.base.manager.AppManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +42,11 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     private Callback callback;
     //是否正在录像
     private boolean isRecording = false;
+    //录像尺寸
+    private int videoWidth = 1080;
+    private int videoHeight = 720;
+    //CameraId，默认为后摄
+    private int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
 
     public CameraSurfaceView(Context context) {
         this(context, null);
@@ -68,7 +72,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
             mediaRecorder.release();
         }
         isRecording = false;
-        camera = Camera.open();
+        camera = Camera.open(cameraId);
         mediaRecorder = new MediaRecorder();
     }
 
@@ -126,7 +130,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
      */
     public int getDegree() {
         int degree = 0;
-        Activity activity = AppManager.get().getActivity();
+        Activity activity = getRealActivity(getContext());
         if (activity == null || activity.isDestroyed()) {
             return degree;
         }
@@ -191,10 +195,15 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         //设置视频编码格式
         mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
-        //向右旋转90度
-        mediaRecorder.setOrientationHint(90);
+        //系统默认的录制是横向的画面，后置摄像头向右旋转90度
+        if (cameraId == Camera.CameraInfo.CAMERA_FACING_BACK) {
+            mediaRecorder.setOrientationHint(90);
+        } else {
+            //系统默认的录制是横向的画面，前置摄像头向右旋转90+180度
+            mediaRecorder.setOrientationHint(270);
+        }
         //设置视频尺寸
-        mediaRecorder.setVideoSize(1280, 720);
+        mediaRecorder.setVideoSize(videoWidth, videoHeight);
         //设置视频比特率
         mediaRecorder.setVideoEncodingBitRate(VIDEO_ENCODING_BIT_RATE);
         //设置视频输出路径
@@ -284,6 +293,46 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
      */
     public void setCallback(Callback callback) {
         this.callback = callback;
+    }
+
+    /**
+     * 设置录像尺寸
+     *
+     * @param width  width
+     * @param height height
+     */
+    public void setVideoSize(int width, int height) {
+        videoWidth = width;
+        videoHeight = height;
+    }
+
+    /**
+     * 通过Context获取真正的Activity
+     *
+     * @param ctx context
+     * @return activity
+     */
+    private Activity getRealActivity(Context ctx) {
+        while (ctx instanceof ContextWrapper) {
+            if (ctx instanceof Activity) {
+                return (Activity) ctx;
+            }
+            ctx = ((ContextWrapper) ctx).getBaseContext();
+        }
+        return null;
+    }
+
+    /**
+     * 切换前后摄像头
+     */
+    public void switchCamera() {
+        //TODO 查询摄像头个数
+
+        if (!isRecording) {
+            cameraId = (cameraId == Camera.CameraInfo.CAMERA_FACING_BACK) ? Camera.CameraInfo.CAMERA_FACING_FRONT : Camera.CameraInfo.CAMERA_FACING_BACK;
+            initCamera();
+            onSurfaceChange(getHolder());
+        }
     }
 
     /**
