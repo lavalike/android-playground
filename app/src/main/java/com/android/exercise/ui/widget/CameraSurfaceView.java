@@ -43,8 +43,8 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     //是否正在录像
     private boolean isRecording = false;
     //录像尺寸
-    private int videoWidth = 1080;
-    private int videoHeight = 720;
+    private int videoWidth = 640;
+    private int videoHeight = 480;
     /**
      * CameraId，默认为后摄
      * 后摄{@link Camera.CameraInfo.CAMERA_FACING_BACK}
@@ -77,6 +77,12 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         }
         isRecording = false;
         camera = Camera.open(cameraId);
+        Camera.Parameters parameters = camera.getParameters();
+        Camera.Size size = parameters.getPreferredPreviewSizeForVideo();
+        videoWidth = size.width;
+        videoHeight = size.height;
+        parameters.setPreviewSize(videoWidth, videoHeight);
+        camera.setParameters(parameters);
         mediaRecorder = new MediaRecorder();
     }
 
@@ -300,7 +306,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     }
 
     /**
-     * 设置录像尺寸
+     * 设置设备支持的录像尺寸，否则FC
      *
      * @param width  width
      * @param height height

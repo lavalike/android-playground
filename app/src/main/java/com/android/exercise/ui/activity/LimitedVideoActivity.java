@@ -46,7 +46,6 @@ public class LimitedVideoActivity extends AppCompatActivity implements CameraSur
                 } else {
                     btnOpt.setText("停止");
                     surfaceView.setMaxSeconds(10);
-                    surfaceView.setVideoSize(UIUtils.getScreenHeight(this), UIUtils.getScreenWidth(this));
                     surfaceView.startRecord();
                 }
                 break;
