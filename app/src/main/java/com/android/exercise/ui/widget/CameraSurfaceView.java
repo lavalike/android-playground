@@ -45,7 +45,11 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     //录像尺寸
     private int videoWidth = 1080;
     private int videoHeight = 720;
-    //CameraId，默认为后摄
+    /**
+     * CameraId，默认为后摄
+     * 后摄{@link Camera.CameraInfo.CAMERA_FACING_BACK}
+     * 前摄{@link Camera.CameraInfo.CAMERA_FACING_FRONT}
+     */
     private int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
 
     public CameraSurfaceView(Context context) {
@@ -326,9 +330,10 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
      * 切换前后摄像头
      */
     public void switchCamera() {
-        //TODO 查询摄像头个数
-
-        if (!isRecording) {
+        //查询摄像头个数
+        int numberOfCameras = Camera.getNumberOfCameras();
+        //非录像中且摄像头个数至少为2个
+        if (!isRecording && numberOfCameras > 1) {
             cameraId = (cameraId == Camera.CameraInfo.CAMERA_FACING_BACK) ? Camera.CameraInfo.CAMERA_FACING_FRONT : Camera.CameraInfo.CAMERA_FACING_BACK;
             initCamera();
             onSurfaceChange(getHolder());
