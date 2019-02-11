@@ -1,10 +1,13 @@
 package com.android.exercise.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -17,7 +20,12 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.util.IKey;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -64,9 +72,14 @@ public class VideoRecordActivity extends BaseActivity {
 
     private void systemCamera() {
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
-        intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 10485760L);
-        intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
+        //API24需要使用FileProvider
+        Uri uriForFile = FileProvider.getUriForFile(this, "com.android.exercise.fileProvider", new File(getDefaultPath()));
+        //设置输出目录，默认存储在DCIM
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uriForFile);
+        //视频质量 0低 1高
+        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+        //视频大小限制，单位字节
+        intent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, 1024 * 1024 * 30L);
         startActivity(intent);
     }
 
@@ -74,5 +87,16 @@ public class VideoRecordActivity extends BaseActivity {
         Intent intent = new Intent(this, LimitedVideoActivity.class);
         intent.putExtra(IKey.VIDEO_RECORD_TIME_LIMITED, 10);
         startActivity(intent);
+    }
+
+    /**
+     * 获取默认存储路径
+     *
+     * @return 存储路径
+     */
+    private String getDefaultPath() {
+        Date time = Calendar.getInstance().getTime();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA);
+        return Environment.getExternalStorageDirectory() + File.separator + format.format(time) + ".mp4";
     }
 }
