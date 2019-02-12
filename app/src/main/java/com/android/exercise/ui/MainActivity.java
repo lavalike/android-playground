@@ -59,6 +59,7 @@ import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.ScrollActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.StateButtonActivity;
+import com.android.exercise.ui.activity.TaskSequenceActivity;
 import com.android.exercise.ui.activity.TextFormatActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
@@ -150,6 +151,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("任务顺序控制器"));
+        list.add(new ItemBean(getString(R.string.item_task_sequence), TaskSequenceActivity.class));
         list.add(new TitleBean("Camera"));
         list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
         list.add(new TitleBean("加载多图"));

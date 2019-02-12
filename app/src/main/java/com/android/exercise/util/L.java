@@ -1,5 +1,7 @@
 package com.android.exercise.util;
 
+import android.util.Log;
+
 public class L {
     private static final String TAG = "Android";
 
@@ -8,6 +10,6 @@ public class L {
     }
 
     public static void e(String tag, String msg) {
-        L.e(tag, msg);
+        Log.e(tag, msg);
     }
 }
