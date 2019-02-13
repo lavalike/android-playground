@@ -59,7 +59,6 @@ import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.ScrollActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.StateButtonActivity;
-import com.android.exercise.ui.activity.TaskSequenceActivity;
 import com.android.exercise.ui.activity.TextFormatActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
@@ -69,6 +68,8 @@ import com.android.exercise.ui.activity.ViewActivity;
 import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
+import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
+import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
@@ -151,7 +152,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
-        list.add(new TitleBean("任务顺序控制器"));
+        list.add(new TitleBean("Queue"));
+        list.add(new ItemBean(getString(R.string.item_priority_queue), PriorityQueueActivity.class));
         list.add(new ItemBean(getString(R.string.item_task_sequence), TaskSequenceActivity.class));
         list.add(new TitleBean("Camera"));
         list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));

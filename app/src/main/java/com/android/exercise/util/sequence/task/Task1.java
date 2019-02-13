@@ -1,6 +1,6 @@
 package com.android.exercise.util.sequence.task;
 
-import com.android.exercise.ui.activity.TaskSequenceActivity;
+import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
 import com.android.exercise.util.sequence.QueueTask;
 
 public class Task1 extends QueueTask {

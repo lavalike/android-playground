@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity;
+package com.android.exercise.ui.activity.queue;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
