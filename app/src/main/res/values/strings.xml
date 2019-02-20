@@ -10,6 +10,10 @@
     <string name="tip_accessibility">AndroidExercise自动化辅助测试\n\t\tAccessibilityService是一个辅助类，可以监听我们手机的焦点，窗口变化，按钮点击等等。实现它的服务需要在手机设置里面->辅助功能在这里面找到你自己实现的辅助类，然后打开它就可以进行我们一系列的监听了。</string>
     <string name="tip_qq_accessibility">QQ自动发消息辅助服务</string>
 
+    <string name="tip_permission_set">设置</string>
+    <string name="tip_permission_cancel">取消</string>
+    <string name="tip_permission_msg">需要开启权限才能使用此功能</string>
+
     <string name="item_realm">Realm</string>
     <string name="item_greendao">GreenDao</string>
     <string name="item_retrofit">Retrofit 2.0</string>
@@ -66,4 +70,5 @@
     <string name="item_camera_video">录视频</string>
     <string name="item_priority_queue">PriorityQueue</string>
     <string name="item_task_sequence">顺序执行Queue</string>
+    <string name="item_hashmap_treeify">HashMap树化</string>
 </resources>
