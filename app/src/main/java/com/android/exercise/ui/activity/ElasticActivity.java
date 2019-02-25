@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -33,10 +34,10 @@ public class ElasticActivity extends BaseActivity {
         ButterKnife.bind(this);
         String url = "https://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&amp;mid=2247483998&amp;idx=1&amp;sn=03cb1942533247ac23876448fdf1b39a&amp;chksm=96cda313a1ba2a050f8cc2325e36b468f620d3d167d9f0dbc3108127c5ba16d14dc83cabc3c6&amp;scene=21#wechat_redirect";
         webview.loadUrl(url);
-        View behindView = elastic_layout.getBehindView();
-        if (behindView != null) {
-            ((TextView) behindView.findViewById(R.id.tv_tip)).setText("网页由 " + getUrlHost(url) + " 提供");
-        }
+
+        View headerView = LayoutInflater.from(this).inflate(R.layout.layout_pull_behind, null);
+        ((TextView) headerView.findViewById(R.id.tv_tip)).setText("网页由 " + getUrlHost(url) + " 提供");
+        elastic_layout.setHeaderView(headerView);
     }
 
     /**

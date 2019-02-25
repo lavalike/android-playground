@@ -79,10 +79,10 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'com.github.lavalike:ElasticLayout:0.0.1'
     implementation 'com.wangzhen:LintChecker:0.0.1'
     implementation 'com.wangzhen:DarkStatusBar:0.0.3'
     implementation project(':butterknife-annotations')
     implementation project(':butterknife-api')
-    implementation 'com.aliya:permission:0.3.2'
+    implementation 'com.aliya:permission:0.4.1'
+    implementation 'com.wangzhen:ElasticLayout:0.0.2'
 }

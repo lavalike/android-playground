@@ -71,6 +71,7 @@ import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
+import com.android.exercise.ui.activity.stream.FileStreamActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
@@ -153,6 +154,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Stream"));
+        list.add(new ItemBean(getString(R.string.item_stream), FileStreamActivity.class));
         list.add(new TitleBean("HashMap"));
         list.add(new ItemBean(getString(R.string.item_hashmap_treeify), HashMapTreeifyActivity.class));
         list.add(new TitleBean("Queue"));

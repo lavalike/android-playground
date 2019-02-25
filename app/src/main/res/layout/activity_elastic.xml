@@ -5,9 +5,7 @@
     android:id="@+id/elastic_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:el_behind_view="@layout/layout_pull_behind"
-    app:el_direction="top"
-    app:el_factor="0.3"
+    app:drag_factor="0.6"
     tools:context="com.android.exercise.ui.activity.ElasticActivity">
 
     <WebView

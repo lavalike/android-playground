@@ -71,4 +71,5 @@
     <string name="item_priority_queue">PriorityQueue</string>
     <string name="item_task_sequence">顺序执行Queue</string>
     <string name="item_hashmap_treeify">HashMap树化</string>
+    <string name="item_stream">stream</string>
 </resources>
