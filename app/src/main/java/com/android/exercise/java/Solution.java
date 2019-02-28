@@ -14,7 +14,7 @@ class Solution {
 //        char[] chars = {'a'};
 //        char[] chars = {'a','b','b','b','b','b','b','b','b','b','b','b','b'};
 //        char[] chars = {'a', 'b', 'c'};
-        char[] chars = {'a','a','a','a','b','a'};
+        char[] chars = {'a', 'a', 'a', 'a', 'b', 'a'};
         System.out.println("chars 长度 " + compress(chars));
         System.out.println("chars " + printChars(chars));
     }
