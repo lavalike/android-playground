@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
  * Created by wangzhen on 2019/2/28.
  */
 public class TcpServer {
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void main(String[] args) throws IOException {
         System.out.println("Socket Server服务已经启动");
         TcpServer tcpServer = new TcpServer();
