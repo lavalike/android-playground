@@ -1,17 +1,15 @@
 package com.android.exercise.java.countdown;
 
-import java.util.concurrent.CountDownLatch;
-
 /**
  * BaseChecker
  * Created by wangzhen on 2019/3/11.
  */
 public abstract class BaseChecker implements Runnable {
 
-    private CountDownLatch latch;
+    private CountDownLatchWrapper wrapper;
 
-    public BaseChecker(CountDownLatch latch) {
-        this.latch = latch;
+    public BaseChecker(CountDownLatchWrapper wrapper) {
+        this.wrapper = wrapper;
     }
 
     @Override
@@ -21,11 +19,11 @@ public abstract class BaseChecker implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (latch != null) {
-                latch.countDown();
+            if (wrapper != null && wrapper.latch != null) {
+                wrapper.latch.countDown();
             }
         }
     }
 
-    abstract void check();
+    public abstract void check();
 }

@@ -1,4 +1,7 @@
-package com.android.exercise.java.countdown;
+package com.android.exercise.java.countdown.task;
+
+import com.android.exercise.java.countdown.BaseChecker;
+import com.android.exercise.java.countdown.CountDownLatchWrapper;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -7,12 +10,12 @@ import java.util.concurrent.CountDownLatch;
  * Created by wangzhen on 2019/3/11.
  */
 public class CheckTask4 extends BaseChecker {
-    public CheckTask4(CountDownLatch latch) {
-        super(latch);
+    public CheckTask4(CountDownLatchWrapper wrapper) {
+        super(wrapper);
     }
 
     @Override
-    void check() {
+    public void check() {
         System.out.println("东风光学雷达检查中...");
         try {
             Thread.sleep(10000);

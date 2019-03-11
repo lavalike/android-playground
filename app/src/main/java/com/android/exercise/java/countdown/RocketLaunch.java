@@ -1,8 +1,13 @@
 package com.android.exercise.java.countdown;
 
+import com.android.exercise.java.countdown.task.CheckTask1;
+import com.android.exercise.java.countdown.task.CheckTask2;
+import com.android.exercise.java.countdown.task.CheckTask3;
+import com.android.exercise.java.countdown.task.CheckTask4;
+import com.android.exercise.java.countdown.task.CheckTask5;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -19,17 +24,21 @@ public class RocketLaunch {
     }
 
     private static void doCheck() throws InterruptedException {
-        CountDownLatch latch = new CountDownLatch(5);
+        CountDownLatchWrapper wrapper = new CountDownLatchWrapper();
+
         List<BaseChecker> list = new ArrayList<>();
-        list.add(new CheckTask1(latch));
-        list.add(new CheckTask2(latch));
-        list.add(new CheckTask3(latch));
-        list.add(new CheckTask4(latch));
-        list.add(new CheckTask5(latch));
+        list.add(new CheckTask1(wrapper));
+        list.add(new CheckTask2(wrapper));
+        list.add(new CheckTask3(wrapper));
+        list.add(new CheckTask4(wrapper));
+        list.add(new CheckTask5(wrapper));
+
+        wrapper.count(list.size());
+
         ExecutorService service = Executors.newFixedThreadPool(list.size());
         for (BaseChecker checker : list) {
             service.execute(checker);
         }
-        latch.await();
+        wrapper.latch.await();
     }
 }
