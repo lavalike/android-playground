@@ -15,15 +15,24 @@ import java.util.concurrent.Executors;
  * RocketLaunch 火箭发射流程
  * Created by wangzhen on 2019/3/11.
  */
-public class RocketLaunch {
+public class RocketLaunch extends Thread {
 
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println("准备发射");
-        doCheck();
-        System.out.println("发射成功");
+    public static void main(String[] args) {
+        new RocketLaunch().start();
     }
 
-    private static void doCheck() throws InterruptedException {
+    @Override
+    public void run() {
+        try {
+            System.out.println("准备发射");
+            doCheck();
+            System.out.println("发射成功");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void doCheck() throws InterruptedException {
         CountDownLatchWrapper wrapper = new CountDownLatchWrapper();
 
         List<BaseChecker> list = new ArrayList<>();

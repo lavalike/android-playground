@@ -3,7 +3,7 @@ package com.android.exercise.java.countdown;
 import android.os.CountDownTimer;
 
 /**
- * ValidationCode2 验证码倒计时2
+ * ValidationCode2 验证码倒计时2 Android特有
  * Created by wangzhen on 2019/3/11.
  */
 public class ValidationCode2 {
