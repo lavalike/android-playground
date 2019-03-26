@@ -23,7 +23,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.stream.FileStreamActivity"></activity>
+        <activity android:name=".ui.activity.RefreshLayoutActivity"></activity>
+        <activity android:name=".ui.activity.stream.FileStreamActivity" />
         <activity android:name=".ui.activity.hashmap.HashMapTreeifyActivity" />
         <activity android:name=".ui.activity.queue.PriorityQueueActivity" />
         <activity android:name=".ui.activity.queue.TaskSequenceActivity" />

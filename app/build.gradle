@@ -89,4 +89,5 @@ dependencies {
     implementation project(':butterknife-api')
     implementation 'com.aliya:permission:0.4.1'
     implementation 'com.wangzhen:ElasticLayout:0.0.2'
+    implementation 'com.github.lavalike:RefreshLayout:0.0.1'
 }

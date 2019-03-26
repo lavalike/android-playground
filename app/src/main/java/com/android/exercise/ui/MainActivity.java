@@ -52,6 +52,7 @@ import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecorderActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.RecyclerTouchActivity;
+import com.android.exercise.ui.activity.RefreshLayoutActivity;
 import com.android.exercise.ui.activity.RetrofitActivity;
 import com.android.exercise.ui.activity.RippleActivity;
 import com.android.exercise.ui.activity.RuntimeAnnotationActivity;
@@ -175,6 +176,7 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_path_measure), PathMeasureActivity.class));
         list.add(new ItemBean(getString(R.string.item_path), PathActivity.class));
         list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_refresh_layout), RefreshLayoutActivity.class));
         list.add(new ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity.class));
         list.add(new ItemBean(getString(R.string.item_notification), NotificationActivity.class));
         list.add(new ItemBean(getString(R.string.item_text_format), TextFormatActivity.class));
