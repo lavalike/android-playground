@@ -9,6 +9,7 @@ import android.view.View;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.ui.widget.refresh.RefreshHeader;
 import com.wangzhen.refresh.RefreshLayout;
 import com.wangzhen.refresh.callback.RefreshCallback;
 
@@ -31,6 +32,7 @@ public class RefreshLayoutActivity extends BaseActivity implements RefreshCallba
         setContentView(R.layout.activity_refresh_layout);
         ButterKnife.bind(this);
         refreshLayout.setRefreshCallback(this);
+        refreshLayout.setHeaderView(new RefreshHeader(this));
     }
 
     @Override
