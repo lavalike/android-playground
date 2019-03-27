@@ -89,5 +89,5 @@ dependencies {
     implementation 'com.wangzhen:LintChecker:0.0.1'
     implementation 'com.wangzhen:ElasticLayout:0.0.2'
     implementation 'com.wangzhen:dark-status-bar:1.0.0'
-    implementation 'com.wangzhen:refresh-layout:0.0.2'
+    implementation 'com.wangzhen:refresh-layout:0.0.3'
 }
