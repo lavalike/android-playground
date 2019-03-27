@@ -49,6 +49,18 @@ greendao {
 
 def SUPPORT_VERSION = "26.1.0"
 
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        def requested = details.requested
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                //统一的依赖版本为SUPPORT_VERSION
+//                details.useVersion SUPPORT_VERSION
+//            }
+//        }
+//    }
+//}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:' + SUPPORT_VERSION
@@ -89,5 +101,7 @@ dependencies {
     implementation 'com.wangzhen:LintChecker:0.0.1'
     implementation 'com.wangzhen:ElasticLayout:0.0.3'
     implementation 'com.wangzhen:dark-status-bar:1.0.0'
-    implementation 'com.wangzhen:refresh-layout:0.0.3'
+    implementation('com.wangzhen:refresh-layout:0.0.4') {
+        transitive false
+    }
 }
