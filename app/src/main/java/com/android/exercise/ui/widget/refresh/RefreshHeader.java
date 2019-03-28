@@ -42,11 +42,5 @@ public class RefreshHeader extends HeaderView {
     @Override
     public void onRefreshComplete() {
         textView.setText(texts[3]);
-        textView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                textView.setText(texts[0]);
-            }
-        }, 200);
     }
 }

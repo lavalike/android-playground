@@ -5,7 +5,7 @@
     android:id="@+id/refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:refresh_factor="0.6"
+    app:refresh_factor="0.5"
     tools:context=".ui.activity.RefreshLayoutActivity">
 
     <ScrollView

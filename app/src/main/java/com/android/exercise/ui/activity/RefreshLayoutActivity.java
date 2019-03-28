@@ -11,7 +11,7 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.ui.widget.refresh.RefreshHeader;
 import com.wangzhen.refresh.RefreshLayout;
-import com.wangzhen.refresh.callback.RefreshCallback;
+import com.wangzhen.refresh.callback.OnRefreshCallback;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * RefreshLayoutActivity 自定义下拉刷新布局
  * Created by wangzhen on 2019/3/26.
  */
-public class RefreshLayoutActivity extends BaseActivity implements RefreshCallback {
+public class RefreshLayoutActivity extends BaseActivity implements OnRefreshCallback {
 
     @BindView(R.id.refresh)
     RefreshLayout refreshLayout;
@@ -31,7 +31,7 @@ public class RefreshLayoutActivity extends BaseActivity implements RefreshCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refresh_layout);
         ButterKnife.bind(this);
-        refreshLayout.setRefreshCallback(this);
+        refreshLayout.setOnRefreshCallback(this);
         refreshLayout.setHeaderView(new RefreshHeader(this));
     }
 
