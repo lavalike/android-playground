@@ -66,9 +66,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:' + SUPPORT_VERSION
     implementation 'com.android.support:recyclerview-v7:' + SUPPORT_VERSION
     implementation 'com.android.support:design:' + SUPPORT_VERSION
-    implementation('com.alibaba.android:vlayout:1.0.3@aar') {
-        transitive = true
-    }
+    implementation('com.alibaba.android:vlayout:1.0.3@aar') { transitive = true }
     implementation files('src/main/libs/mina-core-2.0.0.jar')
     implementation files('src/main/libs/slf4j-api-1.5.11.jar')
     implementation files('src/main/libs/slf4j-simple-1.5.2.jar')
@@ -101,7 +99,5 @@ dependencies {
     implementation 'com.wangzhen:LintChecker:0.0.1'
     implementation 'com.wangzhen:ElasticLayout:0.0.3'
     implementation 'com.wangzhen:dark-status-bar:1.0.0'
-    implementation('com.wangzhen:refresh-layout:0.0.6') {
-        transitive false
-    }
+    implementation('com.wangzhen:refresh-layout:0.0.7') { transitive false }
 }
