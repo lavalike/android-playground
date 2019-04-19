@@ -73,4 +73,5 @@
     <string name="item_hashmap_treeify">HashMap树化</string>
     <string name="item_stream">stream</string>
     <string name="item_refresh_layout">RefreshLayout</string>
+    <string name="item_view_switcher">View轮播</string>
 </resources>
