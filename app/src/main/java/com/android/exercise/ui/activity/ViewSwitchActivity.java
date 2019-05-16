@@ -52,8 +52,8 @@ public class ViewSwitchActivity extends BaseActivity {
         list = new ArrayList<>();
         list.add("习近平出席全球理论坛闭幕式并致辞");
         list.add("东体：里皮离任因对国足球管理层不满 当顾问是许家力邀");
-        list.add("火爆上海的马丁哥龙虾来杭州啦！吃货准备好了吗？");
-        list.add("完美世界重磅首发，各种好礼等你来抢啦！");
+//        list.add("火爆上海的马丁哥龙虾来杭州啦！吃货准备好了吗？");
+//        list.add("完美世界重磅首发，各种好礼等你来抢啦！");
     }
 
     private void initSwitcher() {
@@ -82,7 +82,11 @@ public class ViewSwitchActivity extends BaseActivity {
             flipper.addView(view);
         }
         flipper.setFlipInterval(1000 * 3);
-        flipper.startFlipping();
+        if (list.size() > 1) {
+            flipper.startFlipping();
+        } else {
+            flipper.stopFlipping();
+        }
     }
 
     private Handler handler = new Handler(Looper.myLooper()) {
@@ -91,8 +95,10 @@ public class ViewSwitchActivity extends BaseActivity {
             switch (msg.what) {
                 case MSG_NEXT_SWITCHER:
                     switcher.setText(list.get(switcherIndex % list.size()));
-                    switcherIndex++;
-                    handler.sendEmptyMessageDelayed(MSG_NEXT_SWITCHER, 3000);
+                    if (list.size() > 1) {
+                        handler.sendEmptyMessageDelayed(MSG_NEXT_SWITCHER, 3000);
+                        switcherIndex++;
+                    }
                     break;
                 case MSG_NEXT_FLIPPER:
                     break;

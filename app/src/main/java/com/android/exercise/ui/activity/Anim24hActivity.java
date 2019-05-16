@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 24小时引导动画
+ * 24hour引导动画
  */
 public class Anim24hActivity extends BaseActivity {
 

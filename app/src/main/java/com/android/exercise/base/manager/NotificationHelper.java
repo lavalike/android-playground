@@ -26,7 +26,7 @@ public class NotificationHelper implements INotification {
     private static INotification mInstance;
     private static int notify_id = 0;
     public static final String CHANNEL_ID = "channel_id_24h";
-    public static final String CHANNEL_NAME = "浙江24小时";
+    public static final String CHANNEL_NAME = "24hour";
     private static final long NO_DISTURBING = 1500; // 免打扰间隔时间
     private static long mLastNotifyTime;
     private static NotificationManager notificationManager;

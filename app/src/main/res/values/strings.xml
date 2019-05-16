@@ -22,7 +22,7 @@
     <string name="item_slidingmenu">自定义侧滑菜单</string>
     <string name="item_flowlayout">流式布局</string>
     <string name="item_accessibility">自动化辅助</string>
-    <string name="item_24hanim">24小时动画</string>
+    <string name="item_24hanim">24hour动画</string>
     <string name="item_threadpool">线程池</string>
     <string name="item_broadcast">广播</string>
     <string name="item_dispatch">事件分发</string>
@@ -59,7 +59,7 @@
     <string name="item_recycler_tik_tok">抖音</string>
     <string name="item_state_button">状态按钮</string>
     <string name="item_notification">notification</string>
-    <string name="item_invoke_app">调起24小时</string>
+    <string name="item_invoke_app">调起24hour</string>
     <string name="item_path">Path</string>
     <string name="item_path_measure">PathMeasure</string>
     <string name="item_path_search">PathSearch</string>
@@ -74,4 +74,5 @@
     <string name="item_stream">stream</string>
     <string name="item_refresh_layout">RefreshLayout</string>
     <string name="item_view_switcher">View轮播</string>
+    <string name="item_multi_touch">多点触摸</string>
 </resources>
