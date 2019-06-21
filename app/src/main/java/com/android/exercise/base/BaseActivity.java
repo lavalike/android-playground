@@ -29,7 +29,7 @@ public class BaseActivity extends ToolbarActivity implements PermissionManager.O
         mContext = this;
         setSwipeBackEnable(true);
         // 禁止横屏
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         AppManager.get().addActivity(this);
     }
 

@@ -48,18 +48,6 @@ greendao {
 
 def SUPPORT_VERSION = "28.0.0"
 
-//configurations.all {
-//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-//        def requested = details.requested
-//        if (requested.group == 'com.android.support') {
-//            if (!requested.name.startsWith("multidex")) {
-//                //统一的依赖版本为SUPPORT_VERSION
-//                details.useVersion SUPPORT_VERSION
-//            }
-//        }
-//    }
-//}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:' + SUPPORT_VERSION
@@ -70,9 +58,6 @@ dependencies {
     implementation files('src/main/libs/mina-core-2.0.0.jar')
     implementation files('src/main/libs/slf4j-api-1.5.11.jar')
     implementation files('src/main/libs/slf4j-simple-1.5.2.jar')
-    //    implementation 'com.github.bumptech.glide:glide:3.7.0'
-    //    implementation 'com.jakewharton:butterknife:8.8.0'
-    //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'org.greenrobot:greendao:3.2.2'
@@ -93,11 +78,11 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation project(':butterknife-annotations')
     implementation project(':butterknife-api')
-    implementation 'com.aliya:permission:0.4.1'
+    implementation 'com.aliya:permission:0.5.0'
     implementation 'com.wangzhen:LinkTextView:1.0.0'
     implementation 'com.wangzhen:GradientLayout:1.0.0'
     implementation 'com.wangzhen:LintChecker:0.0.1'
     implementation 'com.wangzhen:ElasticLayout:0.0.3'
     implementation 'com.wangzhen:dark-status-bar:1.0.0'
-    implementation('com.wangzhen:refresh-layout:0.0.7') { transitive false }
+    implementation('com.wangzhen:refresh-layout:0.2.0') { transitive false }
 }
