@@ -1,21 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#09C"
-    android:padding="@dimen/widget_margin">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_widget"
+    android:padding="15dp">
 
     <TextView
-        android:id="@+id/appwidget_text"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:background="#09C"
-        android:contentDescription="@string/app_name"
-        android:text="@string/app_name"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/iv"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.21"
+        android:maxLines="3"
+        android:textColor="#3b424c"
+        android:textSize="18sp"
+        tools:text="习近平出席中法全球理论坛闭幕式并致辞" />
+
+    <LinearLayout
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:textColor="#fdc247"
+            android:textSize="10sp"
+            tools:text="活动" />
+
+        <TextView
+            android:id="@+id/tv_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#a0a4a9"
+            android:textSize="10sp"
+            tools:text="杭州吃货" />
+
+        <TextView
+            android:id="@+id/tv_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#a0a4a9"
+            android:textSize="10sp"
+            tools:text="1005阅读" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#a0a4a9"
+            android:textSize="10sp"
+            tools:text="1小时前" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="113dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/bg_dog" />
 
 </RelativeLayout>

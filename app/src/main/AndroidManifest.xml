@@ -139,9 +139,10 @@
         <activity android:name=".ui.activity.StateButtonActivity" />
         <activity android:name=".ui.activity.NotificationActivity" />
 
-        <receiver android:name=".NewAppWidget">
+        <receiver android:name=".NewsWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.exercise.widget" />
             </intent-filter>
 
             <meta-data
