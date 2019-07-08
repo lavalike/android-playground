@@ -51,6 +51,10 @@ public class ToolBarRightTextHolder extends BaseToolBarHolder {
         tv_menu = findById(R.id.tv_toolbar_right_text_menu);
     }
 
+    public void setTitle(String title) {
+        tv_title.setText(title);
+    }
+
     @Override
     protected int getToolBarLayoutResId() {
         return R.layout.layout_toolbar_right_text;

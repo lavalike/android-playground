@@ -70,6 +70,7 @@ import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
+import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
@@ -158,6 +159,7 @@ public class MainActivity extends BaseActivity {
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
         list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_calendar), CalendarActivity.class));
         list.add(new ItemBean(getString(R.string.item_multi_touch), MultiTouchActivity.class));
         list.add(new ItemBean(getString(R.string.item_view_switcher), ViewSwitchActivity.class));
         list.add(new ItemBean(getString(R.string.item_refresh_layout), RefreshLayoutActivity.class));

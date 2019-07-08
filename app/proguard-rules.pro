@@ -26,3 +26,8 @@
 
 # for DexGuard only
 -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+# calendar
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context);
+}

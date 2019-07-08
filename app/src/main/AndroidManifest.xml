@@ -23,7 +23,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.touch.MultiTouchActivity"></activity>
+        <activity android:name=".ui.activity.calendar.CalendarActivity"></activity>
+        <activity android:name=".ui.activity.touch.MultiTouchActivity" />
         <activity android:name=".ui.activity.ViewSwitchActivity" />
         <activity android:name=".ui.activity.RefreshLayoutActivity" />
         <activity android:name=".ui.activity.stream.FileStreamActivity" />
