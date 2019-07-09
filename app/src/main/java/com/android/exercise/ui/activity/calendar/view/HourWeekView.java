@@ -29,8 +29,7 @@ public class HourWeekView extends WeekView {
      */
     @Override
     protected boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, boolean hasScheme) {
-        mSelectedPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(x + mItemWidth / 2f, mItemHeight / 2f, mRadius, mSelectedPaint);
+        canvas.drawCircle(x + mItemWidth / 2f, mItemHeight / 2f, mRadius, calendar.isCurrentDay() ? mCurDayTextPaint : mSelectedPaint);
         return true;
     }
 

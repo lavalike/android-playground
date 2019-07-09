@@ -32,8 +32,7 @@ public class HourMonthView extends MonthView {
      */
     @Override
     protected boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme) {
-        mSelectedPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(x + mItemWidth / 2f, y + mItemHeight / 2f, mRadius, mSelectedPaint);
+        canvas.drawCircle(x + mItemWidth / 2f, y + mItemHeight / 2f, mRadius, calendar.isCurrentDay() ? mCurDayTextPaint : mSelectedPaint);
         return true;
     }
 

@@ -28,6 +28,7 @@
             app:other_month_text_color="#eeeeee"
             app:selected_text_color="#ffffff"
             app:selected_theme_color="#3b424c"
+            app:week_start_with="mon"
             app:week_view="com.android.exercise.ui.activity.calendar.view.HourWeekView"
             app:week_view_scrollable="true" />
 
