@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.android.exercise"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0.0"
@@ -86,4 +86,5 @@ dependencies {
     implementation 'com.wangzhen:dark-status-bar:1.0.1'
     implementation('com.wangzhen:refresh-layout:0.2.0') { transitive false }
     implementation 'com.haibin:calendarview:3.6.4'
+    implementation 'com.wangzhen:download-client-android:0.0.1'
 }

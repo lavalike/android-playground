@@ -76,4 +76,5 @@
     <string name="item_view_switcher">View轮播</string>
     <string name="item_multi_touch">多点触摸</string>
     <string name="item_calendar">日历</string>
+    <string name="item_download">DownloadClient</string>
 </resources>
