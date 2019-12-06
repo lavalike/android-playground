@@ -1,12 +1,15 @@
 package com.android.exercise.ui.activity.download;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.wangzhen.download.DownloadClient;
 import com.wangzhen.download.bean.ParamsBody;
 import com.wangzhen.download.callback.OnDownloadCallback;
@@ -55,5 +58,10 @@ public class DownloadActivity extends BaseActivity {
                     }
                 })
                 .build());
+    }
+
+    @Override
+    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
+        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_download));
     }
 }

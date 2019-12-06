@@ -36,6 +36,7 @@ import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.FrameAnimationActivity;
 import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.HoverRecyclerViewActivity;
+import com.android.exercise.ui.activity.HtmlRichTextActivity;
 import com.android.exercise.ui.activity.ImageHtmlActivity;
 import com.android.exercise.ui.activity.ImageRecyclerActivity;
 import com.android.exercise.ui.activity.InvokeAppActivity;
@@ -159,6 +160,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Html相关"));
+        list.add(new ItemBean(getString(R.string.item_html_rich_text), HtmlRichTextActivity.class));
         list.add(new TitleBean("个人开源库"));
         list.add(new ItemBean(getString(R.string.item_download), DownloadActivity.class));
         list.add(new ItemBean(getString(R.string.item_refresh_layout), RefreshLayoutActivity.class));

@@ -77,4 +77,5 @@
     <string name="item_multi_touch">多点触摸</string>
     <string name="item_calendar">日历</string>
     <string name="item_download">DownloadClient</string>
+    <string name="item_html_rich_text">Html富文本</string>
 </resources>
