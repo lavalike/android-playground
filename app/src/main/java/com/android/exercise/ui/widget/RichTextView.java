@@ -1,10 +1,13 @@
 package com.android.exercise.ui.widget;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -94,8 +97,10 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
             } catch (Exception e) {
                 return null;
             }
-            drawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
-            return drawable;
+            RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), ((BitmapDrawable) drawable).getBitmap());
+            roundedBitmapDrawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
+            roundedBitmapDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
+            return roundedBitmapDrawable;
         }
     };
 
