@@ -1,8 +1,10 @@
 package com.android.exercise.ui.widget;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -94,13 +96,19 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
             try {
                 url = new URL(source);
                 drawable = Drawable.createFromStream(url.openStream(), "img");
+                RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), ((BitmapDrawable) drawable).getBitmap());
+                roundedBitmapDrawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
+                roundedBitmapDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
+                return roundedBitmapDrawable;
             } catch (Exception e) {
-                return null;
+                //添加默认占位
+                GradientDrawable gradientDrawable = new GradientDrawable();
+                gradientDrawable.setColor(Color.parseColor("#e4e4e4"));
+                gradientDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
+                drawable = gradientDrawable;
+                drawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
+                return drawable;
             }
-            RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), ((BitmapDrawable) drawable).getBitmap());
-            roundedBitmapDrawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
-            roundedBitmapDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
-            return roundedBitmapDrawable;
         }
     };
 

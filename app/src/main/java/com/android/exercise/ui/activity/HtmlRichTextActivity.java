@@ -30,7 +30,8 @@ public class HtmlRichTextActivity extends BaseActivity {
                 "您好，该问题已经经过处理，请耐心等待解决。\n" +
                 "<a href='https://www.baidu.com/'><span style=\"color:#F18E1A;\">点击阅读整体报告</span></a>\n" +
                 "<br/>\n" +
-                "<img style='border-radius:6px' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575641792484&di=475ec99e4061b371f5cf7fb485f78b80&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180917%2F22%2F1537193274-diLswpUDbH.jpg' />\n" +
+//                "<img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575641792484&di=475ec99e4061b371f5cf7fb485f78b80&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180917%2F22%2F1537193274-diLswpUDbH.jpg' />\n" +
+                "<img src='https://timgsa.baidu.com/' />\n" +
                 "<br/>\n" +
                 "<a href='https://www.baidu.com/'><span style=\"color:#F18E1A;\">点击阅读整体报告</span></a>";
         mTextView.setRichText(html);
