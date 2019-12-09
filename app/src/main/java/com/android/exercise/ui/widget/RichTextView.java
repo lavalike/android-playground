@@ -92,23 +92,20 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
         @Override
         public Drawable getDrawable(String source) {
             Drawable drawable;
-            URL url;
             try {
-                url = new URL(source);
-                drawable = Drawable.createFromStream(url.openStream(), "img");
-                RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), ((BitmapDrawable) drawable).getBitmap());
-                roundedBitmapDrawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
+                URL url = new URL(source);
+                RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), ((BitmapDrawable) Drawable.createFromStream(url.openStream(), "img")).getBitmap());
                 roundedBitmapDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
-                return roundedBitmapDrawable;
+                drawable = roundedBitmapDrawable;
             } catch (Exception e) {
                 //添加默认占位
                 GradientDrawable gradientDrawable = new GradientDrawable();
                 gradientDrawable.setColor(Color.parseColor("#e4e4e4"));
                 gradientDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
                 drawable = gradientDrawable;
-                drawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
-                return drawable;
             }
+            drawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
+            return drawable;
         }
     };
 
