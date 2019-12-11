@@ -1,10 +1,13 @@
-package com.android.exercise.ui.widget;
+package com.android.exercise.ui.widget.richtext;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -13,13 +16,14 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ImageSpan;
 import android.text.style.URLSpan;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Toast;
 
+import com.android.exercise.ui.activity.HtmlActivity;
+import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
 
 import java.net.URL;
@@ -30,7 +34,15 @@ import java.util.concurrent.Executors;
  * Created by wangzhen on 2019-12-06.
  */
 public class RichTextView extends android.support.v7.widget.AppCompatTextView {
+    private static final String THREE_DOTS = "...";
+    private static final int THREE_DOTS_LENGTH = 0;
+    private SpannableStringBuilder spannableStringBuilder;
+
     private String mHtmlText;
+    private int mDrawableWidth;
+    private int mDrawableHeight;
+    private float mDrawableRadius;
+    private boolean mBriefImage;
 
     public RichTextView(Context context) {
         this(context, null);
@@ -43,7 +55,19 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
     public RichTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setHighlightColor(ContextCompat.getColor(context, android.R.color.transparent));
-        setMovementMethod(LinkMovementMethod.getInstance());
+        setMovementMethod(CustomLinkMovementMethod.getInstance());
+        mDrawableWidth = UIUtils.dip2px(context, 174);
+        mDrawableHeight = UIUtils.dip2px(context, 98);
+        mDrawableRadius = UIUtils.dip2px(context, 2);
+    }
+
+    /**
+     * show image in brief mode
+     *
+     * @param brief brief mode or not
+     */
+    public void setBriefImage(boolean brief) {
+        this.mBriefImage = brief;
     }
 
     /**
@@ -64,8 +88,13 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
         Executors.newCachedThreadPool().submit(new Runnable() {
             @Override
             public void run() {
-                Spanned spanned = Html.fromHtml(mHtmlText, mImageGetter, null);
-                SpannableStringBuilder builder = new SpannableStringBuilder(spanned);
+                Spanned spanned;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    spanned = Html.fromHtml(mHtmlText, Html.FROM_HTML_MODE_COMPACT, mImageGetter, null);
+                } else {
+                    spanned = Html.fromHtml(mHtmlText, mImageGetter, null);
+                }
+                final SpannableStringBuilder builder = new SpannableStringBuilder(spanned);
                 URLSpan[] urlSpans = builder.getSpans(0, builder.length(), URLSpan.class);
                 //移除默认点击事件
                 for (URLSpan span : urlSpans) {
@@ -74,6 +103,17 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
                 //添加点击事件
                 for (URLSpan span : urlSpans) {
                     builder.setSpan(new RichTextUrlSpan(span.getURL()), spanned.getSpanStart(span), spanned.getSpanEnd(span), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+                //简图模式
+                if (mBriefImage) {
+                    ImageSpan[] imageSpans = builder.getSpans(0, builder.length(), ImageSpan.class);
+                    String placeHolder = "[图片]";
+                    for (ImageSpan span : imageSpans) {
+                        int start = builder.getSpanStart(span);
+                        int end = builder.getSpanEnd(span);
+                        builder.removeSpan(span);
+                        builder.replace(start, end, placeHolder);
+                    }
                 }
                 post(new Runnable() {
                     @Override
@@ -95,16 +135,15 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
             try {
                 URL url = new URL(source);
                 RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getContext().getResources(), ((BitmapDrawable) Drawable.createFromStream(url.openStream(), "img")).getBitmap());
-                roundedBitmapDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
+                roundedBitmapDrawable.setCornerRadius(mDrawableRadius);
                 drawable = roundedBitmapDrawable;
             } catch (Exception e) {
-                //添加默认占位
                 GradientDrawable gradientDrawable = new GradientDrawable();
+                gradientDrawable.setCornerRadius(mDrawableRadius);
                 gradientDrawable.setColor(Color.parseColor("#e4e4e4"));
-                gradientDrawable.setCornerRadius(UIUtils.dip2px(getContext(), 2));
                 drawable = gradientDrawable;
             }
-            drawable.setBounds(0, 0, UIUtils.dip2px(getContext(), 174), UIUtils.dip2px(getContext(), 98));
+            drawable.setBounds(0, 0, mDrawableWidth, mDrawableHeight);
             return drawable;
         }
     };
@@ -121,7 +160,27 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
 
         @Override
         public void onClick(@NonNull View widget) {
-            Toast.makeText(widget.getContext(), url, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(widget.getContext(), HtmlActivity.class);
+            intent.putExtra(IKey.HTML_URL, url);
+            widget.getContext().startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (getLayout().getLineCount() >= getMaxLines()) {
+            CharSequence charSequence = getText();
+            int lastCharDown = getLayout().getLineVisibleEnd(getMaxLines() - 1);
+            if (lastCharDown >= THREE_DOTS_LENGTH && charSequence.length() > lastCharDown) {
+                if (spannableStringBuilder == null) {
+                    spannableStringBuilder = new SpannableStringBuilder();
+                } else {
+                    spannableStringBuilder.clear();
+                }
+                spannableStringBuilder.append(charSequence.subSequence(0, lastCharDown - THREE_DOTS_LENGTH)).append(THREE_DOTS);
+                setText(spannableStringBuilder);
+            }
+        }
+        super.onDraw(canvas);
     }
 }

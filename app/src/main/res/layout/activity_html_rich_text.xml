@@ -7,17 +7,32 @@
     android:padding="16dp"
     tools:context=".ui.activity.HtmlRichTextActivity">
 
-    <com.android.exercise.ui.widget.RichTextView
+    <com.android.exercise.ui.widget.richtext.RichTextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="normal"
         android:textColor="#1B1B1B"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_brief"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="您好，该问题已经经过处理，请耐心等待解决。" />
+
+    <com.android.exercise.ui.widget.richtext.RichTextView
+        android:id="@+id/tv_brief"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="normal"
+        android:textColor="#1B1B1B"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv"
         tools:text="您好，该问题已经经过处理，请耐心等待解决。" />
 
 </android.support.constraint.ConstraintLayout>
