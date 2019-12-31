@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -87,4 +89,5 @@ dependencies {
     implementation('com.wangzhen:refresh-layout:0.2.0') { transitive false }
     implementation 'com.haibin:calendarview:3.6.4'
     implementation 'com.wangzhen:download-client-android:0.0.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

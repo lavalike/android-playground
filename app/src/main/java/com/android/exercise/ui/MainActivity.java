@@ -15,6 +15,7 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.NotificationBean;
 import com.android.exercise.domain.TitleBean;
+import com.android.exercise.kotlin.KotlinActivity;
 import com.android.exercise.ui.activity.ADWindowActivity;
 import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
@@ -160,6 +161,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Kotlin"));
+        list.add(new ItemBean(getString(R.string.item_kotlin), KotlinActivity.class));
         list.add(new TitleBean("Html相关"));
         list.add(new ItemBean(getString(R.string.item_html_rich_text), HtmlRichTextActivity.class));
         list.add(new TitleBean("个人开源库"));

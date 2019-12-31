@@ -31,7 +31,7 @@ public class ItemViewHolder extends BaseViewHolder<ItemBean> implements BaseRecy
     protected void bindData() {
         tv_name.setText(data.getItemName());
         GlideApp.with(itemView.getContext())
-                .load(R.mipmap.dog_2)
+                .load(R.mipmap.ic_android)
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_placeholder)
                 .into(iv_icon);

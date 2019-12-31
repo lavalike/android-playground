@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.HtmlRichTextActivity"></activity>
+        <activity android:name=".kotlin.KotlinActivity" />
+        <activity android:name=".ui.activity.HtmlRichTextActivity" />
         <activity android:name=".ui.activity.download.DownloadActivity" />
         <activity android:name=".ui.activity.calendar.CalendarActivity" />
         <activity android:name=".ui.activity.touch.MultiTouchActivity" />
