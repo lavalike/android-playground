@@ -41,7 +41,7 @@ public class HtmlRichTextActivity extends BaseActivity {
                 "<a href='https://www.jianshu.com/p/8b89546d2c48'>Alpha值转16进制</a>";
         mTextView.setRichText(html);
 
-        mTextViewBrief.setBriefImage(true);
+        mTextViewBrief.setBriefMode(true);
         mTextViewBrief.setRichText(html);
     }
 

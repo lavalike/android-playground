@@ -42,7 +42,7 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
     private int mDrawableWidth;
     private int mDrawableHeight;
     private float mDrawableRadius;
-    private boolean mBriefImage;
+    private boolean mBriefMode;// brief mode
 
     public RichTextView(Context context) {
         this(context, null);
@@ -66,8 +66,8 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
      *
      * @param brief brief mode or not
      */
-    public void setBriefImage(boolean brief) {
-        this.mBriefImage = brief;
+    public void setBriefMode(boolean brief) {
+        this.mBriefMode = brief;
     }
 
     /**
@@ -95,24 +95,33 @@ public class RichTextView extends android.support.v7.widget.AppCompatTextView {
                     spanned = Html.fromHtml(mHtmlText, mImageGetter, null);
                 }
                 final SpannableStringBuilder builder = new SpannableStringBuilder(spanned);
-                URLSpan[] urlSpans = builder.getSpans(0, builder.length(), URLSpan.class);
-                //移除默认点击事件
-                for (URLSpan span : urlSpans) {
-                    builder.removeSpan(span);
-                }
-                //添加点击事件
-                for (URLSpan span : urlSpans) {
-                    builder.setSpan(new RichTextUrlSpan(span.getURL()), spanned.getSpanStart(span), spanned.getSpanEnd(span), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                }
-                //简图模式
-                if (mBriefImage) {
+                if (mBriefMode) {
+                    //处理超链接
+                    URLSpan[] urlSpans = builder.getSpans(0, builder.length(), URLSpan.class);
+                    String holder = "[链接:%s]";
+                    for (URLSpan span : urlSpans) {
+                        int start = builder.getSpanStart(span);
+                        int end = builder.getSpanEnd(span);
+                        builder.removeSpan(span);
+                        builder.replace(start, end, String.format(holder, builder.subSequence(start, end)));
+                    }
+
+                    //处理图片
                     ImageSpan[] imageSpans = builder.getSpans(0, builder.length(), ImageSpan.class);
-                    String placeHolder = "[图片]";
+                    holder = "[图片]";
                     for (ImageSpan span : imageSpans) {
                         int start = builder.getSpanStart(span);
                         int end = builder.getSpanEnd(span);
                         builder.removeSpan(span);
-                        builder.replace(start, end, placeHolder);
+                        builder.replace(start, end, holder);
+                    }
+                } else {
+                    URLSpan[] urlSpans = builder.getSpans(0, builder.length(), URLSpan.class);
+                    for (URLSpan span : urlSpans) {
+                        int start = builder.getSpanStart(span);
+                        int end = builder.getSpanEnd(span);
+                        builder.removeSpan(span);
+                        builder.setSpan(new RichTextUrlSpan(span.getURL()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                 }
                 post(new Runnable() {
