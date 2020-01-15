@@ -75,6 +75,8 @@ import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
+import com.android.exercise.ui.activity.player.ExoPlayerActivity;
+import com.android.exercise.ui.activity.player.IjkPlayerActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
 import com.android.exercise.ui.activity.stream.FileStreamActivity;
@@ -161,6 +163,9 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("Player"));
+        list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));
+        list.add(new ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity.class));
         list.add(new TitleBean("Kotlin"));
         list.add(new ItemBean(getString(R.string.item_kotlin), KotlinActivity.class));
         list.add(new TitleBean("Html相关"));
