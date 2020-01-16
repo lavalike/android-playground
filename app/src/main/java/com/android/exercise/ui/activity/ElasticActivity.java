@@ -43,7 +43,7 @@ public class ElasticActivity extends BaseActivity {
     /**
      * 获取url的Host
      *
-     * @param url url
+     * @param url VIDEO_URL
      * @return Host
      */
     private static String getUrlHost(String url) {

@@ -14,12 +14,12 @@ public class GithubBean implements Serializable {
      * id : 71271761
      * name : AndroidExercise
      * full_name : lavalike/AndroidExercise
-     * owner : {"login":"lavalike","id":7897804,"avatar_url":"https://avatars.githubusercontent.com/u/7897804?v=3","gravatar_id":"","url":"https://api.github.com/users/lavalike","html_url":"https://github.com/lavalike","followers_url":"https://api.github.com/users/lavalike/followers","following_url":"https://api.github.com/users/lavalike/following{/other_user}","gists_url":"https://api.github.com/users/lavalike/gists{/gist_id}","starred_url":"https://api.github.com/users/lavalike/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/lavalike/subscriptions","organizations_url":"https://api.github.com/users/lavalike/orgs","repos_url":"https://api.github.com/users/lavalike/repos","events_url":"https://api.github.com/users/lavalike/events{/privacy}","received_events_url":"https://api.github.com/users/lavalike/received_events","type":"User","site_admin":false}
+     * owner : {"login":"lavalike","id":7897804,"avatar_url":"https://avatars.githubusercontent.com/u/7897804?v=3","gravatar_id":"","VIDEO_URL":"https://api.github.com/users/lavalike","html_url":"https://github.com/lavalike","followers_url":"https://api.github.com/users/lavalike/followers","following_url":"https://api.github.com/users/lavalike/following{/other_user}","gists_url":"https://api.github.com/users/lavalike/gists{/gist_id}","starred_url":"https://api.github.com/users/lavalike/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/lavalike/subscriptions","organizations_url":"https://api.github.com/users/lavalike/orgs","repos_url":"https://api.github.com/users/lavalike/repos","events_url":"https://api.github.com/users/lavalike/events{/privacy}","received_events_url":"https://api.github.com/users/lavalike/received_events","type":"User","site_admin":false}
      * private : false
      * html_url : https://github.com/lavalike/AndroidExercise
      * description : null
      * fork : false
-     * url : https://api.github.com/repos/lavalike/AndroidExercise
+     * VIDEO_URL : https://api.github.com/repos/lavalike/AndroidExercise
      * forks_url : https://api.github.com/repos/lavalike/AndroidExercise/forks
      * keys_url : https://api.github.com/repos/lavalike/AndroidExercise/keys{/key_id}
      * collaborators_url : https://api.github.com/repos/lavalike/AndroidExercise/collaborators{/collaborator}
@@ -89,7 +89,7 @@ public class GithubBean implements Serializable {
      * id : 7897804
      * avatar_url : https://avatars.githubusercontent.com/u/7897804?v=3
      * gravatar_id :
-     * url : https://api.github.com/users/lavalike
+     * VIDEO_URL : https://api.github.com/users/lavalike
      * html_url : https://github.com/lavalike
      * followers_url : https://api.github.com/users/lavalike/followers
      * following_url : https://api.github.com/users/lavalike/following{/other_user}

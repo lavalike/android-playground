@@ -30,6 +30,7 @@ class ExoPlayerActivity : BaseActivity() {
     private lateinit var mPlayerView: PlayerView
     private lateinit var mPlayer: SimpleExoPlayer
     private var mCurrentPosition = 0L
+    private val VIDEO_URL = "http://10.100.119.192:8080/wangzhen/video/beauty.mp4"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +47,7 @@ class ExoPlayerActivity : BaseActivity() {
     private fun initViews() {
         mPlayerView = findViewById(R.id.player_view) as PlayerView
         mPlayerView.setPlaybackPreparer(PlaybackPreparer {
-            val url = "http://10.100.119.192:8080/wangzhen/video/beauty.mp4"
-            play(url)
+            play()
         })
     }
 
@@ -58,10 +58,13 @@ class ExoPlayerActivity : BaseActivity() {
     fun onClick(view: View) {
         when (view.id) {
             R.id.btn_play -> {
-                val url = "http://10.100.119.192:8080/wangzhen/video/beauty.mp4"
-                play(url)
+                play()
             }
         }
+    }
+
+    private fun play() {
+        play(VIDEO_URL)
     }
 
     private fun play(url: String) {

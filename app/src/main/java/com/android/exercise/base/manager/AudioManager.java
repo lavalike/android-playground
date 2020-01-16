@@ -173,7 +173,7 @@ public class AudioManager implements IAudioCallback.IRecordCallback, IAudioCallb
     public void startPlay(String path) {
         if (TextUtils.isEmpty(path)) {
             if (mPlayStateListener != null) {
-                mPlayStateListener.onError("invalid music url");
+                mPlayStateListener.onError("invalid music VIDEO_URL");
             }
             return;
         }

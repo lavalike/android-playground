@@ -84,7 +84,7 @@ public class OKHttpActivity extends BaseActivity {
 //                .add("","")
 //                .build();
 //        Request request = new Request.Builder()
-//                .url("")
+//                .VIDEO_URL("")
 //                .post(body)
 //                .build();
 //        OkHttpClient okHttpClient = new OkHttpClient();
