@@ -55,14 +55,6 @@ class ExoPlayerActivity : BaseActivity() {
         ToolBarCommonHolder(this, toolbar, "ExoPlayer")
     }
 
-    fun onClick(view: View) {
-        when (view.id) {
-            R.id.btn_play -> {
-                play()
-            }
-        }
-    }
-
     private fun play() {
         play(VIDEO_URL)
     }
