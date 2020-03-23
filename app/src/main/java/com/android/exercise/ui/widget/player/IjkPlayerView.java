@@ -27,7 +27,6 @@ public class IjkPlayerView extends FrameLayout {
     private IMediaPlayer mMediaPlayer;
     private SurfaceView mSurfaceView;
     private boolean mEnableMediaCodec;//enable hard decode
-    private Map<String, String> mHeaders;
 
     public IjkPlayerView(@NonNull Context context) {
         this(context, null);

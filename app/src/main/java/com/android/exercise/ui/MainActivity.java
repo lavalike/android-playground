@@ -163,6 +163,8 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
+        list.add(new TitleBean("波浪动画"));
+        list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         list.add(new TitleBean("Player"));
         list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));
         list.add(new ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity.class));
@@ -198,7 +200,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity.class));
         list.add(new ItemBean(getString(R.string.item_scrollview), ScrollActivity.class));
         list.add(new ItemBean(getString(R.string.item_anim_view), AnimViewActivity.class));
-        list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         list.add(new ItemBean(getString(R.string.item_edit_view), EditViewActivity.class));
         list.add(new ItemBean(getString(R.string.item_floor), FloorActivity.class));
         list.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));

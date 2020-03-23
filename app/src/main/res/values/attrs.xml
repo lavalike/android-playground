@@ -88,4 +88,8 @@
         <attr name="psv_border_color" format="color" />
         <attr name="psv_border_width" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="VoiceWaveView">
+        <attr name="wave_color" format="color" />
+    </declare-styleable>
 </resources>

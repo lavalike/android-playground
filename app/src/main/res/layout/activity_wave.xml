@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,5 +9,18 @@
     <com.android.exercise.ui.widget.WaveView
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
+    <com.android.exercise.ui.widget.VoiceWaveView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="70dp"
+        app:wave_color="#3361cc5f" />
+
+    <com.android.exercise.ui.widget.VoiceWaveView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        app:wave_color="#33ffa800" />
 
 </FrameLayout>
