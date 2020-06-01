@@ -10,8 +10,9 @@ import com.android.exercise.R;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
-import com.android.exercise.util.GlideApp;
 import com.android.exercise.util.UIUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 /**
  * ItemViewHolder
@@ -30,10 +31,9 @@ public class ItemViewHolder extends BaseViewHolder<ItemBean> implements BaseRecy
     @Override
     protected void bindData() {
         tv_name.setText(data.getItemName());
-        GlideApp.with(itemView.getContext())
+        Glide.with(itemView.getContext())
                 .load(R.mipmap.ic_android)
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_placeholder)
+                .apply(new RequestOptions().placeholder(R.drawable.ic_placeholder).error(R.drawable.ic_placeholder))
                 .into(iv_icon);
     }
 

@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.android.exercise.R;
 import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
-import com.android.exercise.util.GlideApp;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 
@@ -28,7 +28,7 @@ public class RecyclerImageViewHolder extends BaseViewHolder<String> {
     protected void bindData() {
         final String url = data;
         itemView.setTag(R.id.id_url, url);
-        GlideApp.with(itemView.getContext())
+        Glide.with(itemView.getContext())
                 .load(url)
                 .into(new SimpleTarget<Drawable>() {
                     @Override

@@ -81,4 +81,5 @@
     <string name="item_kotlin">kotlin</string>
     <string name="item_exoplayer">ExoPlayer</string>
     <string name="item_ijkplayer">ijkPlayer</string>
+    <string name="item_object_box">ObjectBox</string>
 </resources>

@@ -15,7 +15,6 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.NotificationBean;
 import com.android.exercise.domain.TitleBean;
-import com.android.exercise.kotlin.KotlinActivity;
 import com.android.exercise.ui.activity.ADWindowActivity;
 import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
@@ -49,7 +48,6 @@ import com.android.exercise.ui.activity.PathActivity;
 import com.android.exercise.ui.activity.PathMeasureActivity;
 import com.android.exercise.ui.activity.PathSearchActivity;
 import com.android.exercise.ui.activity.PorterDuffActivity;
-import com.android.exercise.ui.activity.RealmActivity;
 import com.android.exercise.ui.activity.RecorderActivity;
 import com.android.exercise.ui.activity.RecyclerActivity;
 import com.android.exercise.ui.activity.RecyclerTouchActivity;
@@ -72,6 +70,7 @@ import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
+import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
@@ -162,13 +161,11 @@ public class MainActivity extends BaseActivity {
 
     private List<Object> generateList() {
         List<Object> list = new ArrayList<>();
-        list.add(new TitleBean("波浪动画"));
-        list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
+        list.add(new TitleBean("数据库"));
+        list.add(new ItemBean(getString(R.string.item_object_box), ObjectBoxActivity.class));
         list.add(new TitleBean("Player"));
         list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));
         list.add(new ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity.class));
-        list.add(new TitleBean("Kotlin"));
-        list.add(new ItemBean(getString(R.string.item_kotlin), KotlinActivity.class));
         list.add(new TitleBean("Html相关"));
         list.add(new ItemBean(getString(R.string.item_html_rich_text), HtmlRichTextActivity.class));
         list.add(new TitleBean("个人开源库"));
@@ -176,6 +173,7 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_refresh_layout), RefreshLayoutActivity.class));
         list.add(new ItemBean(getString(R.string.item_pull_layout), ElasticActivity.class));
         list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         list.add(new ItemBean(getString(R.string.item_calendar), CalendarActivity.class));
         list.add(new ItemBean(getString(R.string.item_multi_touch), MultiTouchActivity.class));
         list.add(new ItemBean(getString(R.string.item_view_switcher), ViewSwitchActivity.class));
@@ -233,7 +231,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_view_animation), ViewAnimationActivity.class));
         list.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
         list.add(new TitleBean("开源库"));
-        list.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
         list.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
         list.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         list.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));

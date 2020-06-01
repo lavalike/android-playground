@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.ui.activity.database.RealmActivity;
 import com.wangzhen.statusbar.DarkStatusBar;
 
 import butterknife.BindView;
