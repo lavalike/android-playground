@@ -6,7 +6,6 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.android.exercise.base.manager.AppManager;
-import com.android.exercise.base.greendao.DBLoader;
 import com.android.exercise.base.okhttp.OKHttpManager;
 import com.android.exercise.util.AppUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -38,8 +37,6 @@ public class App extends MultiDexApplication {
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(config);
-        //初始化GreenDao
-        DBLoader.init(this);
         //初始化xUtils3
         x.Ext.init(this);
         OkHttpUtils.initClient(OKHttpManager.getClient());

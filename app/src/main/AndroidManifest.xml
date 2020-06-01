@@ -47,7 +47,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.RealmActivity" />
-        <activity android:name=".ui.activity.GreendaoActivity" />
         <activity android:name=".ui.activity.RetrofitActivity" />
         <activity android:name=".ui.activity.HtmlActivity" />
         <activity android:name=".ui.activity.RecyclerActivity" />

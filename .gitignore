@@ -7,3 +7,4 @@ local.properties
 /gradle/
 /captures
 *.apk
+.cxx

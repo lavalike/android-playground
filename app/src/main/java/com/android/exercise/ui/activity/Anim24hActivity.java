@@ -394,7 +394,7 @@ public class Anim24hActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(mContext, GreendaoActivity.class);
+                Intent intent = new Intent(mContext, RealmActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.anim_zoomin, R.anim.anim_zoomout);

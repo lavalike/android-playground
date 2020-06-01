@@ -2,15 +2,15 @@
 apply from: 'global.gradle'
 
 buildscript {
-    ext.kotlin_version = '1.3.50'
+    ext.kotlin_version = '1.3.72'
     repositories {
         maven { url "https://maven.aliyun.com/repository/google" }
         maven { url "https://maven.aliyun.com/repository/jcenter" }
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:4.0.0'
         classpath "io.realm:realm-gradle-plugin:5.1.0"
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -20,68 +20,10 @@ allprojects {
         maven { url "https://maven.aliyun.com/repository/google" }
         maven { url "https://maven.aliyun.com/repository/jcenter" }
         maven { url 'https://jitpack.io' }
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-task upper << {
-    String someString = 'mY_nAmE'
-    println 'original : ' + someString
-    println 'lower case : ' + someString.toLowerCase()
-    println 'upper case : ' + someString.toUpperCase()
-}
-
-task actionTask(dependsOn: 'noActionTask') << {
-    println 'i am actionTask'
-}
-
-task noActionTask << {
-    println 'i am noActionTask'
-}
-
-//创建动态task
-4.times { counter ->
-    task "task$counter" << {
-        println "i am task number $counter"
-    }
-}
-task3.dependsOn task0, task1, task2
-
-task hello << {
-    println 'hello Earth'
-}
-
-hello.doFirst {
-    println 'Hello Venus'
-}
-
-hello.doLast {
-    println 'Hello Mars'
-}
-
-hello << {
-    println 'Hello Jupiter'
-}
-
-task myTask {
-    ext.myProperty = 'myValue'
-}
-
-task printTaskProperty << {
-    println myTask.myProperty
-}
-
-defaultTasks 'hello', 'printTaskProperty'
-
-task projName << {
-    println project.name
-}
-
-task gradleAPI << {
-    println 'gradleVersion : ' + gradle.gradleVersion
-    println 'gradleUserHomeDir : ' + gradle.gradleUserHomeDir
-    println 'gradleHomeDir : ' + gradle.gradleHomeDir
 }

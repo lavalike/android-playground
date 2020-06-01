@@ -35,7 +35,6 @@ import com.android.exercise.ui.activity.ElasticActivity;
 import com.android.exercise.ui.activity.FloorActivity;
 import com.android.exercise.ui.activity.FlowLayoutActivity;
 import com.android.exercise.ui.activity.FrameAnimationActivity;
-import com.android.exercise.ui.activity.GreendaoActivity;
 import com.android.exercise.ui.activity.HoverRecyclerViewActivity;
 import com.android.exercise.ui.activity.HtmlRichTextActivity;
 import com.android.exercise.ui.activity.ImageHtmlActivity;
@@ -235,7 +234,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_frame_animation), FrameAnimationActivity.class));
         list.add(new TitleBean("开源库"));
         list.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
-        list.add(new ItemBean(getString(R.string.item_greendao), GreendaoActivity.class));
         list.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
         list.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         list.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
