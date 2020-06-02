@@ -17,16 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;
+import io.objectbox.BoxStore;
 
 public class ObjectBoxActivity extends BaseActivity {
 
     private Box<PlayList> mBox;
+    private BoxStore mBoxStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object_box);
-        mBox = MyObjectBox.builder().androidContext(this).build().boxFor(PlayList.class);
+        mBoxStore = MyObjectBox.builder().androidContext(this).build();
+        mBox = mBoxStore.boxFor(PlayList.class);
     }
 
     @Override
@@ -79,6 +82,14 @@ public class ObjectBoxActivity extends BaseActivity {
                     }
                 }
                 break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mBoxStore != null) {
+            mBoxStore.close();
         }
     }
 }

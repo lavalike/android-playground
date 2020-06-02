@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.android.exercise.domain.BaseBean;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.TitleBean;
 import com.android.exercise.ui.adapter.holder.ItemViewHolder;
@@ -16,11 +17,11 @@ import java.util.List;
  * 主页功能
  * Created by Administrator on 2016/4/12.
  */
-public class FunctionAdapter extends BaseRecyclerAdapter<Object, RecyclerView.ViewHolder> {
+public class FunctionAdapter extends BaseRecyclerAdapter<BaseBean, RecyclerView.ViewHolder> {
     public static final int TYPE_TITLE = 0;
     public static final int TYPE_ITEM = 1;
 
-    public FunctionAdapter(Context context, List<Object> list) {
+    public FunctionAdapter(Context context, List<BaseBean> list) {
         super(context, list);
     }
 
