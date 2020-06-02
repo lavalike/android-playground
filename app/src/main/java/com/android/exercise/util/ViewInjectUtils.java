@@ -1,7 +1,8 @@
 package com.android.exercise.util;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.exercise.annotation.InjectLayout;
 import com.android.exercise.annotation.InjectView;

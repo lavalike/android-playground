@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.android.exercise.R;
 import com.android.exercise.ui.widget.nineoldandroids.animation.ValueAnimator;

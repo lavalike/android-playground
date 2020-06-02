@@ -2,8 +2,8 @@ package com.android.exercise.ui.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 

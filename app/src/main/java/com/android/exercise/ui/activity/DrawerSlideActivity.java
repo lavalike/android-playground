@@ -1,10 +1,6 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -12,11 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.util.T;
 import com.android.exercise.util.UIUtils;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -62,10 +64,10 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
             @Override
             public void onClick(View v) {
                 if (mDrawerLayout != null) {
-                    if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
-                        mDrawerLayout.closeDrawer(Gravity.START);
+                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
                     } else {
-                        mDrawerLayout.openDrawer(Gravity.START);
+                        mDrawerLayout.openDrawer(GravityCompat.START);
                     }
                 }
             }
@@ -113,10 +115,10 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
             @Override
             public void onClick(View v) {
                 if (mDrawerLayout != null) {
-                    if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
-                        mDrawerLayout.closeDrawer(Gravity.START);
+                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
                     } else {
-                        mDrawerLayout.openDrawer(Gravity.START);
+                        mDrawerLayout.openDrawer(GravityCompat.START);
                     }
                 }
             }

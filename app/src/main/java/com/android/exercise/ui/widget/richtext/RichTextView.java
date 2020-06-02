@@ -9,11 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -24,6 +19,13 @@ import android.text.style.URLSpan;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import com.android.exercise.ui.activity.HtmlActivity;
 import com.android.exercise.util.DataHelper;
@@ -43,7 +45,7 @@ import java.util.concurrent.Executors;
  * 显示Html富文本的TextView
  * Created by wangzhen on 2019-12-06.
  */
-public class RichTextView extends android.support.v7.widget.AppCompatTextView {
+public class RichTextView extends AppCompatTextView {
     private static final String THREE_DOTS = "...";
     private static final int THREE_DOTS_LENGTH = 0;
     private SpannableStringBuilder spannableStringBuilder;

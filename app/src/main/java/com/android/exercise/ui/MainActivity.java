@@ -3,11 +3,12 @@ package com.android.exercise.ui;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
@@ -40,7 +41,6 @@ import com.android.exercise.ui.activity.HtmlRichTextActivity;
 import com.android.exercise.ui.activity.ImageHtmlActivity;
 import com.android.exercise.ui.activity.ImageRecyclerActivity;
 import com.android.exercise.ui.activity.InvokeAppActivity;
-import com.android.exercise.ui.activity.JniActivity;
 import com.android.exercise.ui.activity.MinaActivity;
 import com.android.exercise.ui.activity.NotificationActivity;
 import com.android.exercise.ui.activity.OKHttpActivity;
@@ -228,8 +228,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_path_search), PathSearchActivity.class));
         list.add(new ItemBean(getString(R.string.item_path_measure), PathMeasureActivity.class));
         list.add(new ItemBean(getString(R.string.item_path), PathActivity.class));
-        list.add(new TitleBean("JNI"));
-        list.add(new ItemBean(getString(R.string.item_jni), JniActivity.class));
         list.add(new TitleBean("注解"));
         list.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
         list.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));

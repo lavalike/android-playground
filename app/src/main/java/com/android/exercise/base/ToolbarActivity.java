@@ -2,17 +2,17 @@ package com.android.exercise.base;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.LayoutRes;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.annotation.LayoutRes;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+
 import com.android.exercise.R;
 import com.android.exercise.ui.widget.swipebacklayout.app.SwipeBackActivity;
-import com.android.exercise.util.TranslucentUtils;
 
 /**
  * 处理Toolbar相关

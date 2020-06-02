@@ -4,9 +4,10 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.android.exercise.listener.IJSCallback;
 

@@ -2,9 +2,10 @@ package com.android.exercise.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.android.exercise.base.manager.AppManager;
 import com.wangzhen.statusbar.DarkStatusBar;

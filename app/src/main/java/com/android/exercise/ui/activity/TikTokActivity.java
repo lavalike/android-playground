@@ -1,10 +1,11 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;

@@ -1,6 +1,7 @@
 package com.android.exercise.ui.activity.queue;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 public class Student implements Comparable {
     private int score;

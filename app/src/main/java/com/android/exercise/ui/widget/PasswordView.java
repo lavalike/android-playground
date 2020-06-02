@@ -6,10 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.android.exercise.R;
 
@@ -43,7 +44,7 @@ public class PasswordView extends AppCompatEditText {
     }
 
     public PasswordView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.editTextStyle);
+        this(context, attrs, androidx.appcompat.R.attr.editTextStyle);
     }
 
     public PasswordView(Context context, AttributeSet attrs, int defStyleAttr) {

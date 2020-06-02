@@ -1,8 +1,9 @@
 package com.android.exercise.ui.widget;
 
-import android.support.annotation.ColorRes;
 import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
+
+import androidx.annotation.ColorRes;
 
 import com.android.exercise.util.AppUtil;
 

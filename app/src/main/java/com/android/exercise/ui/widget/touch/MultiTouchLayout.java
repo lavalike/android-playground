@@ -4,7 +4,7 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -86,7 +86,7 @@ public class MultiTouchLayout extends LinearLayout {
     }
 
     /**
-     * 详见{@link android.support.v4.widget.SwipeRefreshLayout#requestDisallowInterceptTouchEvent(boolean)}
+     * 详见{@link androidx.swiperefreshlayout.widget.SwipeRefreshLayout#requestDisallowInterceptTouchEvent(boolean)}
      *
      * @param disallowIntercept disallowIntercept
      */

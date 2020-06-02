@@ -1,6 +1,6 @@
 package com.android.exercise.domain;
 
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import java.io.Serializable;
 

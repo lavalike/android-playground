@@ -2,11 +2,12 @@ package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;

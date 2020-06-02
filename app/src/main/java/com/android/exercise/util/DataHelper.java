@@ -1,6 +1,6 @@
 package com.android.exercise.util;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;

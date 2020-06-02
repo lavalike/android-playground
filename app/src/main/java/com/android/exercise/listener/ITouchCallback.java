@@ -1,6 +1,6 @@
 package com.android.exercise.listener;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Touch回调

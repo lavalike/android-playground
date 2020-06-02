@@ -3,10 +3,11 @@ package com.android.exercise.ui.widget;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.exercise.base.manager.AudioManager;
 import com.android.exercise.base.manager.DialogManager;

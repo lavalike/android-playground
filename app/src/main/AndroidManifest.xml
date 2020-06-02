@@ -24,11 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.WorkManagerActivity"></activity>
+        <activity android:name=".ui.activity.WorkManagerActivity" />
         <activity android:name=".ui.activity.database.ObjectBoxActivity" />
         <activity android:name=".ui.activity.player.IjkPlayerActivity" />
         <activity android:name=".ui.activity.player.ExoPlayerActivity" />
-        <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".ui.activity.HtmlRichTextActivity" />
         <activity android:name=".ui.activity.download.DownloadActivity" />
         <activity android:name=".ui.activity.calendar.CalendarActivity" />
@@ -159,7 +158,7 @@
         </receiver>
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -169,7 +168,6 @@
         </provider>
 
         <activity android:name=".ui.activity.InvokeAppActivity" />
-        <activity android:name=".ui.activity.JniActivity" />
         <activity android:name=".ui.activity.PathActivity" />
         <activity android:name=".ui.activity.PathMeasureActivity" />
         <activity android:name=".ui.activity.PathSearchActivity" />

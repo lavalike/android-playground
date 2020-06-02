@@ -2,8 +2,9 @@ package com.android.exercise.base;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
+
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
 import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.base.okhttp.OKHttpManager;

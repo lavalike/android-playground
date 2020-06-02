@@ -3,10 +3,11 @@ package com.android.exercise.ui.widget.ripple;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 /**
  * Created by wangzhen on 2017/4/10.

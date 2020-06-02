@@ -1,9 +1,10 @@
 package com.android.exercise.base.recycler.wrapper;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by zhy on 16/6/23.

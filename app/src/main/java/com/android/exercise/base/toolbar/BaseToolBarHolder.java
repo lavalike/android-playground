@@ -1,8 +1,9 @@
 package com.android.exercise.base.toolbar;
 
 import android.app.Activity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * 自定义Toolbar基类

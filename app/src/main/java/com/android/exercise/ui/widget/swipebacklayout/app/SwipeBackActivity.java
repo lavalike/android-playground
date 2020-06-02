@@ -2,8 +2,9 @@
 package com.android.exercise.ui.widget.swipebacklayout.app;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.exercise.ui.widget.swipebacklayout.SwipeBackLayout;
 import com.android.exercise.ui.widget.swipebacklayout.Utils;

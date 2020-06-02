@@ -6,9 +6,10 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import java.util.Random;
 
