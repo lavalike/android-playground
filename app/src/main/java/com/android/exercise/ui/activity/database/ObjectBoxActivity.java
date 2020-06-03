@@ -50,14 +50,15 @@ public class ObjectBoxActivity extends BaseActivity {
                 break;
             case R.id.btn_add_batch:
                 List<PlayList> list = new ArrayList<>();
-                for (int i = 0; i < 100; i++) {
+                long start = System.currentTimeMillis();
+                for (int i = 0; i < 10000; i++) {
                     playList = new PlayList();
                     playList.time = System.currentTimeMillis();
                     playList.name = "批量：" + i;
                     list.add(playList);
                 }
                 mBox.put(list);
-                Toast.makeText(mContext, "批量添加" + list.size() + "条", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "批量添加" + list.size() + "条，用时" + (System.currentTimeMillis() - start), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_del:
                 PlayList first = mBox.query().build().findFirst();

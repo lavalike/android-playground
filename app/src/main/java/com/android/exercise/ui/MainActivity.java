@@ -70,12 +70,13 @@ import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
-import com.android.exercise.ui.activity.jetpack.WorkManagerActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.database.RealmActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
+import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
+import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
@@ -165,6 +166,7 @@ public class MainActivity extends BaseActivity {
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
         list.add(new TitleBean("Jetpack"));
+        list.add(new ItemBean(getString(R.string.item_room), RoomActivity.class));
         list.add(new ItemBean(getString(R.string.item_work_manager), WorkManagerActivity.class));
         list.add(new TitleBean("数据库"));
         list.add(new ItemBean(getString(R.string.item_object_box), ObjectBoxActivity.class));

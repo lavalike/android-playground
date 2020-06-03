@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.jetpack;
+package com.android.exercise.ui.activity.jetpack.work;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,18 +8,18 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 /**
- * Worker4
+ * Worker3
  * Created by wangzhen on 2020/6/2.
  */
-public class Worker4 extends Worker {
-    public Worker4(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+public class Worker3 extends Worker {
+    public Worker3(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
     @NonNull
     @Override
     public Result doWork() {
-        Log.e("TAG", "-> Worker4.doWork()");
+        Log.e("TAG", "-> Worker3.doWork()");
         return Result.success();
     }
 }

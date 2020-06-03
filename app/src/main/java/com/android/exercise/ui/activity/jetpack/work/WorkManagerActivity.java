@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.jetpack;
+package com.android.exercise.ui.activity.jetpack.work;
 
 import android.os.Bundle;
 import android.view.View;
