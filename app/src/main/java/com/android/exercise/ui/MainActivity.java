@@ -70,7 +70,7 @@ import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
-import com.android.exercise.ui.activity.WorkManagerActivity;
+import com.android.exercise.ui.activity.jetpack.WorkManagerActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.database.RealmActivity;
@@ -164,7 +164,7 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
-        list.add(new TitleBean("任务调度"));
+        list.add(new TitleBean("Jetpack"));
         list.add(new ItemBean(getString(R.string.item_work_manager), WorkManagerActivity.class));
         list.add(new TitleBean("数据库"));
         list.add(new ItemBean(getString(R.string.item_object_box), ObjectBoxActivity.class));

@@ -80,4 +80,7 @@ dependencies {
 
     implementation "tv.danmaku.ijk.media:ijkplayer-java:$ijkplayer_version"
     implementation "tv.danmaku.ijk.media:ijkplayer-armv7a:$ijkplayer_version"
+
+    //Jetpack
+    implementation "androidx.work:work-runtime:2.3.4"
 }
