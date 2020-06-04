@@ -85,4 +85,5 @@
     <string name="item_room">Room</string>
     <string name="item_navigation">Navigation</string>
     <string name="item_data_binding">DataBinding</string>
+    <string name="item_lifecycle">Lifecycle</string>
 </resources>

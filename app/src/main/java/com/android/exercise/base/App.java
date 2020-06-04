@@ -25,10 +25,12 @@ public class App extends MultiDexApplication {
 
     //SQLite配置
     private static DbManager.DaoConfig db_config;
+    private static App mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
         AppUtil.init(this);
         Realm.init(this);
         //初始化Realm
@@ -72,5 +74,8 @@ public class App extends MultiDexApplication {
         return appName;
     }
 
+    public static Context getContext() {
+        return mContext;
+    }
 
 }

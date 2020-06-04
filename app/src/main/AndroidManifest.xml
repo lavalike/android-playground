@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity"></activity>
+        <activity android:name=".ui.activity.jetpack.lifecycle.LifecycleActivity"></activity>
+        <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity" />
         <activity android:name=".ui.activity.jetpack.navigation.NavigationActivity" />
         <activity android:name=".ui.activity.jetpack.room.RoomActivity" />
         <activity android:name=".ui.activity.jetpack.work.WorkManagerActivity" />
