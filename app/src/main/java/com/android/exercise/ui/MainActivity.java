@@ -70,6 +70,7 @@ import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
+import com.android.exercise.ui.activity.biometric.BiometricActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.database.RealmActivity;
@@ -169,6 +170,8 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("生物测定"));
+        list.add(new ItemBean(getString(R.string.item_biometric), BiometricActivity.class));
         list.add(new TitleBean("Jetpack"));
         list.add(new ItemBean(getString(R.string.item_view_model), ViewModelActivity.class));
         list.add(new ItemBean(getString(R.string.item_lifecycle), LifecycleActivity.class));

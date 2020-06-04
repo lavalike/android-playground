@@ -7,6 +7,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
@@ -24,7 +25,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.jetpack.viewmodel.ViewModelActivity"></activity>
+        <activity android:name=".ui.activity.biometric.BiometricActivity" />
+        <activity android:name=".ui.activity.jetpack.viewmodel.ViewModelActivity" />
         <activity android:name=".ui.activity.jetpack.lifecycle.LifecycleActivity" />
         <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity" />
         <activity android:name=".ui.activity.jetpack.navigation.NavigationActivity" />
