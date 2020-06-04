@@ -75,6 +75,7 @@ import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.database.RealmActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
+import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
@@ -166,6 +167,7 @@ public class MainActivity extends BaseActivity {
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
         list.add(new TitleBean("Jetpack"));
+        list.add(new ItemBean(getString(R.string.item_navigation), NavigationActivity.class));
         list.add(new ItemBean(getString(R.string.item_room), RoomActivity.class));
         list.add(new ItemBean(getString(R.string.item_work_manager), WorkManagerActivity.class));
         list.add(new TitleBean("数据库"));
