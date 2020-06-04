@@ -79,6 +79,7 @@ import com.android.exercise.ui.activity.jetpack.databinding.DataBindingActivity;
 import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity;
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
+import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
@@ -169,6 +170,7 @@ public class MainActivity extends BaseActivity {
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
         list.add(new TitleBean("Jetpack"));
+        list.add(new ItemBean(getString(R.string.item_view_model), ViewModelActivity.class));
         list.add(new ItemBean(getString(R.string.item_lifecycle), LifecycleActivity.class));
         list.add(new ItemBean(getString(R.string.item_data_binding), DataBindingActivity.class));
         list.add(new ItemBean(getString(R.string.item_navigation), NavigationActivity.class));
