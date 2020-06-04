@@ -8,6 +8,7 @@
     tools:context=".ui.activity.jetpack.viewmodel.ViewModelActivity">
 
     <Button
+        android:id="@+id/btn_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
@@ -19,6 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="init"
-        android:textSize="30sp" />
+        android:textSize="22sp" />
 
 </LinearLayout>

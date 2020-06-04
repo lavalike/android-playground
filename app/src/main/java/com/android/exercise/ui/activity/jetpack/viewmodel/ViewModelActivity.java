@@ -3,6 +3,7 @@ package com.android.exercise.ui.activity.jetpack.viewmodel;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -24,7 +25,15 @@ public class ViewModelActivity extends BaseActivity {
         textView = (TextView) findViewById(R.id.text);
 
         mViewModel = new ViewModelProvider(this).get(CustomViewModel.class);
-        mViewModel.getMessageLiveData().observe(this, s -> textView.setText(s));
+        mViewModel.getMessageLiveData().observe(this, s -> {
+            textView.setText(s);
+        });
+        mViewModel.getMapLiveData().observe(this, length -> {
+            Toast.makeText(mContext, "map -> length : " + length, Toast.LENGTH_SHORT).show();
+        });
+        mViewModel.getSwitchMapLiveData().observe(this, length -> {
+            Toast.makeText(mContext, "switch map -> length : " + length, Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -33,6 +42,6 @@ public class ViewModelActivity extends BaseActivity {
     }
 
     public void onClick(View view) {
-        mViewModel.getMessageLiveData().setValue("hello -> " + System.currentTimeMillis());
+        mViewModel.setMessage("hello -> " + System.currentTimeMillis());
     }
 }
