@@ -8,6 +8,7 @@ import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 import com.android.exercise.ui.activity.biometric.manager.callback.Fingerprint;
 import com.android.exercise.ui.activity.biometric.manager.callback.OnFingerprintCallback;
 import com.android.exercise.ui.activity.biometric.manager.impl.FingerprintM;
+import com.android.exercise.ui.activity.biometric.manager.impl.FingerprintP;
 
 /**
  * FingerprintManager
@@ -17,12 +18,12 @@ public class FingerprintManager {
     private Context mContext;
     private OnFingerprintCallback mCallback;
 
-    public FingerprintManager(Context context) {
+    private FingerprintManager(Context context) {
         this.mContext = context;
     }
 
     public static FingerprintManager from(Context context) {
-        return new FingerprintManager(context.getApplicationContext());
+        return new FingerprintManager(context);
     }
 
     public FingerprintManager callback(OnFingerprintCallback callback) {
@@ -47,7 +48,7 @@ public class FingerprintManager {
     public void auth() {
         Fingerprint fingerprint = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-
+            fingerprint = new FingerprintP(mContext, mCallback);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprint = new FingerprintM(mContext, mCallback);
         } else {

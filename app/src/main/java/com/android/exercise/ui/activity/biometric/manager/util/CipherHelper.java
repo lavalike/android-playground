@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.biometric.manager;
+package com.android.exercise.ui.activity.biometric.manager.util;
 
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;

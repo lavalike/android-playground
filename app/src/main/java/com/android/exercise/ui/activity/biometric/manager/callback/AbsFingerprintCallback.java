@@ -7,7 +7,7 @@ package com.android.exercise.ui.activity.biometric.manager.callback;
 public abstract class AbsFingerprintCallback implements OnFingerprintCallback {
 
     @Override
-    public void onError(String error) {
+    public void onFail() {
 
     }
 

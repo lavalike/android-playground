@@ -7,7 +7,7 @@ package com.android.exercise.ui.activity.biometric.manager.callback;
 public interface OnFingerprintCallback {
     void onSuccess();
 
-    void onError(String error);
+    void onFail();
 
     void notSupport();
 

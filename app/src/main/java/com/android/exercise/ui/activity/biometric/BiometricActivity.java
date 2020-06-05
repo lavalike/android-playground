@@ -36,11 +36,6 @@ public class BiometricActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onError(String error) {
-                        Toast.makeText(mContext, error, Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
                     public void noFingerprint() {
                         Toast.makeText(mContext, "请先添加指纹", Toast.LENGTH_SHORT).show();
                     }
