@@ -1,15 +1,16 @@
 package com.android.exercise.ui.activity.biometric.manager.impl;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
 import android.os.CancellationSignal;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.exercise.ui.activity.biometric.manager.util.CipherHelper;
 import com.android.exercise.ui.activity.biometric.manager.callback.Fingerprint;
 import com.android.exercise.ui.activity.biometric.manager.callback.OnFingerprintCallback;
+import com.android.exercise.ui.activity.biometric.manager.util.CipherHelper;
 
 /**
  * FingerprintP
@@ -20,6 +21,7 @@ public class FingerprintP implements Fingerprint {
     private Context mContext;
     private OnFingerprintCallback mCallback;
     private BiometricPrompt.CryptoObject crypto;
+    private CancellationSignal cancellationSignal;
 
     public FingerprintP(Context context, OnFingerprintCallback callback) {
         this.mContext = context;
@@ -35,9 +37,15 @@ public class FingerprintP implements Fingerprint {
     public void authenticate() {
         BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(mContext)
                 .setTitle("指纹认证")
-                .setDescription("测试用")
+                .setDescription("请伸出你的小指头")
+                .setNegativeButton("取消", mContext.getMainExecutor(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cancellationSignal.cancel();
+                    }
+                })
                 .build();
-        CancellationSignal cancellationSignal = new CancellationSignal();
+        cancellationSignal = new CancellationSignal();
         biometricPrompt.authenticate(crypto, cancellationSignal, mContext.getMainExecutor(), authenticationCallback);
     }
 

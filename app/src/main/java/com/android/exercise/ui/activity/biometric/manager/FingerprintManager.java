@@ -32,13 +32,19 @@ public class FingerprintManager {
     }
 
     public void auth() {
+        if (!isSupported()) {
+            if (mCallback != null) {
+                mCallback.notSupport();
+            }
+            return;
+        }
         Fingerprint fingerprint = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             fingerprint = new FingerprintP(mContext, mCallback);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprint = new FingerprintM(mContext, mCallback);
         }
-        if (fingerprint != null && isSupported()) {
+        if (fingerprint != null) {
             if (hasEnrolledFingerprints()) {
                 fingerprint.authenticate();
             } else {
