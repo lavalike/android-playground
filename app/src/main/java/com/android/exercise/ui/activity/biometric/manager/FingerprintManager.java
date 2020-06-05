@@ -31,35 +31,31 @@ public class FingerprintManager {
         return this;
     }
 
-    private boolean isSupported() {
-        //硬件是否支持指纹识别
-        if (!FingerprintManagerCompat.from(mContext).isHardwareDetected()) {
-            mCallback.notSupport();
-            return false;
-        }
-        //是否已添加指纹
-        if (!FingerprintManagerCompat.from(mContext).hasEnrolledFingerprints()) {
-            mCallback.noFingerprint();
-            return false;
-        }
-        return true;
-    }
-
     public void auth() {
         Fingerprint fingerprint = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             fingerprint = new FingerprintP(mContext, mCallback);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprint = new FingerprintM(mContext, mCallback);
+        }
+        if (fingerprint != null && isSupported()) {
+            fingerprint.authenticate();
         } else {
             if (mCallback != null) {
                 mCallback.notSupport();
             }
         }
-        if (fingerprint != null) {
-            if (isSupported()) {
-                fingerprint.authenticate();
-            }
+    }
+
+    private boolean isSupported() {
+        //硬件是否支持指纹识别
+        if (!FingerprintManagerCompat.from(mContext).isHardwareDetected()) {
+            return false;
         }
+        //是否已添加指纹
+        if (!FingerprintManagerCompat.from(mContext).hasEnrolledFingerprints()) {
+            return false;
+        }
+        return true;
     }
 }
