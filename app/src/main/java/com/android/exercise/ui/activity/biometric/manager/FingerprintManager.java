@@ -39,7 +39,13 @@ public class FingerprintManager {
             fingerprint = new FingerprintM(mContext, mCallback);
         }
         if (fingerprint != null && isSupported()) {
-            fingerprint.authenticate();
+            if (hasEnrolledFingerprints()) {
+                fingerprint.authenticate();
+            } else {
+                if (mCallback != null) {
+                    mCallback.noFingerprint();
+                }
+            }
         } else {
             if (mCallback != null) {
                 mCallback.notSupport();
@@ -47,15 +53,21 @@ public class FingerprintManager {
         }
     }
 
-    private boolean isSupported() {
-        //硬件是否支持指纹识别
-        if (!FingerprintManagerCompat.from(mContext).isHardwareDetected()) {
-            return false;
-        }
-        //是否已添加指纹
-        if (!FingerprintManagerCompat.from(mContext).hasEnrolledFingerprints()) {
-            return false;
-        }
-        return true;
+    /**
+     * is fingerprint supported
+     *
+     * @return is supported
+     */
+    public boolean isSupported() {
+        return FingerprintManagerCompat.from(mContext).isHardwareDetected();
+    }
+
+    /**
+     * whether has enrolled fingerprints
+     *
+     * @return has fingerprints
+     */
+    public boolean hasEnrolledFingerprints() {
+        return FingerprintManagerCompat.from(mContext).hasEnrolledFingerprints();
     }
 }

@@ -29,22 +29,21 @@ public class BiometricActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_fingerprint:
-                FingerprintManager.from(this).callback(new AbsFingerprintCallback() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(mContext, "认证成功", Toast.LENGTH_SHORT).show();
-                    }
+                if (FingerprintManager.from(this).isSupported()) {
+                    FingerprintManager.from(this).callback(new AbsFingerprintCallback() {
+                        @Override
+                        public void onSuccess() {
+                            Toast.makeText(mContext, "认证成功", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void noFingerprint() {
-                        Toast.makeText(mContext, "请先添加指纹", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void notSupport() {
-                        Toast.makeText(mContext, "不支持指纹识别", Toast.LENGTH_SHORT).show();
-                    }
-                }).auth();
+                        @Override
+                        public void noFingerprint() {
+                            Toast.makeText(mContext, "请先添加指纹", Toast.LENGTH_SHORT).show();
+                        }
+                    }).auth();
+                } else {
+                    Toast.makeText(mContext, "不支持指纹识别，换手机吧", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
