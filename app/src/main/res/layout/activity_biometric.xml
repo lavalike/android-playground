@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.activity.biometric.BiometricActivity">
 
     <Button
         android:id="@+id/btn_fingerprint"
-        android:layout_width="wrap_content"
-        android:onClick="onClick"
-        android:layout_height="wrap_content"
-        android:text="Fingerprint" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_finger_print"
+        android:onClick="onClick" />
 
 </LinearLayout>
