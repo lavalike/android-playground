@@ -82,6 +82,7 @@ import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
 import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
+import com.android.exercise.ui.activity.mmkv.MMKVActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
@@ -170,6 +171,8 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("MMKV"));
+        list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
         list.add(new TitleBean("生物测定"));
         list.add(new ItemBean(getString(R.string.item_biometric), BiometricActivity.class));
         list.add(new TitleBean("Jetpack"));

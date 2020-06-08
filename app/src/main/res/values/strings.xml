@@ -88,4 +88,5 @@
     <string name="item_lifecycle">Lifecycle</string>
     <string name="item_view_model">ViewModel</string>
     <string name="item_biometric">Biometric</string>
+    <string name="item_mmkv">MMKV</string>
 </resources>
