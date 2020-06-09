@@ -26,7 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.mmkv.MMKVActivity"></activity>
+        <activity android:name=".ui.activity.layer.MultiLayerActivity"></activity>
+        <activity android:name=".ui.activity.mmkv.MMKVActivity" />
         <activity android:name=".ui.activity.biometric.BiometricActivity" />
         <activity android:name=".ui.activity.jetpack.viewmodel.ViewModelActivity" />
         <activity android:name=".ui.activity.jetpack.lifecycle.LifecycleActivity" />

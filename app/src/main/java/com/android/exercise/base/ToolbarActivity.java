@@ -43,7 +43,6 @@ public class ToolbarActivity extends SwipeBackActivity {
         } else {
             super.setContentView(view);
         }
-//        TranslucentUtils.apply(getWindow());
     }
 
     private void initToolbar() {

@@ -82,6 +82,7 @@ import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
 import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
+import com.android.exercise.ui.activity.layer.MultiLayerActivity;
 import com.android.exercise.ui.activity.mmkv.MMKVActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
@@ -185,7 +186,8 @@ public class MainActivity extends BaseActivity {
         list.add(new TitleBean("数据库"));
         list.add(new ItemBean(getString(R.string.item_object_box), ObjectBoxActivity.class));
         list.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
-        list.add(new TitleBean("Player"));
+        list.add(new TitleBean("Video"));
+        list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
         list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));
         list.add(new ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity.class));
         list.add(new TitleBean("Html相关"));
@@ -195,6 +197,7 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_refresh_layout), RefreshLayoutActivity.class));
         list.add(new ItemBean(getString(R.string.item_pull_layout), ElasticActivity.class));
         list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_hero), MultiLayerActivity.class));
         list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         list.add(new ItemBean(getString(R.string.item_calendar), CalendarActivity.class));
         list.add(new ItemBean(getString(R.string.item_multi_touch), MultiTouchActivity.class));
@@ -231,8 +234,6 @@ public class MainActivity extends BaseActivity {
         list.add(new TitleBean("Queue"));
         list.add(new ItemBean(getString(R.string.item_priority_queue), PriorityQueueActivity.class));
         list.add(new ItemBean(getString(R.string.item_task_sequence), TaskSequenceActivity.class));
-        list.add(new TitleBean("Camera"));
-        list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
         list.add(new TitleBean("加载多图"));
         list.add(new ItemBean(getString(R.string.item_image_html), ImageHtmlActivity.class));
         list.add(new ItemBean(getString(R.string.item_image_recycler), ImageRecyclerActivity.class));
