@@ -70,6 +70,7 @@ import com.android.exercise.ui.activity.ViewAnimationActivity;
 import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
+import com.android.exercise.ui.activity.adapter.LoadMoreActivity;
 import com.android.exercise.ui.activity.biometric.BiometricActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.database.ObjectBoxActivity;
@@ -197,6 +198,7 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_refresh_layout), RefreshLayoutActivity.class));
         list.add(new ItemBean(getString(R.string.item_pull_layout), ElasticActivity.class));
         list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_adapter), LoadMoreActivity.class));
         list.add(new ItemBean(getString(R.string.item_hero), MultiLayerActivity.class));
         list.add(new ItemBean(getString(R.string.item_wave_view), WaveActivity.class));
         list.add(new ItemBean(getString(R.string.item_calendar), CalendarActivity.class));
