@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.android.exercise.R;
-import com.dimeno.adapter.RecyclerViewHolder;
+import com.dimeno.adapter.base.RecyclerViewHolder;
 
 /**
  * LoadViewHolder
