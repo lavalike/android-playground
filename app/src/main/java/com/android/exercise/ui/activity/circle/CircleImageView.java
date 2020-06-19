@@ -24,7 +24,7 @@ public class CircleImageView extends AppCompatImageView {
     private Paint mPaint;
     private RectF mRect;
     private Path mPath;
-    private Path mOverallPath;
+    private Path mXorPath;
 
     private boolean mOval;
     private float[] radii = new float[8];
@@ -65,7 +65,6 @@ public class CircleImageView extends AppCompatImageView {
         mPaint.setXfermode(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ? new PorterDuffXfermode(PorterDuff.Mode.CLEAR) : new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
 
         mPath = new Path();
-        mOverallPath = new Path();
         mRect = new RectF();
     }
 
@@ -117,9 +116,13 @@ public class CircleImageView extends AppCompatImageView {
      */
     private Path xor(Path path) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            mOverallPath.reset();
-            mOverallPath.addRect(mRect, Path.Direction.CW);
-            path.op(mOverallPath, Path.Op.XOR);
+            if (mXorPath == null) {
+                mXorPath = new Path();
+            } else {
+                mXorPath.reset();
+            }
+            mXorPath.addRect(mRect, Path.Direction.CW);
+            path.op(mXorPath, Path.Op.XOR);
         }
         return path;
     }
