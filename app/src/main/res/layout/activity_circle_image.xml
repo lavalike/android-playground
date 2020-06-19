@@ -74,8 +74,9 @@
             android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/bg_dog"
-            app:radius_bottom_left="20dp"
-            app:radius_top_right="20dp" />
+            app:radius_top_left="100dp"
+            app:radius_bottom_left="100dp"
+            app:radius_top_right="100dp" />
 
     </LinearLayout>
 </ScrollView>

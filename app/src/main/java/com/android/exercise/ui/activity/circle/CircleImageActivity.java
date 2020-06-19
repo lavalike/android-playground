@@ -35,13 +35,13 @@ public class CircleImageActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btn_reset:
                 mImageView.setOval(false);
-                mImageView.setCorner(0, 0, 0, 0);
+                mImageView.setRadius(0);
                 break;
             case R.id.btn_oval:
                 mImageView.setOval(true);
                 break;
             case R.id.btn_corner:
-                mImageView.setCorner(60, 60, 0, 0);
+                mImageView.setRadius(300, 300, 0, 0);
                 break;
         }
     }

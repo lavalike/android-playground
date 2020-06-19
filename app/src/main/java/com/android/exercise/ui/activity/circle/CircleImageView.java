@@ -140,12 +140,21 @@ public class CircleImageView extends AppCompatImageView {
     /**
      * set corners and refresh
      *
+     * @param radius radius
+     */
+    public void setRadius(float radius) {
+        setRadius(radius, radius, radius, radius);
+    }
+
+    /**
+     * set corners and refresh
+     *
      * @param topLeft     topLeft
      * @param topRight    topRight
      * @param bottomLeft  bottomLeft
      * @param bottomRight bottomRight
      */
-    public void setCorner(float topLeft, float topRight, float bottomLeft, float bottomRight) {
+    public void setRadius(float topLeft, float topRight, float bottomLeft, float bottomRight) {
         this.mOval = false;
         setRadii(topLeft, topRight, bottomLeft, bottomRight);
         invalidate();
