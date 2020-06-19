@@ -54,10 +54,7 @@ public class CircleImageView extends AppCompatImageView {
                 radiusBottomLeft = typedArray.getDimension(R.styleable.CircleImageView_radius_bottom_left, 0);
                 radiusBottomRight = typedArray.getDimension(R.styleable.CircleImageView_radius_bottom_right, 0);
             }
-            radii[0] = radii[1] = radiusTopLeft;
-            radii[2] = radii[3] = radiusTopRight;
-            radii[4] = radii[5] = radiusBottomRight;
-            radii[6] = radii[7] = radiusBottomLeft;
+            setRadii(radiusTopLeft, radiusTopRight, radiusBottomLeft, radiusBottomRight);
         }
         typedArray.recycle();
 
@@ -74,22 +71,72 @@ public class CircleImageView extends AppCompatImageView {
         super.onDraw(canvas);
         mRect.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
         if (mOval) {
-            drawCircle(canvas);
+            drawOval(canvas);
         } else {
             drawRoundCorner(canvas);
         }
         canvas.restoreToCount(layerCount);
     }
 
+    /**
+     * draw round rect path with corners
+     *
+     * @param canvas canvas
+     */
     private void drawRoundCorner(Canvas canvas) {
         mPath.reset();
         mPath.addRoundRect(mRect, radii, Path.Direction.CW);
         canvas.drawPath(mPath, mPaint);
     }
 
-    private void drawCircle(Canvas canvas) {
+    /**
+     * draw oval path
+     *
+     * @param canvas canvas
+     */
+    private void drawOval(Canvas canvas) {
         mPath.reset();
         mPath.addOval(mRect, Path.Direction.CW);
         canvas.drawPath(mPath, mPaint);
     }
+
+    /**
+     * set oval and refresh
+     *
+     * @param oval oval
+     */
+    public void setOval(boolean oval) {
+        this.mOval = oval;
+        invalidate();
+    }
+
+    /**
+     * set corners and refresh
+     *
+     * @param topLeft     topLeft
+     * @param topRight    topRight
+     * @param bottomLeft  bottomLeft
+     * @param bottomRight bottomRight
+     */
+    public void setCorner(float topLeft, float topRight, float bottomLeft, float bottomRight) {
+        this.mOval = false;
+        setRadii(topLeft, topRight, bottomLeft, bottomRight);
+        invalidate();
+    }
+
+    /**
+     * set radii values
+     *
+     * @param topLeft     topLeft
+     * @param topRight    topRight
+     * @param bottomLeft  bottomLeft
+     * @param bottomRight bottomRight
+     */
+    private void setRadii(float topLeft, float topRight, float bottomLeft, float bottomRight) {
+        radii[0] = radii[1] = topLeft;
+        radii[2] = radii[3] = topRight;
+        radii[4] = radii[5] = bottomRight;
+        radii[6] = radii[7] = bottomLeft;
+    }
+
 }
