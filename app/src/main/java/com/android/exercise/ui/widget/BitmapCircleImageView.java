@@ -28,7 +28,7 @@ import com.android.exercise.R;
  * @author a_liYa
  * @date 2015-10-13 上午9:26:04
  */
-public class CircleImageView extends AppCompatImageView {
+public class BitmapCircleImageView extends AppCompatImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -61,23 +61,23 @@ public class CircleImageView extends AppCompatImageView {
     private boolean mReady;
     private boolean mSetupPending;
 
-    public CircleImageView(Context context) {
+    public BitmapCircleImageView(Context context) {
         super(context);
 
         init();
     }
 
-    public CircleImageView(Context context, AttributeSet attrs) {
+    public BitmapCircleImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
+    public BitmapCircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BitmapCircleImageView, defStyle, 0);
 
-        mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);
-        mBorderColor = a.getColor(R.styleable.CircleImageView_border_color, DEFAULT_BORDER_COLOR);
+        mBorderWidth = a.getDimensionPixelSize(R.styleable.BitmapCircleImageView_border_width, DEFAULT_BORDER_WIDTH);
+        mBorderColor = a.getColor(R.styleable.BitmapCircleImageView_border_color, DEFAULT_BORDER_COLOR);
 
         a.recycle();
 
