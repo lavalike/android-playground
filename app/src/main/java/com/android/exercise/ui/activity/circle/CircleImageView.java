@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
+import android.os.Build;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -21,8 +22,9 @@ import com.android.exercise.R;
 public class CircleImageView extends AppCompatImageView {
 
     private Paint mPaint;
-    private Path mPath;
     private RectF mRect;
+    private Path mPath;
+    private Path mOverallPath;
 
     private boolean mOval;
     private float[] radii = new float[8];
@@ -60,16 +62,23 @@ public class CircleImageView extends AppCompatImageView {
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        mPaint.setXfermode(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ? new PorterDuffXfermode(PorterDuff.Mode.CLEAR) : new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+
         mPath = new Path();
+        mOverallPath = new Path();
         mRect = new RectF();
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        mRect.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         int layerCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), null);
         super.onDraw(canvas);
-        mRect.set(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
         if (mOval) {
             drawOval(canvas);
         } else {
@@ -86,7 +95,7 @@ public class CircleImageView extends AppCompatImageView {
     private void drawRoundCorner(Canvas canvas) {
         mPath.reset();
         mPath.addRoundRect(mRect, radii, Path.Direction.CW);
-        canvas.drawPath(mPath, mPaint);
+        canvas.drawPath(xor(mPath), mPaint);
     }
 
     /**
@@ -97,7 +106,22 @@ public class CircleImageView extends AppCompatImageView {
     private void drawOval(Canvas canvas) {
         mPath.reset();
         mPath.addOval(mRect, Path.Direction.CW);
-        canvas.drawPath(mPath, mPaint);
+        canvas.drawPath(xor(mPath), mPaint);
+    }
+
+    /**
+     * compat high android versions
+     *
+     * @param path path
+     * @return path
+     */
+    private Path xor(Path path) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mOverallPath.reset();
+            mOverallPath.addRect(mRect, Path.Direction.CW);
+            path.op(mOverallPath, Path.Op.XOR);
+        }
+        return path;
     }
 
     /**

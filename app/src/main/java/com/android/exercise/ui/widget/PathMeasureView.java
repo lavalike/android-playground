@@ -9,11 +9,12 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.ui.widget.nineoldandroids.animation.ValueAnimator;
@@ -97,6 +98,7 @@ public class PathMeasureView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.parseColor("#FFC107"));
         canvas.translate(mWidth / 2, mHeight / 2);
+        path.reset();
         path.addCircle(0, 0, radius, Path.Direction.CW);
         pathMeasure.setPath(path, false);
 
