@@ -27,8 +27,11 @@ class BitmapActivity : BaseActivity() {
     private fun inBitmap() {
         val options = BitmapFactory.Options()
         options.inBitmap = mBitmap
+        options.inMutable = true
+        options.inSampleSize = 1
         val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.bicycle, options)
         iv_in_bitmap.setImageBitmap(bitmap)
+        tv_in_bitmap.text = String.format("内存重用(%s)", formatSize(bitmap))
     }
 
     private fun inSampleSize() {
@@ -36,11 +39,20 @@ class BitmapActivity : BaseActivity() {
         options.inSampleSize = 2
         val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.bicycle, options)
         iv_in_sample_size.setImageBitmap(bitmap)
+        tv_in_sample_size.text = String.format("修改采样率(%s)\ninSampleSize = 2\n大小缩小1/2\n质量缩小1/4", formatSize(bitmap))
     }
 
     private fun raw() {
         mBitmap = BitmapFactory.decodeResource(resources, R.mipmap.bicycle)
         iv_raw.setImageBitmap(mBitmap)
+        tv_raw.text = String.format("原图(%s)", formatSize(mBitmap))
+    }
+
+    private fun formatSize(bitmap: Bitmap?): String {
+        if (bitmap != null) {
+            return String.format("%.2fMB", bitmap.allocationByteCount * 1f / 1024 / 1024)
+        }
+        return "unknown"
     }
 
     override fun onSetupToolbar(toolbar: Toolbar, actionBar: ActionBar) {

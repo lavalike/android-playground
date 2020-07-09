@@ -1,43 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".ui.activity.memory.BitmapActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="原图" />
-
-    <ImageView
-        android:id="@+id/iv_raw"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="修改采样率" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/iv_in_sample_size"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/tv_raw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fzzcysk"
+            android:text="原图" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="内存重用" />
+        <com.wangzhen.circle.CircleImageView
+            android:id="@+id/iv_raw"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            app:radius="3.5dp" />
 
-    <ImageView
-        android:id="@+id/iv_in_bitmap"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/tv_in_sample_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/fzzcysk"
+            android:text="修改采样率" />
 
-</LinearLayout>
+        <com.wangzhen.circle.CircleImageView
+            android:id="@+id/iv_in_sample_size"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            app:radius="3.5dp" />
+
+        <TextView
+            android:id="@+id/tv_in_bitmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/fzzcysk"
+            android:text="内存重用" />
+
+        <com.wangzhen.circle.CircleImageView
+            android:id="@+id/iv_in_bitmap"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            app:radius="3.5dp" />
+
+    </LinearLayout>
+
+</ScrollView>
