@@ -85,7 +85,8 @@ import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
 import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
 import com.android.exercise.ui.activity.layer.MultiLayerActivity;
-import com.android.exercise.ui.activity.memory.BitmapActivity;
+import com.android.exercise.ui.activity.memory.BitmapOptimizeActivity;
+import com.android.exercise.ui.activity.memory.LargeImageActivity;
 import com.android.exercise.ui.activity.mmkv.MMKVActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
@@ -175,8 +176,9 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
-        list.add(new TitleBean("内存优化"));
-        list.add(new ItemBean(getString(R.string.item_bitmap), BitmapActivity.class));
+        list.add(new TitleBean("图片优化"));
+        list.add(new ItemBean(getString(R.string.item_large_bitmap), LargeImageActivity.class));
+        list.add(new ItemBean(getString(R.string.item_bitmap_optimize), BitmapOptimizeActivity.class));
         list.add(new TitleBean("布局类"));
         list.add(new ItemBean(getString(R.string.item_circle_image), CircleImageActivity.class));
         list.add(new ItemBean(getString(R.string.item_adapter), LoadMoreActivity.class));
