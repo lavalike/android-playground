@@ -92,4 +92,5 @@
     <string name="item_hero">大圣归来</string>
     <string name="item_adapter">加载更多</string>
     <string name="item_circle_image">圆角图片</string>
+    <string name="item_bitmap">bitmap优化</string>
 </resources>

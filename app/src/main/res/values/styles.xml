@@ -19,7 +19,8 @@
         <item name="android:windowIsTranslucent">true</item>
 
         <!--修改全局字体-->
-        <item name="android:fontFamily">@font/custom</item>
+        <item name="android:fontFamily">@font/fzbiaoysk</item>
+        <item name="android:textColor">@color/color_3b424c</item>
 
         <!--全局Activity动画 左右切换-->
         <!--<item name="android:windowAnimationStyle">@style/ActivityAnimation</item>-->
