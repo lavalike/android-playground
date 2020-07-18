@@ -26,6 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.merge_adapter.MergeAdapterActivity"></activity>
         <activity android:name=".ui.activity.memory.LargeImageActivity" />
         <activity android:name=".ui.activity.memory.BitmapOptimizeActivity" />
         <activity android:name=".ui.activity.circle.CircleImageActivity" />
