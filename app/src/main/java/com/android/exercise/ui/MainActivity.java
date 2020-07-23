@@ -93,6 +93,7 @@ import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
+import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity;
 import com.android.exercise.ui.activity.stream.FileStreamActivity;
 import com.android.exercise.ui.activity.touch.MultiTouchActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
@@ -177,10 +178,8 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
-        list.add(new TitleBean("图片优化"));
-        list.add(new ItemBean(getString(R.string.item_large_bitmap), LargeImageActivity.class));
-        list.add(new ItemBean(getString(R.string.item_bitmap_optimize), BitmapOptimizeActivity.class));
         list.add(new TitleBean("布局类"));
+        list.add(new ItemBean(getString(R.string.item_shared_elements), SharedElementsActivity.class));
         list.add(new ItemBean(getString(R.string.item_merge_adapter), MergeAdapterActivity.class));
         list.add(new ItemBean(getString(R.string.item_circle_image), CircleImageActivity.class));
         list.add(new ItemBean(getString(R.string.item_adapter), LoadMoreActivity.class));
@@ -214,6 +213,9 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_recorder), RecorderActivity.class));
         list.add(new ItemBean(getString(R.string.item_ripple), RippleActivity.class));
         list.add(new ItemBean(getString(R.string.item_view), ViewActivity.class));
+        list.add(new TitleBean("图片优化"));
+        list.add(new ItemBean(getString(R.string.item_large_bitmap), LargeImageActivity.class));
+        list.add(new ItemBean(getString(R.string.item_bitmap_optimize), BitmapOptimizeActivity.class));
         list.add(new TitleBean("MMKV"));
         list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
         list.add(new TitleBean("生物测定"));

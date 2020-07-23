@@ -95,4 +95,5 @@
     <string name="item_bitmap_optimize">bitmap优化</string>
     <string name="item_large_bitmap">加载巨图</string>
     <string name="item_merge_adapter">MergeAdapter</string>
+    <string name="item_shared_elements">共享元素</string>
 </resources>
