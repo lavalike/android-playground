@@ -33,7 +33,7 @@ public class DownloadActivity extends BaseActivity {
 
     public void onClick(View view) {
         mTvMsg.setText("-> 开始下载\n");
-        String url = "http://10.100.119.192:8080/wangzhen/audio/time.mp3";
+        String url = "http://192.168.10.100:8080/wangzhen/audio/time.mp3";
         DownloadClient.get().enqueue(new ParamsBody.Builder()
                 .url(url)
                 .callback(new OnDownloadCallback() {

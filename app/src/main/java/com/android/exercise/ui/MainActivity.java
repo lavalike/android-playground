@@ -78,6 +78,7 @@ import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.database.RealmActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
+import com.android.exercise.ui.activity.hook.HookActivity;
 import com.android.exercise.ui.activity.jetpack.databinding.DataBindingActivity;
 import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity;
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
@@ -178,6 +179,8 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("Hook"));
+        list.add(new ItemBean(getString(R.string.item_hook), HookActivity.class));
         list.add(new TitleBean("布局类"));
         list.add(new ItemBean(getString(R.string.item_shared_elements), SharedElementsActivity.class));
         list.add(new ItemBean(getString(R.string.item_merge_adapter), MergeAdapterActivity.class));
