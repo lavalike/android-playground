@@ -17,7 +17,7 @@ import com.android.exercise.ui.widget.player.IjkPlayerView;
  * Created by wangzhen on 2020-01-15.
  */
 public class IjkPlayerActivity extends BaseActivity {
-    private static final String VIDEO_URL = "http://10.100.119.192:8080/wangzhen/video/beauty.mp4";
+    private static final String VIDEO_URL = "http://192.168.10.100:8080/wangzhen/video/beauty.mp4";
     private IjkPlayerView mPlayerView;
 
     @Override

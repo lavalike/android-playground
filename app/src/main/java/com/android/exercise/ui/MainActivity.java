@@ -179,6 +179,10 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("Media"));
+        list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
+        list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));
+        list.add(new ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity.class));
         list.add(new TitleBean("Hook"));
         list.add(new ItemBean(getString(R.string.item_hook), HookActivity.class));
         list.add(new TitleBean("布局类"));
@@ -233,10 +237,6 @@ public class MainActivity extends BaseActivity {
         list.add(new TitleBean("数据库"));
         list.add(new ItemBean(getString(R.string.item_object_box), ObjectBoxActivity.class));
         list.add(new ItemBean(getString(R.string.item_realm), RealmActivity.class));
-        list.add(new TitleBean("Video"));
-        list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
-        list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));
-        list.add(new ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity.class));
         list.add(new TitleBean("Html相关"));
         list.add(new ItemBean(getString(R.string.item_html_rich_text), HtmlRichTextActivity.class));
         list.add(new TitleBean("个人开源库"));

@@ -32,7 +32,7 @@ public class ExoPlayerActivity extends BaseActivity {
     private PlayerView mPlayerView;
     private SimpleExoPlayer mPlayer;
     private long mCurrentPosition = 0L;
-    private static final String VIDEO_URL = "http://10.100.119.192:8080/wangzhen/video/beauty.mp4";
+    private static final String VIDEO_URL = "http://192.168.10.100:8080/wangzhen/video/beauty.mp4";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

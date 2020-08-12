@@ -74,7 +74,23 @@ class HookClickListener(private val original: View.OnClickListener?) : View.OnCl
 }
 ```
 
+### Bitmap复用
 
+**存储**
+
+*  2.3.3及以前版本，像素点保存在native memory，bitmap对象保存在dalvik heap
+*  3.0以后，像素点数据与bitmap数据一起保存在dalvik heap
+*  8.0以后，像素点数据保存在native memory
+
+**复用**
+
+在Android 3.0开始引入了inBitmap设置，通过设置这个参数，在图片加载的时候可以使用之前已经创建了的Bitmap，但是需要大小一样,以便节省内存，避免再次创建一个Bitmap。在Android4.4，新增了允许inBitmap设置的图片与需要加载的图片的大小不同的情况，只要inBitmap的图片比当前需要加载的图片大就好了。
+
+复用注意点：  
+
+* Bitmap一定要是可变的，即inmutable设置一定为ture
+* Android4.4以下的平台，须要保证inBitmap和即将要得到decode的Bitmap的尺寸规格一致
+* Android4.4及其以上的平台，仅仅须要满足inBitmap的尺寸大于要decode得到的Bitmap的尺寸规格就可以
 
 
 
