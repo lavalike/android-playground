@@ -5,11 +5,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.dimeno.adapter.RecyclerAdapter
+import com.dimeno.adapter.callback.OnItemClickCallback
 import kotlinx.android.synthetic.main.activity_hook.*
-import java.lang.reflect.Method
 
 /**
  * HookActivity
@@ -20,62 +23,45 @@ class HookActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hook)
 
-        btn_normal.setOnClickListener {
-            Toast.makeText(this, "normal click", Toast.LENGTH_SHORT).show()
+        recycler.layoutManager = LinearLayoutManager(this)
+        val adapter = HookAdapter(list())
+        adapter.setOnClickCallback { v, pos ->
+            Toast.makeText(v.context, "item click $pos", Toast.LENGTH_SHORT).show()
         }
-        hookOnClickListener(btn_normal)
+        adapter.addHeader(HookHeader().onCreateView(recycler))
+        recycler.adapter = adapter
 
-        btn_long_click.setOnLongClickListener {
-            Toast.makeText(this, "normal long click", Toast.LENGTH_SHORT).show()
-            false
+        hookAdapter(recycler)
+    }
+
+    private fun hookAdapter(recycler: RecyclerView) {
+        val adapter: RecyclerAdapter<*>
+        if (recycler.adapter is RecyclerAdapter<*>) {
+            adapter = recycler.adapter as RecyclerAdapter<*>
+            val field = RecyclerAdapter::class.java.getDeclaredField("mItemClickCallback")
+            field.isAccessible = true
+            val callback = field.get(adapter)
+            if (callback != null) {
+                field.set(adapter, HookItemClickCallback(callback as OnItemClickCallback))
+            }
         }
+    }
 
-        hookOnLongClickListener(btn_long_click)
+    class HookItemClickCallback(private val callback: OnItemClickCallback) : OnItemClickCallback {
+        override fun onItemClick(itemView: View, position: Int) {
+            Toast.makeText(itemView.context, "item click hooked!", Toast.LENGTH_SHORT).show()
+            callback.onItemClick(itemView, position)
+        }
+    }
+
+    private fun list(): List<Int> {
+        val list = ArrayList<Int>()
+        for (i in 1..10)
+            list.add(i)
+        return list
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
         ToolBarCommonHolder(this, toolbar, getString(R.string.item_hook))
-    }
-
-    private fun hookOnLongClickListener(view: View) {
-        //拿到mListenerInfo
-        val method: Method = View::class.java.getDeclaredMethod("getListenerInfo")
-        method.isAccessible = true
-        val mListenerInfo = method.invoke(view)
-        //mOnLongClickListener
-        val field = Class.forName("android.view.View\$ListenerInfo").getDeclaredField("mOnLongClickListener")
-        field.isAccessible = true
-        val listener = field.get(mListenerInfo)
-        if (listener != null) {
-            field.set(mListenerInfo, HookLongClickListener(listener as View.OnLongClickListener))
-        }
-    }
-
-    private fun hookOnClickListener(view: View) {
-        //拿到mListenerInfo
-        val method: Method = View::class.java.getDeclaredMethod("getListenerInfo")
-        method.isAccessible = true
-        val mListenerInfo = method.invoke(view)
-        //拿到mOnClickListener
-        val field = Class.forName("android.view.View\$ListenerInfo").getDeclaredField("mOnClickListener")
-        val listener = field.get(mListenerInfo)
-        if (listener != null) {
-            field.set(mListenerInfo, HookClickListener(listener as View.OnClickListener))
-        }
-    }
-
-    class HookLongClickListener(private val original: View.OnLongClickListener) : View.OnLongClickListener {
-        override fun onLongClick(v: View): Boolean {
-            Toast.makeText(v.context, "OnLongClick Hooked!", Toast.LENGTH_SHORT).show()
-            return original.onLongClick(v)
-        }
-
-    }
-
-    class HookClickListener(private val original: View.OnClickListener) : View.OnClickListener {
-        override fun onClick(v: View) {
-            Toast.makeText(v.context, "OnClick Hooked!", Toast.LENGTH_SHORT).show()
-            original.onClick(v)
-        }
     }
 }
