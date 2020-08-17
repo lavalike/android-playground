@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by Administrator on 2016/10/18.
  */
 
-public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
+public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
     protected Context mContext;
     protected LayoutInflater mInflater;
@@ -52,9 +53,9 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final VH holder, int position) {
         setItemEvent(holder);
-        if (!onMyBindViewHolder((VH) holder, position)) {
+        if (!onMyBindViewHolder(holder, position)) {
             if (holder instanceof BaseViewHolder) {
                 ((BaseViewHolder) holder).setData(mDatas.get(position));
             }
@@ -62,7 +63,8 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         return onMyCreateViewHolder(parent, viewType);
     }
 

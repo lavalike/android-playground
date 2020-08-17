@@ -93,7 +93,6 @@ public class RxJavaActivity extends BaseActivity {
 
                     @Override
                     public void onNext(String s) {
-                        logE(s);
                         builder.append(s).append("\n");
                     }
 

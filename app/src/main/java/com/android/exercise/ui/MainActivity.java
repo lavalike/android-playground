@@ -97,6 +97,7 @@ import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
 import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity;
 import com.android.exercise.ui.activity.stream.FileStreamActivity;
 import com.android.exercise.ui.activity.touch.MultiTouchActivity;
+import com.android.exercise.ui.activity.websocket.WebSocketActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
@@ -271,6 +272,7 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
         list.add(new ItemBean(getString(R.string.item_retrofit), RetrofitActivity.class));
         list.add(new ItemBean(getString(R.string.item_okhttp), OKHttpActivity.class));
+        list.add(new ItemBean(getString(R.string.item_okhttp_websocket), WebSocketActivity.class));
         list.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         list.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
         list.add(new TitleBean("IPC"));

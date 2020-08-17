@@ -2,7 +2,6 @@ package com.android.exercise.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -29,14 +28,6 @@ public class BaseActivity extends ToolbarActivity {
 
     protected void showToast(String text) {
         Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
-    }
-
-    protected void logE(String msg) {
-        Log.e(TAG, msg);
-    }
-
-    protected void logD(String msg) {
-        Log.d(TAG, msg);
     }
 
     public void fitDarkStatus(boolean isDark) {

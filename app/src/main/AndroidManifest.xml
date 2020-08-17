@@ -26,7 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.hook.HookActivity"></activity>
+        <activity android:name=".ui.activity.websocket.WebSocketActivity"></activity>
+        <activity android:name=".ui.activity.hook.HookActivity" />
         <activity android:name=".ui.activity.shared_elements.SharedDetailActivity" />
         <activity android:name=".ui.activity.shared_elements.SharedElementsActivity" />
         <activity android:name=".ui.activity.merge_adapter.MergeAdapterActivity" />
