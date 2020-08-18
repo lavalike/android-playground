@@ -11,10 +11,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "io.realm:realm-gradle-plugin:5.1.0"
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
     }
 }
 

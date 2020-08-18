@@ -6,9 +6,12 @@ import android.content.pm.PackageManager;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.android.aspectj.TrackPoint;
+import com.android.aspectj.TrackPointCallback;
 import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.base.okhttp.OKHttpManager;
 import com.android.exercise.util.AppUtil;
+import com.android.exercise.util.L;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.xutils.DbManager;
@@ -43,6 +46,18 @@ public class App extends MultiDexApplication {
         //初始化xUtils3
         x.Ext.init(this);
         OkHttpUtils.initClient(OKHttpManager.getClient());
+
+        TrackPoint.init(new TrackPointCallback() {
+            @Override
+            public void onClick(String className, String viewId) {
+                L.e("onClick -> className : " + className + " viewId : " + viewId);
+            }
+
+            @Override
+            public void onLongClick(String className, String viewId) {
+                L.e("onLongClick -> className : " + className + " viewId : " + viewId);
+            }
+        });
     }
 
     protected void attachBaseContext(Context base) {

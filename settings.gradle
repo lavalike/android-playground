@@ -1,1 +1,2 @@
+include ':aspectj'
 include ':app', ':butterknife-annotations', ':butterknife-processors', ':butterknife-api'
