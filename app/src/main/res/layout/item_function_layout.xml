@@ -23,7 +23,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="centerInside"
-                android:src="@mipmap/ic_android" />
+                android:src="@mipmap/ic_dev" />
 
             <TextView
                 android:id="@+id/item_name"

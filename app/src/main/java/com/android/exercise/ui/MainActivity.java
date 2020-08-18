@@ -174,7 +174,7 @@ public class MainActivity extends BaseActivity {
      * 添加数据
      */
     private void initList() {
-        mAdapter = new FunctionAdapter(mContext, generateList());
+        mAdapter = new FunctionAdapter(generateList());
         recyclerview.setAdapter(mAdapter);
     }
 

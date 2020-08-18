@@ -1,48 +1,35 @@
 package com.android.exercise.ui.adapter.holder;
 
 import android.content.Intent;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.domain.ItemBean;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 import com.android.exercise.util.UIUtils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import com.dimeno.adapter.base.RecyclerViewHolder;
 
 /**
  * ItemViewHolder
  * Created by wangzhen on 2018/11/21.
  */
-public class ItemViewHolder extends BaseViewHolder<ItemBean> implements BaseRecyclerAdapter.OnItemClickListener<ItemBean> {
-    public ImageView iv_icon;
+public class ItemViewHolder extends RecyclerViewHolder<ItemBean> {
     public TextView tv_name;
 
     public ItemViewHolder(ViewGroup parent) {
         super(UIUtils.inflate(R.layout.item_function_layout, parent, false));
         this.tv_name = (TextView) itemView.findViewById(R.id.item_name);
-        this.iv_icon = (ImageView) itemView.findViewById(R.id.item_icon);
+        itemView.setOnClickListener((v) -> {
+            Class<?> targetClass = mData.getTargetClass();
+            if (targetClass != null) {
+                Intent intent = new Intent(v.getContext(), targetClass);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
-    protected void bindData() {
-        tv_name.setText(data.getItemName());
-        Glide.with(itemView.getContext())
-                .load(R.mipmap.ic_android)
-                .apply(new RequestOptions().placeholder(R.drawable.ic_placeholder).error(R.drawable.ic_placeholder))
-                .into(iv_icon);
-    }
-
-    @Override
-    public void onItemClick(View view, ItemBean data) {
-        Class<?> targetClass = data.getTargetClass();
-        if (targetClass != null) {
-            Intent intent = new Intent(context, targetClass);
-            context.startActivity(intent);
-        }
+    public void bind() {
+        tv_name.setText(mData.getItemName());
     }
 }

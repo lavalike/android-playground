@@ -5,14 +5,14 @@ import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.domain.TitleBean;
-import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 import com.android.exercise.util.UIUtils;
+import com.dimeno.adapter.base.RecyclerViewHolder;
 
 /**
  * TitleViewHolder
  * Created by wangzhen on 2018/11/21.
  */
-public class TitleViewHolder extends BaseViewHolder<TitleBean> {
+public class TitleViewHolder extends RecyclerViewHolder<TitleBean> {
     public TextView tv_title;
 
     public TitleViewHolder(ViewGroup parent) {
@@ -21,8 +21,8 @@ public class TitleViewHolder extends BaseViewHolder<TitleBean> {
     }
 
     @Override
-    protected void bindData() {
-        tv_title.setText(data.getTitle());
+    public void bind() {
+        tv_title.setText(mData.getTitle());
     }
 
 }

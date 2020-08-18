@@ -105,7 +105,7 @@ dependencies {
 
     implementation 'com.tencent:mmkv-static:1.1.1'
 
-    implementation 'com.github.dimeno-tech:dimeno-adapter:0.0.6'
+    implementation 'com.github.dimeno-tech:dimeno-adapter:0.0.7'
     implementation 'com.github.lavalike:circle-imageview:0.0.1'
     implementation 'com.github.lavalike:LintChecker:0.0.4'
 
