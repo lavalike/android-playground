@@ -21,15 +21,6 @@ public class CircleImageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_image);
         mImageView = findViewById(R.id.imageView);
-
-        findViewById(R.id.btn_corner).setOnClickListener(new View.OnClickListener() {
-            @DoubleClick
-            @Override
-            public void onClick(View v) {
-                Log.e("AspectJ", "设置圆角");
-                mImageView.setRadius(300, 300, 0, 0);
-            }
-        });
     }
 
     @Override
@@ -53,6 +44,10 @@ public class CircleImageActivity extends BaseActivity {
             case R.id.btn_oval:
                 Log.e("AspectJ", "设置椭圆");
                 mImageView.setOval(true);
+                break;
+            case R.id.btn_corner:
+                Log.e("AspectJ", "设置圆角");
+                mImageView.setRadius(300, 300, 0, 0);
                 break;
         }
     }
