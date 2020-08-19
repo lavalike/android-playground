@@ -32,7 +32,6 @@
             android:id="@+id/btn_corner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
             android:text="圆角" />
 
         <com.android.exercise.ui.activity.circle.CircleImageView
@@ -74,8 +73,8 @@
             android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/bg_dog"
-            app:radius_top_left="100dp"
             app:radius_bottom_left="100dp"
+            app:radius_top_left="100dp"
             app:radius_top_right="100dp" />
 
     </LinearLayout>
