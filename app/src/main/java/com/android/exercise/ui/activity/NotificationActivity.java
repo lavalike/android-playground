@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -48,7 +47,6 @@ public class NotificationActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_send_normal:
-                Log.e("AspectJ", "发送通知");
                 sendNormal();
                 break;
             case R.id.btn_send_custom:

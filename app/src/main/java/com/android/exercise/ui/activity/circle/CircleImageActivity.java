@@ -42,13 +42,16 @@ public class CircleImageActivity extends BaseActivity {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_circle_image));
     }
 
+    @DoubleClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_reset:
+                Log.e("AspectJ", "重置");
                 mImageView.setOval(false);
                 mImageView.setRadius(0);
                 break;
             case R.id.btn_oval:
+                Log.e("AspectJ", "设置椭圆");
                 mImageView.setOval(true);
                 break;
         }

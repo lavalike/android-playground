@@ -22,11 +22,24 @@ import java.lang.reflect.Method;
 public class DoubleClickAspect {
     private static final int DEFAULT_INTERVAL = 500;
 
-    @Pointcut("execution(* android.view.View.OnClickListener.onClick(..))")
+    private static final String ONCLICK = "execution(void android.view.View.OnClickListener+.onClick(..))";
+    private static final String ONCLICK_XML = "execution(void androidx.appcompat.app.AppCompatViewInflater.DeclaredOnClickListener.onClick(View))";
+    private static final String ONCLICK_BUTTER_KNIFE = "execution(@butterknife.OnClick * *(..))";
+
+    @Pointcut(ONCLICK)
     public void onClick() {
     }
 
-    @Around("onClick()")
+    @Pointcut(ONCLICK_XML)
+    public void onClickXml() {
+    }
+
+    @Pointcut(ONCLICK_BUTTER_KNIFE)
+    public void onClickButterKnife() {
+
+    }
+
+    @Around("onClick() || onClickXml() || onClickButterKnife()")
     public void process(ProceedingJoinPoint joinPoint) throws Throwable {
         Signature signature = joinPoint.getSignature();
         if (signature instanceof MethodSignature) {
