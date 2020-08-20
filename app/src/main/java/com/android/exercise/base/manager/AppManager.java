@@ -2,7 +2,7 @@ package com.android.exercise.base.manager;
 
 import android.app.Activity;
 
-import com.android.exercise.base.App;
+import com.android.exercise.base.BaseApplication;
 
 import java.util.Stack;
 
@@ -20,7 +20,7 @@ public class AppManager {
 
     public static AppManager get() {
         if (mInstance == null) {
-            synchronized (App.class) {
+            synchronized (BaseApplication.class) {
                 mInstance = new AppManager();
             }
         }

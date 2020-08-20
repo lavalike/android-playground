@@ -1,3 +1,14 @@
+### Apk安装
+1. 将Apk文件复制到**data/app**目录
+2. 解析apk信息
+3. dexopt操作
+4. 更新权限信息
+5. 完成安装，发送**Intent.ACTION_PACKAGE_ADDED**广播
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx9hctdh1j30uy0mj0v9.jpg)
+
+
+
 ### java泛型擦除、类型擦除
 上限通配符 <? extends T> 限定为T和T的子类型  
 下限通配符 <? super T> 限定为T和T的父类型
@@ -94,6 +105,37 @@ class HookClickListener(private val original: View.OnClickListener?) : View.OnCl
 
 
 ### 启动流程
+
+#### 系统启动流程
+1. 启动电源以及系统启动
+
+	当电源键按下时引导芯片代码从预定义的地方（固化在ROM）开始执行。加载引导程序BootLoader到RAM中，然后执行。
+	
+2. 引导程序BootLoader
+
+	引导程序BootLoader是在Android操作系统开始运行前的一个小程序，它的主要作用是把系统OS拉起来并运行。
+
+3. Linux内核启动
+	
+	当内核启动时，设置缓存、被保护存储器、计划列表、加载驱动。当内核完成系统设置时，它首先在系统文件中寻找init.rc文件，并启动init进程。
+	
+4. init进程启动
+	
+	初始化和启动属性服务，并且启动Zygote进程。
+	
+5. Zynote进程启动
+
+	创建java虚拟机并为java虚拟机注册JNI方法，创建服务器端Socket，启动SystemServer进程。
+	
+6. SystemServer进程启动
+
+	启动Binder线程池和SystemServiceManager，并且启动各种系统服务。
+	
+7. Launcher启动
+
+	被SystemServer进程启动的AMS会启动Launcher，Launcher启动后会将已安装应用的快捷图标显示到界面上。
+	
+
 #### 理论
 **Launcher**
 

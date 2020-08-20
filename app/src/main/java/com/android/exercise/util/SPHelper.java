@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.android.exercise.base.App;
+import com.android.exercise.base.BaseApplication;
 import com.android.exercise.base.manager.AppManager;
 
 import java.io.ByteArrayInputStream;
@@ -30,7 +30,7 @@ public class SPHelper {
 
     public SPHelper() {
         sharedPreferences = AppManager.get().getActivity().getSharedPreferences(
-                App.getAppName(), Activity.MODE_PRIVATE);
+                BaseApplication.getAppName(), Activity.MODE_PRIVATE);
     }
 
     public SPHelper(String spName) {

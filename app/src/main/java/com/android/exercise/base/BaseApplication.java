@@ -24,11 +24,11 @@ import io.realm.RealmConfiguration;
  * 自定义Application
  * Created by Administrator on 2016/4/12.
  */
-public class App extends MultiDexApplication {
+public class BaseApplication extends MultiDexApplication {
 
     //SQLite配置
     private static DbManager.DaoConfig db_config;
-    private static App mContext;
+    private static BaseApplication mContext;
 
     @Override
     public void onCreate() {
@@ -60,11 +60,6 @@ public class App extends MultiDexApplication {
         });
     }
 
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
-
     /**
      * 获取Db的Config
      *
@@ -72,7 +67,7 @@ public class App extends MultiDexApplication {
      */
     public static DbManager.DaoConfig getDbConfig() {
         if (db_config == null) {
-            synchronized (App.class) {
+            synchronized (BaseApplication.class) {
                 db_config = new DbManager.DaoConfig().setDbName("ExerciseDemo.db");
             }
         }

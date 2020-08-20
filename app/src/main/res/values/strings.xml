@@ -98,4 +98,6 @@
     <string name="item_shared_elements">共享元素</string>
     <string name="item_hook">Hook</string>
     <string name="item_okhttp_websocket">OkHttp长连接</string>
+    <string name="item_wifi">Wifi</string>
+    <string name="item_bluetooth">bluetooth</string>
 </resources>

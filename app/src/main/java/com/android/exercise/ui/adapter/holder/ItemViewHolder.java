@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.domain.ItemBean;
-import com.android.exercise.util.UIUtils;
 import com.dimeno.adapter.base.RecyclerViewHolder;
 
 /**
@@ -17,7 +16,7 @@ public class ItemViewHolder extends RecyclerViewHolder<ItemBean> {
     public TextView tv_name;
 
     public ItemViewHolder(ViewGroup parent) {
-        super(UIUtils.inflate(R.layout.item_function_layout, parent, false));
+        super(parent, R.layout.item_function_layout);
         this.tv_name = findViewById(R.id.item_name);
         itemView.setOnClickListener((v) -> {
             Class<?> targetClass = mData.getTargetClass();

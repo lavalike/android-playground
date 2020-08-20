@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.wifi.WifiActivity">
+
+    <com.android.exercise.ui.widget.SwitchView
+        android:id="@+id/switch_view"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="扫描"
+        app:layout_constraintBottom_toBottomOf="@+id/switch_view"
+        app:layout_constraintStart_toEndOf="@+id/switch_view"
+        app:layout_constraintTop_toTopOf="@+id/switch_view" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Starting with Build.VERSION_CODES#Q, applications are not allowed to enable/disable Wi-Fi."
+        app:layout_constraintTop_toBottomOf="@+id/switch_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

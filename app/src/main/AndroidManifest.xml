@@ -6,6 +6,7 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
@@ -18,15 +19,23 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <uses-permission android:name = "android.permission.BLUETOOTH"/>
+    <!--启用应用启动设备发现或者操作蓝牙设备的超级管理员-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
-        android:name=".base.App"
+        android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.websocket.WebSocketActivity"></activity>
+        <activity android:name=".ui.activity.bluetooth.BluetoothActivity" />
+        <activity android:name=".ui.activity.wifi.WifiActivity" />
+        <activity android:name=".ui.activity.websocket.WebSocketActivity" />
         <activity android:name=".ui.activity.hook.HookActivity" />
         <activity android:name=".ui.activity.shared_elements.SharedDetailActivity" />
         <activity android:name=".ui.activity.shared_elements.SharedElementsActivity" />

@@ -20,4 +20,15 @@
                 android:height="80dp" />
         </shape>
     </item>
+    <item
+        android:bottom="10dp"
+        android:gravity="left|bottom"
+        android:left="10dp">
+        <shape android:shape="oval">
+            <solid android:color="#33FFFFFF" />
+            <size
+                android:width="10dp"
+                android:height="10dp" />
+        </shape>
+    </item>
 </layer-list>
