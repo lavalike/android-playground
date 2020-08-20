@@ -5,14 +5,11 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.BaseBean;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.NotificationBean;
@@ -124,6 +121,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        fitDarkStatus(true);
         setSwipeBackEnable(false);
         initPush(getIntent());
         initRecycler();
@@ -167,8 +165,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.app_name), false);
+    public boolean showToolbar() {
+        return false;
     }
 
     /**
