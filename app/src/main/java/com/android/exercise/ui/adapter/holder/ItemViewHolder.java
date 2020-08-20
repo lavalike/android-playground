@@ -18,7 +18,7 @@ public class ItemViewHolder extends RecyclerViewHolder<ItemBean> {
 
     public ItemViewHolder(ViewGroup parent) {
         super(UIUtils.inflate(R.layout.item_function_layout, parent, false));
-        this.tv_name = (TextView) itemView.findViewById(R.id.item_name);
+        this.tv_name = findViewById(R.id.item_name);
         itemView.setOnClickListener((v) -> {
             Class<?> targetClass = mData.getTargetClass();
             if (targetClass != null) {

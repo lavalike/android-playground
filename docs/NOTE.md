@@ -222,6 +222,44 @@ Dex是Android平台上(Dalvik虚拟机，art虚拟机)的可执行文件，每�
 * **link_data**：连接数据区
 
 
+### AOP
+**AspectJ**
+
+AspectJ是一个面向切面的框架，它扩展了Java语言。AspectJ定义了AOP语法，它有一个专门的编译器用来生成遵守Java字节编码规范的Class文件。
+
+[gradle_plugin_android_aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx)
+
+* **@Before**：前置通知, 在方法执行之前执行
+* **@After**：后置通知, 在方法执行之后执行
+* **@AfterRunning**：返回通知, 在方法返回结果之后执行
+* **@AfterThrowing**：异常通知, 在方法抛出异常之后
+* **@Around**：环绕通知, 围绕着方法执行
+
+
+**ASM**
+
+ASM是一个java字节码操纵框架，它能被用来动态生成类或者增强既有类的功能。ASM 可以直接产生二进制 class 文件，也可以在类被加载入 Java 虚拟机之前动态改变类行为。Java class 被存储在严格格式定义的 .class文件里，这些类文件拥有足够的元数据来解析类中的所有元素：类名称、方法、属性以及 Java 字节码（指令）。ASM从类文件中读入信息后，能够改变类行为，分析类信息，甚至能够根据用户要求生成新类。asm字节码增强技术主要是用来反射的时候提升性能的，如果单纯用jdk的反射调用，性能是非常低下的，而使用字节码增强技术后反射调用的时间已经基本可以与直接调用相当了.
+
+[asm jar 下载](http://files.cnblogs.com/liuling/asm-3.2.rar)
+
+ASM框架中的核心类有以下几个：
+
+* **ClassReader**: 该类用来解析编译过的class字节码文件。
+* **ClassWriter**: 该类用来重新构建编译后的类，比如说修改类名、属性以及方法，甚至可以生成新的类的字节码文件。
+* **ClassAdapter**: 该类也实现了ClassVisitor接口，它将对它的方法调用委托给另一个ClassVisitor对象。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

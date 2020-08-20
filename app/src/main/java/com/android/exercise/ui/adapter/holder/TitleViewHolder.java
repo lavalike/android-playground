@@ -17,7 +17,7 @@ public class TitleViewHolder extends RecyclerViewHolder<TitleBean> {
 
     public TitleViewHolder(ViewGroup parent) {
         super(UIUtils.inflate(R.layout.item_function_title_layout, parent, false));
-        this.tv_title = (TextView) itemView.findViewById(R.id.item_title);
+        this.tv_title = findViewById(R.id.item_title);
     }
 
     @Override

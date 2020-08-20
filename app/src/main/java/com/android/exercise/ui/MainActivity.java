@@ -101,6 +101,7 @@ import com.android.exercise.ui.activity.websocket.WebSocketActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
+import com.dimeno.adapter.base.RecyclerItem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -113,9 +114,9 @@ import butterknife.ButterKnife;
  * 首页
  */
 public class MainActivity extends BaseActivity {
-
+    private static final float GAP = 1f;
     @BindView(R.id.recyclerview)
-    RecyclerView recyclerview;
+    RecyclerView recyclerView;
     private FunctionAdapter mAdapter;
 
     @Override
@@ -152,15 +153,15 @@ public class MainActivity extends BaseActivity {
                 return 1;
             }
         });
-        recyclerview.setLayoutManager(manager);
-        recyclerview.addItemDecoration(new RecyclerView.ItemDecoration() {
+        recyclerView.setLayoutManager(manager);
+        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
-                outRect.left = UIUtils.dip2px(mContext, 0.5f);
-                outRect.right = UIUtils.dip2px(mContext, 0.5f);
-                outRect.top = UIUtils.dip2px(mContext, 0.5f);
-                outRect.bottom = UIUtils.dip2px(mContext, 0.5f);
+                outRect.left = UIUtils.dip2px(mContext, GAP);
+                outRect.right = UIUtils.dip2px(mContext, GAP);
+                outRect.top = UIUtils.dip2px(mContext, GAP);
+                outRect.bottom = UIUtils.dip2px(mContext, GAP);
             }
         });
     }
@@ -175,7 +176,18 @@ public class MainActivity extends BaseActivity {
      */
     private void initList() {
         mAdapter = new FunctionAdapter(generateList());
-        recyclerview.setAdapter(mAdapter);
+        mAdapter.addFooter(new RecyclerItem() {
+            @Override
+            public int layout() {
+                return R.layout.home_footer_layout;
+            }
+
+            @Override
+            public void onViewCreated(View itemView) {
+
+            }
+        }.onCreateView(recyclerView));
+        recyclerView.setAdapter(mAdapter);
     }
 
     private List<BaseBean> generateList() {
