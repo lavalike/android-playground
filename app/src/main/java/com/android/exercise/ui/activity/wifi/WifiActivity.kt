@@ -6,9 +6,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.wifi.WifiManager
 import android.os.Bundle
-import android.widget.Toast
+import android.text.TextUtils
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
@@ -22,10 +23,10 @@ import kotlinx.android.synthetic.main.activity_wifi.*
  */
 class WifiActivity : BaseActivity() {
     private var mWifiManager: WifiManager? = null
+    private var mCurrentSSID: String? = null
     private val mReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action.equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
-                Toast.makeText(context, "搜索完毕", Toast.LENGTH_SHORT).show()
                 bind()
             }
         }
@@ -36,7 +37,14 @@ class WifiActivity : BaseActivity() {
         setContentView(R.layout.activity_wifi)
 
         mWifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager?
+        if (mWifiManager != null) {
+            val connectionInfo = mWifiManager!!.connectionInfo
+            if (connectionInfo != null) {
+                mCurrentSSID = connectionInfo.ssid?.replace("\"", "")
+            }
+        }
 
+        switch_view.state = mWifiManager?.isWifiEnabled ?: false
         switch_view.setOnSwitchStateChangeListener { v, isOn -> mWifiManager?.isWifiEnabled = isOn }
 
         btn_scan.setOnClickListener {
@@ -45,22 +53,32 @@ class WifiActivity : BaseActivity() {
                     mWifiManager!!.isWifiEnabled = true
                 }
                 mWifiManager?.startScan()
-                bind()
             }
         }
 
-        val filter = IntentFilter()
-        filter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)
-        registerReceiver(mReceiver, filter)
+        recycler.layoutManager = LinearLayoutManager(this)
+
+        registerReceiver(mReceiver, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, "Wifi(未完成)")
+        ToolBarCommonHolder(this, toolbar, "Wifi")
     }
 
     private fun bind() {
-        val list = mWifiManager?.scanResults
-        Toast.makeText(this, "数量：${list?.size ?: 0}", Toast.LENGTH_SHORT).show()
+        val scanResults = mWifiManager!!.scanResults
+        if (scanResults.isNotEmpty()) {
+            val list: MutableList<WifiEntity> = ArrayList()
+            for (result in scanResults) {
+                val entity = WifiEntity()
+                entity.ssid = result.SSID
+                entity.bssid = result.BSSID
+                entity.isCurrent = TextUtils.equals(result.SSID, mCurrentSSID)
+                entity.frequency = result.frequency
+                list.add(entity)
+            }
+            recycler.adapter = WifiAdapter(list)
+        }
     }
 
     override fun onDestroy() {
