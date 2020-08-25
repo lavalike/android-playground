@@ -32,8 +32,8 @@ class BluetoothActivity : BaseActivity() {
     private val mReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (TextUtils.equals(intent.action, BluetoothDevice.ACTION_FOUND)) {
-                val device: BluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
-                if (!TextUtils.isEmpty(device.name)) {
+                val device: BluetoothDevice? = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
+                if (device != null && !TextUtils.isEmpty(device.name)) {
                     adapter.addData(mutableListOf(BluetoothEntity(device.name, device.address)))
                 }
             }

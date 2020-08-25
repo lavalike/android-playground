@@ -8,7 +8,6 @@
 ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx9hctdh1j30uy0mj0v9.jpg)
 
 
-
 ### java泛型擦除、类型擦除
 上限通配符 <? extends T> 限定为T和T的子类型  
 下限通配符 <? super T> 限定为T和T的父类型
@@ -361,7 +360,72 @@ ListView的BaseAdapter、EventBus、RxJava
 对用户隐藏细节，如工具类
 
 
+### Android 11存储适配
 
+``` kotlin
+fun saveFile() {
+    if (checkPermission()) {
+        //getExternalStoragePublicDirectory被弃用，分区存储开启后就不允许访问了
+        val filePath = Environment.getExternalStoragePublicDirectory("").toString() + "/test3.txt"
+        val fw = FileWriter(filePath)
+        fw.write("hello world")
+        fw.close()
+        showToast("文件写入成功")
+    }
+}
+```
+分情况运行：
+
+1. targetSdkVersion = 28，运行后正常读写。
+2. targetSdkVersion = 29，不删除应用，targetSdkVersion 由28修改到29，覆盖安装，运行后正常读写。
+3. targetSdkVersion = 29，删除应用，重新运行，读写报错，程序崩溃（open failed: EACCES (Permission denied)）
+4. targetSdkVersion = 29，添加android:requestLegacyExternalStorage="true"（不启用分区存储），读写正常不报错
+5. targetSdkVersion = 30，不删除应用，targetSdkVersion 由29修改到30，读写报错，程序崩溃（open failed: EACCES (Permission denied)）
+6. targetSdkVersion = 30，不删除应用，targetSdkVersion 由29修改到30，增加android:preserveLegacyExternalStorage="true"，读写正常不报错
+7. targetSdkVersion = 30，删除应用，重新运行，读写报错，程序崩溃（open failed: EACCES (Permission denied)）
+
+解决方法
+
+1. 应用专属目录
+	
+	``` kotlin
+	//分区存储空间
+	val file = File(context.filesDir, filename)
+	//应用专属外部存储空间
+	val appSpecificExternalDir = File(context.getExternalFilesDir(), filename)
+	```
+2. 访问公共媒体目录文件
+
+	``` kotlin
+	val cursor = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, "${MediaStore.MediaColumns.DATE_ADDED} desc")
+	if (cursor != null) {
+	    while (cursor.moveToNext()) {
+	        val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))
+	        val uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+	        println("image uri is $uri")
+	    }
+	    cursor.close()
+	}
+	```
+
+3. SAF(存储访问框架--Storage Access Framework)
+
+	``` kotlin
+	val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+	intent.addCategory(Intent.CATEGORY_OPENABLE)
+	intent.type = "image/*"
+	startActivityForResult(intent, 100)
+	
+	@RequiresApi(Build.VERSION_CODES.KITKAT)
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+	    super.onActivityResult(requestCode, resultCode, data)
+	    if (data == null || resultCode != Activity.RESULT_OK) return
+	    if (requestCode == 100) {
+	        val uri = data.data
+	        println("image uri is $uri")
+	    }
+	}
+	```
 
 
 
