@@ -1,8 +1,6 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.JsResult;
@@ -11,6 +9,9 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
@@ -49,7 +50,7 @@ public class BrowserActivity extends BaseActivity implements IJSCallback {
             @Override
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
                 ADWindowDialog adWindowDialog = new ADWindowDialog();
-                adWindowDialog.showDialog(getFragmentManager());
+                adWindowDialog.showDialog(getSupportFragmentManager());
                 result.confirm();
                 return true;
             }

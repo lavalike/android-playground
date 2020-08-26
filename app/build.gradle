@@ -82,7 +82,7 @@ dependencies {
     implementation project(':butterknife-annotations')
     implementation project(':butterknife-api')
 
-    implementation 'com.aliya:permission:0.5.1'
+    implementation 'com.aliya:permission:1.0.0'
     implementation 'com.wangzhen:LinkTextView:1.0.0'
     implementation 'com.wangzhen:GradientLayout:1.0.0'
     implementation 'com.wangzhen:ElasticLayout:0.0.3'
@@ -116,4 +116,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(path: ':aspectj')
+
+    implementation 'com.google.android:flexbox:1.1.0'
 }

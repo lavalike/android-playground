@@ -2,16 +2,19 @@ package com.android.exercise.ui.widget.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.android.exercise.R;
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +31,7 @@ public class ADWindowDialog extends DialogFragment {
     @BindView(R.id.iv_close)
     ImageView ivClose;
     private AlertDialog dialog;
+    private Uri uri;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,6 +39,9 @@ public class ADWindowDialog extends DialogFragment {
         View view = View.inflate(getActivity(), R.layout.layout_ad_window, null);
         ButterKnife.bind(this, view);
         builder.setView(view);
+        if (uri != null) {
+            Glide.with(view.getContext()).load(uri).into(ivAd);
+        }
         dialog = builder.create();
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
@@ -58,6 +65,11 @@ public class ADWindowDialog extends DialogFragment {
                 }
                 break;
         }
+    }
+
+    public ADWindowDialog setImageUri(Uri uri) {
+        this.uri = uri;
+        return this;
     }
 
     public void showDialog(FragmentManager fragmentManager) {

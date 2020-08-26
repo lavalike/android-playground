@@ -29,6 +29,6 @@ public class ADWindowActivity extends BaseActivity {
     @OnClick(R.id.btn_ad)
     public void onViewClicked() {
         ADWindowDialog adWindowDialog = new ADWindowDialog();
-        adWindowDialog.showDialog(getFragmentManager());
+        adWindowDialog.showDialog(getSupportFragmentManager());
     }
 }
