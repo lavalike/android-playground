@@ -1,6 +1,7 @@
 package com.android.exercise.util;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.widget.Toast;
 
 /**
@@ -8,13 +9,17 @@ import android.widget.Toast;
  */
 public class T {
     private static T mInstance;
-    private static Toast mToast;
+    private Toast mToast;
+
+    private T(Context ctx) {
+        mToast = Toast.makeText(ctx.getApplicationContext(), "", Toast.LENGTH_SHORT);
+        mToast.setGravity(Gravity.CENTER, 0, 0);
+    }
 
     public static T get(Context context) {
-        if (mInstance == null || mToast == null) {
+        if (mInstance == null) {
             synchronized (T.class) {
-                mInstance = new T();
-                mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+                mInstance = new T(context);
             }
         }
         return mInstance;

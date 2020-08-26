@@ -1,19 +1,16 @@
-package com.android.exercise.ui.activity.storage
+package com.android.exercise.ui.activity.android11
 
-import android.Manifest
 import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
-import android.telephony.TelephonyManager
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.aliya.permission.Permission
@@ -30,7 +27,7 @@ import java.io.File
  * Android 10 分区存储
  * Created by wangzhen on 2020/8/25.
  */
-class StorageActivity : BaseActivity() {
+class ScopedStorageActivity : BaseActivity() {
     private val REQUEST_CREATE_DOCUMENT: Int = 0x1
     private val REQUEST_OPEN_DOCUMENT: Int = 0x2
 
@@ -136,51 +133,8 @@ class StorageActivity : BaseActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
                 } else {
-                    T.get(this).toast("仅限Android11")
+                    T.get(this).toast("仅支持Android11+")
                 }
-            }
-            R.id.btn_get_phone_number -> {
-                PermissionManager.request(this, object : PermissionCallback {
-                    override fun onGranted(isAlready: Boolean) {
-                        val tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-                        T.get(applicationContext).toast("电话号码 ${tm.line1Number}")
-                    }
-
-                    override fun onDenied(deniedPermissions: MutableList<String>, neverAskPermissions: MutableList<String>?) {
-                        T.get(applicationContext).toast("权限被拒绝")
-                    }
-                }, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_PHONE_NUMBERS)
-            }
-            R.id.btn_get_imei -> {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    T.get(this).toast("Android 10+ 不支持获取IMEI")
-                    return
-                }
-                PermissionManager.request(this, object : PermissionCallback {
-                    override fun onGranted(isAlready: Boolean) {
-                        val tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-                        T.get(applicationContext).toast("IMEI ${tm.imei}")
-                    }
-
-                    override fun onDenied(deniedPermissions: MutableList<String>, neverAskPermissions: MutableList<String>?) {
-                        T.get(applicationContext).toast("权限被拒绝")
-                    }
-                }, Permission.PHONE_READ_PHONE_STATE)
-            }
-            R.id.btn_normal_toast -> {
-                Handler(Looper.getMainLooper()).postDelayed({
-                    Toast.makeText(this, "延时3秒普通Toast", Toast.LENGTH_SHORT).show()
-                }, 3000)
-            }
-            R.id.btn_custom_toast -> {
-                Handler(Looper.getMainLooper()).postDelayed({
-                    val toast = Toast(this)
-                    val layout = View.inflate(this, R.layout.toast_custom_layout, null)
-                    layout.findViewById<TextView>(R.id.tv).text = "延时3秒自定义Toast"
-                    toast.view = layout
-                    toast.duration = Toast.LENGTH_SHORT
-                    toast.show()
-                }, 3000)
             }
         }
     }

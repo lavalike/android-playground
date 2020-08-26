@@ -68,6 +68,9 @@ import com.android.exercise.ui.activity.ViewSwitchActivity;
 import com.android.exercise.ui.activity.WaveActivity;
 import com.android.exercise.ui.activity.WindowActivity;
 import com.android.exercise.ui.activity.adapter.LoadMoreActivity;
+import com.android.exercise.ui.activity.android11.ScopedStorageActivity;
+import com.android.exercise.ui.activity.android11.TelephonyCompatActivity;
+import com.android.exercise.ui.activity.android11.ToastCompatActivity;
 import com.android.exercise.ui.activity.biometric.BiometricActivity;
 import com.android.exercise.ui.activity.bluetooth.BluetoothActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
@@ -93,7 +96,6 @@ import com.android.exercise.ui.activity.player.IjkPlayerActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity;
 import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity;
-import com.android.exercise.ui.activity.storage.StorageActivity;
 import com.android.exercise.ui.activity.stream.FileStreamActivity;
 import com.android.exercise.ui.activity.touch.MultiTouchActivity;
 import com.android.exercise.ui.activity.websocket.WebSocketActivity;
@@ -193,8 +195,10 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
-        list.add(new TitleBean("分区存储"));
-        list.add(new ItemBean(getString(R.string.item_scoped_storage), StorageActivity.class));
+        list.add(new TitleBean("Android11"));
+        list.add(new ItemBean(getString(R.string.item_scoped_storage), ScopedStorageActivity.class));
+        list.add(new ItemBean(getString(R.string.item_telephony_compat), TelephonyCompatActivity.class));
+        list.add(new ItemBean(getString(R.string.item_toast_compat), ToastCompatActivity.class));
         list.add(new TitleBean("Wifi & 蓝牙 & NFC"));
         list.add(new ItemBean(getString(R.string.item_wifi), WifiActivity.class));
         list.add(new ItemBean(getString(R.string.item_bluetooth), BluetoothActivity.class));
