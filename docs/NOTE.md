@@ -427,5 +427,13 @@ fun saveFile() {
 	}
 	```
 
+### kotlin let,with,run,apply,also函数区别
 
+| 函数名 | 函数体内使用对象 | 返回值 | 是否是扩展函数 | 适用场景 |
+| :----: | ---- | ---- | :----: | ---- |
+| let | it指代当前对象 | 闭包形式返回 | 是 | 适用于处理不为null场景 |
+| with | this指代当前对象 | 闭包形式返回 | 否 | 适用于调用同一个类的多个方法时，可以省去类名重复，直接调用类的方法即可，经常用于Android中RecyclerView中onBinderViewHolder中，数据model的属性映射到UI上 |
+| run | this指代当前对象 | 闭包形式返回 | 是 | 适用于let、with函数任何场景 |
+| apply | this指代当前对象 | 返回this | 是 | 1、适用于run函数的任何场景，一般用于初始化一个对象实例的时候，操作对象属性，并最终返回这个对象。 2、动态inflate出一个XML的View的时候需要给View绑定数据也会用到. 3、一般可用于多个扩展函数链式调用 4、数据model多层级包裹判空处理的问题 |
+| also |
 

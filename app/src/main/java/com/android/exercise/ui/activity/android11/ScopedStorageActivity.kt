@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.aliya.permission.Permission
@@ -20,7 +23,6 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.ui.widget.dialog.ADWindowDialog
-import com.android.exercise.util.T
 import java.io.File
 
 /**
@@ -43,17 +45,20 @@ class ScopedStorageActivity : BaseActivity() {
     fun onClick(view: View) {
         when (view.id) {
             R.id.btn_get_files_dir -> {
-                T.get(this).toast(filesDir.absolutePath)
+                Toast.makeText(this, filesDir.absolutePath, Toast.LENGTH_SHORT).show()
             }
             R.id.btn_get_cache_dir -> {
-                T.get(this).toast(cacheDir.absolutePath)
+                Toast.makeText(this, cacheDir.absolutePath, Toast.LENGTH_SHORT).show()
             }
             R.id.btn_get_external_cache_dir -> {
-                T.get(this).toast(if (externalCacheDir == null) "externalCacheDir目录不存在" else (externalCacheDir as File).absolutePath)
+                Toast.makeText(this, if (externalCacheDir == null) "externalCacheDir目录不存在" else (externalCacheDir as File).absolutePath, Toast.LENGTH_SHORT).show()
             }
             R.id.btn_get_external_files_dir -> {
-                val file = getExternalFilesDir("files")
-                T.get(this).toast(if (file == null) "externalFilesDir目录不存在" else file.absolutePath)
+                val dir = getExternalFilesDir("files")
+                val file = File(dir, "text.txt")
+                if (!file.exists())
+                    file.createNewFile()
+                Toast.makeText(this, if (dir == null) "externalFilesDir目录不存在" else file.absolutePath, Toast.LENGTH_SHORT).show()
             }
             R.id.btn_external_storage_create_dir -> {
                 PermissionManager.request(this, object : PermissionCallback {
@@ -61,14 +66,14 @@ class ScopedStorageActivity : BaseActivity() {
                         val dir = File(Environment.getExternalStorageDirectory(), "abc/def")
                         if (!dir.exists()) {
                             val result = dir.mkdirs()
-                            T.get(view.context).toast(if (result) "目录创建成功" else "目录创建失败")
+                            Toast.makeText(view.context, if (result) "目录创建成功" else "目录创建失败", Toast.LENGTH_SHORT).show()
                         } else {
-                            T.get(view.context).toast("目录已存在")
+                            Toast.makeText(view.context, "目录已存在", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onDenied(deniedPermissions: MutableList<String>, neverAskPermissions: MutableList<String>?) {
-                        T.get(view.context).toast("存储权限被拒绝")
+                        Toast.makeText(view.context, "存储权限被拒绝", Toast.LENGTH_SHORT).show()
                     }
                 }, Permission.STORAGE_READ, Permission.STORAGE_WRITE)
             }
@@ -78,14 +83,14 @@ class ScopedStorageActivity : BaseActivity() {
                         val file = File(Environment.getExternalStorageDirectory(), "deviceid.txt")
                         if (file.exists()) {
                             val text = file.readText()
-                            T.get(view.context).toast(text)
+                            Toast.makeText(view.context, text, Toast.LENGTH_SHORT).show()
                         } else {
-                            T.get(view.context).toast("deviceid.txt 文件不存在")
+                            Toast.makeText(view.context, "deviceid.txt 文件不存在", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onDenied(deniedPermissions: MutableList<String>, neverAskPermissions: MutableList<String>?) {
-                        T.get(view.context).toast("存储权限被拒绝")
+                        Toast.makeText(view.context, "存储权限被拒绝", Toast.LENGTH_SHORT).show()
                     }
                 }, Permission.STORAGE_READ, Permission.STORAGE_WRITE)
             }
@@ -105,16 +110,20 @@ class ScopedStorageActivity : BaseActivity() {
                 startActivityForResult(intent, REQUEST_OPEN_DOCUMENT)
             }
             R.id.btn_media_store_create_file -> {
-                val contentValues = ContentValues()
-                contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "${System.currentTimeMillis()}.png")
-                contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, "")
-                } else {
-                    contentValues.put(MediaStore.MediaColumns.DATA, "")
+                val values = ContentValues()
+                values.put(MediaStore.Images.Media.DISPLAY_NAME, "${System.currentTimeMillis()}.png")
+                values.put(MediaStore.Images.Media.DESCRIPTION, "media store test")
+                values.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+                val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+                uri?.let { _uri ->
+                    val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.bg_dog)
+                    val stream = contentResolver.openOutputStream(_uri)
+                    stream?.let { _stream ->
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, _stream)
+                        _stream.close()
+                        Toast.makeText(this, "文件创建成功 $_uri", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-                T.get(this).toast("文件创建成功 $uri")
             }
             R.id.btn_media_store_read_files -> {
                 val cursor = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, "${MediaStore.MediaColumns.DATE_ADDED} desc")
@@ -125,7 +134,7 @@ class ScopedStorageActivity : BaseActivity() {
                         val uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
                         list.add(uri)
                     }
-                    T.get(this).toast("图片数量 ${cursor.count}")
+                    Toast.makeText(this, "图片数量 ${cursor.count}", Toast.LENGTH_SHORT).show()
                     cursor.close()
                 }
             }
@@ -133,7 +142,7 @@ class ScopedStorageActivity : BaseActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
                 } else {
-                    T.get(this).toast("仅支持Android11+")
+                    Toast.makeText(this, "仅支持Android11+", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -144,7 +153,7 @@ class ScopedStorageActivity : BaseActivity() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CREATE_DOCUMENT -> {
-                    T.get(this).toast("saf文件创建成功")
+                    Toast.makeText(this, "saf文件创建成功", Toast.LENGTH_SHORT).show()
                 }
                 REQUEST_OPEN_DOCUMENT -> {
                     data?.data.also { uri ->
