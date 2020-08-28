@@ -109,6 +109,13 @@ class ScopedStorageActivity : BaseActivity() {
                 }
                 startActivityForResult(intent, REQUEST_OPEN_DOCUMENT)
             }
+            R.id.btn_get_content -> {
+                val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                    type = "image/*"
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                }
+                startActivityForResult(intent, REQUEST_OPEN_DOCUMENT)
+            }
             R.id.btn_media_store_create_file -> {
                 val values = ContentValues()
                 values.put(MediaStore.Images.Media.DISPLAY_NAME, "${System.currentTimeMillis()}.png")
