@@ -6,11 +6,14 @@ import android.os.Build
 import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.view.View
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.widget.Toolbar
 import com.aliya.permission.Permission
 import com.aliya.permission.PermissionCallback
 import com.aliya.permission.PermissionManager
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
+import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.util.T
 
 /**
@@ -21,6 +24,10 @@ class TelephonyCompatActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_telephony_compat)
+    }
+
+    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
+        ToolBarCommonHolder(this, toolbar, getString(R.string.item_telephony_compat))
     }
 
     fun onClick(view: View) {

@@ -30,8 +30,10 @@ import java.io.File
  * Created by wangzhen on 2020/8/25.
  */
 class ScopedStorageActivity : BaseActivity() {
-    private val REQUEST_CREATE_DOCUMENT: Int = 0x1
-    private val REQUEST_OPEN_DOCUMENT: Int = 0x2
+    companion object {
+        const val REQUEST_CREATE_DOCUMENT: Int = 0x1
+        const val REQUEST_OPEN_DOCUMENT: Int = 0x2
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

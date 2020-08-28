@@ -51,6 +51,7 @@ public class ToolbarActivity extends SwipeBackActivity {
         View toolbarView = mInflater.inflate(R.layout.toolbar_layout, mRootView);
         mToolbar = (Toolbar) toolbarView.findViewById(R.id.id_tool_bar);
         setSupportActionBar(mToolbar);
+        mToolbar.setNavigationOnClickListener(view -> finish());
         onSetupToolbar(mToolbar, getSupportActionBar());
     }
 
