@@ -1,31 +1,23 @@
 package com.android.exercise.domain;
 
+import android.os.Bundle;
+
 /**
  * Created by wangzhen on 2017/2/24.
  */
 
 public class ItemBean extends BaseBean {
-    private String itemName;
-    private Class<?> targetClass;
+    public String name;
+    public Class<?> clazz;
+    public Bundle bundle;
 
-    public ItemBean(String itemName, Class<?> targetClass) {
-        this.itemName = itemName;
-        this.targetClass = targetClass;
+    public ItemBean(String name, Class<?> clazz) {
+        this(name, clazz, null);
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public Class<?> getTargetClass() {
-        return targetClass;
-    }
-
-    public void setTargetClass(Class<?> targetClass) {
-        this.targetClass = targetClass;
+    public ItemBean(String name, Class<?> clazz, Bundle bundle) {
+        this.name = name;
+        this.clazz = clazz;
+        this.bundle = bundle;
     }
 }

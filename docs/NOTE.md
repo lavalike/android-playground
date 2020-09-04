@@ -437,3 +437,57 @@ fun saveFile() {
 | apply | this指代当前对象 | 返回this | 是 | 1、适用于run函数的任何场景，一般用于初始化一个对象实例的时候，操作对象属性，并最终返回这个对象。 2、动态inflate出一个XML的View的时候需要给View绑定数据也会用到. 3、一般可用于多个扩展函数链式调用 4、数据model多层级包裹判空处理的问题 |
 | also |
 
+### 主线程的消息循环模型
+ActivityThread通过ApplicationThread和AMS进行进程间通信，AMS以进程间通信方式完成ActivityThread的请求后会回调ApplicationThread中的Binder方法，然后ApplicationThread会向H发送消息，H收到消息后会将ApplicationThread中的逻辑切换到ActivityThread中去执行，即切换到主线程中去执行。
+
+ActivityThread实际上并非线程，不像HandlerThread类，ActivityThread并没有真正继承Thread类，既然ActivityThread不是一个线程，那么ActivityThread中Looper绑定的是哪个Thread
+
+**进程** 
+
+每个app运行时前首先创建一个进程，该进程是由Zygote fork出来的，用于承载App上运行的各种Activity/Service等组件。进程对于上层应用来说是完全透明的，这也是google有意为之，让App程序都是运行在Android Runtime。大多数情况一个App就运行在一个进程中，除非在AndroidManifest.xml中配置Android:process属性，或通过native代码fork进程。
+
+**线程**
+
+线程对应用来说非常常见，比如每次new Thread().start都会创建一个新的线程。该线程与App所在进程之间资源共享，从Linux角度来说进程与线程除了是否共享资源外，并没有本质的区别，都是一个task_struct结构体，在CPU看来进程或线程无非就是一段可执行的代码，CPU采用CFS调度算法，保证每个task都尽可能公平的享有CPU时间片。
+
+**其实承载ActivityThread的主线程就是由Zygote fork而创建的进程。**
+
+
+### OkHttp缓存
+一般控制缓存有两种方式：  
+> 1、在request里面去设置cacheControl()策略  
+> 2、在header里面去添加cache-control
+
+``` java
+OkHttpClient client = OKHttpManager.getClient().newBuilder()
+        .cache(new Cache(new File(getExternalCacheDir(), "okhttpcache"), 1024 * 1024 * 10))
+        .build();
+Request request = new Request.Builder()
+        .url("http://open.iciba.com/dsapi/")
+        .cacheControl(NetworkUtil.isNetworkAvailable(this) ? CacheControl.FORCE_NETWORK : CacheControl.FORCE_CACHE)
+        .build();
+client.newCall(request).enqueue(...);
+```
+
+1. max-age是啥，maxStale是啥，他们的区别是啥？
+
+	**max-age**
+	
+	未超出max-age返回缓存数据，超出max-age发起新的请求，请求失败返回缓存
+	
+	**max-stale**
+	
+	未超出max-stale返回缓存数据，超出max-stale发起新的请求，请求失败返回失败
+	> 失败信息：**504 Unsatisfiable Request**
+
+2. 为什么没有网络的情况下，request要cacheControl.FORCE_CACHE
+	
+	``` kotlin
+	@JvmField
+val FORCE_CACHE = Builder()
+    .onlyIfCached()
+    .maxStale(Integer.MAX_VALUE, TimeUnit.SECONDS)
+    .build()
+	```
+	FORCE_CACHE是设置了maxStale的最大时间为interger的最大时间，一直（强制）拿缓存
+	

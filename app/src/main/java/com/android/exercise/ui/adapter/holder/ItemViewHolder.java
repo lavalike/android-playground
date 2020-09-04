@@ -19,9 +19,12 @@ public class ItemViewHolder extends RecyclerViewHolder<ItemBean> {
         super(parent, R.layout.item_function_layout);
         this.tv_name = findViewById(R.id.item_name);
         itemView.setOnClickListener((v) -> {
-            Class<?> targetClass = mData.getTargetClass();
+            Class<?> targetClass = mData.clazz;
             if (targetClass != null) {
                 Intent intent = new Intent(v.getContext(), targetClass);
+                if (mData.bundle != null) {
+                    intent.putExtras(mData.bundle);
+                }
                 v.getContext().startActivity(intent);
             }
         });
@@ -29,6 +32,6 @@ public class ItemViewHolder extends RecyclerViewHolder<ItemBean> {
 
     @Override
     public void bind() {
-        tv_name.setText(mData.getItemName());
+        tv_name.setText(mData.name);
     }
 }

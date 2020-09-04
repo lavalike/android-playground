@@ -1,33 +1,40 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.base.okhttp.OKHttpManager;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.domain.CibaBean;
+import com.android.exercise.util.NetworkUtil;
 import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
-import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
 import java.io.IOException;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Call;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-import retrofit2.http.FormUrlEncoded;
+import okhttp3.ResponseBody;
 
+/**
+ * OKHttpActivity
+ * Created by wangzhen on 2017/2/9.
+ */
 public class OKHttpActivity extends BaseActivity {
 
     @Override
@@ -55,69 +62,43 @@ public class OKHttpActivity extends BaseActivity {
     }
 
     private void post() {
-        OkHttpUtils
-                .post()
-                .url("http://www.csdn.net/")
-                .addParams("username", "lavalike")
-                .addParams("password", "123")
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Log.e(TAG, e.getMessage());
-                    }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        Log.e(TAG, response);
-                    }
-                });
     }
 
     private void get() {
-        OkHttpUtils.get()
+        OkHttpClient client = OKHttpManager.getClient().newBuilder()
+                .cache(new Cache(new File(getExternalCacheDir(), "okhttpcache"), 1024 * 1024 * 10))
+                .build();
+        Request request = new Request.Builder()
                 .url("http://open.iciba.com/dsapi/")
-                .build()
-                .execute(new CibaCallback());
-//        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), "");
-//        FormBody formBody=new FormBody.Builder()
-//                .add("","")
-//                .build();
-//        Request request = new Request.Builder()
-//                .VIDEO_URL("")
-//                .post(body)
-//                .build();
-//        OkHttpClient okHttpClient = new OkHttpClient();
-//        Call call = okHttpClient.newCall(request);
-//        call.enqueue(new okhttp3.Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//
-//            }
-//        });
-    }
+                .cacheControl(NetworkUtil.isNetworkAvailable(this) ? CacheControl.FORCE_NETWORK : CacheControl.FORCE_CACHE)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                runOnUiThread(() -> {
+                    Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
 
-    class CibaCallback extends Callback<CibaBean> {
-
-        @Override
-        public CibaBean parseNetworkResponse(Response response, int id) throws Exception {
-            String body = response.body().string();
-            return new Gson().fromJson(body, CibaBean.class);
-        }
-
-        @Override
-        public void onError(Call call, Exception e, int id) {
-
-        }
-
-        @Override
-        public void onResponse(CibaBean response, int id) {
-            showToast(response.getNote());
-        }
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    ResponseBody body = response.body();
+                    if (body != null) {
+                        CibaBean bean = new Gson().fromJson(body.string(), CibaBean.class);
+                        if (bean != null) {
+                            runOnUiThread(() -> {
+                                Toast.makeText(mContext, bean.getNote(), Toast.LENGTH_SHORT).show();
+                            });
+                        }
+                    }
+                } else {
+                    runOnUiThread(() -> {
+                        Toast.makeText(mContext, response.message(), Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+        });
     }
 }

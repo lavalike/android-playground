@@ -5,6 +5,7 @@ package com.android.exercise.util;
  */
 
 public class IKey {
+    public static final String HTML_TITLE = "html_title";
     public static final String HTML_URL = "html_url";
     /**
      * 推送数据

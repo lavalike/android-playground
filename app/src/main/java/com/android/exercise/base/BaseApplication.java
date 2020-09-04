@@ -3,16 +3,13 @@ package com.android.exercise.base;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
 import com.android.aspectj.TrackPoint;
 import com.android.aspectj.TrackPointCallback;
 import com.android.exercise.base.manager.AppManager;
-import com.android.exercise.base.okhttp.OKHttpManager;
 import com.android.exercise.util.AppUtil;
 import com.android.exercise.util.L;
-import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.xutils.DbManager;
 import org.xutils.x;
@@ -45,8 +42,6 @@ public class BaseApplication extends MultiDexApplication {
         Realm.setDefaultConfiguration(config);
         //初始化xUtils3
         x.Ext.init(this);
-        OkHttpUtils.initClient(OKHttpManager.getClient());
-
         TrackPoint.init(new TrackPointCallback() {
             @Override
             public void onClick(String className, String viewId) {
