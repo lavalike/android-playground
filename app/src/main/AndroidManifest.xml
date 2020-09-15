@@ -35,6 +35,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.database.LitePalActivity"></activity>
         <activity android:name=".ui.activity.android11.ToastCompatActivity" />
         <activity android:name=".ui.activity.android11.TelephonyCompatActivity" />
         <activity android:name=".ui.activity.android11.ScopedStorageActivity" />

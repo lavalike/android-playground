@@ -117,4 +117,6 @@ dependencies {
     implementation project(path: ':aspectj')
 
     implementation 'com.google.android:flexbox:1.1.0'
+
+    implementation 'org.litepal.guolindev:core:3.2.1'
 }

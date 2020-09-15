@@ -16,6 +16,7 @@ import com.android.exercise.domain.objectbox.PlayList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
@@ -53,8 +54,8 @@ public class ObjectBoxActivity extends BaseActivity {
                 long start = System.currentTimeMillis();
                 for (int i = 0; i < 10000; i++) {
                     playList = new PlayList();
-                    playList.time = System.currentTimeMillis();
-                    playList.name = "批量：" + i;
+                    playList.time = i;
+                    playList.name = UUID.randomUUID().toString();
                     list.add(playList);
                 }
                 mBox.put(list);

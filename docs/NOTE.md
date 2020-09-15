@@ -491,3 +491,92 @@ val FORCE_CACHE = Builder()
 	```
 	FORCE_CACHE是设置了maxStale的最大时间为interger的最大时间，一直（强制）拿缓存
 	
+	
+### OkHttp 拦截器
+**addInterceptor(应用拦截器)**
+> 1. 不需要担心中间过程的响应,如重定向和重试.  
+> 2. 总是只调用一次,即使HTTP响应是从缓存中获取.  
+> 3. 观察应用程序的初衷. 不关心OkHttp注入的头信息如: If-None-Match.  
+> 4. 允许短路而不调用 Chain.proceed(),即中止调用.  
+> 5. 允许重试,使 Chain.proceed()调用多次.  
+
+**addNetworkInterceptor(网络拦截器)**
+> 1. 能够操作中间过程的响应,如重定向和重试.  
+> 2. 当网络短路而返回缓存响应时不被调用.  
+> 3. 只观察在网络上传输的数据.  
+> 4. 携带请求来访问连接.  
+
+### HTTP的缓存规则总结
+HTTP的缓存规则是优先考虑强制缓存，然后考虑对比缓存。
+
+1. 首先判断强制缓存中的数据的是否在有效期内。如果在有效期，则直接使用缓存。如果过了有效期，则进入对比缓存。
+2. 在对比缓存过程中，判断ETag是否有变动，如果服务端返回没有变动，说明资源未改变，使用缓存。如果有变动，判断Last-Modified。
+3. 判断Last-Modified，如果服务端对比资源的上次修改时间没有变化，则使用缓存，否则重新请求服务端的数据，并作缓存工作。
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gifll2uipzj30fg0erq3y.jpg)
+
+### OkHttp读取缓存流程
+
+请求体缓存
+
+``` 
+http://192.168.10.100:8080/wangzhen/plugin/plugin.json
+GET
+0
+HTTP/1.1 200 
+9
+Accept-Ranges: bytes
+ETag: W/"176-1587794129000"
+Last-Modified: Sat, 25 Apr 2020 05:55:29 GMT
+Content-Type: application/json
+Content-Length: 176
+Date: Sat, 05 Sep 2020 03:32:09 GMT
+Cache-Control: max-age=60
+OkHttp-Sent-Millis: 1599276730232
+OkHttp-Received-Millis: 1599276730245
+```
+
+响应结果缓存
+
+```
+{
+    "version_name": "0.0.1",
+    "version_code": 35,
+    "version_description": "功能更新",
+    "url": "http://192.168.188.132:8080/wangzhen/plugin/apk/app-release.apk"
+}
+```
+
+1. 首先获取OkhttpClient的Cache对象
+2. 调用Cache的get方法传入Request查找缓存响应数据Response
+3. 构造一个缓存策略，传入Request和Response，决策使用网络请求还是缓存响应
+4. 策略判定之后，如果使用缓存，则它的cacheResponse不为空，networkRequest为空，如果使用请求，则相反
+5. 如果使用请求，但是之前又找到了缓存响应，则要关闭缓存响应资源
+6. 如果策略得出缓存响应为空，网络请求也为空，则返回请求不合理的响应（比如强制使用缓存，但找不到缓存的情况）
+
+总结：先查找Cache是否可用，通过Cache查找请求对应的缓存，然后将请求和缓存交给缓存策略判断使用请求还是缓存，如果使用缓存，用缓存构造响应直接返回，如果使用请求，则开始网络请求流程
+
+### 缓存一致性协议（MESI协议）
+如果一个变量在多个CPU中都存在缓存（一般在多线程编程时才会出现），那么就可能存在缓存不一致的问题。
+
+通常有2种解决方法(均为硬件层面)
+
+1. **通过在总线加LOCK#锁的方式**
+	
+	在早期CPU中，是通过在总线上加LOCK#锁的形式来解决缓存不一致问题。只有一个CPU能使用变量的内存，命令执行过程中在总线上发出了LOCK#锁信号，只有命令执行完毕，其他CPU才能从主存读取谜题，效率低下。
+
+2. **通过缓存一致性协议**
+	
+	最出名的就是Intel的MESI协议，MESI协议保证了每个缓存中使用的共享变量副本是一致的，核心思想：**当CPU写数据时，如果发现操作的变量是共享变量，即在其他CPU中也存在该变量的副本，会发出信号通知其他CPU将该变量的缓存状态置为无效状态，因此当其他CPU需要读取这个变量时，发现自己缓存中的变量是无效状态，会从主存重新读取**。
+	![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gihxcabsjrj30l909rjsc.jpg)
+
+
+
+
+
+
+
+
+
+
+	

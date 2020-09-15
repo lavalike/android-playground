@@ -14,6 +14,7 @@ import com.android.exercise.util.T;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -85,7 +86,7 @@ public class RealmActivity extends BaseActivity {
                 User item;
                 for (int i = 0; i < 10000; i++) {
                     item = new User();
-                    item.setName("王震");
+                    item.setName(UUID.randomUUID().toString());
                     item.setAge(24);
                     userList.add(item);
                 }

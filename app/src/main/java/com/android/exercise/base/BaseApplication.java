@@ -11,6 +11,7 @@ import com.android.exercise.base.manager.AppManager;
 import com.android.exercise.util.AppUtil;
 import com.android.exercise.util.L;
 
+import org.litepal.LitePal;
 import org.xutils.DbManager;
 import org.xutils.x;
 
@@ -53,6 +54,7 @@ public class BaseApplication extends MultiDexApplication {
                 L.e("onLongClick -> className : " + className + " viewId : " + viewId);
             }
         });
+        LitePal.initialize(this);
     }
 
     /**

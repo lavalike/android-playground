@@ -13,6 +13,7 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
@@ -55,9 +56,9 @@ public class RoomActivity extends BaseActivity {
                     List<Person> list = new ArrayList<>();
                     Person person;
                     long start = System.currentTimeMillis();
-                    for (int i = 0; i < 100; i++) {
+                    for (int i = 0; i < 10000; i++) {
                         person = new Person();
-                        person.firstName = "三" + i;
+                        person.firstName = UUID.randomUUID().toString();
                         person.lastName = "张" + i;
                         list.add(person);
                     }
