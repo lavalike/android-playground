@@ -38,6 +38,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     sourceSets { main { assets.srcDirs = ['src/main/assets'] } }
     dataBinding {
         enabled = true
@@ -104,6 +107,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.2.5"
     implementation "androidx.navigation:navigation-fragment:2.3.0-beta01"
     implementation "androidx.navigation:navigation-ui:2.3.0-beta01"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha01"
 
     implementation 'com.tencent:mmkv-static:1.1.1'
 

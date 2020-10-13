@@ -82,6 +82,7 @@ import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.hook.HookActivity;
 import com.android.exercise.ui.activity.jetpack.databinding.DataBindingActivity;
+import com.android.exercise.ui.activity.jetpack.datastore.DataStoreActivity;
 import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity;
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
@@ -209,6 +210,7 @@ public class MainActivity extends BaseActivity {
         list.add(new TitleBean("生物测定"));
         list.add(new ItemBean(getString(R.string.item_biometric), BiometricActivity.class));
         list.add(new TitleBean("Jetpack"));
+        list.add(new ItemBean(getString(R.string.item_data_store), DataStoreActivity.class));
         list.add(new ItemBean(getString(R.string.item_view_model), ViewModelActivity.class));
         list.add(new ItemBean(getString(R.string.item_lifecycle), LifecycleActivity.class));
         list.add(new ItemBean(getString(R.string.item_data_binding), DataBindingActivity.class));

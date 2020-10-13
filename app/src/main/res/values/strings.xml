@@ -86,6 +86,7 @@
     <string name="item_navigation">Navigation</string>
     <string name="item_data_binding">DataBinding</string>
     <string name="item_lifecycle">Lifecycle</string>
+    <string name="item_data_store">DataStore</string>
     <string name="item_view_model">ViewModel</string>
     <string name="item_biometric">Biometric</string>
     <string name="item_mmkv">MMKV</string>
