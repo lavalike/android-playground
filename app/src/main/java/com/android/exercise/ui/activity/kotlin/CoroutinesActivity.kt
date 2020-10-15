@@ -9,7 +9,6 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.util.L
 import kotlinx.android.synthetic.main.activity_coroutines.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -22,10 +21,10 @@ import kotlinx.coroutines.launch
  * Created by wangzhen on 2020/10/15.
  */
 class CoroutinesActivity : BaseActivity() {
+    private val mainScope = MainScope()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines)
-
 
         /**
          * 调度器的作用是将协程限制在特定的线程执行。主要的调度器类型有：
@@ -34,13 +33,13 @@ class CoroutinesActivity : BaseActivity() {
          * Dispatchers.Default：默认的调度器，适合执行 CPU 密集性的任务
          * Dispatchers.Unconfined：非限制的调度器，指定的线程可能会随着挂起的函数的发生变化
          */
-        GlobalScope.launch(Dispatchers.Main) {
+        mainScope.launch(Dispatchers.Main) {
             val num = 20
             val result = getResult(20)
             tv.text = String.format("%d * %d = %d", num, num, result)
         }
 
-        GlobalScope.launch(Dispatchers.Main) {
+        mainScope.launch(Dispatchers.Main) {
             flow {
                 for (i in 1..5) {
                     emit(i)
@@ -52,7 +51,7 @@ class CoroutinesActivity : BaseActivity() {
             }
         }
 
-        GlobalScope.launch {
+        mainScope.launch {
             // 发送数据
 
             // 方式一
@@ -92,5 +91,10 @@ class CoroutinesActivity : BaseActivity() {
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
         ToolBarCommonHolder(this, toolbar, getString(R.string.item_kotlin_coroutines))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainScope.destroy()
     }
 }
