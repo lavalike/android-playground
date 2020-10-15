@@ -35,7 +35,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.jetpack.datastore.DataStoreActivity"></activity>
+        <activity android:name=".ui.activity.kotlin.CoroutinesActivity"></activity>
+        <activity android:name=".ui.activity.jetpack.datastore.DataStoreActivity" />
         <activity android:name=".ui.activity.database.LitePalActivity" />
         <activity android:name=".ui.activity.android11.ToastCompatActivity" />
         <activity android:name=".ui.activity.android11.TelephonyCompatActivity" />

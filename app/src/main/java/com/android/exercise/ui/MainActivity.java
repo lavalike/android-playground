@@ -88,6 +88,7 @@ import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity;
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
 import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
+import com.android.exercise.ui.activity.kotlin.CoroutinesActivity;
 import com.android.exercise.ui.activity.layer.MultiLayerActivity;
 import com.android.exercise.ui.activity.memory.BitmapOptimizeActivity;
 import com.android.exercise.ui.activity.memory.LargeImageActivity;
@@ -197,6 +198,8 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("kotlin"));
+        list.add(new ItemBean(getString(R.string.item_kotlin_coroutines), CoroutinesActivity.class));
         list.add(new TitleBean("Android11"));
         list.add(new ItemBean(getString(R.string.item_scoped_storage), ScopedStorageActivity.class));
         list.add(new ItemBean(getString(R.string.item_telephony_compat), TelephonyCompatActivity.class));
