@@ -13,9 +13,12 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import kotlinx.android.synthetic.main.activity_data_store.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -83,6 +86,19 @@ class DataStoreActivity : BaseActivity() {
                         tv_msg.append("╚════════════════\n")
                     }
                 }
+            }
+            R.id.btn_batch_save -> {
+                val store = createDataStore(name = "data-test")
+                GlobalScope.launch(Dispatchers.Main) {
+                    val start = System.currentTimeMillis()
+                    store.edit {
+                        for (i in 1..10000) {
+                            it[preferencesKey<String>(i.toString())] = i.toString()
+                        }
+                    }
+                    tv_msg.append("-> 批量保存10000条耗时：${System.currentTimeMillis() - start}\n")
+                }
+
             }
         }
     }
