@@ -106,4 +106,5 @@
     <string name="item_toast_compat">Toast权限</string>
     <string name="item_visual">可视化</string>
     <string name="item_kotlin_coroutines">kotlin协程</string>
+    <string name="item_md5">md5</string>
 </resources>

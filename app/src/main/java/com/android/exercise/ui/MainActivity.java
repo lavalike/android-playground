@@ -90,6 +90,7 @@ import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
 import com.android.exercise.ui.activity.kotlin.CoroutinesActivity;
 import com.android.exercise.ui.activity.layer.MultiLayerActivity;
+import com.android.exercise.ui.activity.md5.MD5Activity;
 import com.android.exercise.ui.activity.memory.BitmapOptimizeActivity;
 import com.android.exercise.ui.activity.memory.LargeImageActivity;
 import com.android.exercise.ui.activity.merge_adapter.MergeAdapterActivity;
@@ -198,6 +199,7 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new ItemBean(getString(R.string.item_md5), MD5Activity.class));
         list.add(new TitleBean("kotlin"));
         list.add(new ItemBean(getString(R.string.item_kotlin_coroutines), CoroutinesActivity.class));
         list.add(new TitleBean("Android11"));
