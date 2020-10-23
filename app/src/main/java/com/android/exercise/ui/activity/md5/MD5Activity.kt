@@ -42,7 +42,7 @@ class MD5Activity : BaseActivity() {
         val start = System.currentTimeMillis()
         val file = File(getExternalFilesDir(null), "large_file.txt")
         val randomAccessFile = RandomAccessFile(file, "rw")
-        randomAccessFile.setLength(1024 * 1024 * 1024)
+        randomAccessFile.setLength(1024 * 1024 * 512)
         randomAccessFile.close()
         tv_msg.text = "创建1GB文件成功，耗时：${System.currentTimeMillis() - start}"
     }
@@ -54,7 +54,7 @@ class MD5Activity : BaseActivity() {
             return
         }
         val start = System.currentTimeMillis()
-        val md5 = MD5Utils.getMD5(file)
+        val md5 = MD5Utils.getMD5Fast(file)
         tv_msg.text = "MD5 -> $md5\n"
         tv_msg.append("耗时 -> ${System.currentTimeMillis() - start}")
     }

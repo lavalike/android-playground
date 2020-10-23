@@ -3,7 +3,10 @@ package com.android.exercise.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * MD5Utils
@@ -12,6 +15,15 @@ import java.security.MessageDigest;
 public class MD5Utils {
     private static final char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             'A', 'B', 'C', 'D', 'E', 'F'};
+    private static MessageDigest digest;
+
+    static {
+        try {
+            digest = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 获取一个文件的md5值(可处理大文件)
@@ -21,7 +33,6 @@ public class MD5Utils {
     public static String getMD5(File file) {
         FileInputStream fileInputStream = null;
         try {
-            MessageDigest digest = MessageDigest.getInstance("MD5");
             fileInputStream = new FileInputStream(file);
             byte[] buffer = new byte[8192];
             int length;
@@ -51,5 +62,34 @@ public class MD5Utils {
         }
     }
 
+    public static String getMD5Fast(File file) {
+        FileInputStream stream = null;
+        try {
+            stream = new FileInputStream(file);
+            FileChannel channel = stream.getChannel();
+            MappedByteBuffer byteBuffer = channel.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
+            digest.update(byteBuffer);
+            byte[] bytes = digest.digest();
+            StringBuilder stringBuffer = new StringBuilder(bytes.length * 2);
+            for (byte b : bytes) {
+                char c0 = hexDigits[(b & 0xf0) >> 4];
+                char c1 = hexDigits[b & 0xf];
+                stringBuffer.append(c0);
+                stringBuffer.append(c1);
+            }
+            return stringBuffer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
 
 }
