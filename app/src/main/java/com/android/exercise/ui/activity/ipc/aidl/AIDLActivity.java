@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity;
+package com.android.exercise.ui.activity.ipc.aidl;
 
 import android.content.ComponentName;
 import android.content.Context;

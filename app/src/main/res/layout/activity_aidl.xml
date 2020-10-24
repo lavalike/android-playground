@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.android.exercise.ui.activity.AIDLActivity">
+    tools:context="com.android.exercise.ui.activity.ipc.aidl.AIDLActivity">
 
     <Button
         android:id="@+id/btn_calcutor"

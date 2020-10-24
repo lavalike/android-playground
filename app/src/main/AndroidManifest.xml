@@ -35,7 +35,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.md5.MD5Activity"></activity>
+        <activity android:name=".ui.activity.ipc.messenger.MessengerActivity"></activity>
+        <activity android:name=".ui.activity.md5.MD5Activity" />
         <activity android:name=".ui.activity.kotlin.CoroutinesActivity" />
         <activity android:name=".ui.activity.jetpack.datastore.DataStoreActivity" />
         <activity android:name=".ui.activity.database.LitePalActivity" />
@@ -123,7 +124,7 @@
         <activity android:name=".ui.activity.ConstraintLayoutActivity" />
         <activity android:name=".ui.activity.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
-        <activity android:name=".ui.activity.AIDLActivity" />
+        <activity android:name=".ui.activity.ipc.aidl.AIDLActivity" />
 
         <service
             android:name=".service.IRemoteService"
@@ -216,6 +217,10 @@
         <activity
             android:name=".ui.activity.LimitedVideoActivity"
             android:theme="@style/AppTheme.FullScreen" />
+
+        <service
+            android:name=".ui.activity.ipc.messenger.MessengerService"
+            android:process=":messenger" />
     </application>
 
 </manifest>

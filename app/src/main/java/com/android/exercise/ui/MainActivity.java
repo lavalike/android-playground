@@ -15,7 +15,6 @@ import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.NotificationBean;
 import com.android.exercise.domain.TitleBean;
 import com.android.exercise.ui.activity.ADWindowActivity;
-import com.android.exercise.ui.activity.AIDLActivity;
 import com.android.exercise.ui.activity.AndServerActivity;
 import com.android.exercise.ui.activity.Anim24hActivity;
 import com.android.exercise.ui.activity.AnimViewActivity;
@@ -81,6 +80,8 @@ import com.android.exercise.ui.activity.database.RealmActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.hook.HookActivity;
+import com.android.exercise.ui.activity.ipc.aidl.AIDLActivity;
+import com.android.exercise.ui.activity.ipc.messenger.MessengerActivity;
 import com.android.exercise.ui.activity.jetpack.databinding.DataBindingActivity;
 import com.android.exercise.ui.activity.jetpack.datastore.DataStoreActivity;
 import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity;
@@ -199,7 +200,9 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
-        list.add(new ItemBean(getString(R.string.item_md5), MD5Activity.class));
+        list.add(new TitleBean("IPC"));
+        list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
+        list.add(new ItemBean(getString(R.string.item_messenger), MessengerActivity.class));
         list.add(new TitleBean("kotlin"));
         list.add(new ItemBean(getString(R.string.item_kotlin_coroutines), CoroutinesActivity.class));
         list.add(new TitleBean("Android11"));
@@ -300,7 +303,7 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
         list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
         list.add(new TitleBean("其他"));
-        list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
+        list.add(new ItemBean(getString(R.string.item_md5), MD5Activity.class));
         list.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
         list.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
         list.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
