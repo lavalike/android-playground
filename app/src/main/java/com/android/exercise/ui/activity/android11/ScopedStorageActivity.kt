@@ -3,6 +3,7 @@ package com.android.exercise.ui.activity.android11
 import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -14,6 +15,8 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.aliya.permission.Permission
@@ -112,11 +115,7 @@ class ScopedStorageActivity : BaseActivity() {
                 startActivityForResult(intent, REQUEST_OPEN_DOCUMENT)
             }
             R.id.btn_get_content -> {
-                val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-                    type = "image/*"
-                    addCategory(Intent.CATEGORY_OPENABLE)
-                }
-                startActivityForResult(intent, REQUEST_OPEN_DOCUMENT)
+                mContentLauncher.launch("image/*")
             }
             R.id.btn_media_store_create_file -> {
                 val values = ContentValues()
@@ -155,6 +154,23 @@ class ScopedStorageActivity : BaseActivity() {
                 }
             }
         }
+    }
+
+    /**
+     * @see ActivityResultContracts
+     */
+    private val mContentLauncher = registerForActivityResult(object : ActivityResultContract<String, Uri>() {
+        override fun createIntent(context: Context, input: String): Intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+            type = input
+            addCategory(Intent.CATEGORY_OPENABLE)
+        }
+
+        override fun parseResult(resultCode: Int, intent: Intent?): Uri? {
+            return intent?.data
+        }
+
+    }) {
+        ADWindowDialog().setImageUri(it).showDialog(supportFragmentManager)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

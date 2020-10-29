@@ -94,7 +94,6 @@ import com.android.exercise.ui.activity.layer.MultiLayerActivity;
 import com.android.exercise.ui.activity.md5.MD5Activity;
 import com.android.exercise.ui.activity.memory.BitmapOptimizeActivity;
 import com.android.exercise.ui.activity.memory.LargeImageActivity;
-import com.android.exercise.ui.activity.merge_adapter.MergeAdapterActivity;
 import com.android.exercise.ui.activity.mmkv.MMKVActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
@@ -233,7 +232,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_litepal), LitePalActivity.class));
         list.add(new TitleBean("布局类"));
         list.add(new ItemBean(getString(R.string.item_shared_elements), SharedElementsActivity.class));
-        list.add(new ItemBean(getString(R.string.item_merge_adapter), MergeAdapterActivity.class));
         list.add(new ItemBean(getString(R.string.item_circle_image), CircleImageActivity.class));
         list.add(new ItemBean(getString(R.string.item_adapter), LoadMoreActivity.class));
         list.add(new ItemBean(getString(R.string.item_hero), MultiLayerActivity.class));

@@ -95,7 +95,6 @@
     <string name="item_circle_image">圆角图片</string>
     <string name="item_bitmap_optimize">bitmap优化</string>
     <string name="item_large_bitmap">加载巨图</string>
-    <string name="item_merge_adapter">MergeAdapter</string>
     <string name="item_shared_elements">共享元素</string>
     <string name="item_hook">Hook</string>
     <string name="item_okhttp_websocket">OkHttp长连接</string>
