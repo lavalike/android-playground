@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.databinding.ActivityMainBinding;
 import com.android.exercise.domain.BaseBean;
 import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.NotificationBean;
@@ -113,23 +114,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * 首页
  */
 public class MainActivity extends BaseActivity {
     private static final float GAP = 1f;
-    @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     private FunctionAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        ActivityMainBinding inflate = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(inflate.getRoot());
+        recyclerView = inflate.recyclerview;
         fitDarkStatus(true);
         setSwipeBackEnable(false);
         initPush(getIntent());
