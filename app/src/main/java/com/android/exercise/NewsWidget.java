@@ -48,11 +48,11 @@ public class NewsWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.tv_column, column);
         views.setTextViewText(R.id.tv_read, read);
         views.setTextViewText(R.id.tv_time, time);
-        views.setImageViewResource(R.id.iv, resIds[new Random().nextInt(resIds.length)]);
+        views.setImageViewResource(R.id.imageView, resIds[new Random().nextInt(resIds.length)]);
 
         Intent intent = new Intent(context, NewsWidget.class);
         intent.setAction(ACTION);
-        views.setOnClickPendingIntent(R.id.iv, PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT));
+        views.setOnClickPendingIntent(R.id.imageView, PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT));
         return views;
     }
 

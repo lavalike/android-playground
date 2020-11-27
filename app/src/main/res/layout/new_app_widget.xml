@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/iv"
+        android:layout_toStartOf="@+id/imageView"
         android:ellipsize="end"
         android:lineSpacingMultiplier="1.21"
         android:maxLines="3"
@@ -23,7 +23,7 @@
         android:id="@+id/tv_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/iv"
+        android:layout_alignBottom="@+id/imageView"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -65,7 +65,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/iv"
+        android:id="@+id/imageView"
         android:layout_width="113dp"
         android:layout_height="75dp"
         android:layout_alignParentTop="true"

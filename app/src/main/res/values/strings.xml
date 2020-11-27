@@ -107,4 +107,5 @@
     <string name="item_kotlin_coroutines">kotlin协程</string>
     <string name="item_md5">md5</string>
     <string name="item_messenger">messenger</string>
+    <string name="item_swipe_close">滑动关闭</string>
 </resources>

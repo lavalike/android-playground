@@ -57,6 +57,7 @@ import com.android.exercise.ui.activity.RxJavaActivity;
 import com.android.exercise.ui.activity.ScrollActivity;
 import com.android.exercise.ui.activity.SlidingMenuActivity;
 import com.android.exercise.ui.activity.StateButtonActivity;
+import com.android.exercise.ui.activity.SwipeCloseActivity;
 import com.android.exercise.ui.activity.TextFormatActivity;
 import com.android.exercise.ui.activity.TextLinkActivity;
 import com.android.exercise.ui.activity.ThreadPoolActivity;
@@ -197,6 +198,7 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new ItemBean(getString(R.string.item_swipe_close), SwipeCloseActivity.class));
         list.add(new TitleBean("IPC"));
         list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         list.add(new ItemBean(getString(R.string.item_messenger), MessengerActivity.class));

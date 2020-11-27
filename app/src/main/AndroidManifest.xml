@@ -35,7 +35,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.ipc.messenger.MessengerActivity"></activity>
+        <activity android:name=".ui.activity.SwipeCloseActivity"></activity>
+        <activity android:name=".ui.activity.ipc.messenger.MessengerActivity" />
         <activity android:name=".ui.activity.md5.MD5Activity" />
         <activity android:name=".ui.activity.kotlin.CoroutinesActivity" />
         <activity android:name=".ui.activity.jetpack.datastore.DataStoreActivity" />
