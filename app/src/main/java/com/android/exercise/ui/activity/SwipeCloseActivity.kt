@@ -58,7 +58,7 @@ class SwipeCloseActivity : AppCompatActivity() {
                 }
             }
         }
-        return true
+        return super.onTouchEvent(event)
     }
 
     private fun animateFinish() {
