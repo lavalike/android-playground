@@ -5,10 +5,8 @@ import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
-import androidx.datastore.preferences.createDataStore
-import androidx.datastore.preferences.edit
-import androidx.datastore.preferences.emptyPreferences
-import androidx.datastore.preferences.preferencesKey
+import androidx.datastore.DataStore
+import androidx.datastore.preferences.*
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
@@ -29,11 +27,17 @@ import java.util.*
  * Created by wangzhen on 2020/10/13.
  */
 class DataStoreActivity : BaseActivity() {
-    private val dataStore = createDataStore(name = "data-store")
+    private lateinit var dataStore: DataStore<Preferences>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_store)
         tv_msg.text = ""
+        initDataStore()
+    }
+
+    private fun initDataStore() {
+        dataStore = createDataStore(name = "data-store")
     }
 
 

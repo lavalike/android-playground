@@ -13,18 +13,34 @@
         android:text="批量保存10000条" />
 
     <Button
-        android:id="@+id/btn_mmkv"
+        android:id="@+id/btn_mmkv_insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:layout_marginTop="10dp"
-        android:text="MMKV" />
+        android:text="MMKV insert" />
 
     <Button
-        android:id="@+id/btn_shared_preferences"
+        android:id="@+id/btn_preferences_insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="SharedPreferences" />
+        android:text="SharedPreferences insert" />
+
+    <Button
+        android:id="@+id/btn_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="query数量" />
+
+    <Button
+        android:id="@+id/btn_query_performance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="query performance" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clear all" />
 
 </LinearLayout>

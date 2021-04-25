@@ -24,7 +24,6 @@ import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.BitOptActivity;
 import com.android.exercise.ui.activity.BroadcastActivity;
 import com.android.exercise.ui.activity.BrowserActivity;
-import com.android.exercise.ui.activity.CompileAnnotationActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
 import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.DrawerSlideActivity;
@@ -198,6 +197,15 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("Jetpack"));
+        list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
+        list.add(new ItemBean(getString(R.string.item_data_store), DataStoreActivity.class));
+        list.add(new ItemBean(getString(R.string.item_view_model), ViewModelActivity.class));
+        list.add(new ItemBean(getString(R.string.item_lifecycle), LifecycleActivity.class));
+        list.add(new ItemBean(getString(R.string.item_data_binding), DataBindingActivity.class));
+        list.add(new ItemBean(getString(R.string.item_navigation), NavigationActivity.class));
+        list.add(new ItemBean(getString(R.string.item_room), RoomActivity.class));
+        list.add(new ItemBean(getString(R.string.item_work_manager), WorkManagerActivity.class));
         list.add(new ItemBean(getString(R.string.item_swipe_close), SwipeCloseActivity.class));
         list.add(new TitleBean("IPC"));
         list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
@@ -216,14 +224,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_bitmap_optimize), BitmapOptimizeActivity.class));
         list.add(new TitleBean("生物测定"));
         list.add(new ItemBean(getString(R.string.item_biometric), BiometricActivity.class));
-        list.add(new TitleBean("Jetpack"));
-        list.add(new ItemBean(getString(R.string.item_data_store), DataStoreActivity.class));
-        list.add(new ItemBean(getString(R.string.item_view_model), ViewModelActivity.class));
-        list.add(new ItemBean(getString(R.string.item_lifecycle), LifecycleActivity.class));
-        list.add(new ItemBean(getString(R.string.item_data_binding), DataBindingActivity.class));
-        list.add(new ItemBean(getString(R.string.item_navigation), NavigationActivity.class));
-        list.add(new ItemBean(getString(R.string.item_room), RoomActivity.class));
-        list.add(new ItemBean(getString(R.string.item_work_manager), WorkManagerActivity.class));
         list.add(new TitleBean("Hook"));
         list.add(new ItemBean(getString(R.string.item_hook), HookActivity.class));
         list.add(new TitleBean("数据库"));
@@ -290,7 +290,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_path_measure), PathMeasureActivity.class));
         list.add(new ItemBean(getString(R.string.item_path), PathActivity.class));
         list.add(new TitleBean("注解"));
-        list.add(new ItemBean(getString(R.string.item_annotation_compile), CompileAnnotationActivity.class));
         list.add(new ItemBean(getString(R.string.item_annotation_runtime), RuntimeAnnotationActivity.class));
         list.add(new TitleBean("开源库"));
         list.add(new ItemBean(getString(R.string.item_rxjava), RxJavaActivity.class));
@@ -299,7 +298,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_okhttp_websocket), WebSocketActivity.class));
         list.add(new ItemBean(getString(R.string.item_andServer), AndServerActivity.class));
         list.add(new ItemBean(getString(R.string.item_mina), MinaActivity.class));
-        list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
         list.add(new TitleBean("其他"));
         list.add(new ItemBean(getString(R.string.item_md5), MD5Activity.class));
         list.add(new ItemBean(getString(R.string.item_accessibility), AutoServiceActivity.class));
