@@ -35,23 +35,20 @@ public class AppUtil {
 
     /**
      * 读取指定Assets目录下文本资源内容
-     *
-     * @param assetPath
-     * @return
      */
     public static String getAssetsText(String assetPath) {
         AssetManager a = getContext().getAssets();
         try {
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder builder = new StringBuilder();
             InputStream is = a.open(assetPath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String lineStr;
             while ((lineStr = reader.readLine()) != null) {
-                buffer.append(lineStr);
+                builder.append(lineStr);
             }
             reader.close();
             is.close();
-            return buffer.toString();
+            return builder.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,9 +57,6 @@ public class AppUtil {
 
     /**
      * TextView处理Html中的超链接
-     *
-     * @param html
-     * @return
      */
     public static SpannableStringBuilder processHyperlinks(String html) {
         Spannable spannable = (Spannable) Html.fromHtml(html);

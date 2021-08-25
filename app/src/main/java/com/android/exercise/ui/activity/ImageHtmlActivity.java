@@ -1,19 +1,16 @@
 package com.android.exercise.ui.activity;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.webkit.WebView;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import android.webkit.WebView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.util.AppUtil;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class ImageHtmlActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_image);
         ButterKnife.bind(this);
-        String htmlCode = getAssetsText("html/html_image_list.html");
+        String htmlCode = AppUtil.getAssetsText("html/html_image_list.html");
         htmlCode = String.format(htmlCode, createImagesTags(initList()));
         webview.loadDataWithBaseURL(null, htmlCode, "text/html", "utf-8", null);
     }
@@ -87,35 +84,5 @@ public class ImageHtmlActivity extends BaseActivity {
         list.add("http://rili.php.jxcraft.net/public/uploads/20181121/f89c9a6b351a3fbe78bfd872303ade93.png");
         list.add("http://rili.php.jxcraft.net/public/uploads/20181121/f4cd72082ac7929578c7acb37b3c40e3.png");
         return list;
-    }
-
-    /**
-     * 获取Assets文件的文本内容
-     *
-     * @param path 文件路径
-     * @return String文本内容
-     */
-    public String getAssetsText(String path) {
-        AssetManager a = getAssets();
-        try {
-            StringBuffer buffer = new StringBuffer();
-            InputStream is = a.open(path);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String lineStr;
-
-            while ((lineStr = reader.readLine()) != null) {
-                buffer.append(lineStr);
-            }
-
-            reader.close();
-            is.close();
-
-            return buffer.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-
     }
 }

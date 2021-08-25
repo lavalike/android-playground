@@ -49,7 +49,7 @@ public class FingerprintP implements Fingerprint {
         biometricPrompt.authenticate(crypto, cancellationSignal, mContext.getMainExecutor(), authenticationCallback);
     }
 
-    private BiometricPrompt.AuthenticationCallback authenticationCallback = new BiometricPrompt.AuthenticationCallback() {
+    private final BiometricPrompt.AuthenticationCallback authenticationCallback = new BiometricPrompt.AuthenticationCallback() {
         @Override
         public void onAuthenticationError(int errMsgId, CharSequence errString) {
             super.onAuthenticationError(errMsgId, errString);
