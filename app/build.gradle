@@ -3,24 +3,22 @@ apply plugin: 'realm-android'
 apply plugin: 'io.objectbox'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'android-aspectjx'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.android.exercise"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
+
         //指定room.schemaLocation生成的文件路径
         javaCompileOptions {
             annotationProcessorOptions {
