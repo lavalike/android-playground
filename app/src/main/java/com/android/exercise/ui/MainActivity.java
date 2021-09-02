@@ -96,6 +96,7 @@ import com.android.exercise.ui.activity.md5.MD5Activity;
 import com.android.exercise.ui.activity.memory.BitmapOptimizeActivity;
 import com.android.exercise.ui.activity.memory.LargeImageActivity;
 import com.android.exercise.ui.activity.mmkv.MMKVActivity;
+import com.android.exercise.ui.activity.motion.MotionLayoutActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
 import com.android.exercise.ui.activity.player.IjkPlayerActivity;
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity;
@@ -198,6 +199,7 @@ public class MainActivity extends BaseActivity {
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
         list.add(new TitleBean("Jetpack"));
+        list.add(new ItemBean(getString(R.string.item_motion_layout), MotionLayoutActivity.class));
         list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
         list.add(new ItemBean(getString(R.string.item_data_store), DataStoreActivity.class));
         list.add(new ItemBean(getString(R.string.item_view_model), ViewModelActivity.class));

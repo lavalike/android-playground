@@ -1,11 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
-apply plugin: 'io.objectbox'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'io.objectbox'
 apply plugin: 'android-aspectjx'
 
 android {

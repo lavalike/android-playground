@@ -35,7 +35,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.SwipeCloseActivity"></activity>
+        <activity
+            android:name=".ui.activity.motion.WaveMotionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.motion.LoadingBallActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.motion.MotionLayoutActivity"
+            android:exported="true" />
+        <activity android:name=".ui.activity.SwipeCloseActivity" />
         <activity android:name=".ui.activity.ipc.messenger.MessengerActivity" />
         <activity android:name=".ui.activity.md5.MD5Activity" />
         <activity android:name=".ui.activity.kotlin.CoroutinesActivity" />

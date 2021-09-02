@@ -6,7 +6,7 @@
     android:padding="10dp">
 
     <com.wangzhen.circle.CircleImageView
-        android:id="@+id/image"
+        android:id="@+id/wave"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
