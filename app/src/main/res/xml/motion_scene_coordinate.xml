@@ -44,9 +44,5 @@
 
     <Transition
         app:constraintSetEnd="@id/end"
-        app:constraintSetStart="@+id/start">
-        <OnClick
-            app:clickAction="transitionToEnd"
-            app:targetId="@+id/title" />
-    </Transition>
+        app:constraintSetStart="@+id/start" />
 </MotionScene>
