@@ -7,10 +7,11 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.exercise.IMyAidl;
 import com.android.exercise.R;
@@ -41,6 +42,7 @@ public class AIDLActivity extends BaseActivity {
 
     private void bindAIDL() {
         Intent intent = new Intent();
+        intent.setPackage(getPackageName());
         //新版本，必须显示启动绑定服务
         intent.setComponent(new ComponentName("com.android.exercise", "com.android.exercise.service.IRemoteService"));
         isSuccessBound = bindService(intent, connection, Context.BIND_AUTO_CREATE);

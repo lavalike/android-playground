@@ -12,7 +12,7 @@ public class GInsightReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getStringExtra("action");
-        if (action.equalsIgnoreCase("")) {
+        if ("".equalsIgnoreCase(action)) {
             String giuid = intent.getStringExtra("giuid");
         }
     }

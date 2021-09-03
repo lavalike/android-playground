@@ -36,6 +36,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.motion.CoordinateMotionActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.activity.motion.WaveMotionActivity"
             android:exported="true" />
         <activity
@@ -138,7 +141,7 @@
         <service
             android:name=".service.IRemoteService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity android:name=".ui.activity.MinaActivity" />
         <activity android:name=".ui.activity.RippleActivity" />

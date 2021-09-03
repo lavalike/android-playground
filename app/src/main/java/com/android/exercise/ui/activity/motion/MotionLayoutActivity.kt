@@ -25,8 +25,11 @@ class MotionLayoutActivity : BaseActivity() {
         binding.btnLoadingBall.setOnClickListener {
             startActivity(Intent(this, LoadingBallActivity::class.java))
         }
-        binding.btnKeyCycle.setOnClickListener {
+        binding.btnWave.setOnClickListener {
             startActivity(Intent(this, WaveMotionActivity::class.java))
+        }
+        binding.btnCoordinateLayout.setOnClickListener {
+            startActivity(Intent(this, CoordinateMotionActivity::class.java))
         }
     }
 

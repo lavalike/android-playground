@@ -13,6 +13,7 @@ class WaveMotionActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fitDarkStatus(true)
         setContentView(ActivityWaveMotionBinding.inflate(layoutInflater).apply {
             binding = this
         }.root)

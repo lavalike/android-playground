@@ -13,6 +13,7 @@ class LoadingBallActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fitDarkStatus(true)
         setContentView(ActivityLoadingBallBinding.inflate(layoutInflater).apply {
             binding = this
         }.root)

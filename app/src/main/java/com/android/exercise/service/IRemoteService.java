@@ -25,7 +25,7 @@ public class IRemoteService extends Service {
         return iBinder;
     }
 
-    private IBinder iBinder = new IMyAidl.Stub() {
+    private final IBinder iBinder = new IMyAidl.Stub() {
 
         @Override
         public int addNumber(int num1, int num2) throws RemoteException {
