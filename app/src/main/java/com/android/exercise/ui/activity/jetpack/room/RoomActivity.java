@@ -20,6 +20,10 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * RoomActivity
+ * Created by zhen51.wang on 2020/06/03.
+ */
 public class RoomActivity extends BaseActivity {
 
     private PersonDatabase mDatabase;

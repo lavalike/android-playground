@@ -5,13 +5,13 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.android.exercise.R
+import com.android.exercise.databinding.ActivitySwipeCloseBinding
 import com.android.exercise.ui.widget.nineoldandroids.animation.Animator
 import com.android.exercise.ui.widget.nineoldandroids.animation.AnimatorListenerAdapter
 import com.android.exercise.ui.widget.nineoldandroids.animation.AnimatorSet
 import com.android.exercise.ui.widget.nineoldandroids.animation.ValueAnimator
-import kotlinx.android.synthetic.main.activity_swipe_close.*
 import kotlin.math.abs
 
 /**
@@ -19,20 +19,30 @@ import kotlin.math.abs
  * Created by wangzhen on 11/27/20.
  */
 class SwipeCloseActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySwipeCloseBinding
+    private lateinit var imageView: ImageView
     private var initialY: Float = 0f
     private var progress: Float = 0f
     private var delta: Float = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_swipe_close)
+        binding = ActivitySwipeCloseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        imageView = binding.imageView
         window.setBackgroundDrawable(ColorDrawable(Color.parseColor("#00000000")))
     }
 
     private fun renderBackground(progress: Float) {
         if (imageView.parent is ViewGroup) {
             val parent: ViewGroup = imageView.parent as ViewGroup
-            parent.setBackgroundColor(colorTransform(progress, Color.parseColor("#000000"), Color.parseColor("#00000000")))
+            parent.setBackgroundColor(
+                colorTransform(
+                    progress,
+                    Color.parseColor("#000000"),
+                    Color.parseColor("#00000000")
+                )
+            )
         }
     }
 

@@ -159,7 +159,7 @@ class ScopedStorageActivity : BaseActivity() {
     /**
      * @see ActivityResultContracts
      */
-    private val mContentLauncher = registerForActivityResult(object : ActivityResultContract<String, Uri>() {
+    private val mContentLauncher = registerForActivityResult(object : ActivityResultContract<String, Uri?>() {
         override fun createIntent(context: Context, input: String): Intent = Intent(Intent.ACTION_GET_CONTENT).apply {
             type = input
             addCategory(Intent.CATEGORY_OPENABLE)

@@ -26,7 +26,7 @@ public class AppUtil {
     public static Context mApp;
 
     public static void init(Context context) {
-        mApp = context;
+        mApp = context.getApplicationContext();
     }
 
     public static Context getContext() {

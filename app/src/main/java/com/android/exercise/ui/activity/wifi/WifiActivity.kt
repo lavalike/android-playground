@@ -10,10 +10,9 @@ import android.text.TextUtils
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
-import kotlinx.android.synthetic.main.activity_wifi.*
+import com.android.exercise.databinding.ActivityWifiBinding
 
 /**
  * WifiActivity
@@ -22,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_wifi.*
  * Created by wangzhen on 2020/8/20.
  */
 class WifiActivity : BaseActivity() {
+    private lateinit var binding: ActivityWifiBinding
     private var mWifiManager: WifiManager? = null
     private var mCurrentSSID: String? = null
     private val mReceiver: BroadcastReceiver = object : BroadcastReceiver() {
@@ -34,7 +34,8 @@ class WifiActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wifi)
+        binding = ActivityWifiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mWifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager?
         if (mWifiManager != null) {
@@ -44,10 +45,12 @@ class WifiActivity : BaseActivity() {
             }
         }
 
-        switch_view.state = mWifiManager?.isWifiEnabled ?: false
-        switch_view.setOnSwitchStateChangeListener { v, isOn -> mWifiManager?.isWifiEnabled = isOn }
+        binding.switchView.state = mWifiManager?.isWifiEnabled ?: false
+        binding.switchView.setOnSwitchStateChangeListener { v, isOn ->
+            mWifiManager?.isWifiEnabled = isOn
+        }
 
-        btn_scan.setOnClickListener {
+        binding.btnScan.setOnClickListener {
             if (mWifiManager != null) {
                 if (!mWifiManager!!.isWifiEnabled) {
                     mWifiManager!!.isWifiEnabled = true
@@ -56,7 +59,7 @@ class WifiActivity : BaseActivity() {
             }
         }
 
-        recycler.layoutManager = LinearLayoutManager(this)
+        binding.recycler.layoutManager = LinearLayoutManager(this)
 
         registerReceiver(mReceiver, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
     }
@@ -77,7 +80,7 @@ class WifiActivity : BaseActivity() {
                 entity.frequency = result.frequency
                 list.add(entity)
             }
-            recycler.adapter = WifiAdapter(list)
+            binding.recycler.adapter = WifiAdapter(list)
         }
     }
 

@@ -18,21 +18,22 @@ import com.aliya.permission.PermissionManager
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
-import kotlinx.android.synthetic.main.activity_bluetooth.*
+import com.android.exercise.databinding.ActivityBluetoothBinding
 
 /**
  * BluetoothActivity
  * Created by wangzhen on 2020/8/20.
  */
 class BluetoothActivity : BaseActivity() {
-
+    private lateinit var binding: ActivityBluetoothBinding
     private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
     private var adapter: DataAdapter = DataAdapter(null)
 
     private val mReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (TextUtils.equals(intent.action, BluetoothDevice.ACTION_FOUND)) {
-                val device: BluetoothDevice? = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
+                val device: BluetoothDevice? =
+                    intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
                 if (device != null && !TextUtils.isEmpty(device.name)) {
                     adapter.addData(mutableListOf(BluetoothEntity(device.name, device.address)))
                 }
@@ -42,19 +43,20 @@ class BluetoothActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bluetooth)
+        binding = ActivityBluetoothBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (bluetoothAdapter == null) {
             Toast.makeText(this, "不支持蓝牙设备", Toast.LENGTH_SHORT).show()
             return
         }
 
-        switch_view.state = bluetoothAdapter.isEnabled
+        binding.switchView.state = bluetoothAdapter.isEnabled
 
-        switch_view.setOnSwitchStateChangeListener { v, isOn ->
+        binding.switchView.setOnSwitchStateChangeListener { v, isOn ->
             if (isOn) bluetoothAdapter.enable() else bluetoothAdapter.disable()
         }
-        btn_find_bounded.setOnClickListener {
+        binding.btnFindBounded.setOnClickListener {
             check()
             val bondedDevices: Set<BluetoothDevice> = bluetoothAdapter.bondedDevices
             if (bondedDevices.isNotEmpty()) {
@@ -67,7 +69,7 @@ class BluetoothActivity : BaseActivity() {
                 Toast.makeText(this, "没有已配对设备", Toast.LENGTH_SHORT).show()
             }
         }
-        btn_find.setOnClickListener {
+        binding.btnFind.setOnClickListener {
             PermissionManager.request(this, object : PermissionCallback {
                 override fun onGranted(isAlready: Boolean) {
                     check()
@@ -80,15 +82,18 @@ class BluetoothActivity : BaseActivity() {
                     bluetoothAdapter.startDiscovery()
                 }
 
-                override fun onDenied(deniedPermissions: MutableList<String>, neverAskPermissions: MutableList<String>?) {
+                override fun onDenied(
+                    deniedPermissions: MutableList<String>,
+                    neverAskPermissions: MutableList<String>?
+                ) {
                     Toast.makeText(applicationContext, "需要位置权限", Toast.LENGTH_SHORT).show()
                 }
 
             }, Permission.LOCATION_FINE, Permission.LOCATION_COARSE)
         }
 
-        recycler.layoutManager = LinearLayoutManager(this)
-        recycler.adapter = adapter
+        binding.recycler.layoutManager = LinearLayoutManager(this)
+        binding.recycler.adapter = adapter
 
         registerReceiver(mReceiver, IntentFilter(BluetoothDevice.ACTION_FOUND))
     }
@@ -97,7 +102,7 @@ class BluetoothActivity : BaseActivity() {
         if (bluetoothAdapter != null) {
             if (!bluetoothAdapter.isEnabled) {
                 bluetoothAdapter.enable()
-                switch_view.state = true
+                binding.switchView.state = true
             }
         }
     }

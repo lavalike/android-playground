@@ -15,11 +15,12 @@
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 启用应用启动设备发现或者操作蓝牙设备的超级管理员 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
@@ -90,6 +91,7 @@
         <activity android:name=".ui.activity.queue.TaskSequenceActivity" />
         <activity
             android:name=".ui.MainActivity"
+            android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -106,6 +108,7 @@
         <activity android:name=".ui.activity.AutoServiceActivity" /> <!-- 自动化辅助服务 -->
         <service
             android:name=".service.AutoService"
+            android:exported="false"
             android:label="自动化辅助服务测试"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <meta-data
@@ -118,6 +121,7 @@
         </service> <!-- QQ自动发消息辅助服务 -->
         <service
             android:name=".service.QQAutoService"
+            android:exported="false"
             android:label="QQ自动发消息"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <meta-data
@@ -150,18 +154,24 @@
 
         <service android:name=".service.PollService" />
 
-        <receiver android:name=".service.StartupReceiver">
+        <receiver
+            android:name=".service.StartupReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.GInsightReceiver">
+        <receiver
+            android:name=".receiver.GInsightReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.getui.gis.action.100" />
                 <action android:name="com.getui.gis.action.200" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.NotifyPushReceiver">
+        <receiver
+            android:name=".receiver.NotifyPushReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.android.exercise.push.click" />
             </intent-filter>
@@ -183,7 +193,9 @@
         <activity android:name=".ui.activity.BroadcastActivity" />
         <activity android:name=".ui.activity.PageSwitchActivity" />
         <activity android:name=".ui.activity.ADWindowActivity" />
-        <activity android:name=".ui.activity.BrowserActivity">
+        <activity
+            android:name=".ui.activity.BrowserActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -195,7 +207,9 @@
         <activity android:name=".ui.activity.StateButtonActivity" />
         <activity android:name=".ui.activity.NotificationActivity" />
 
-        <receiver android:name=".NewsWidget">
+        <receiver
+            android:name=".NewsWidget"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.exercise.widget" />

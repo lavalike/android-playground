@@ -8,8 +8,8 @@ import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.databinding.ActivityMD5Binding
 import com.android.exercise.util.MD5Utils
-import kotlinx.android.synthetic.main.activity_m_d5.*
 import java.io.File
 import java.io.RandomAccessFile
 
@@ -18,9 +18,11 @@ import java.io.RandomAccessFile
  * Created by wangzhen on 2020/10/20.
  */
 class MD5Activity : BaseActivity() {
+    private lateinit var binding: ActivityMD5Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_m_d5)
+        binding = ActivityMD5Binding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
@@ -44,7 +46,7 @@ class MD5Activity : BaseActivity() {
         val randomAccessFile = RandomAccessFile(file, "rw")
         randomAccessFile.setLength(1024 * 1024 * 512)
         randomAccessFile.close()
-        tv_msg.text = "创建1GB文件成功，耗时：${System.currentTimeMillis() - start}"
+        binding.tvMsg.text = "创建1GB文件成功，耗时：${System.currentTimeMillis() - start}"
     }
 
     private fun getFileMd5() {
@@ -55,7 +57,7 @@ class MD5Activity : BaseActivity() {
         }
         val start = System.currentTimeMillis()
         val md5 = MD5Utils.getMD5Fast(file)
-        tv_msg.text = "MD5 -> $md5\n"
-        tv_msg.append("耗时 -> ${System.currentTimeMillis() - start}")
+        binding.tvMsg.text = "MD5 -> $md5\n"
+        binding.tvMsg.append("耗时 -> ${System.currentTimeMillis() - start}")
     }
 }

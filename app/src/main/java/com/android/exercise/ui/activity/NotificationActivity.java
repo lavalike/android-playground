@@ -12,7 +12,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 
-import com.android.aspectj.annotation.DoubleClick;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.manager.NotificationHelper;
@@ -42,7 +41,6 @@ public class NotificationActivity extends BaseActivity {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_notification));
     }
 
-    @DoubleClick
     @OnClick({R.id.btn_send_normal, R.id.btn_send_custom, R.id.btn_send_big_text, R.id.btn_send_inbox, R.id.btn_send_big_picture, R.id.btn_delete})
     public void onViewClicked(View view) {
         switch (view.getId()) {

@@ -7,7 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
-import com.android.aspectj.annotation.DoubleClick;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
@@ -33,7 +32,7 @@ public class CircleImageActivity extends BaseActivity {
         new ToolBarCommonHolder(this, toolbar, getString(R.string.item_circle_image));
     }
 
-    @DoubleClick
+//    @DoubleClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_reset:

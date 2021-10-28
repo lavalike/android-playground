@@ -1,9 +1,8 @@
 package com.android.exercise.ui.activity.memory
 
 import android.os.Bundle
-import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_large_image.*
+import com.android.exercise.databinding.ActivityLargeImageBinding
 
 /**
  * 大图加载
@@ -11,15 +10,17 @@ import kotlinx.android.synthetic.main.activity_large_image.*
  * Created by wangzhen on 2020/7/9.
  */
 class LargeImageActivity : BaseActivity() {
+    lateinit var binding: ActivityLargeImageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_large_image)
+        binding = ActivityLargeImageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         largeImage()
     }
 
     private fun largeImage() {
         val stream = assets.open("images/wandering_earth.jpg")
-        iv_large_image.setInputStream(stream)
+        binding.ivLargeImage.setInputStream(stream)
     }
 
     override fun showToolbar(): Boolean {

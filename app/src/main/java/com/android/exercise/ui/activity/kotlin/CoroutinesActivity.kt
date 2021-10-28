@@ -6,8 +6,8 @@ import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.databinding.ActivityCoroutinesBinding
 import com.android.exercise.util.L
-import kotlinx.android.synthetic.main.activity_coroutines.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -21,10 +21,12 @@ import kotlinx.coroutines.launch
  * Created by wangzhen on 2020/10/15.
  */
 class CoroutinesActivity : BaseActivity() {
+    private lateinit var binding: ActivityCoroutinesBinding
     private val mainScope = MainScope()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coroutines)
+        binding = ActivityCoroutinesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         /**
          * 调度器的作用是将协程限制在特定的线程执行。主要的调度器类型有：
@@ -36,7 +38,7 @@ class CoroutinesActivity : BaseActivity() {
         mainScope.launch(Dispatchers.Main) {
             val num = 20
             val result = getResult(20)
-            tv.text = String.format("%d * %d = %d", num, num, result)
+            binding.tv.text = String.format("%d * %d = %d", num, num, result)
         }
 
         mainScope.launch(Dispatchers.Main) {

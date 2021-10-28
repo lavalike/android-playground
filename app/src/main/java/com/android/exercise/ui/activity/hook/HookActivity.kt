@@ -10,28 +10,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.databinding.ActivityHookBinding
 import com.dimeno.adapter.RecyclerAdapter
 import com.dimeno.adapter.callback.OnItemClickCallback
-import kotlinx.android.synthetic.main.activity_hook.*
 
 /**
  * HookActivity
  * Created by wangzhen on 2020/8/6.
  */
 class HookActivity : BaseActivity() {
+    private lateinit var binding: ActivityHookBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hook)
+        binding = ActivityHookBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        recycler.layoutManager = LinearLayoutManager(this)
+        binding.recycler.layoutManager = LinearLayoutManager(this)
         val adapter = HookAdapter(list())
         adapter.setOnClickCallback { v, pos ->
             Toast.makeText(v.context, "item click $pos", Toast.LENGTH_SHORT).show()
         }
-        adapter.addHeader(HookHeader().onCreateView(recycler))
-        recycler.adapter = adapter
+        adapter.addHeader(HookHeader().onCreateView(binding.recycler))
+        binding.recycler.adapter = adapter
 
-        hookAdapter(recycler)
+        hookAdapter(binding.recycler)
     }
 
     private fun hookAdapter(recycler: RecyclerView) {

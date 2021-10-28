@@ -3,8 +3,8 @@ package com.android.exercise.ui.activity.hook
 import android.view.View
 import android.widget.Toast
 import com.android.exercise.R
+import com.android.exercise.databinding.HookHeaderLayoutBinding
 import com.dimeno.adapter.base.RecyclerItem
-import kotlinx.android.synthetic.main.hook_header_layout.view.*
 import java.lang.reflect.Method
 
 /**
@@ -17,17 +17,18 @@ class HookHeader : RecyclerItem() {
     }
 
     override fun onViewCreated(itemView: View) {
-        itemView.btn_normal.setOnClickListener {
+        val binding = HookHeaderLayoutBinding.bind(itemView)
+        binding.btnNormal.setOnClickListener {
             Toast.makeText(itemView.context, "normal click", Toast.LENGTH_SHORT).show()
         }
-        hookOnClickListener(itemView.btn_normal)
+        hookOnClickListener(binding.btnNormal)
 
-        itemView.btn_long_click.setOnLongClickListener {
+        binding.btnLongClick.setOnLongClickListener {
             Toast.makeText(itemView.context, "normal long click", Toast.LENGTH_SHORT).show()
             false
         }
 
-        hookOnLongClickListener(itemView.btn_long_click)
+        hookOnLongClickListener(binding.btnLongClick)
     }
 
     private fun hookOnLongClickListener(view: View) {
@@ -36,7 +37,8 @@ class HookHeader : RecyclerItem() {
         method.isAccessible = true
         val mListenerInfo = method.invoke(view)
         //mOnLongClickListener
-        val field = Class.forName("android.view.View\$ListenerInfo").getDeclaredField("mOnLongClickListener")
+        val field = Class.forName("android.view.View\$ListenerInfo")
+            .getDeclaredField("mOnLongClickListener")
         field.isAccessible = true
         val listener = field.get(mListenerInfo)
         if (listener != null) {
@@ -50,14 +52,16 @@ class HookHeader : RecyclerItem() {
         method.isAccessible = true
         val mListenerInfo = method.invoke(view)
         //拿到mOnClickListener
-        val field = Class.forName("android.view.View\$ListenerInfo").getDeclaredField("mOnClickListener")
+        val field =
+            Class.forName("android.view.View\$ListenerInfo").getDeclaredField("mOnClickListener")
         val listener = field.get(mListenerInfo)
         if (listener != null) {
             field.set(mListenerInfo, HookClickListener(listener as View.OnClickListener))
         }
     }
 
-    class HookLongClickListener(private val original: View.OnLongClickListener) : View.OnLongClickListener {
+    class HookLongClickListener(private val original: View.OnLongClickListener) :
+        View.OnLongClickListener {
         override fun onLongClick(v: View): Boolean {
             Toast.makeText(v.context, "OnLongClick Hooked!", Toast.LENGTH_SHORT).show()
             return original.onLongClick(v)
