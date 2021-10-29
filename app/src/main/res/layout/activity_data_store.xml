@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     tools:context=".ui.activity.jetpack.datastore.DataStoreActivity">
 
-    <Button
-        android:id="@+id/btn_store"
-        android:layout_width="wrap_content"
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="single save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:flexDirection="row"
+        app:flexWrap="wrap">
 
-    <Button
-        android:id="@+id/btn_batch_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="batch save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_store" />
+        <Button
+            android:id="@+id/btn_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="single save" />
 
-    <Button
-        android:id="@+id/btn_query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="total size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_batch_save" />
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="query" />
 
-    <Button
-        android:id="@+id/btn_query_performance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="query performance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_query" />
+        <Button
+            android:id="@+id/btn_batch_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="batch save" />
 
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="clear all"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_query_performance" />
+        <Button
+            android:id="@+id/btn_total_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="total size" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_query_performance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="query performance" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="clear all" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</FrameLayout>

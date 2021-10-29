@@ -1,17 +1,16 @@
 package com.android.exercise.ui.activity.jetpack.datastore
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
-import androidx.datastore.DataStore
-import androidx.datastore.preferences.*
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.*
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.lifecycleScope
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityDataStoreBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.map
@@ -26,11 +25,11 @@ import java.util.*
  * Created by wangzhen on 2020/10/13.
  */
 class DataStoreActivity : BaseActivity() {
-    private lateinit var dataStore: DataStore<Preferences>
+    private val dataStore: DataStore<Preferences> by preferencesDataStore(name = "data-store")
     private lateinit var binding: ActivityDataStoreBinding
 
-    private val nameKey = preferencesKey<String>("name")
-    private val ageKey = preferencesKey<Int>("age")
+    private val nameKey = stringPreferencesKey("name")
+    private val ageKey = intPreferencesKey("age")
 
     private val count = 10000
 
@@ -40,35 +39,52 @@ class DataStoreActivity : BaseActivity() {
             binding = this
         }.root)
         initViews()
-        initDataStore()
     }
 
     private fun initViews() {
         binding.btnStore.setOnClickListener {
-            MainScope().launch {
+            lifecycleScope.launch {
                 saveSingle()
+                Toast.makeText(this@DataStoreActivity, "single save success", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
         binding.btnQuery.setOnClickListener {
-            MainScope().launch {
-                val size = dataStore.data.count()
-                Log.e("TAG", "data size : $size")
-                launch(Dispatchers.Main) {
-                    Toast.makeText(this@DataStoreActivity, "data size : $size", Toast.LENGTH_SHORT).show()
+            lifecycleScope.launch {
+                dataStore.edit {
+                    val name = it[nameKey]
+                    val age = it[ageKey]
+                    val msg = if (name == null || age == null) "no data" else "$name - $age"
+                    Toast.makeText(
+                        this@DataStoreActivity,
+                        msg,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
+        binding.btnTotalSize.setOnClickListener {
+            lifecycleScope.launch {
+                val size = dataStore.data.count()
+                Toast.makeText(this@DataStoreActivity, "data size : $size", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
         binding.btnBatchSave.setOnClickListener {
-            MainScope().launch {
+            lifecycleScope.launch {
                 saveBatch()
+                Toast.makeText(this@DataStoreActivity, "batch save success", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
         binding.btnQueryPerformance.setOnClickListener {
             readPerformance()
         }
         binding.btnDelete.setOnClickListener {
-            MainScope().launch {
+            lifecycleScope.launch {
                 clearAll()
+                Toast.makeText(this@DataStoreActivity, "clear all success", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -80,7 +96,7 @@ class DataStoreActivity : BaseActivity() {
     private suspend fun saveBatch() {
         dataStore.edit {
             for (i in 1..count) {
-                it[preferencesKey<String>(i.toString())] = i.toString()
+                it[stringPreferencesKey(i.toString())] = i.toString()
             }
         }
     }
@@ -97,7 +113,7 @@ class DataStoreActivity : BaseActivity() {
                         throw it
                     }
                 }.map {
-                    it[preferencesKey<String>(i.toString())] ?: ""
+                    it[stringPreferencesKey(i.toString())] ?: ""
                 }.apply {
                     // get value by first()
                 }
@@ -106,15 +122,16 @@ class DataStoreActivity : BaseActivity() {
     }
 
     private suspend fun saveSingle() {
-        val name = "name ${SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE).format(System.currentTimeMillis())}"
+        val name = "name ${
+            SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss",
+                Locale.CHINESE
+            ).format(System.currentTimeMillis())
+        }"
         dataStore.edit {
             it[nameKey] = name
             it[ageKey] = Random().nextInt(100)
         }
-    }
-
-    private fun initDataStore() {
-        dataStore = createDataStore(name = "data-store")
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
