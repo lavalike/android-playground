@@ -8,7 +8,11 @@
         android:id="@+id/blankFragment"
         android:name="com.android.exercise.ui.activity.jetpack.navigation.BlankFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/blankFragment2"
         android:name="com.android.exercise.ui.activity.jetpack.navigation.BlankFragment2"

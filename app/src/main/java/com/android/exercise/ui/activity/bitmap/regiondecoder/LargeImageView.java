@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.memory;
+package com.android.exercise.ui.activity.bitmap.regiondecoder;
 
 import android.content.Context;
 import android.graphics.Bitmap;

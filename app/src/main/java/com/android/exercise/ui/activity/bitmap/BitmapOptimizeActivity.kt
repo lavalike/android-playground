@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.memory
+package com.android.exercise.ui.activity.bitmap
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

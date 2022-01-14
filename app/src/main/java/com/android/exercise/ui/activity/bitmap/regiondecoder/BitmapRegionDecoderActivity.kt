@@ -1,19 +1,19 @@
-package com.android.exercise.ui.activity.memory
+package com.android.exercise.ui.activity.bitmap.regiondecoder
 
 import android.os.Bundle
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.databinding.ActivityLargeImageBinding
+import com.android.exercise.databinding.ActivityBitmapRegionDecoderBinding
 
 /**
- * 大图加载
- * 使用BitmapRegionDecoder加载巨图，细节清晰
- * Created by wangzhen on 2020/7/9.
+ * BitmapRegionDecoderActivity
+ * Created by wangzhen on 2022/1/14
  */
-class LargeImageActivity : BaseActivity() {
-    lateinit var binding: ActivityLargeImageBinding
+class BitmapRegionDecoderActivity : BaseActivity() {
+    private lateinit var binding: ActivityBitmapRegionDecoderBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLargeImageBinding.inflate(layoutInflater)
+        binding = ActivityBitmapRegionDecoderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         largeImage()
     }

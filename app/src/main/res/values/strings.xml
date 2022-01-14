@@ -109,4 +109,7 @@
     <string name="item_messenger">messenger</string>
     <string name="item_swipe_close">滑动关闭</string>
     <string name="item_motion_layout">MotionLayout</string>
+
+    <string name="large_image_bitmap_region_decoder">BitmapRegionDecoder</string>
+    <string name="large_image_subsampling_imageview">SubsamplingScaleImageView</string>
 </resources>
