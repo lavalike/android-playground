@@ -306,11 +306,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_broadcast), BroadcastActivity.class));
         list.add(new ItemBean(getString(R.string.item_threadpool), ThreadPoolActivity.class));
         list.add(new ItemBean(getString(R.string.item_dispatch), DispatchActivity.class));
-        Bundle bundle = new Bundle();
-        bundle.putString(IKey.HTML_TITLE, "可视化");
-//        bundle.putString(IKey.HTML_URL, "http://120.76.102.174:9001/preview/14f2de09-219a-4db2-83e8-8b493653507d");
-        bundle.putString(IKey.HTML_URL, "http://finereport.dimenosys.com/webroot/decision/view/form?viewlet=%25E6%25B5%258B%25E8%25AF%2595_%25E7%25A7%25BB%25E5%258A%25A8%25E7%25AB%25AF.frm&op=h5#/form");
-        list.add(new ItemBean(getString(R.string.item_visual), BrowserActivity.class, bundle));
         list.add(new TitleBean("Media"));
         list.add(new ItemBean(getString(R.string.item_camera_video), VideoRecordActivity.class));
         list.add(new ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity.class));

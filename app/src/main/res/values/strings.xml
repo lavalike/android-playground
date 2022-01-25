@@ -103,7 +103,6 @@
     <string name="item_scoped_storage">分区存储</string>
     <string name="item_telephony_compat">电话权限</string>
     <string name="item_toast_compat">Toast权限</string>
-    <string name="item_visual">可视化</string>
     <string name="item_kotlin_coroutines">kotlin协程</string>
     <string name="item_md5">md5</string>
     <string name="item_messenger">messenger</string>
