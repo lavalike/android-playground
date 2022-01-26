@@ -11,8 +11,8 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityHookBinding
-import com.dimeno.adapter.RecyclerAdapter
-import com.dimeno.adapter.callback.OnItemClickCallback
+import com.wangzhen.adapter.RecyclerAdapter
+import com.wangzhen.adapter.callback.OnItemClickCallback
 
 /**
  * HookActivity

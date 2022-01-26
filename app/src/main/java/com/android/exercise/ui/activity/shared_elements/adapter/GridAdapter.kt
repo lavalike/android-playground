@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.exercise.ui.activity.shared_elements.entity.GridEntity
 import com.android.exercise.ui.activity.shared_elements.holder.GridViewHolder
-import com.dimeno.adapter.RecyclerAdapter
+import com.wangzhen.adapter.RecyclerAdapter
 
 /**
  * GridAdapter

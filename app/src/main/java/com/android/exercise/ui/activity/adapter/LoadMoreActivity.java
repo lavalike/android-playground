@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.dimeno.adapter.callback.OnItemClickCallback;
+import com.wangzhen.adapter.callback.OnItemClickCallback;
 import com.wangzhen.refresh.RefreshLayout;
 import com.wangzhen.refresh.callback.OnRefreshCallback;
 

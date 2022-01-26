@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.domain.ItemBean;
-import com.dimeno.adapter.base.RecyclerViewHolder;
+import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 /**
  * ItemViewHolder

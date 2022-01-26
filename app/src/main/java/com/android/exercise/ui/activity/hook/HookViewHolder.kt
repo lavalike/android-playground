@@ -2,7 +2,7 @@ package com.android.exercise.ui.activity.hook
 
 import android.view.ViewGroup
 import com.android.exercise.R
-import com.dimeno.adapter.base.RecyclerViewHolder
+import com.wangzhen.adapter.base.RecyclerViewHolder
 
 /**
  * HookViewHolder

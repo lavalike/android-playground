@@ -11,7 +11,7 @@ import com.android.exercise.R
 import com.android.exercise.databinding.ItemSharedElementsGridLayoutBinding
 import com.android.exercise.ui.activity.shared_elements.SharedDetailActivity
 import com.android.exercise.ui.activity.shared_elements.entity.GridEntity
-import com.dimeno.adapter.base.RecyclerViewHolder
+import com.wangzhen.adapter.base.RecyclerViewHolder
 
 /**
  * GridViewHolder

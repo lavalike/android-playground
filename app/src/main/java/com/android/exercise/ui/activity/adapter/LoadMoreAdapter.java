@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.ui.activity.adapter.holder.LoadViewHolder;
-import com.dimeno.adapter.LoadRecyclerAdapter;
+import com.wangzhen.adapter.LoadRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

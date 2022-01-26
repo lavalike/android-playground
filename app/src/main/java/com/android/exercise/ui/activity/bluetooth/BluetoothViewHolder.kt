@@ -3,7 +3,7 @@ package com.android.exercise.ui.activity.bluetooth
 import android.view.ViewGroup
 import com.android.exercise.R
 import com.android.exercise.databinding.ItemBluetoothHolderLayoutBinding
-import com.dimeno.adapter.base.RecyclerViewHolder
+import com.wangzhen.adapter.base.RecyclerViewHolder
 
 /**
  * BluetoothViewHolder

@@ -2,7 +2,7 @@ package com.android.exercise.ui.activity.bluetooth
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dimeno.adapter.RecyclerAdapter
+import com.wangzhen.adapter.RecyclerAdapter
 
 /**
  * BluetoothAdapter

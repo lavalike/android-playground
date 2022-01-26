@@ -109,7 +109,7 @@ import com.android.exercise.ui.activity.wifi.WifiActivity;
 import com.android.exercise.ui.adapter.FunctionAdapter;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;
-import com.dimeno.adapter.base.RecyclerItem;
+import com.wangzhen.adapter.base.RecyclerItem;
 
 import java.io.Serializable;
 import java.util.ArrayList;

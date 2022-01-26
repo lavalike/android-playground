@@ -9,7 +9,7 @@ import com.android.exercise.domain.ItemBean;
 import com.android.exercise.domain.TitleBean;
 import com.android.exercise.ui.adapter.holder.ItemViewHolder;
 import com.android.exercise.ui.adapter.holder.TitleViewHolder;
-import com.dimeno.adapter.RecyclerAdapter;
+import com.wangzhen.adapter.RecyclerAdapter;
 
 import java.util.List;
 

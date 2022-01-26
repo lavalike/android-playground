@@ -5,8 +5,7 @@ import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.domain.TitleBean;
-import com.android.exercise.util.UIUtils;
-import com.dimeno.adapter.base.RecyclerViewHolder;
+import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 /**
  * TitleViewHolder

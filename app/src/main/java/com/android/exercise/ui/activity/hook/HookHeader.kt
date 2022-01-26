@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.Toast
 import com.android.exercise.R
 import com.android.exercise.databinding.HookHeaderLayoutBinding
-import com.dimeno.adapter.base.RecyclerItem
+import com.wangzhen.adapter.base.RecyclerItem
 import java.lang.reflect.Method
 
 /**
