@@ -23,7 +23,6 @@ import com.android.exercise.ui.activity.AppOptActivity;
 import com.android.exercise.ui.activity.AutoServiceActivity;
 import com.android.exercise.ui.activity.BitOptActivity;
 import com.android.exercise.ui.activity.BroadcastActivity;
-import com.android.exercise.ui.activity.BrowserActivity;
 import com.android.exercise.ui.activity.ConstraintLayoutActivity;
 import com.android.exercise.ui.activity.DispatchActivity;
 import com.android.exercise.ui.activity.DrawerSlideActivity;
@@ -72,6 +71,8 @@ import com.android.exercise.ui.activity.android11.ScopedStorageActivity;
 import com.android.exercise.ui.activity.android11.TelephonyCompatActivity;
 import com.android.exercise.ui.activity.android11.ToastCompatActivity;
 import com.android.exercise.ui.activity.biometric.BiometricActivity;
+import com.android.exercise.ui.activity.bitmap.BitmapOptimizeActivity;
+import com.android.exercise.ui.activity.bitmap.LargeImageActivity;
 import com.android.exercise.ui.activity.bluetooth.BluetoothActivity;
 import com.android.exercise.ui.activity.calendar.CalendarActivity;
 import com.android.exercise.ui.activity.circle.CircleImageActivity;
@@ -91,10 +92,9 @@ import com.android.exercise.ui.activity.jetpack.room.RoomActivity;
 import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity;
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity;
 import com.android.exercise.ui.activity.kotlin.CoroutinesActivity;
+import com.android.exercise.ui.activity.kotlin.SerializationActivity;
 import com.android.exercise.ui.activity.layer.MultiLayerActivity;
 import com.android.exercise.ui.activity.md5.MD5Activity;
-import com.android.exercise.ui.activity.bitmap.BitmapOptimizeActivity;
-import com.android.exercise.ui.activity.bitmap.LargeImageActivity;
 import com.android.exercise.ui.activity.mmkv.MMKVActivity;
 import com.android.exercise.ui.activity.motion.MotionLayoutActivity;
 import com.android.exercise.ui.activity.player.ExoPlayerActivity;
@@ -198,6 +198,9 @@ public class MainActivity extends BaseActivity {
 
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
+        list.add(new TitleBean("kotlin"));
+        list.add(new ItemBean(getString(R.string.item_kotlin_coroutines), CoroutinesActivity.class));
+        list.add(new ItemBean(getString(R.string.item_kotlin_serialization), SerializationActivity.class));
         list.add(new TitleBean("Jetpack"));
         list.add(new ItemBean(getString(R.string.item_motion_layout), MotionLayoutActivity.class));
         list.add(new ItemBean(getString(R.string.item_mmkv), MMKVActivity.class));
@@ -212,8 +215,6 @@ public class MainActivity extends BaseActivity {
         list.add(new TitleBean("IPC"));
         list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         list.add(new ItemBean(getString(R.string.item_messenger), MessengerActivity.class));
-        list.add(new TitleBean("kotlin"));
-        list.add(new ItemBean(getString(R.string.item_kotlin_coroutines), CoroutinesActivity.class));
         list.add(new TitleBean("Android11"));
         list.add(new ItemBean(getString(R.string.item_scoped_storage), ScopedStorageActivity.class));
         list.add(new ItemBean(getString(R.string.item_telephony_compat), TelephonyCompatActivity.class));
