@@ -103,7 +103,6 @@ dependencies {
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
 
     // 自研
-    implementation 'com.aliya:permission:1.0.0'
     implementation 'com.wangzhen:LinkTextView:1.0.0'
     implementation 'com.wangzhen:GradientLayout:1.0.0'
     implementation 'com.wangzhen:ElasticLayout:0.0.3'
@@ -113,6 +112,7 @@ dependencies {
     implementation 'com.wangzhen:download-client-android:0.0.2'
     implementation 'com.github.lavalike:circle-imageview:0.0.1'
     implementation 'com.github.lavalike:adapter:0.1.0'
+    implementation 'com.github.lavalike:permission:0.0.2'
 
     // player
     implementation "com.google.android.exoplayer:exoplayer:$exoplayer_version"

@@ -1,5 +1,6 @@
 package com.android.exercise.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,24 +9,21 @@ import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 
-import com.aliya.permission.Permission;
-import com.aliya.permission.PermissionCallback;
-import com.aliya.permission.PermissionManager;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.util.IKey;
+import com.wangzhen.permission.PermissionManager;
+import com.wangzhen.permission.callback.AbsPermissionCallback;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import butterknife.ButterKnife;
@@ -51,9 +49,10 @@ public class VideoRecordActivity extends BaseActivity {
 
     @OnClick({R.id.btn_system, R.id.btn_custom})
     public void onClick(final View view) {
-        PermissionManager.request(this, new PermissionCallback() {
+        PermissionManager.request(this, new AbsPermissionCallback() {
+
             @Override
-            public void onGranted(boolean isAlready) {
+            public void onGrant(@NonNull String[] strings) {
                 switch (view.getId()) {
                     case R.id.btn_system:
                         systemCamera();
@@ -65,10 +64,10 @@ public class VideoRecordActivity extends BaseActivity {
             }
 
             @Override
-            public void onDenied(@NonNull List<String> deniedPermissions, @Nullable List<String> neverAskPermissions) {
+            public void onDeny(@NonNull String[] strings, @NonNull String[] strings1) {
 
             }
-        }, Permission.CAMERA, Permission.STORAGE_WRITE, Permission.MICROPHONE_RECORD_AUDIO);
+        }, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO);
     }
 
     private void systemCamera() {

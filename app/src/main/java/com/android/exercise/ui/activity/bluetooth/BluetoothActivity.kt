@@ -1,5 +1,6 @@
 package com.android.exercise.ui.activity.bluetooth
 
+import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
@@ -12,13 +13,12 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aliya.permission.Permission
-import com.aliya.permission.PermissionCallback
-import com.aliya.permission.PermissionManager
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityBluetoothBinding
+import com.wangzhen.permission.PermissionManager
+import com.wangzhen.permission.callback.AbsPermissionCallback
 
 /**
  * BluetoothActivity
@@ -70,26 +70,32 @@ class BluetoothActivity : BaseActivity() {
             }
         }
         binding.btnFind.setOnClickListener {
-            PermissionManager.request(this, object : PermissionCallback {
-                override fun onGranted(isAlready: Boolean) {
-                    check()
-                    Toast.makeText(applicationContext, "正在查找", Toast.LENGTH_SHORT).show()
-                    adapter.datas?.clear()
-                    adapter.notifyDataSetChanged()
-                    if (bluetoothAdapter.isDiscovering) {
-                        bluetoothAdapter.cancelDiscovery()
+            PermissionManager.request(
+                this,
+                object : AbsPermissionCallback() {
+                    override fun onDeny(
+                        deniedPermissions: Array<String>,
+                        neverAskPermissions: Array<String>
+                    ) {
+                        Toast.makeText(applicationContext, "需要位置权限", Toast.LENGTH_SHORT).show()
                     }
-                    bluetoothAdapter.startDiscovery()
-                }
 
-                override fun onDenied(
-                    deniedPermissions: MutableList<String>,
-                    neverAskPermissions: MutableList<String>?
-                ) {
-                    Toast.makeText(applicationContext, "需要位置权限", Toast.LENGTH_SHORT).show()
-                }
+                    override fun onGrant(permissions: Array<String>) {
+                        check()
+                        Toast.makeText(applicationContext, "正在查找", Toast.LENGTH_SHORT).show()
+                        adapter.datas?.clear()
+                        adapter.notifyDataSetChanged()
+                        if (bluetoothAdapter.isDiscovering) {
+                            bluetoothAdapter.cancelDiscovery()
+                        }
+                        bluetoothAdapter.startDiscovery()
+                    }
 
-            }, Permission.LOCATION_FINE, Permission.LOCATION_COARSE)
+                },
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.BLUETOOTH
+            )
         }
 
         binding.recycler.layoutManager = LinearLayoutManager(this)
