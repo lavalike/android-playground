@@ -42,9 +42,9 @@ class SerializationActivity : BaseActivity() {
 
     @Serializable
     data class Data(
-        val name: String,
-        val age: Int,
-        val job: String,
+        val name: String? = null,
+        val age: Int = 0,
+        val job: String? = null,
         @Transient
         val money: Float = 0f
     )
