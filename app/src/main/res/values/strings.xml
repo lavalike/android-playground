@@ -109,6 +109,8 @@
     <string name="item_messenger">messenger</string>
     <string name="item_swipe_close">滑动关闭</string>
     <string name="item_motion_layout">MotionLayout</string>
+    <string name="item_drag_and_drop">DragAndDrop</string>
+    <string name="item_android13_post_notification">Post Notification</string>
 
     <string name="large_image_bitmap_region_decoder">BitmapRegionDecoder</string>
     <string name="large_image_subsampling_imageview">SubsamplingScaleImageView</string>

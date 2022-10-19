@@ -37,6 +37,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.android13.PostNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.jetpack.draganddrop.DragAndDropActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.kotlin.SerializationActivity"
             android:exported="false" />
         <activity

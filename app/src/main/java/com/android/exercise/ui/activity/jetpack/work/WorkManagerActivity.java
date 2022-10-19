@@ -20,6 +20,12 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * WorkManagerActivity
+ *
+ * @author: zhen51.wang
+ * @date: 2020/06/03
+ */
 public class WorkManagerActivity extends BaseActivity {
 
     @Override
