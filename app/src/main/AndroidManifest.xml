@@ -27,6 +27,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -155,12 +157,6 @@
         <activity android:name=".ui.activity.ConstraintLayoutActivity" />
         <activity android:name=".ui.activity.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
-        <activity android:name=".ui.activity.ipc.aidl.AIDLActivity" />
-
-        <service
-            android:name=".service.IRemoteService"
-            android:enabled="true"
-            android:exported="false" />
 
         <activity android:name=".ui.activity.MinaActivity" />
         <activity android:name=".ui.activity.RippleActivity" />

@@ -83,7 +83,6 @@ import com.android.exercise.ui.activity.database.RealmActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.hook.HookActivity;
-import com.android.exercise.ui.activity.ipc.aidl.AIDLActivity;
 import com.android.exercise.ui.activity.ipc.messenger.MessengerActivity;
 import com.android.exercise.ui.activity.jetpack.databinding.DataBindingActivity;
 import com.android.exercise.ui.activity.jetpack.datastore.DataStoreActivity;
@@ -222,7 +221,6 @@ public class MainActivity extends BaseActivity {
         list.add(new ItemBean(getString(R.string.item_kotlin_coroutines), CoroutinesActivity.class));
         list.add(new ItemBean(getString(R.string.item_kotlin_serialization), SerializationActivity.class));
         list.add(new TitleBean("IPC"));
-        list.add(new ItemBean(getString(R.string.item_aidl), AIDLActivity.class));
         list.add(new ItemBean(getString(R.string.item_messenger), MessengerActivity.class));
         list.add(new TitleBean("硬件相关"));
         list.add(new ItemBean(getString(R.string.item_biometric), BiometricActivity.class));

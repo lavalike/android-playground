@@ -1,13 +1,17 @@
 package com.android.exercise.ui.activity.android13
 
+import android.Manifest
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
@@ -15,6 +19,9 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityPostNotificationBinding
+import com.android.exercise.ui.MainActivity
+import com.wangzhen.permission.PermissionManager
+import com.wangzhen.permission.callback.AbsPermissionCallback
 
 /**
  * PostNotificationActivity
@@ -41,7 +48,23 @@ class PostNotificationActivity : BaseActivity() {
     private fun initViews() {
         with(binding) {
             btnPost.setOnClickListener {
-                sendNotification()
+                PermissionManager.request(
+                    this@PostNotificationActivity, object : AbsPermissionCallback() {
+                        override fun onGrant(permissions: Array<String>) {
+                            sendNotification()
+                        }
+
+                        override fun onDeny(
+                            deniedPermissions: Array<String>, neverAskPermissions: Array<String>
+                        ) {
+                            Toast.makeText(
+                                it.context,
+                                getString(R.string.tip_permission_msg),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }, Manifest.permission.POST_NOTIFICATIONS
+                )
             }
         }
     }
@@ -62,14 +85,14 @@ class PostNotificationActivity : BaseActivity() {
             })
         }
         // create notification
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setWhen(System.currentTimeMillis())
-            .setPriority(NotificationManager.IMPORTANCE_DEFAULT)
-            .setOngoing(false)
-            .setSmallIcon(R.mipmap.ic_launcher)
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID).setContentIntent(
+            PendingIntent.getActivity(
+                this, 0, Intent(this, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE
+            )
+        ).setWhen(System.currentTimeMillis()).setPriority(NotificationManager.IMPORTANCE_DEFAULT)
+            .setOngoing(false).setSmallIcon(R.mipmap.ic_launcher)
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
-            .setAutoCancel(true)
-            .setContentTitle("post notification")
+            .setAutoCancel(true).setContentTitle("post notification")
             .setContentText("msg comes: ${System.currentTimeMillis()}")
         manager.notify(notifyId++, builder.build())
     }
