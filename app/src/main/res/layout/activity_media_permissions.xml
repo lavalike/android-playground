@@ -20,6 +20,15 @@
             android:textColor="@color/color_text_color" />
 
         <TextView
+            android:id="@+id/btn_revoke_all"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/media_permission_revoke_all"
+            android:textColor="@color/color_text_color" />
+
+        <TextView
             android:id="@+id/btn_external_storage"
             android:layout_width="match_parent"
             android:layout_height="50dp"

@@ -120,6 +120,9 @@
     <string name="media_permission_video">READ_MEDIA_VIDEO</string>
     <string name="media_permission_audio">READ_MEDIA_AUDIO</string>
     <string name="media_permission_pick_image">ACTION_PICK_IMAGES</string>
+    <string name="media_permission_revoke_all">Revoke All Permissions</string>
+    <string name="media_permission_revoke_success">Permissions Will Be Revoked On Process Kill</string>
+    <string name="media_permission_revoke_unsupported">Revoke Unsupported</string>
 
     <string name="item_clipboard_sensitive">剪贴板敏感内容</string>
     <string name="clipboard_copy_plain">复制普通内容</string>

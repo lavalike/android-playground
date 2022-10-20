@@ -9,14 +9,13 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityMediaPermissionsBinding
-import com.wangzhen.permission.PermissionManager
-import com.wangzhen.permission.callback.AbsPermissionCallback
 
 /**
  * MediaPermissionsActivity
@@ -33,6 +32,19 @@ class MediaPermissionsActivity : BaseActivity() {
         initViews()
     }
 
+    private val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) {
+                Toast.makeText(
+                    this@MediaPermissionsActivity, "permission granted", Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@MediaPermissionsActivity, "permission denied", Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
     private val pickLauncher =
         registerForActivityResult(object : ActivityResultContract<Int, List<Uri>?>() {
             override fun createIntent(context: Context, input: Int): Intent {
@@ -41,10 +53,8 @@ class MediaPermissionsActivity : BaseActivity() {
                         MediaStore.EXTRA_PICK_IMAGES_MAX, input
                     )
                 } else {
-                    Intent(Intent.ACTION_GET_CONTENT)
-                        .addCategory(Intent.CATEGORY_OPENABLE)
-                        .putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-                        .setType("image/*")
+                    Intent(Intent.ACTION_GET_CONTENT).addCategory(Intent.CATEGORY_OPENABLE)
+                        .putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true).setType("image/*")
                 }
                 return intent
             }
@@ -79,43 +89,47 @@ class MediaPermissionsActivity : BaseActivity() {
 
     private fun initViews() {
         with(binding) {
+            btnRevokeAll.setOnClickListener {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    revokeSelfPermissionsOnKill(
+                        listOf(
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_MEDIA_IMAGES,
+                            Manifest.permission.READ_MEDIA_VIDEO,
+                            Manifest.permission.READ_MEDIA_AUDIO
+                        )
+                    )
+                    Toast.makeText(
+                        it.context,
+                        getString(R.string.media_permission_revoke_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        it.context,
+                        getString(R.string.media_permission_revoke_unsupported),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
             btnExternalStorage.setOnClickListener {
-                execPermission(
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                permissionLauncher.launch(
+                    Manifest.permission.READ_EXTERNAL_STORAGE
                 )
             }
             btnMediaImages.setOnClickListener {
-                execPermission(Manifest.permission.READ_MEDIA_IMAGES)
+                permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
             }
             btnMediaVideo.setOnClickListener {
-                execPermission(Manifest.permission.READ_MEDIA_VIDEO)
+                permissionLauncher.launch(Manifest.permission.READ_MEDIA_VIDEO)
             }
             btnMediaAudio.setOnClickListener {
-                execPermission(Manifest.permission.READ_MEDIA_AUDIO)
+                permissionLauncher.launch(Manifest.permission.READ_MEDIA_AUDIO)
             }
             btnPickImage.setOnClickListener {
                 pickLauncher.launch(2)
             }
         }
-    }
-
-    private fun execPermission(vararg permissions: String) {
-        PermissionManager.request(this, object : AbsPermissionCallback() {
-            override fun onDeny(
-                deniedPermissions: Array<String>, neverAskPermissions: Array<String>
-            ) {
-                Toast.makeText(
-                    this@MediaPermissionsActivity, "permissions denied", Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            override fun onGrant(permissions: Array<String>) {
-                Toast.makeText(
-                    this@MediaPermissionsActivity, "permissions granted", Toast.LENGTH_SHORT
-                ).show()
-            }
-        }, *permissions)
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
