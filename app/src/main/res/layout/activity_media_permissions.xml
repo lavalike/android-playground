@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="@string/media_permission_explain"
+            android:text="@string/new_permission_explain"
             android:textColor="@color/color_text_color" />
 
         <TextView
@@ -25,7 +25,7 @@
             android:layout_height="50dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/media_permission_revoke_all"
+            android:text="@string/new_permission_revoke_all"
             android:textColor="@color/color_text_color" />
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_height="50dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/media_permission_external_storage"
+            android:text="@string/permission_external_storage"
             android:textColor="@color/color_text_color" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_height="50dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/media_permission_images"
+            android:text="@string/new_permission_media_images"
             android:textColor="@color/color_text_color" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_height="50dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/media_permission_video"
+            android:text="@string/new_permission_media_video"
             android:textColor="@color/color_text_color" />
 
         <TextView
@@ -61,7 +61,25 @@
             android:layout_height="50dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/media_permission_audio"
+            android:text="@string/new_permission_media_audio"
+            android:textColor="@color/color_text_color" />
+
+        <TextView
+            android:id="@+id/btn_nearby_wifi_devices"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/new_permission_nearby_wifi_devices"
+            android:textColor="@color/color_text_color" />
+
+        <TextView
+            android:id="@+id/btn_body_sensors"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/new_permission_body_sensors"
             android:textColor="@color/color_text_color" />
 
         <TextView
@@ -70,13 +88,13 @@
             android:layout_height="50dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/media_permission_pick_image"
+            android:text="@string/new_permission_pick_image"
             android:textColor="@color/color_text_color" />
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop"

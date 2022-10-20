@@ -33,15 +33,17 @@ class MediaPermissionsActivity : BaseActivity() {
     }
 
     private val permissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted) {
-                Toast.makeText(
-                    this@MediaPermissionsActivity, "permission granted", Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                Toast.makeText(
-                    this@MediaPermissionsActivity, "permission denied", Toast.LENGTH_SHORT
-                ).show()
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
+            for ((_, granted) in result) {
+                if (granted) {
+                    Toast.makeText(
+                        this@MediaPermissionsActivity, "permission granted", Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this@MediaPermissionsActivity, "permission denied", Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
@@ -101,30 +103,39 @@ class MediaPermissionsActivity : BaseActivity() {
                     )
                     Toast.makeText(
                         it.context,
-                        getString(R.string.media_permission_revoke_success),
+                        getString(R.string.new_permission_revoke_success),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
                     Toast.makeText(
                         it.context,
-                        getString(R.string.media_permission_revoke_unsupported),
+                        getString(R.string.new_permission_revoke_unsupported),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
             btnExternalStorage.setOnClickListener {
-                permissionLauncher.launch(
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                )
+                permissionLauncher.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE))
             }
             btnMediaImages.setOnClickListener {
-                permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
+                permissionLauncher.launch(arrayOf(Manifest.permission.READ_MEDIA_IMAGES))
             }
             btnMediaVideo.setOnClickListener {
-                permissionLauncher.launch(Manifest.permission.READ_MEDIA_VIDEO)
+                permissionLauncher.launch(arrayOf(Manifest.permission.READ_MEDIA_VIDEO))
             }
             btnMediaAudio.setOnClickListener {
-                permissionLauncher.launch(Manifest.permission.READ_MEDIA_AUDIO)
+                permissionLauncher.launch(arrayOf(Manifest.permission.READ_MEDIA_AUDIO))
+            }
+            btnNearbyWifiDevices.setOnClickListener {
+                permissionLauncher.launch(arrayOf(Manifest.permission.NEARBY_WIFI_DEVICES))
+            }
+            btnBodySensors.setOnClickListener {
+                permissionLauncher.launch(
+                    arrayOf(
+                        Manifest.permission.BODY_SENSORS,
+                        Manifest.permission.BODY_SENSORS_BACKGROUND
+                    )
+                )
             }
             btnPickImage.setOnClickListener {
                 pickLauncher.launch(2)
@@ -133,6 +144,6 @@ class MediaPermissionsActivity : BaseActivity() {
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_android13_media_permissions))
+        ToolBarCommonHolder(this, toolbar, getString(R.string.item_android13_new_permissions))
     }
 }

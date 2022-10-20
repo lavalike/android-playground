@@ -112,17 +112,20 @@
     <string name="large_image_bitmap_region_decoder">BitmapRegionDecoder</string>
     <string name="large_image_subsampling_imageview">SubsamplingScaleImageView</string>
     <string name="item_android13_post_notification">Post Notification</string>
-    <string name="item_android13_media_permissions">媒体权限</string>
+    <string name="item_android13_new_permissions">新增权限</string>
 
-    <string name="media_permission_explain">如果同时请求 READ_MEDIA_IMAGES 权限和 READ_MEDIA_VIDEO 权限，系统只会显示一个系统权限对话框\n\n如果应用只需要访问图片、照片和视频，请考虑使用照片选择器，而不是声明 READ_MEDIA_IMAGES 和 READ_MEDIA_VIDEO 权限\n\n如果是升级Android13之后新装的应用，并且targetSDK大于等于33，则申请READ_EXTERNAL_STORAGE权限时会自动拒绝（同理WRITE_EXTERNAL_STORAGE也是一样）</string>
-    <string name="media_permission_external_storage">READ_EXTERNAL_STORAGE</string>
-    <string name="media_permission_images">READ_MEDIA_IMAGES</string>
-    <string name="media_permission_video">READ_MEDIA_VIDEO</string>
-    <string name="media_permission_audio">READ_MEDIA_AUDIO</string>
-    <string name="media_permission_pick_image">ACTION_PICK_IMAGES</string>
-    <string name="media_permission_revoke_all">Revoke All Permissions</string>
-    <string name="media_permission_revoke_success">Permissions Will Be Revoked On Process Kill</string>
-    <string name="media_permission_revoke_unsupported">Revoke Unsupported</string>
+    <string name="new_permission_explain">如果同时请求 READ_MEDIA_IMAGES 权限和 READ_MEDIA_VIDEO 权限，系统只会显示一个系统权限对话框\n\n如果应用只需要访问图片、照片和视频，请考虑使用照片选择器，而不是声明 READ_MEDIA_IMAGES 和 READ_MEDIA_VIDEO 权限\n\n如果是升级Android13之后新装的应用，并且targetSDK大于等于33，则申请READ_EXTERNAL_STORAGE权限时会自动拒绝（同理WRITE_EXTERNAL_STORAGE也是一样）</string>
+    <string name="permission_external_storage">READ_EXTERNAL_STORAGE</string>
+    <string name="new_permission_media_images">READ_MEDIA_IMAGES</string>
+    <string name="new_permission_media_video">READ_MEDIA_VIDEO</string>
+    <string name="new_permission_media_audio">READ_MEDIA_AUDIO</string>
+    <string name="new_permission_pick_image">ACTION_PICK_IMAGES(no permission)</string>
+    <string name="new_permission_nearby_wifi_devices">NEARBY_WIFI_DEVICES</string>
+    <string name="new_permission_body_sensors">BODY_SENSORS</string>
+
+    <string name="new_permission_revoke_all">Revoke All Permissions</string>
+    <string name="new_permission_revoke_success">Permissions Will Be Revoked On Process Kill</string>
+    <string name="new_permission_revoke_unsupported">Revoke Unsupported</string>
 
     <string name="item_clipboard_sensitive">剪贴板敏感内容</string>
     <string name="clipboard_copy_plain">复制普通内容</string>

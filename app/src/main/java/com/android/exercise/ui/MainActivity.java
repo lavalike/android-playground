@@ -203,7 +203,7 @@ public class MainActivity extends BaseActivity {
         List<BaseBean> list = new ArrayList<>();
         list.add(new TitleBean("Android 13"));
         list.add(new ItemBean(getString(R.string.item_android13_post_notification), PostNotificationActivity.class));
-        list.add(new ItemBean(getString(R.string.item_android13_media_permissions), MediaPermissionsActivity.class));
+        list.add(new ItemBean(getString(R.string.item_android13_new_permissions), MediaPermissionsActivity.class));
         list.add(new ItemBean(getString(R.string.item_clipboard_sensitive), ClipboardSensitiveActivity.class));
         list.add(new TitleBean("Android 11"));
         list.add(new ItemBean(getString(R.string.item_scoped_storage), ScopedStorageActivity.class));
