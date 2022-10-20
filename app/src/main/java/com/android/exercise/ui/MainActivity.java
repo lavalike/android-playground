@@ -70,6 +70,7 @@ import com.android.exercise.ui.activity.adapter.LoadMoreActivity;
 import com.android.exercise.ui.activity.android11.ScopedStorageActivity;
 import com.android.exercise.ui.activity.android11.TelephonyCompatActivity;
 import com.android.exercise.ui.activity.android11.ToastCompatActivity;
+import com.android.exercise.ui.activity.android13.ClipboardSensitiveActivity;
 import com.android.exercise.ui.activity.android13.MediaPermissionsActivity;
 import com.android.exercise.ui.activity.android13.PostNotificationActivity;
 import com.android.exercise.ui.activity.biometric.BiometricActivity;
@@ -203,6 +204,7 @@ public class MainActivity extends BaseActivity {
         list.add(new TitleBean("Android 13"));
         list.add(new ItemBean(getString(R.string.item_android13_post_notification), PostNotificationActivity.class));
         list.add(new ItemBean(getString(R.string.item_android13_media_permissions), MediaPermissionsActivity.class));
+        list.add(new ItemBean(getString(R.string.item_clipboard_sensitive), ClipboardSensitiveActivity.class));
         list.add(new TitleBean("Android 11"));
         list.add(new ItemBean(getString(R.string.item_scoped_storage), ScopedStorageActivity.class));
         list.add(new ItemBean(getString(R.string.item_telephony_compat), TelephonyCompatActivity.class));

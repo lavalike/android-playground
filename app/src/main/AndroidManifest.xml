@@ -42,6 +42,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.android13.ClipboardSensitiveActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.android13.MediaPermissionsActivity"
             android:exported="false" />
         <activity
