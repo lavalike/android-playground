@@ -26,8 +26,11 @@
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
     <application
         android:name=".base.BaseApplication"
@@ -38,6 +41,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.activity.android13.MediaPermissionsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.android13.PostNotificationActivity"
             android:exported="false" />
@@ -157,7 +163,6 @@
         <activity android:name=".ui.activity.ConstraintLayoutActivity" />
         <activity android:name=".ui.activity.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
-
         <activity android:name=".ui.activity.MinaActivity" />
         <activity android:name=".ui.activity.RippleActivity" />
         <activity android:name=".ui.activity.ViewActivity" />

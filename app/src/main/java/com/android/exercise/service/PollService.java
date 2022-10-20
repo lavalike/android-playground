@@ -29,7 +29,7 @@ public class PollService extends IntentService {
 
     public static void setServiceAlarm(Context context, boolean isOn) {
         Intent intent = new Intent(context, PollService.class);
-        PendingIntent pi = PendingIntent.getService(context, 0, intent, 0);
+        PendingIntent pi = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if (isOn) {
             alarmManager.setRepeating(AlarmManager.RTC, System.currentTimeMillis(), 1000 * 60, pi);
