@@ -130,4 +130,7 @@
     <string name="item_clipboard_sensitive">剪贴板敏感内容</string>
     <string name="clipboard_copy_plain">复制普通内容</string>
     <string name="clipboard_copy_sensitive">复制敏感内容</string>
+
+    <string name="item_intent_match">Intent匹配</string>
+    <string name="intent_match_open_permissions">Open Permissions</string>
 </resources>

@@ -55,11 +55,24 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.android13.IntentMatchActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.android13.ClipboardSensitiveActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.android13.MediaPermissionsActivity"
-            android:exported="false" />
+            android:name=".ui.activity.android13.NewPermissionsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.exercise.android13.permissions" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <category android:name="android.intent.category.A" />
+                <category android:name="android.intent.category.B" />
+                <category android:name="android.intent.category.C" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.activity.android13.PostNotificationActivity"
             android:exported="false" />

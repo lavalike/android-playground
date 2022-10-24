@@ -18,11 +18,11 @@ import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityMediaPermissionsBinding
 
 /**
- * MediaPermissionsActivity
+ * NewPermissionsActivity
  * @author: zhen51.wang
  * @date: 2022/10/19/019
  */
-class MediaPermissionsActivity : BaseActivity() {
+class NewPermissionsActivity : BaseActivity() {
     private lateinit var binding: ActivityMediaPermissionsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +37,11 @@ class MediaPermissionsActivity : BaseActivity() {
             for ((_, granted) in result) {
                 if (granted) {
                     Toast.makeText(
-                        this@MediaPermissionsActivity, "permission granted", Toast.LENGTH_SHORT
+                        this@NewPermissionsActivity, "permission granted", Toast.LENGTH_SHORT
                     ).show()
                 } else {
                     Toast.makeText(
-                        this@MediaPermissionsActivity, "permission denied", Toast.LENGTH_SHORT
+                        this@NewPermissionsActivity, "permission denied", Toast.LENGTH_SHORT
                     ).show()
                 }
             }
