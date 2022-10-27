@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolBarCommonHolder;
-import com.android.exercise.ui.widget.dialog.ADWindowDialog;
+import com.android.exercise.ui.widget.dialog.PictureWindow;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -28,7 +28,7 @@ public class ADWindowActivity extends BaseActivity {
 
     @OnClick(R.id.btn_ad)
     public void onViewClicked() {
-        ADWindowDialog adWindowDialog = new ADWindowDialog();
+        PictureWindow adWindowDialog = new PictureWindow();
         adWindowDialog.showDialog(getSupportFragmentManager());
     }
 }

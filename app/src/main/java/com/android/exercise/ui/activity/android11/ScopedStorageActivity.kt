@@ -23,7 +23,7 @@ import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
-import com.android.exercise.ui.widget.dialog.ADWindowDialog
+import com.android.exercise.ui.widget.dialog.PictureWindow
 import com.wangzhen.permission.PermissionManager
 import com.wangzhen.permission.callback.AbsPermissionCallback
 import java.io.File
@@ -220,7 +220,9 @@ class ScopedStorageActivity : BaseActivity() {
             }
 
         }) {
-            ADWindowDialog().setImageUri(it).showDialog(supportFragmentManager)
+            it?.let {
+                PictureWindow().setImageUri(it).showDialog(supportFragmentManager)
+            }
         }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -231,8 +233,8 @@ class ScopedStorageActivity : BaseActivity() {
                     Toast.makeText(this, "saf文件创建成功", Toast.LENGTH_SHORT).show()
                 }
                 REQUEST_OPEN_DOCUMENT -> {
-                    data?.data.also { uri ->
-                        ADWindowDialog().setImageUri(uri).showDialog(supportFragmentManager)
+                    data?.data?.let { uri ->
+                        PictureWindow().setImageUri(uri).showDialog(supportFragmentManager)
                     }
                 }
             }

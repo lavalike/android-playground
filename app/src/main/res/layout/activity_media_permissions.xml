@@ -91,15 +91,6 @@
             android:text="@string/new_permission_pick_image"
             android:textColor="@color/color_text_color" />
 
-        <ImageView
-            android:id="@+id/iv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
-            tools:src="@mipmap/bg_dog" />
-
     </LinearLayout>
 
 </ScrollView>

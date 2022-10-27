@@ -16,6 +16,7 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
 import com.android.exercise.databinding.ActivityMediaPermissionsBinding
+import com.android.exercise.ui.widget.dialog.PictureWindow
 
 /**
  * NewPermissionsActivity
@@ -81,7 +82,7 @@ class NewPermissionsActivity : BaseActivity() {
         }) { result ->
             result?.let {
                 if (it.isNotEmpty()) {
-                    binding.iv.setImageURI(it[0])
+                    PictureWindow().setImageUri(it[0]).showDialog(supportFragmentManager)
                     if (it.size > 1) {
                         Toast.makeText(this, "多个图片只展示第一个", Toast.LENGTH_SHORT).show()
                     }
