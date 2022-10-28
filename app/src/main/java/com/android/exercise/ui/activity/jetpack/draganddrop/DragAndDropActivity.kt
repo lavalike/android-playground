@@ -19,6 +19,11 @@ import com.android.exercise.databinding.ActivityDragAndDropBinding
  */
 class DragAndDropActivity : BaseActivity() {
 
+    companion object {
+        const val MIME_TEXT = "text/plain"
+        const val MIME_IMAGE = "image/*"
+    }
+
     private lateinit var binding: ActivityDragAndDropBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +51,15 @@ class DragAndDropActivity : BaseActivity() {
             DropHelper.configureView(
                 this@DragAndDropActivity,
                 containerDrop,
-                arrayOf("text/plain")
+                arrayOf(MIME_TEXT, MIME_IMAGE)
             ) { _, payload ->
-                val text = payload.clip.getItemAt(0).text
-                tvDropHere.text = String.format(getString(R.string.drag_and_drop_text), text)
+                val clipData = payload.clip
+                if (clipData.description.hasMimeType(MIME_TEXT)) {
+                    tvDropHere.text = String.format(
+                        getString(R.string.drag_and_drop_text),
+                        clipData.getItemAt(0).text
+                    )
+                }
                 null
             }
 
