@@ -93,11 +93,6 @@ public class ToolbarActivity extends SwipeBackActivity {
         mRootView.addView(view, paramsView);
     }
 
-    /**
-     * 是否显示Toolbar
-     *
-     * @return
-     */
     public boolean showToolbar() {
         return true;
     }

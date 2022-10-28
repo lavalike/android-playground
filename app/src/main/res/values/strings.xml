@@ -108,7 +108,6 @@
     <string name="item_messenger">messenger</string>
     <string name="item_swipe_close">滑动关闭</string>
     <string name="item_motion_layout">MotionLayout</string>
-    <string name="item_drag_and_drop">DragAndDrop</string>
     <string name="large_image_bitmap_region_decoder">BitmapRegionDecoder</string>
     <string name="large_image_subsampling_imageview">SubsamplingScaleImageView</string>
     <string name="item_android13_post_notification">Post Notification</string>
@@ -133,4 +132,9 @@
 
     <string name="item_intent_match">Intent匹配</string>
     <string name="intent_match_open_permissions">Open Permissions</string>
+
+    <string name="item_drag_and_drop">DragAndDrop</string>
+    <string name="drag_and_drop_drag_me">drag me</string>
+    <string name="drag_and_drop_drop_here">drop here</string>
+    <string name="drag_and_drop_text">Dropped Text: %s</string>
 </resources>

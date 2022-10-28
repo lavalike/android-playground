@@ -1,8 +1,12 @@
 package com.android.exercise.ui.activity.jetpack.draganddrop
 
+import android.content.ClipData
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.DragStartHelper
+import androidx.draganddrop.DropHelper
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolBarCommonHolder
@@ -21,6 +25,33 @@ class DragAndDropActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDragAndDropBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        initDragAndDrop()
+    }
+
+    private fun initDragAndDrop() {
+        with(binding) {
+            DragStartHelper(
+                tvDragMe
+            ) { view, _ ->
+                view.startDragAndDrop(
+                    ClipData.newPlainText("", tvDragMe.text),
+                    View.DragShadowBuilder(view),
+                    null,
+                    0
+                )
+                true
+            }.attach()
+            DropHelper.configureView(
+                this@DragAndDropActivity,
+                containerDrop,
+                arrayOf("text/plain")
+            ) { _, payload ->
+                val text = payload.clip.getItemAt(0).text
+                tvDropHere.text = String.format(getString(R.string.drag_and_drop_text), text)
+                null
+            }
+        }
     }
 
     override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
