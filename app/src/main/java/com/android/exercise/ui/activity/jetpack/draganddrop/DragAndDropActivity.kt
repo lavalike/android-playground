@@ -42,6 +42,7 @@ class DragAndDropActivity : BaseActivity() {
                 )
                 true
             }.attach()
+
             DropHelper.configureView(
                 this@DragAndDropActivity,
                 containerDrop,
@@ -50,6 +51,10 @@ class DragAndDropActivity : BaseActivity() {
                 val text = payload.clip.getItemAt(0).text
                 tvDropHere.text = String.format(getString(R.string.drag_and_drop_text), text)
                 null
+            }
+
+            btnClear.setOnClickListener {
+                tvDropHere.text = getString(R.string.drag_and_drop_drop_here)
             }
         }
     }
