@@ -91,7 +91,7 @@ public class AndServerActivity extends BaseActivity {
 
     private void checkRunning() {
         if (mServer.isRunning()) {
-            Log.e(TAG, "Server Running.");
+            Log.e(tag, "Server Running.");
             String ipAddress = NetworkUtil.getIPAddress(this);
             if (!TextUtils.isEmpty(ipAddress)) {
                 btnServerMsg.setVisibility(View.VISIBLE);
@@ -99,7 +99,7 @@ public class AndServerActivity extends BaseActivity {
                 btnServerMsg.setText("点击访问:" + url);
             }
         } else {
-            Log.e(TAG, "Server Stopped.");
+            Log.e(tag, "Server Stopped.");
             btnServerMsg.setVisibility(View.GONE);
         }
     }

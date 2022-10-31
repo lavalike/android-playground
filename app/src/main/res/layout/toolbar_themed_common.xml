@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.wangzhen.commons.toolbar.container.ToolbarConstraintContainer xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wangzhen.commons.toolbar.container.ToolbarFrameContainer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    android:minHeight="@dimen/toolbar_height">
+    android:background="@color/colorPrimaryDark">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="@dimen/toolbar_height"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="?attr/actionBarItemBackground"
-        android:contentDescription="@string/app_name"
-        android:scaleType="centerInside"
-        android:src="@mipmap/ic_back_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/toolbar_height"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="1"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_back"
-        app:layout_constraintTop_toTopOf="@+id/btn_back"
-        tools:text="Toolbar" />
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/toolbar_height"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="?attr/actionBarItemBackground"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ic_back_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</com.wangzhen.commons.toolbar.container.ToolbarConstraintContainer>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/toolbar_height"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toTopOf="@+id/btn_back"
+            tools:text="Toolbar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.wangzhen.commons.toolbar.container.ToolbarFrameContainer>

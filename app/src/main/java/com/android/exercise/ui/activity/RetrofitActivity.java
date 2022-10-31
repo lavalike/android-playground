@@ -147,7 +147,7 @@ public class RetrofitActivity extends BaseActivity {
             public void onProgress(long bytesRead, long contentLength, Done done) {
                 if (done == Done.PROCESS_UP) {
                     final int progress = (int) (100 * bytesRead / contentLength);
-                    Log.e(TAG, "文件上传：" + progress);
+                    Log.e(tag, "文件上传：" + progress);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -156,7 +156,7 @@ public class RetrofitActivity extends BaseActivity {
                     });
                 }
                 if (done == Done.FINISH_UP) {
-                    Log.e(TAG, "上传完成");
+                    Log.e(tag, "上传完成");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -205,7 +205,7 @@ public class RetrofitActivity extends BaseActivity {
             public void onProgress(long bytesRead, long contentLength, Done done) {
                 if (done == Done.PROCESS_UP) {
                     final int progress = (int) (100 * bytesRead / contentLength);
-                    Log.e(TAG, "文件上传：" + progress);
+                    Log.e(tag, "文件上传：" + progress);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -214,7 +214,7 @@ public class RetrofitActivity extends BaseActivity {
                     });
                 }
                 if (done == Done.FINISH_UP) {
-                    Log.e(TAG, "上传完成");
+                    Log.e(tag, "上传完成");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

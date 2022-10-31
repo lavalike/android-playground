@@ -58,7 +58,7 @@ class WebSocketActivity : BaseActivity() {
 
     private fun initClient() {
         val url = "ws://" + mWebServer.hostName + ":" + mWebServer.port
-        Log.e(TAG, "initClient: $url")
+        Log.e(tag, "initClient: $url")
         OKHttpManager.getClient()
             .newWebSocket(Request.Builder().url(url).build(), object : WebSocketListener() {
                 override fun onOpen(webSocket: WebSocket, response: Response) {

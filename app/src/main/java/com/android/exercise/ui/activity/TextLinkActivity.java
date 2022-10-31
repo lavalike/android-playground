@@ -55,6 +55,6 @@ public class TextLinkActivity extends BaseActivity {
     @OnClick(R.id.iv_gif)
     public void onViewClicked() {
         Drawable drawable = ivGif.getDrawable();
-        Log.e(TAG, "drawable --> " + drawable);
+        Log.e(tag, "drawable --> " + drawable);
     }
 }

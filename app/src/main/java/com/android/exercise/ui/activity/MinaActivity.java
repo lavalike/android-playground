@@ -58,7 +58,7 @@ public class MinaActivity extends BaseActivity {
     class MinaThread extends Thread {
         @Override
         public void run() {
-            Log.e(TAG, "客户端开始连接");
+            Log.e(tag, "客户端开始连接");
             IoConnector connector = new NioSocketConnector();
             connector.setConnectTimeoutMillis(1000 * 30);
             connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(
