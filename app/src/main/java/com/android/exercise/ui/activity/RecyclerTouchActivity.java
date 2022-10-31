@@ -1,7 +1,6 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -11,35 +10,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityRecyclerTouchBinding;
 import com.android.exercise.listener.RecyclerTouchCallback;
 import com.android.exercise.ui.adapter.RecyclerTouchAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * RecyclerView ItemTouchHelper
  * Created by wangzhen on 2017/8/1.
  */
 public class RecyclerTouchActivity extends BaseActivity {
-
-    @BindView(R.id.recycler_touch)
-    RecyclerView mRecyclerView;
-    private RecyclerTouchAdapter mAdapter;
+    private ActivityRecyclerTouchBinding binding;
     private ItemTouchHelper itemTouchHelper;
     private LinearLayoutManager linearLayoutManager;
     private GridLayoutManager gridLayoutManager;
+    private RecyclerView recycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_touch);
-        ButterKnife.bind(this);
+        binding = ActivityRecyclerTouchBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         initRecycler();
         init();
     }
@@ -48,7 +42,8 @@ public class RecyclerTouchActivity extends BaseActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         gridLayoutManager = new GridLayoutManager(this, 6);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        recycler = binding.recyclerTouch;
+        recycler.setLayoutManager(linearLayoutManager);
     }
 
     private void init() {
@@ -56,38 +51,26 @@ public class RecyclerTouchActivity extends BaseActivity {
         for (int i = 0; i < 20; i++) {
             list.add(String.valueOf(i));
         }
-        mAdapter = new RecyclerTouchAdapter(this, list);
-        itemTouchHelper = new ItemTouchHelper(new RecyclerTouchCallback(mAdapter));
-        itemTouchHelper.attachToRecyclerView(mRecyclerView);
-        mAdapter.setItemLongClickListener(new BaseRecyclerAdapter.OnItemLongClickListener<String>() {
-            @Override
-            public void onItemLongClick(View view, String data) {
-                RecyclerView.ViewHolder viewHolder = mRecyclerView.getChildViewHolder(view);
-                itemTouchHelper.startDrag(viewHolder);
-            }
+        RecyclerTouchAdapter adapter = new RecyclerTouchAdapter(this, list);
+        itemTouchHelper = new ItemTouchHelper(new RecyclerTouchCallback(adapter));
+        itemTouchHelper.attachToRecyclerView(recycler);
+        adapter.setItemLongClickListener((view, data) -> {
+            RecyclerView.ViewHolder viewHolder = recycler.getChildViewHolder(view);
+            itemTouchHelper.startDrag(viewHolder);
         });
-        mRecyclerView.setAdapter(mAdapter);
+        recycler.setAdapter(adapter);
     }
 
     @Override
     public Toolbar createToolbar() {
-        return ToolbarFactory.themed(this, getString(R.string.item_recycler_touch));
+        return ToolbarFactory.themedMenu(this, getString(R.string.item_recycler_touch), "切换", () -> {
+            RecyclerView.LayoutManager layoutManager = recycler.getLayoutManager();
+            if (layoutManager instanceof LinearLayoutManager) {
+                recycler.setLayoutManager(gridLayoutManager);
+            }
+            if (layoutManager instanceof GridLayoutManager) {
+                recycler.setLayoutManager(linearLayoutManager);
+            }
+        });
     }
-
-//    @Override
-//    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-//        ToolBarRightTextHolder holder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.item_recycler_touch), "切换");
-//        holder.findById(R.id.tv_toolbar_right_text_menu).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                RecyclerView.LayoutManager layoutManager = mRecyclerView.getLayoutManager();
-//                if (layoutManager instanceof LinearLayoutManager) {
-//                    mRecyclerView.setLayoutManager(gridLayoutManager);
-//                }
-//                if (layoutManager instanceof GridLayoutManager) {
-//                    mRecyclerView.setLayoutManager(linearLayoutManager);
-//                }
-//            }
-//        });
-//    }
 }

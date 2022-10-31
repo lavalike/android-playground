@@ -14,5 +14,15 @@ class ToolbarFactory {
         fun themed(activity: Activity, title: String): Toolbar {
             return ThemedCommonToolbar(activity, title)
         }
+
+        @JvmStatic
+        fun themedMenu(
+            activity: Activity,
+            title: String,
+            menu: String,
+            callback: ThemedMenuTextToolbar.Callback?
+        ): ThemedMenuTextToolbar {
+            return ThemedMenuTextToolbar(activity, title, menu, callback)
+        }
     }
 }

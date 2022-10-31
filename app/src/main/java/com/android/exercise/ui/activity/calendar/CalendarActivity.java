@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.base.toolbar.ThemedMenuTextToolbar;
 import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
@@ -27,6 +28,7 @@ public class CalendarActivity extends BaseActivity {
     CalendarLayout calendarLayout;
     @BindView(R.id.calendar_view)
     CalendarView calendarView;
+    private ThemedMenuTextToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,30 +47,22 @@ public class CalendarActivity extends BaseActivity {
 
             @Override
             public void onCalendarSelect(Calendar calendar, boolean isClick) {
-//                mToolbarHolder.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendar.getYear(), calendar.getMonth(), calendar.getDay()));
+                toolbar.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendar.getYear(), calendar.getMonth(), calendar.getDay()));
             }
         });
-//        mToolbarHolder.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendarView.getCurYear(), calendarView.getCurMonth(), calendarView.getCurDay()));
+        toolbar.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendarView.getCurYear(), calendarView.getCurMonth(), calendarView.getCurDay()));
     }
 
     @Nullable
     @Override
     public Toolbar createToolbar() {
-        return ToolbarFactory.themed(this, getString(R.string.item_calendar));
+        toolbar = ToolbarFactory.themedMenu(this, getString(R.string.item_calendar), "视图", () -> {
+            if (calendarLayout.isExpand()) {
+                calendarLayout.shrink();
+            } else {
+                calendarLayout.expand();
+            }
+        });
+        return toolbar;
     }
-
-//    @Override
-//    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-//        mToolbarHolder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.item_calendar), "视图");
-//        mToolbarHolder.getRightMenu().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (calendarLayout.isExpand()) {
-//                    calendarLayout.shrink();
-//                } else {
-//                    calendarLayout.expand();
-//                }
-//            }
-//        });
-//    }
 }
