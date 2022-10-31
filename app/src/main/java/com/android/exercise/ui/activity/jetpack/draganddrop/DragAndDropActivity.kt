@@ -3,14 +3,13 @@ package com.android.exercise.ui.activity.jetpack.draganddrop
 import android.content.ClipData
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.DragStartHelper
 import androidx.draganddrop.DropHelper
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityDragAndDropBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * DragAndDropActivity
@@ -40,24 +39,18 @@ class DragAndDropActivity : BaseActivity() {
                 tvDragMe
             ) { view, _ ->
                 view.startDragAndDrop(
-                    ClipData.newPlainText("", tvDragMe.text),
-                    View.DragShadowBuilder(view),
-                    null,
-                    0
+                    ClipData.newPlainText("", tvDragMe.text), View.DragShadowBuilder(view), null, 0
                 )
                 true
             }.attach()
 
             DropHelper.configureView(
-                this@DragAndDropActivity,
-                containerDrop,
-                arrayOf(MIME_TEXT, MIME_IMAGE)
+                this@DragAndDropActivity, containerDrop, arrayOf(MIME_TEXT, MIME_IMAGE)
             ) { _, payload ->
                 val clipData = payload.clip
                 if (clipData.description.hasMimeType(MIME_TEXT)) {
                     tvDropHere.text = String.format(
-                        getString(R.string.drag_and_drop_text),
-                        clipData.getItemAt(0).text
+                        getString(R.string.drag_and_drop_text), clipData.getItemAt(0).text
                     )
                 }
                 null
@@ -69,7 +62,7 @@ class DragAndDropActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_drag_and_drop))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_drag_and_drop))
     }
 }

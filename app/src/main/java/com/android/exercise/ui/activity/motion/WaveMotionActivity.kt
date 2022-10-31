@@ -18,8 +18,4 @@ class WaveMotionActivity : BaseActivity() {
             binding = this
         }.root)
     }
-
-    override fun showToolbar(): Boolean {
-        return false
-    }
 }

@@ -6,15 +6,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 
+import androidx.annotation.Nullable;
+
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.service.QQAutoService;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.List;
 
@@ -35,9 +36,10 @@ public class AppOptActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_qq_group).setOnClickListener(this);
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_qq_auto_msg));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_qq_auto_msg));
     }
 
     @Override

@@ -55,11 +55,6 @@ public class LoadMoreActivity extends BaseActivity implements OnRefreshCallback 
     }
 
     @Override
-    public boolean showToolbar() {
-        return false;
-    }
-
-    @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override

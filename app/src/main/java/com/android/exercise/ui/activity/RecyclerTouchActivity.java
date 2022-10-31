@@ -3,8 +3,6 @@ package com.android.exercise.ui.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarRightTextHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.listener.RecyclerTouchCallback;
 import com.android.exercise.ui.adapter.RecyclerTouchAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,19 +70,24 @@ public class RecyclerTouchActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        ToolBarRightTextHolder holder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.item_recycler_touch), "切换");
-        holder.findById(R.id.tv_toolbar_right_text_menu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RecyclerView.LayoutManager layoutManager = mRecyclerView.getLayoutManager();
-                if (layoutManager instanceof LinearLayoutManager) {
-                    mRecyclerView.setLayoutManager(gridLayoutManager);
-                }
-                if (layoutManager instanceof GridLayoutManager) {
-                    mRecyclerView.setLayoutManager(linearLayoutManager);
-                }
-            }
-        });
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_recycler_touch));
     }
+
+//    @Override
+//    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
+//        ToolBarRightTextHolder holder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.item_recycler_touch), "切换");
+//        holder.findById(R.id.tv_toolbar_right_text_menu).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                RecyclerView.LayoutManager layoutManager = mRecyclerView.getLayoutManager();
+//                if (layoutManager instanceof LinearLayoutManager) {
+//                    mRecyclerView.setLayoutManager(gridLayoutManager);
+//                }
+//                if (layoutManager instanceof GridLayoutManager) {
+//                    mRecyclerView.setLayoutManager(linearLayoutManager);
+//                }
+//            }
+//        });
+//    }
 }

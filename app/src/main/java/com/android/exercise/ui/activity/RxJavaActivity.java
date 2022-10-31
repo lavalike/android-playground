@@ -1,15 +1,14 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.service.PollService;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
@@ -40,13 +39,12 @@ public class RxJavaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
         ButterKnife.bind(this);
-//        startService(new Intent(this, PollService.class));
         PollService.setServiceAlarm(this, true);
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_rxjava), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_rxjava));
     }
 
     @OnClick({R.id.btn_send})
@@ -81,30 +79,28 @@ public class RxJavaActivity extends BaseActivity {
             public Publisher<String> apply(String s) throws Exception {
                 return Flowable.just(s + "--第三次flatMap转换");
             }
-        }).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
-                    StringBuilder builder = new StringBuilder();
+        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+            StringBuilder builder = new StringBuilder();
 
-                    @Override
-                    public void onSubscribe(Subscription s) {
-                        s.request(Long.MAX_VALUE);
-                    }
+            @Override
+            public void onSubscribe(Subscription s) {
+                s.request(Long.MAX_VALUE);
+            }
 
-                    @Override
-                    public void onNext(String s) {
-                        builder.append(s).append("\n");
-                    }
+            @Override
+            public void onNext(String s) {
+                builder.append(s).append("\n");
+            }
 
-                    @Override
-                    public void onError(Throwable t) {
+            @Override
+            public void onError(Throwable t) {
 
-                    }
+            }
 
-                    @Override
-                    public void onComplete() {
-                        mTextView.setText(builder.toString());
-                    }
-                });
+            @Override
+            public void onComplete() {
+                mTextView.setText(builder.toString());
+            }
+        });
     }
 }

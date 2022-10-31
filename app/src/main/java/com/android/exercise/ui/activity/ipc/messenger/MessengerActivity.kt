@@ -5,12 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.*
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.util.L
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * messenger activity
@@ -25,8 +24,8 @@ class MessengerActivity : BaseActivity() {
         bindService(intent, connection, Context.BIND_AUTO_CREATE)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_messenger))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_messenger))
     }
 
     override fun onDestroy() {

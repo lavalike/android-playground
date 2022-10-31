@@ -3,16 +3,15 @@ package com.android.exercise.ui.activity;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.AppUtil;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.net.URL;
 import java.util.UUID;
@@ -75,8 +74,8 @@ public class RippleActivity extends BaseActivity {
     };
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_ripple), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_ripple));
     }
 
     //获得独一无二的Psuedo ID

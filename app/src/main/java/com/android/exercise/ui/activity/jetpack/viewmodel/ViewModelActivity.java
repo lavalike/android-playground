@@ -5,13 +5,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 public class ViewModelActivity extends BaseActivity {
 
@@ -36,9 +36,10 @@ public class ViewModelActivity extends BaseActivity {
         });
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, "ViewModel + LiveData");
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, "ViewModel + LiveData");
     }
 
     public void onClick(View view) {

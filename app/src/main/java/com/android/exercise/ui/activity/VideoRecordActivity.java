@@ -9,14 +9,13 @@ import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.IKey;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 import com.wangzhen.permission.PermissionManager;
 import com.wangzhen.permission.callback.AbsPermissionCallback;
 
@@ -43,8 +42,8 @@ public class VideoRecordActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_camera_video));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_camera_video));
     }
 
     @OnClick({R.id.btn_system, R.id.btn_custom})

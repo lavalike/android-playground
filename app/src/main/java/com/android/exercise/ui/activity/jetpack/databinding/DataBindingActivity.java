@@ -2,7 +2,6 @@ package com.android.exercise.ui.activity.jetpack.databinding;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -24,11 +23,6 @@ public class DataBindingActivity extends BaseActivity {
         user.firstName = "震";
         user.age = 20;
         binding.setUser(user);
-    }
-
-    @Override
-    public boolean showToolbar() {
-        return false;
     }
 
     public void onClick(View view) {

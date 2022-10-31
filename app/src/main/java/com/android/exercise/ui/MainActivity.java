@@ -134,7 +134,6 @@ public class MainActivity extends BaseActivity {
         setContentView(inflate.getRoot());
         recyclerView = inflate.recyclerview;
         fitDarkStatus(true);
-        setSwipeBackEnable(false);
         initPush(getIntent());
         initRecycler();
         initList();
@@ -174,11 +173,6 @@ public class MainActivity extends BaseActivity {
                 outRect.bottom = UIUtils.dip2px(mContext, GAP);
             }
         });
-    }
-
-    @Override
-    public boolean showToolbar() {
-        return false;
     }
 
     /**

@@ -2,15 +2,14 @@ package com.android.exercise.ui.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.bumptech.glide.Glide;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 import com.wangzhen.linktextview.LinkTextView;
 
 import butterknife.BindView;
@@ -49,8 +48,8 @@ public class TextLinkActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_text_link));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_text_link));
     }
 
     @OnClick(R.id.iv_gif)

@@ -2,15 +2,15 @@ package com.android.exercise.ui.activity.jetpack.datastore
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.lifecycleScope
+import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityDataStoreBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.map
@@ -56,9 +56,7 @@ class DataStoreActivity : BaseActivity() {
                     val age = it[ageKey]
                     val msg = if (name == null || age == null) "no data" else "$name - $age"
                     Toast.makeText(
-                        this@DataStoreActivity,
-                        msg,
-                        Toast.LENGTH_SHORT
+                        this@DataStoreActivity, msg, Toast.LENGTH_SHORT
                     ).show()
                 }
             }
@@ -124,8 +122,7 @@ class DataStoreActivity : BaseActivity() {
     private suspend fun saveSingle() {
         val name = "name ${
             SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss",
-                Locale.CHINESE
+                "yyyy-MM-dd HH:mm:ss", Locale.CHINESE
             ).format(System.currentTimeMillis())
         }"
         dataStore.edit {
@@ -134,7 +131,7 @@ class DataStoreActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, "DataStore")
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_data_store))
     }
 }

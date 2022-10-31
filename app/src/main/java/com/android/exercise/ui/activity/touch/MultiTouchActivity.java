@@ -2,12 +2,10 @@ package com.android.exercise.ui.activity.touch;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
-
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.ButterKnife;
 
@@ -25,7 +23,7 @@ public class MultiTouchActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_multi_touch));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_multi_touch));
     }
 }

@@ -2,17 +2,16 @@ package com.android.exercise.ui.activity.calendar;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarRightTextHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +27,6 @@ public class CalendarActivity extends BaseActivity {
     CalendarLayout calendarLayout;
     @BindView(R.id.calendar_view)
     CalendarView calendarView;
-    private ToolBarRightTextHolder mToolbarHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +45,30 @@ public class CalendarActivity extends BaseActivity {
 
             @Override
             public void onCalendarSelect(Calendar calendar, boolean isClick) {
-                mToolbarHolder.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendar.getYear(), calendar.getMonth(), calendar.getDay()));
+//                mToolbarHolder.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendar.getYear(), calendar.getMonth(), calendar.getDay()));
             }
         });
-        mToolbarHolder.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendarView.getCurYear(), calendarView.getCurMonth(), calendarView.getCurDay()));
+//        mToolbarHolder.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendarView.getCurYear(), calendarView.getCurMonth(), calendarView.getCurDay()));
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        mToolbarHolder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.item_calendar), "视图");
-        mToolbarHolder.getRightMenu().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (calendarLayout.isExpand()) {
-                    calendarLayout.shrink();
-                } else {
-                    calendarLayout.expand();
-                }
-            }
-        });
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_calendar));
     }
+
+//    @Override
+//    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
+//        mToolbarHolder = new ToolBarRightTextHolder(this, toolbar, getString(R.string.item_calendar), "视图");
+//        mToolbarHolder.getRightMenu().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (calendarLayout.isExpand()) {
+//                    calendarLayout.shrink();
+//                } else {
+//                    calendarLayout.expand();
+//                }
+//            }
+//        });
+//    }
 }

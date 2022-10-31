@@ -3,13 +3,13 @@ package com.android.exercise.ui.activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.AppUtil;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +36,10 @@ public class ImageHtmlActivity extends BaseActivity {
         webview.loadDataWithBaseURL(null, htmlCode, "text/html", "utf-8", null);
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_image_html));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_image_html));
     }
 
     /**

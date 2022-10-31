@@ -1,15 +1,16 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.ui.widget.FlowLayout;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,10 +22,7 @@ import butterknife.ButterKnife;
 public class FlowLayoutActivity extends BaseActivity {
     @BindView(R.id.flowlayout)
     FlowLayout flowlayout;
-    private String[] mVals = new String[]
-            {"Hello", "Android", "Weclome Hi ", "Button", "TextView", "Hello",
-                    "Android", "Weclome", "Button ImageView", "TextView", "Helloworld",
-                    "Android", "Weclome Hello", "Button Text", "TextView"};
+    private String[] mVals = new String[]{"Hello", "Android", "Weclome Hi ", "Button", "TextView", "Hello", "Android", "Weclome", "Button ImageView", "TextView", "Helloworld", "Android", "Weclome Hello", "Button Text", "TextView"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +35,15 @@ public class FlowLayoutActivity extends BaseActivity {
     private void initData() {
         LayoutInflater mInflater = LayoutInflater.from(this);
         for (int i = 0; i < mVals.length; i++) {
-            TextView tv = (TextView) mInflater.inflate(R.layout.item_flow_layout,
-                    flowlayout, false);
+            TextView tv = (TextView) mInflater.inflate(R.layout.item_flow_layout, flowlayout, false);
             tv.setText(mVals[i]);
             flowlayout.addView(tv);
         }
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_flowlayout), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_flowlayout));
     }
 }

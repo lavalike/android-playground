@@ -6,13 +6,12 @@ import android.os.Looper
 import android.os.Message
 import android.util.Log
 import android.widget.ScrollView
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.okhttp.OKHttpManager
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityWebSocketBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
@@ -119,8 +118,8 @@ class WebSocketActivity : BaseActivity() {
         mWebServer.enqueue(response)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_okhttp_websocket))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_okhttp_websocket))
     }
 
     override fun onDestroy() {

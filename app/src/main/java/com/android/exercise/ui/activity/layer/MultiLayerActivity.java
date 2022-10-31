@@ -12,9 +12,4 @@ public class MultiLayerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_layer);
     }
-
-    @Override
-    public boolean showToolbar() {
-        return false;
-    }
 }

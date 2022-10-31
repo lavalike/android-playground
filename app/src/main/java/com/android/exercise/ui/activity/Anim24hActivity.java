@@ -80,11 +80,6 @@ public class Anim24hActivity extends BaseActivity {
         DarkStatusBar.get().fitDark(this);
     }
 
-    @Override
-    public boolean showToolbar() {
-        return false;
-    }
-
     @OnClick({R.id.item_days, R.id.item_news})
     public void onClick(View view) {
         itemDays.setSelected(false);

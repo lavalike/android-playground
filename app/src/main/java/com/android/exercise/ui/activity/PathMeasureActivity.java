@@ -17,9 +17,4 @@ public class PathMeasureActivity extends BaseActivity {
         fitDarkStatus(true);
         setContentView(new PathMeasureView(this));
     }
-
-    @Override
-    public boolean showToolbar() {
-        return false;
-    }
 }

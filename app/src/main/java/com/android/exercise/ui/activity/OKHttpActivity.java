@@ -4,16 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.okhttp.OKHttpManager;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.domain.CibaBean;
 import com.android.exercise.util.NetworkUtil;
 import com.google.gson.Gson;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +44,10 @@ public class OKHttpActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_okhttp), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_okhttp));
     }
 
     @OnClick({R.id.btn_okhttp_get, R.id.btn_okhttp_post})
@@ -66,13 +67,8 @@ public class OKHttpActivity extends BaseActivity {
     }
 
     private void get() {
-        OkHttpClient client = OKHttpManager.getClient().newBuilder()
-                .cache(new Cache(new File(getExternalCacheDir(), "okhttpcache"), 1024 * 1024 * 10))
-                .build();
-        Request request = new Request.Builder()
-                .url("http://open.iciba.com/dsapi/")
-                .cacheControl(NetworkUtil.isNetworkAvailable(this) ? CacheControl.FORCE_NETWORK : CacheControl.FORCE_CACHE)
-                .build();
+        OkHttpClient client = OKHttpManager.getClient().newBuilder().cache(new Cache(new File(getExternalCacheDir(), "okhttpcache"), 1024 * 1024 * 10)).build();
+        Request request = new Request.Builder().url("http://open.iciba.com/dsapi/").cacheControl(NetworkUtil.isNetworkAvailable(this) ? CacheControl.FORCE_NETWORK : CacheControl.FORCE_CACHE).build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {

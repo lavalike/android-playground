@@ -1,18 +1,16 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.IKey;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,8 +19,6 @@ public class BrowserActivity extends BaseActivity {
 
     @BindView(R.id.webview)
     WebView webview;
-    private String mTitle;
-    private ToolBarCommonHolder mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +38,12 @@ public class BrowserActivity extends BaseActivity {
         settings.setAllowFileAccess(true); // 允许访问文件
         settings.setSavePassword(false);//关闭明文存储密码
         settings.setSupportZoom(false); // 网页缩放
-
-        webview.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                super.onReceivedTitle(view, title);
-                if (TextUtils.isEmpty(mTitle)) {
-                    mToolbar.setTitle(title);
-                }
-            }
-        });
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        mTitle = getIntent().getStringExtra(IKey.HTML_TITLE);
-        mToolbar = new ToolBarCommonHolder(this, toolbar, mTitle);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getIntent().getStringExtra(IKey.HTML_TITLE));
     }
 
     @Override

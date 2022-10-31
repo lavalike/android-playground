@@ -3,15 +3,16 @@ package com.android.exercise.ui.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.core.service.IoConnector;
@@ -45,9 +46,10 @@ public class MinaActivity extends BaseActivity {
         new MinaThread().start();
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_mina), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_mina));
     }
 
     /**

@@ -3,8 +3,7 @@ package com.android.exercise.ui.activity.jetpack.work;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
@@ -15,7 +14,8 @@ import androidx.work.WorkManager;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -34,9 +34,10 @@ public class WorkManagerActivity extends BaseActivity {
         setContentView(R.layout.activity_work_manager);
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_work_manager));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_work_manager));
     }
 
     public void onClick(View view) {

@@ -2,20 +2,16 @@ package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
 import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 import com.android.exercise.util.T;
 import com.android.exercise.util.UIUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -52,26 +48,25 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_slide);
         ButterKnife.bind(this);
-        setSwipeBackEnable(false);
         initActionbar();
         initDrawerLayout();
         initGesture();
     }
 
     private void initActionbar() {
-        new ToolBarCommonHolder(this, mToolbar, getString(R.string.item_drawerslide), true);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mDrawerLayout != null) {
-                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                    } else {
-                        mDrawerLayout.openDrawer(GravityCompat.START);
-                    }
-                }
-            }
-        });
+//        new ToolBarCommonHolder(this, mToolbar, getString(R.string.item_drawerslide), true);
+//        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mDrawerLayout != null) {
+//                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+//                        mDrawerLayout.closeDrawer(GravityCompat.START);
+//                    } else {
+//                        mDrawerLayout.openDrawer(GravityCompat.START);
+//                    }
+//                }
+//            }
+//        });
     }
 
     private void initDrawerLayout() {
@@ -106,28 +101,6 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
         int statusBarHeight = UIUtils.getStatusBarHeight(this);
         layoutParams.topMargin = statusBarHeight;
         navigationView.addHeaderView(menuView);
-    }
-
-    @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_drawerslide), true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mDrawerLayout != null) {
-                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-                        mDrawerLayout.closeDrawer(GravityCompat.START);
-                    } else {
-                        mDrawerLayout.openDrawer(GravityCompat.START);
-                    }
-                }
-            }
-        });
-    }
-
-    @Override
-    public boolean showToolbar() {
-        return false;
     }
 
     @OnClick(R.id.btn_openHide)

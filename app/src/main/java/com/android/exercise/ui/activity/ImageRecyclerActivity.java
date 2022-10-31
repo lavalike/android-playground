@@ -2,15 +2,15 @@ package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.ui.adapter.RecyclerImageAdapter;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +65,9 @@ public class ImageRecyclerActivity extends BaseActivity {
         return list;
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_image_recycler));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_image_recycler));
     }
 }

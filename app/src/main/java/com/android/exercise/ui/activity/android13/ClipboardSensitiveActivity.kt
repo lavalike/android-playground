@@ -7,12 +7,11 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityClipboardSensitiveBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * ClipboardSensitiveActivity
@@ -48,7 +47,7 @@ class ClipboardSensitiveActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_clipboard_sensitive))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_clipboard_sensitive))
     }
 }

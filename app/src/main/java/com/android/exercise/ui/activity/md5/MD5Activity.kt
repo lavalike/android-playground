@@ -3,13 +3,12 @@ package com.android.exercise.ui.activity.md5
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityMD5Binding
 import com.android.exercise.util.MD5Utils
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import java.io.File
 import java.io.RandomAccessFile
 
@@ -25,8 +24,8 @@ class MD5Activity : BaseActivity() {
         setContentView(binding.root)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_md5))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_md5))
     }
 
     fun onClick(view: View) {

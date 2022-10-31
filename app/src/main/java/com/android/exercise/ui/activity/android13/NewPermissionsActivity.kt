@@ -10,13 +10,12 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityMediaPermissionsBinding
 import com.android.exercise.ui.widget.dialog.PictureWindow
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * NewPermissionsActivity
@@ -144,7 +143,7 @@ class NewPermissionsActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_android13_new_permissions))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_android13_new_permissions))
     }
 }

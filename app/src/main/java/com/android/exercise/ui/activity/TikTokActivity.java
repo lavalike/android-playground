@@ -46,11 +46,5 @@ public class TikTokActivity extends BaseActivity {
 
         SnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
-
-    }
-
-    @Override
-    public boolean showToolbar() {
-        return false;
     }
 }

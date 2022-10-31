@@ -1,12 +1,11 @@
 package com.android.exercise.ui.activity.kotlin
 
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivitySerializationBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import kotlinx.serialization.decodeFromString
@@ -36,8 +35,8 @@ class SerializationActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_kotlin_serialization))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_kotlin_serialization))
     }
 
     @Serializable

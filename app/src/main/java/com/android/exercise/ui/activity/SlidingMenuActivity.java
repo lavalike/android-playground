@@ -27,11 +27,6 @@ public class SlidingMenuActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @Override
-    public boolean showToolbar() {
-        return false;
-    }
-
     @OnClick(R.id.btn_toggleMenu)
     public void onClick(View view) {
         switch (view.getId()) {

@@ -3,12 +3,11 @@ package com.android.exercise.ui.activity.database
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.domain.litepal.Album
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import org.litepal.LitePal
 import java.util.*
 
@@ -22,8 +21,8 @@ class LitePalActivity : BaseActivity() {
         setContentView(R.layout.activity_lite_pal)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_litepal))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_litepal))
     }
 
     fun onClick(view: View) {
@@ -49,11 +48,17 @@ class LitePalActivity : BaseActivity() {
                     list.add(album)
                 }
                 LitePal.saveAll(list)
-                Toast.makeText(this, "耗时 -> ${System.currentTimeMillis() - start}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "耗时 -> ${System.currentTimeMillis() - start}", Toast.LENGTH_SHORT
+                ).show()
             }
             R.id.btn_query -> {
                 val list = LitePal.findAll(Album::class.java)
-                Toast.makeText(this, "共${if (list == null || list.isEmpty()) 0 else list.size}条", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "共${if (list == null || list.isEmpty()) 0 else list.size}条",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

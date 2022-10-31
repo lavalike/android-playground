@@ -2,12 +2,11 @@ package com.android.exercise.ui.activity.android13
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityIntentMatchBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * IntentMatchActivity
@@ -35,7 +34,7 @@ class IntentMatchActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_intent_match))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_intent_match))
     }
 }

@@ -18,12 +18,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.ui.widget.dialog.PictureWindow
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import com.wangzhen.permission.PermissionManager
 import com.wangzhen.permission.callback.AbsPermissionCallback
 import java.io.File
@@ -43,8 +42,8 @@ class ScopedStorageActivity : BaseActivity() {
         setContentView(R.layout.activity_storage)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_scoped_storage))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_scoped_storage))
     }
 
     fun onClick(view: View) {
@@ -65,8 +64,7 @@ class ScopedStorageActivity : BaseActivity() {
             R.id.btn_get_external_files_dir -> {
                 val dir = getExternalFilesDir("files")
                 val file = File(dir, "text.txt")
-                if (!file.exists())
-                    file.createNewFile()
+                if (!file.exists()) file.createNewFile()
                 Toast.makeText(
                     this,
                     if (dir == null) "externalFilesDir目录不存在" else file.absolutePath,
@@ -92,8 +90,7 @@ class ScopedStorageActivity : BaseActivity() {
                         }
 
                         override fun onDeny(
-                            deniedPermissions: Array<String>,
-                            neverAskPermissions: Array<String>
+                            deniedPermissions: Array<String>, neverAskPermissions: Array<String>
                         ) {
                             Toast.makeText(view.context, "存储权限被拒绝", Toast.LENGTH_SHORT).show()
                         }
@@ -107,8 +104,7 @@ class ScopedStorageActivity : BaseActivity() {
                     this,
                     object : AbsPermissionCallback() {
                         override fun onDeny(
-                            deniedPermissions: Array<String>,
-                            neverAskPermissions: Array<String>
+                            deniedPermissions: Array<String>, neverAskPermissions: Array<String>
                         ) {
                             Toast.makeText(view.context, "存储权限被拒绝", Toast.LENGTH_SHORT).show()
                         }
@@ -121,11 +117,8 @@ class ScopedStorageActivity : BaseActivity() {
                                 Toast.makeText(view.context, text, Toast.LENGTH_SHORT).show()
                             } else {
                                 Toast.makeText(
-                                    view.context,
-                                    "deviceid.txt 文件不存在",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
+                                    view.context, "deviceid.txt 文件不存在", Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     },
@@ -154,8 +147,7 @@ class ScopedStorageActivity : BaseActivity() {
             R.id.btn_media_store_create_file -> {
                 val values = ContentValues()
                 values.put(
-                    MediaStore.Images.Media.DISPLAY_NAME,
-                    "${System.currentTimeMillis()}.png"
+                    MediaStore.Images.Media.DISPLAY_NAME, "${System.currentTimeMillis()}.png"
                 )
                 values.put(MediaStore.Images.Media.DESCRIPTION, "media store test")
                 values.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
@@ -185,8 +177,7 @@ class ScopedStorageActivity : BaseActivity() {
                         val id =
                             cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))
                         val uri = ContentUris.withAppendedId(
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                            id
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id
                         )
                         list.add(uri)
                     }

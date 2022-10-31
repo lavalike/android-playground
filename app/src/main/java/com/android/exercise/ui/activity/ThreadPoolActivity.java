@@ -1,16 +1,17 @@
 package com.android.exercise.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -171,7 +172,8 @@ public class ThreadPoolActivity extends BaseActivity {
         }
     }
 
-    private Handler handler = new Handler() {
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             String log = (String) msg.obj;
@@ -180,7 +182,7 @@ public class ThreadPoolActivity extends BaseActivity {
     };
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_threadpool), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_threadpool));
     }
 }

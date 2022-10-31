@@ -12,14 +12,13 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityPostNotificationBinding
 import com.android.exercise.ui.MainActivity
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import com.wangzhen.permission.PermissionManager
 import com.wangzhen.permission.callback.AbsPermissionCallback
 
@@ -97,8 +96,7 @@ class PostNotificationActivity : BaseActivity() {
         manager.notify(notifyId++, builder.build())
     }
 
-
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_android13_post_notification))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_android13_post_notification))
     }
 }

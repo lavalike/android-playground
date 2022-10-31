@@ -30,11 +30,6 @@ public class PageSwitchActivity extends BaseActivity {
         DarkStatusBar.get().fitDark(this);
     }
 
-    @Override
-    public boolean showToolbar() {
-        return false;
-    }
-
     @OnClick(R.id.iv_anim)
     public void onViewClicked() {
         int[] centerXY = getCenterXYInScreen(ivAnim);

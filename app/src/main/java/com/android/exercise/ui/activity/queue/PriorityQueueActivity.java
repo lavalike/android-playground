@@ -1,13 +1,12 @@
 package com.android.exercise.ui.activity.queue;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -56,7 +55,7 @@ public class PriorityQueueActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_priority_queue));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_priority_queue));
     }
 }

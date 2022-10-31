@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -20,7 +18,7 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.retrofit.RetrofitManager;
 import com.android.exercise.base.retrofit.progress.Done;
 import com.android.exercise.base.retrofit.progress.ProgressListener;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
 import com.android.exercise.ui.adapter.ReposAdapter;
@@ -28,6 +26,7 @@ import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.C;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.T;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -102,8 +101,8 @@ public class RetrofitActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_retrofit), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_retrofit));
     }
 
     @OnClick({R.id.btn_github, R.id.btn_upload_multipartbody, R.id.btn_upload_multipartbodypart})

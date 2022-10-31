@@ -3,12 +3,11 @@ package com.android.exercise.ui.activity.bitmap
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityBitmapOptimizeBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * 大图加载
@@ -61,7 +60,7 @@ class BitmapOptimizeActivity : BaseActivity() {
         return "unknown"
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar, actionBar: ActionBar) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_bitmap_optimize))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_bitmap_optimize))
     }
 }

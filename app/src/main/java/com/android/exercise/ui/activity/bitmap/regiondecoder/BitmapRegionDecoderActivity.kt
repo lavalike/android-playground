@@ -22,8 +22,4 @@ class BitmapRegionDecoderActivity : BaseActivity() {
         val stream = assets.open("images/wandering_earth.jpg")
         binding.ivLargeImage.setInputStream(stream)
     }
-
-    override fun showToolbar(): Boolean {
-        return false
-    }
 }

@@ -8,8 +8,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,12 +19,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import androidx.annotation.Nullable;
+
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.NetworkUtil;
 import com.android.exercise.util.T;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +50,6 @@ public class HtmlActivity extends BaseActivity {
     private final static int FILECHOOSER_RESULTCODE = 1;
 
     private String mUrl;
-    private ToolBarCommonHolder mToolbarHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,21 +105,16 @@ public class HtmlActivity extends BaseActivity {
         mWebView.setWebChromeClient(new UploadWebChromeClient());
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        mToolbarHolder = new ToolBarCommonHolder(this, toolbar, "", true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, "");
     }
 
     /**
      * 上传图片ChromeClient
      */
     public class UploadWebChromeClient extends WebChromeClient {
-
-        @Override
-        public void onReceivedTitle(WebView view, String title) {
-            super.onReceivedTitle(view, title);
-            mToolbarHolder.setTitle(title);
-        }
 
         @Override
         public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
@@ -160,9 +155,7 @@ public class HtmlActivity extends BaseActivity {
             Intent i = new Intent(Intent.ACTION_GET_CONTENT);
             i.addCategory(Intent.CATEGORY_OPENABLE);
             i.setType(MIME);
-            startActivityForResult(
-                    Intent.createChooser(i, "File Browser"),
-                    FILECHOOSER_RESULTCODE);
+            startActivityForResult(Intent.createChooser(i, "File Browser"), FILECHOOSER_RESULTCODE);
         }
 
         //For Android 4.1
@@ -180,9 +173,7 @@ public class HtmlActivity extends BaseActivity {
             Intent i = new Intent(Intent.ACTION_GET_CONTENT);
             i.addCategory(Intent.CATEGORY_OPENABLE);
             i.setType(MIME);
-            startActivityForResult(
-                    Intent.createChooser(i, "File Browser"),
-                    FILECHOOSER_RESULTCODE);
+            startActivityForResult(Intent.createChooser(i, "File Browser"), FILECHOOSER_RESULTCODE);
             return true;
         }
     }
@@ -204,8 +195,7 @@ public class HtmlActivity extends BaseActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void onActivityResultAboveL(int requestCode, int resultCode, Intent data) {
-        if (requestCode != FILECHOOSER_RESULTCODE
-                || mUploadCallbackAboveL == null) {
+        if (requestCode != FILECHOOSER_RESULTCODE || mUploadCallbackAboveL == null) {
             return;
         }
 
@@ -225,8 +215,7 @@ public class HtmlActivity extends BaseActivity {
                     }
                 }
 
-                if (dataString != null)
-                    results = new Uri[]{Uri.parse(dataString)};
+                if (dataString != null) results = new Uri[]{Uri.parse(dataString)};
             }
         }
         mUploadCallbackAboveL.onReceiveValue(results);

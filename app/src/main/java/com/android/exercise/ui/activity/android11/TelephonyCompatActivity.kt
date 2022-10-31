@@ -6,12 +6,11 @@ import android.os.Build
 import android.os.Bundle
 import android.telephony.TelephonyManager
 import android.view.View
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.util.T
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import com.wangzhen.permission.PermissionManager
 import com.wangzhen.permission.callback.AbsPermissionCallback
 
@@ -25,8 +24,8 @@ class TelephonyCompatActivity : BaseActivity() {
         setContentView(R.layout.activity_telephony_compat)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_telephony_compat))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_telephony_compat))
     }
 
     fun onClick(view: View) {
@@ -34,8 +33,7 @@ class TelephonyCompatActivity : BaseActivity() {
             R.id.btn_get_phone_number -> {
                 PermissionManager.request(this, object : AbsPermissionCallback() {
                     override fun onDeny(
-                        deniedPermissions: Array<String>,
-                        neverAskPermissions: Array<String>
+                        deniedPermissions: Array<String>, neverAskPermissions: Array<String>
                     ) {
                         T.get(applicationContext).toast("权限被拒绝")
                     }
@@ -53,8 +51,7 @@ class TelephonyCompatActivity : BaseActivity() {
                 }
                 PermissionManager.request(this, object : AbsPermissionCallback() {
                     override fun onDeny(
-                        deniedPermissions: Array<String>,
-                        neverAskPermissions: Array<String>
+                        deniedPermissions: Array<String>, neverAskPermissions: Array<String>
                     ) {
                         T.get(applicationContext).toast("权限被拒绝")
                     }

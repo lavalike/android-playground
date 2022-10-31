@@ -2,18 +2,19 @@ package com.android.exercise.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
+
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.NetworkUtil;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 import com.yanzhenjie.andserver.AndServer;
 import com.yanzhenjie.andserver.Server;
 import com.yanzhenjie.andserver.website.AssetsWebsite;
@@ -46,16 +47,13 @@ public class AndServerActivity extends BaseActivity {
 
     private void initServer() {
         AssetsWebsite website = new AssetsWebsite(getAssets(), "/speed.html");
-        mServer = new AndServer.Build()
-                .website(website)
-                .port(SERVER_PORT)
-                .build()
-                .createServer();
+        mServer = new AndServer.Build().website(website).port(SERVER_PORT).build().createServer();
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_andServer), true);
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_andServer));
     }
 
     @OnClick({R.id.btn_startServer, R.id.btn_stopServer, R.id.btn_server_msg})

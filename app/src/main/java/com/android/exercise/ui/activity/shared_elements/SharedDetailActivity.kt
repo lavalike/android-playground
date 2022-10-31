@@ -22,8 +22,4 @@ class SharedDetailActivity : BaseActivity() {
         binding.tvTitle.text = intent.getStringExtra("title")
         binding.imageView.setImageResource(intent.getIntExtra("resId", R.mipmap.ic_launcher))
     }
-
-    override fun showToolbar(): Boolean {
-        return false
-    }
 }

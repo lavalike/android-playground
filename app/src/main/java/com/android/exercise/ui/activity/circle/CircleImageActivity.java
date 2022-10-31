@@ -4,12 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
-
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
 
 public class CircleImageActivity extends BaseActivity {
 
@@ -22,17 +18,7 @@ public class CircleImageActivity extends BaseActivity {
         mImageView = findViewById(R.id.imageView);
     }
 
-    @Override
-    public boolean showToolbar() {
-        return false;
-    }
-
-    @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_circle_image));
-    }
-
-//    @DoubleClick
+    //    @DoubleClick
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_reset:

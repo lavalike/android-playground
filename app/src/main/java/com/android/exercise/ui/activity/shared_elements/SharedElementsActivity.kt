@@ -3,16 +3,15 @@ package com.android.exercise.ui.activity.shared_elements
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivitySharedElementsBinding
 import com.android.exercise.ui.activity.shared_elements.adapter.GridAdapter
 import com.android.exercise.ui.activity.shared_elements.entity.GridEntity
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * 共享元素
@@ -30,10 +29,7 @@ class SharedElementsActivity : BaseActivity() {
         binding.recycler.layoutManager = GridLayoutManager(this, _spanCount)
         binding.recycler.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
-                outRect: Rect,
-                view: View,
-                parent: RecyclerView,
-                state: RecyclerView.State
+                outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State
             ) {
                 super.getItemOffsets(outRect, view, parent, state)
                 val divider = view.resources.getDimensionPixelOffset(R.dimen.divider_size)
@@ -55,7 +51,7 @@ class SharedElementsActivity : BaseActivity() {
         return list
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_shared_elements))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_shared_elements))
     }
 }

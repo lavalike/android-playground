@@ -1,8 +1,6 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -15,7 +13,8 @@ import android.widget.FrameLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,8 +41,8 @@ public class ViewAnimationActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_view_animation));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_view_animation));
     }
 
     @OnClick({R.id.view_translate, R.id.view_scale, R.id.view_rotate, R.id.view_alpha, R.id.view_together})

@@ -26,11 +26,6 @@ public class PathSearchActivity extends BaseActivity implements View.OnClickList
     }
 
     @Override
-    public boolean showToolbar() {
-        return false;
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start:

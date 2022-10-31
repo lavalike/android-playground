@@ -1,14 +1,15 @@
 package com.android.exercise.ui.activity.hashmap;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.domain.MapKey;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,8 +83,9 @@ public class HashMapTreeifyActivity extends BaseActivity {
         tvContent.append(map.toString());
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_hashmap_treeify));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_hashmap_treeify));
     }
 }

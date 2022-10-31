@@ -7,13 +7,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.android.exercise.base.manager.AppManager;
+import com.wangzhen.commons.toolbar.ToolbarActivity;
 import com.wangzhen.statusbar.DarkStatusBar;
 
 /**
  * Activity基类
  * Created by Administrator on 2016/4/12.
  */
-public class BaseActivity extends ToolbarActivity {
+public abstract class BaseActivity extends ToolbarActivity {
 
     public Context mContext;
     protected String TAG = getClass().getSimpleName();
@@ -22,7 +23,6 @@ public class BaseActivity extends ToolbarActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        setSwipeBackEnable(true);
         AppManager.get().addActivity(this);
     }
 
@@ -31,10 +31,8 @@ public class BaseActivity extends ToolbarActivity {
     }
 
     public void fitDarkStatus(boolean isDark) {
-        if (isDark)
-            DarkStatusBar.get().fitDark(this);
-        else
-            DarkStatusBar.get().fitLight(this);
+        if (isDark) DarkStatusBar.get().fitDark(this);
+        else DarkStatusBar.get().fitLight(this);
     }
 
     @Override

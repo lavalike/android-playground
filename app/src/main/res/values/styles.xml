@@ -1,7 +1,6 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="CommonTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,20 +11,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <!--边缘手势样式兼容5.0以下系统-->
-        <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
-
         <!--修改全局字体-->
         <item name="android:fontFamily">@font/fzbiaoysk</item>
         <item name="android:textColor">@color/color_3b424c</item>
-
-        <!--全局Activity动画 左右切换-->
-        <!--<item name="android:windowAnimationStyle">@style/ActivityAnimation</item>-->
-
     </style>
-
-    <style name="AppTheme" parent="AppBaseTheme" />
 
     <style name="AppTheme.FullScreen">
         <item name="android:windowFullscreen">true</item>

@@ -20,16 +20,9 @@ class CoordinateMotionActivity : BaseActivity() {
 
         binding.back.setOnClickListener { finish() }
 
-        binding.appbar.addOnOffsetChangedListener(object : AppBarLayout.OnOffsetChangedListener {
-            override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
-                val seekPosition =
-                    -verticalOffset / (appBarLayout?.totalScrollRange!!.toFloat())
-                binding.motion.progress = seekPosition
-            }
-        })
-    }
-
-    override fun showToolbar(): Boolean {
-        return false
+        binding.appbar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val seekPosition = -verticalOffset / (appBarLayout?.totalScrollRange!!.toFloat())
+            binding.motion.progress = seekPosition
+        }
     }
 }

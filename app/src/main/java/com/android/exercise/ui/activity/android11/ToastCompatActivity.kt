@@ -6,11 +6,10 @@ import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * 自定义消息框视图被屏蔽
@@ -22,8 +21,8 @@ class ToastCompatActivity : BaseActivity() {
         setContentView(R.layout.activity_toast_compat)
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_toast_compat))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_toast_compat))
     }
 
     fun onClick(view: View) {

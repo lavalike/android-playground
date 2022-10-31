@@ -1,16 +1,15 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.annotation.InjectLayout;
 import com.android.exercise.annotation.InjectView;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.util.ViewInjectUtils;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 /**
  * 运行时注解
@@ -29,7 +28,7 @@ public class RuntimeAnnotationActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_annotation_runtime));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_annotation_runtime));
     }
 }

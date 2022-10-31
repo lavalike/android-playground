@@ -3,16 +3,15 @@ package com.android.exercise.ui.activity.hook
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityHookBinding
 import com.wangzhen.adapter.RecyclerAdapter
 import com.wangzhen.adapter.callback.OnItemClickCallback
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * HookActivity
@@ -63,7 +62,7 @@ class HookActivity : BaseActivity() {
         return list
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_hook))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_hook))
     }
 }

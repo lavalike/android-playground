@@ -5,12 +5,12 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 import com.wangzhen.download.DownloadClient;
 import com.wangzhen.download.bean.ParamsBody;
 import com.wangzhen.download.callback.OnDownloadCallback;
@@ -61,8 +61,9 @@ public class DownloadActivity extends BaseActivity {
                 .build());
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_download));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_download));
     }
 }

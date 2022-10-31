@@ -10,13 +10,12 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityBluetoothBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 import com.wangzhen.permission.PermissionManager
 import com.wangzhen.permission.callback.AbsPermissionCallback
 
@@ -74,8 +73,7 @@ class BluetoothActivity : BaseActivity() {
                 this,
                 object : AbsPermissionCallback() {
                     override fun onDeny(
-                        deniedPermissions: Array<String>,
-                        neverAskPermissions: Array<String>
+                        deniedPermissions: Array<String>, neverAskPermissions: Array<String>
                     ) {
                         Toast.makeText(applicationContext, "需要位置权限", Toast.LENGTH_SHORT).show()
                     }
@@ -113,8 +111,8 @@ class BluetoothActivity : BaseActivity() {
         }
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, getString(R.string.item_bluetooth))
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_bluetooth))
     }
 
     override fun onDestroy() {

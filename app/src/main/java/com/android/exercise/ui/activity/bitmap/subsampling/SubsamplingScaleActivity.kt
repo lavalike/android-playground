@@ -19,8 +19,4 @@ class SubsamplingScaleActivity : BaseActivity() {
         setContentView(binding.root)
         binding.largeImage.setImage(ImageSource.asset("images/wandering_earth.jpg"))
     }
-
-    override fun showToolbar(): Boolean {
-        return false
-    }
 }

@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
-
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.ui.widget.refresh.RefreshHeader;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 import com.wangzhen.refresh.RefreshLayout;
 import com.wangzhen.refresh.callback.OnRefreshCallback;
 
@@ -37,8 +35,8 @@ public class RefreshLayoutActivity extends BaseActivity implements OnRefreshCall
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_refresh_layout));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_refresh_layout));
     }
 
     @OnClick({R.id.btn_start, R.id.btn_stop})

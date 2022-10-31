@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.ui.activity.biometric.manager.FingerprintManager;
 import com.android.exercise.ui.activity.biometric.manager.callback.AbsFingerprintCallback;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 public class BiometricActivity extends BaseActivity {
 
@@ -21,9 +21,10 @@ public class BiometricActivity extends BaseActivity {
         setContentView(R.layout.activity_biometric);
     }
 
+    @Nullable
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_biometric));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_biometric));
     }
 
     public void onClick(View view) {

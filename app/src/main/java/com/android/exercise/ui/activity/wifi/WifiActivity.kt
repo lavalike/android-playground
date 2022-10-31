@@ -7,12 +7,12 @@ import android.content.IntentFilter
 import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.toolbar.ToolBarCommonHolder
+import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityWifiBinding
+import com.wangzhen.commons.toolbar.impl.Toolbar
 
 /**
  * WifiActivity
@@ -64,8 +64,8 @@ class WifiActivity : BaseActivity() {
         registerReceiver(mReceiver, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
     }
 
-    override fun onSetupToolbar(toolbar: Toolbar?, actionBar: ActionBar?) {
-        ToolBarCommonHolder(this, toolbar, "Wifi")
+    override fun createToolbar(): Toolbar {
+        return ToolbarFactory.themed(this, getString(R.string.item_wifi))
     }
 
     private fun bind() {

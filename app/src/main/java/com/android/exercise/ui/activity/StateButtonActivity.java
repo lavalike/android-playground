@@ -1,14 +1,13 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.base.toolbar.ToolBarCommonHolder;
+import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.ui.widget.StateButton;
+import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,8 +26,8 @@ public class StateButtonActivity extends BaseActivity {
     }
 
     @Override
-    protected void onSetupToolbar(Toolbar toolbar, ActionBar actionBar) {
-        new ToolBarCommonHolder(this, toolbar, getString(R.string.item_state_button));
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_state_button));
     }
 
     @OnClick({R.id.btn_state, R.id.btn_reset, R.id.btn_loading, R.id.btn_success})
