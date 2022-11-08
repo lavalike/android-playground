@@ -55,6 +55,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.di.dagger2.Dagger2Activity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.android13.IntentMatchActivity"
             android:exported="false" />
         <activity
@@ -67,7 +70,6 @@
                 <action android:name="com.android.exercise.android13.permissions" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <category android:name="android.intent.category.A" />
                 <category android:name="android.intent.category.B" />
                 <category android:name="android.intent.category.C" />

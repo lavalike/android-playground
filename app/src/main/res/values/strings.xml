@@ -137,4 +137,6 @@
     <string name="drag_and_drop_drag_me">drag me</string>
     <string name="drag_and_drop_drop_here">drop here</string>
     <string name="drag_and_drop_text">Dropped Text: %s</string>
+
+    <string name="item_dagger">Dagger2</string>
 </resources>
