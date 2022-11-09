@@ -4,6 +4,6 @@ import javax.inject.Inject
 
 class Man @Inject constructor(private val car: Car) {
     fun work(): String {
-        return "man enter the car -> ${car.work()}"
+        return "man enter the car -> ${car.work()} -> go!"
     }
 }
