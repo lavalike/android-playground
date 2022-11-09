@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16sp"
-    tools:context=".ui.activity.di.dagger2.Dagger2Activity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_man"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_3b424c"
-        tools:text="man" />
+        android:orientation="vertical"
+        android:padding="16sp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dagger2_introduction"
+            android:textColor="@color/color_text_color_light" />
+
+        <TextView
+            android:id="@+id/tv_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_text_color"
+            tools:text="man" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -13,7 +13,7 @@
 
         <!--修改全局字体-->
         <item name="android:fontFamily">@font/fzbiaoysk</item>
-        <item name="android:textColor">@color/color_3b424c</item>
+        <item name="android:textColor">@color/color_text_color</item>
     </style>
 
     <style name="AppTheme.FullScreen">
