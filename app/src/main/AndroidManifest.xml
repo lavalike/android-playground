@@ -55,6 +55,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.di.koin.KoinActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.di.hilt.HiltActivity"
             android:exported="false" />
         <activity

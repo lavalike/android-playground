@@ -143,4 +143,7 @@
 
     <string name="item_hilt">Hilt</string>
     <string name="hilt_introduction">Hilt 是 Android 的依赖项注入库，可减少在项目中执行手动依赖项注入的样板代码。执行手动依赖项注入要求您手动构造每个类及其依赖项，并借助容器重复使用和管理依赖项。\n\nHilt 通过为项目中的每个 Android 类提供容器并自动管理其生命周期，提供了一种在应用中使用 DI（依赖项注入）的标准方法。Hilt 在热门 DI 库 Dagger 的基础上构建而成，因而能够受益于 Dagger 的编译时正确性、运行时性能、可伸缩性和 Android Studio 支持。\n\n因Hilt与Dagger2无法共存，请自行探索。</string>
+
+    <string name="item_koin">Koin</string>
+    <string name="koin_introduction">Koin 是为 Kotlin 开发者提供的一个实用型轻量级依赖注入框架，采用纯 Kotlin 语言编写而成，仅使用功能解析，无代理、无代码生成、无反射。</string>
 </resources>
