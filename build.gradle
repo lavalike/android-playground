@@ -3,7 +3,7 @@ apply from: 'global.gradle'
 
 buildscript {
     ext.objectboxVersion = '2.5.1'
-    ext.kotlin_version = "1.7.10"
+    ext.kotlin_version = "1.7.20"
     repositories {
         google()
         mavenCentral()

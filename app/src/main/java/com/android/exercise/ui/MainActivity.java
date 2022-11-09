@@ -84,6 +84,7 @@ import com.android.exercise.ui.activity.database.LitePalActivity;
 import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.android.exercise.ui.activity.database.RealmActivity;
 import com.android.exercise.ui.activity.di.dagger2.Dagger2Activity;
+import com.android.exercise.ui.activity.di.hilt.HiltActivity;
 import com.android.exercise.ui.activity.download.DownloadActivity;
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity;
 import com.android.exercise.ui.activity.hook.HookActivity;
@@ -193,6 +194,7 @@ public class MainActivity extends BaseActivity {
     private List<BaseBean> generateList() {
         List<BaseBean> list = new ArrayList<>();
         list.add(new TitleBean("Dependency Injection"));
+        list.add(new ItemBean(getString(R.string.item_hilt), HiltActivity.class));
         list.add(new ItemBean(getString(R.string.item_dagger), Dagger2Activity.class));
         list.add(new TitleBean("Android 13"));
         list.add(new ItemBean(getString(R.string.item_android13_post_notification), PostNotificationActivity.class));
