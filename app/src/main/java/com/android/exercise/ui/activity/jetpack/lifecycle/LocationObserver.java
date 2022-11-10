@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.android.exercise.base.BaseApplication;
+import com.android.exercise.util.AppUtil;
 
 /**
  * LocationObserver
@@ -15,11 +15,11 @@ import com.android.exercise.base.BaseApplication;
 public class LocationObserver implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void connect() {
-        Toast.makeText(BaseApplication.getContext(), "start locating", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AppUtil.getContext(), "start locating", Toast.LENGTH_SHORT).show();
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void disConnect() {
-        Toast.makeText(BaseApplication.getContext(), "stop locating", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AppUtil.getContext(), "stop locating", Toast.LENGTH_SHORT).show();
     }
 }

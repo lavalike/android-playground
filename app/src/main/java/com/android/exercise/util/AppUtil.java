@@ -1,5 +1,6 @@
 package com.android.exercise.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -23,6 +24,7 @@ import java.io.InputStreamReader;
 
 public class AppUtil {
 
+    @SuppressLint("StaticFieldLeak")
     public static Context mApp;
 
     public static void init(Context context) {
@@ -85,5 +87,14 @@ public class AppUtil {
             ctx = ((ContextWrapper) ctx).getBaseContext();
         }
         return null;
+    }
+
+    /**
+     * get app name
+     *
+     * @return name
+     */
+    public static String getAppName() {
+        return mApp.getApplicationInfo().loadLabel(mApp.getPackageManager()).toString();
     }
 }

@@ -6,6 +6,8 @@ import com.android.exercise.base.BaseApplication;
 
 import java.util.Stack;
 
+import javax.annotation.Nullable;
+
 /**
  * 管理所有Activity
  * Created by wangzhen on 16/10/20.
@@ -20,7 +22,7 @@ public class AppManager {
 
     public static AppManager get() {
         if (mInstance == null) {
-            synchronized (BaseApplication.class) {
+            synchronized (AppManager.class) {
                 mInstance = new AppManager();
             }
         }
@@ -29,9 +31,8 @@ public class AppManager {
 
     /**
      * 获取栈顶元素
-     *
-     * @return
      */
+    @Nullable
     public Activity getActivity() {
         if (mActivityStack != null) {
             return mActivityStack.peek();
@@ -41,12 +42,9 @@ public class AppManager {
 
     /**
      * 添加Activity
-     *
-     * @param activity
      */
     public void addActivity(Activity activity) {
-        if (mActivityStack == null)
-            mActivityStack = new Stack<>();
+        if (mActivityStack == null) mActivityStack = new Stack<>();
         mActivityStack.push(activity);
     }
 
@@ -61,14 +59,10 @@ public class AppManager {
 
     /**
      * 删除Activity
-     *
-     * @param activity
      */
     public void removeActivity(Activity activity) {
         if (mActivityStack != null) {
-            if (mActivityStack.contains(activity)) {
-                mActivityStack.remove(activity);
-            }
+            mActivityStack.remove(activity);
         }
     }
 

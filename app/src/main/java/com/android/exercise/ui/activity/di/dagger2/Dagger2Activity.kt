@@ -6,7 +6,6 @@ import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ThemedCommonToolbar
 import com.android.exercise.databinding.ActivityDagger2Binding
 import com.android.exercise.ui.activity.di.dagger2.component.DaggerAppComponent
-import com.android.exercise.ui.activity.di.dagger2.entity.Car
 import com.android.exercise.ui.activity.di.dagger2.entity.Man
 import com.wangzhen.commons.toolbar.impl.Toolbar
 import javax.inject.Inject
@@ -30,7 +29,7 @@ class Dagger2Activity : BaseActivity() {
         DaggerAppComponent.create().inject(this)
 
         with(binding) {
-            tvMan.text = man.work()
+            tv.text = man.work()
         }
     }
 
