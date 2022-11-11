@@ -24,6 +24,7 @@ import com.android.exercise.ui.activity.database.ObjectBoxActivity
 import com.android.exercise.ui.activity.database.RealmActivity
 import com.android.exercise.ui.activity.di.dagger2.Dagger2Activity
 import com.android.exercise.ui.activity.di.hilt.HiltActivity
+import com.android.exercise.ui.activity.di.kodein.KodeinActivity
 import com.android.exercise.ui.activity.di.koin.KoinActivity
 import com.android.exercise.ui.activity.download.DownloadActivity
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity
@@ -63,6 +64,7 @@ object DataRepository {
     @JvmStatic
     fun home() = mutableListOf<BaseBean>().apply {
         add(TitleBean("Dependency Injection"))
+        add(ItemBean(getString(R.string.item_kodein), KodeinActivity::class.java))
         add(ItemBean(getString(R.string.item_koin), KoinActivity::class.java))
         add(ItemBean(getString(R.string.item_hilt), HiltActivity::class.java))
         add(ItemBean(getString(R.string.item_dagger), Dagger2Activity::class.java))
@@ -112,8 +114,7 @@ object DataRepository {
         add(ItemBean(getString(R.string.item_work_manager), WorkManagerActivity::class.java))
         add(
             ItemBean(
-                getString(R.string.item_constraintlayout),
-                ConstraintLayoutActivity::class.java
+                getString(R.string.item_constraintlayout), ConstraintLayoutActivity::class.java
             )
         )
 
@@ -246,7 +247,7 @@ object DataRepository {
 
         add(TitleBean("自动化"))
         add(ItemBean(getString(R.string.item_qq_auto_msg), AppOptActivity::class.java))
-        
+
         add(TitleBean("基础"))
         add(ItemBean(getString(R.string.item_hook), HookActivity::class.java))
         add(ItemBean(getString(R.string.item_bit_opt), BitOptActivity::class.java))
