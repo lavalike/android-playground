@@ -4,7 +4,7 @@
     android:id="@+id/swipe_loadmore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.exercise.ui.activity.RecyclerActivity">
+    tools:context="com.android.exercise.ui.activity.view.RecyclerActivity">
 
     <com.android.exercise.ui.widget.recyclerview.ZRecyclerView
         android:id="@+id/recycler_more"

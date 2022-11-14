@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.activity.StateButtonActivity">
+    tools:context=".ui.activity.view.StateButtonActivity">
 
     <com.android.exercise.ui.widget.StateButton
         android:id="@+id/btn_state"

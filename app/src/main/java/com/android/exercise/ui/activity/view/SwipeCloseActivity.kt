@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity
+package com.android.exercise.ui.activity.view
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

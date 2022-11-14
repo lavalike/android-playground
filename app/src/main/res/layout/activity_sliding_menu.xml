@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:overScrollMode="never"
     android:scrollbars="none"
-    tools:context="com.android.exercise.ui.activity.SlidingMenuActivity"
+    tools:context="com.android.exercise.ui.activity.view.SlidingMenuActivity"
     wangzhen:menuRightPadding="80dp">
 
     <LinearLayout

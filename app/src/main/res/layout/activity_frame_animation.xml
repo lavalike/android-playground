@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.android.exercise.ui.activity.FrameAnimationActivity">
+    tools:context="com.android.exercise.ui.activity.view.FrameAnimationActivity">
 
     <View
         android:id="@+id/view_frame"

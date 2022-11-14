@@ -51,6 +51,7 @@ import com.android.exercise.ui.activity.queue.TaskSequenceActivity
 import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity
 import com.android.exercise.ui.activity.stream.FileStreamActivity
 import com.android.exercise.ui.activity.touch.MultiTouchActivity
+import com.android.exercise.ui.activity.view.*
 import com.android.exercise.ui.activity.websocket.WebSocketActivity
 import com.android.exercise.ui.activity.wifi.WifiActivity
 import com.android.exercise.util.AppUtil
@@ -68,6 +69,73 @@ object DataRepository {
         add(ItemBean(getString(R.string.item_koin), KoinActivity::class.java))
         add(ItemBean(getString(R.string.item_hilt), HiltActivity::class.java))
         add(ItemBean(getString(R.string.item_dagger), Dagger2Activity::class.java))
+
+        add(TitleBean("视图相关"))
+        add(ItemBean(getString(R.string.item_typewriter), PathSearchActivity::class.java))
+        add(ItemBean(getString(R.string.item_path_search), PathSearchActivity::class.java))
+        add(ItemBean(getString(R.string.item_path_measure), PathMeasureActivity::class.java))
+        add(ItemBean(getString(R.string.item_path), PathActivity::class.java))
+        add(ItemBean(getString(R.string.item_swipe_close), SwipeCloseActivity::class.java))
+        add(ItemBean(getString(R.string.item_pull_layout), ElasticActivity::class.java))
+        add(
+            ItemBean(
+                getString(R.string.item_shared_elements), SharedElementsActivity::class.java
+            )
+        )
+        add(ItemBean(getString(R.string.item_circle_image), CircleImageActivity::class.java))
+        add(ItemBean(getString(R.string.item_adapter), LoadMoreActivity::class.java))
+        add(ItemBean(getString(R.string.item_hero), MultiLayerActivity::class.java))
+        add(ItemBean(getString(R.string.item_wave_view), WaveActivity::class.java))
+        add(ItemBean(getString(R.string.item_calendar), CalendarActivity::class.java))
+        add(ItemBean(getString(R.string.item_multi_touch), MultiTouchActivity::class.java))
+        add(ItemBean(getString(R.string.item_view_switcher), ViewSwitchActivity::class.java))
+        add(ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity::class.java))
+        add(ItemBean(getString(R.string.item_notification), NotificationActivity::class.java))
+        add(ItemBean(getString(R.string.item_text_format), TextFormatActivity::class.java))
+        add(ItemBean(getString(R.string.item_text_link), TextLinkActivity::class.java))
+        add(ItemBean(getString(R.string.item_state_button), StateButtonActivity::class.java))
+        add(ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity::class.java))
+        add(
+            ItemBean(
+                getString(R.string.item_recycler_hover), HoverRecyclerViewActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_recycler_touch), RecyclerTouchActivity::class.java
+            )
+        )
+        add(ItemBean(getString(R.string.item_window), WindowActivity::class.java))
+        add(ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity::class.java))
+        add(ItemBean(getString(R.string.item_loadmore), RecyclerActivity::class.java))
+        add(ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity::class.java))
+        add(ItemBean(getString(R.string.item_24hanim), Anim24hActivity::class.java))
+        add(ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity::class.java))
+        add(ItemBean(getString(R.string.item_ad_window), ADWindowActivity::class.java))
+        add(ItemBean(getString(R.string.item_ice_switch), PageSwitchActivity::class.java))
+        add(ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity::class.java))
+        add(ItemBean(getString(R.string.item_scrollview), ScrollActivity::class.java))
+        add(ItemBean(getString(R.string.item_anim_view), AnimViewActivity::class.java))
+        add(ItemBean(getString(R.string.item_edit_view), EditViewActivity::class.java))
+        add(ItemBean(getString(R.string.item_floor), FloorActivity::class.java))
+        add(ItemBean(getString(R.string.item_recorder), RecorderActivity::class.java))
+        add(ItemBean(getString(R.string.item_ripple), RippleActivity::class.java))
+        add(ItemBean(getString(R.string.item_view), ViewActivity::class.java))
+        add(
+            ItemBean(
+                getString(R.string.item_html_rich_text), HtmlRichTextActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_view_animation), ViewAnimationActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_frame_animation), FrameAnimationActivity::class.java
+            )
+        )
 
         add(TitleBean("Android 13"))
         add(
@@ -178,72 +246,6 @@ object DataRepository {
         add(ItemBean(getString(R.string.item_camera_video), VideoRecordActivity::class.java))
         add(ItemBean(getString(R.string.item_exoplayer), ExoPlayerActivity::class.java))
         add(ItemBean(getString(R.string.item_ijkplayer), IjkPlayerActivity::class.java))
-
-        add(TitleBean("视图相关"))
-        add(ItemBean(getString(R.string.item_path_search), PathSearchActivity::class.java))
-        add(ItemBean(getString(R.string.item_path_measure), PathMeasureActivity::class.java))
-        add(ItemBean(getString(R.string.item_path), PathActivity::class.java))
-        add(ItemBean(getString(R.string.item_swipe_close), SwipeCloseActivity::class.java))
-        add(ItemBean(getString(R.string.item_pull_layout), ElasticActivity::class.java))
-        add(
-            ItemBean(
-                getString(R.string.item_shared_elements), SharedElementsActivity::class.java
-            )
-        )
-        add(ItemBean(getString(R.string.item_circle_image), CircleImageActivity::class.java))
-        add(ItemBean(getString(R.string.item_adapter), LoadMoreActivity::class.java))
-        add(ItemBean(getString(R.string.item_hero), MultiLayerActivity::class.java))
-        add(ItemBean(getString(R.string.item_wave_view), WaveActivity::class.java))
-        add(ItemBean(getString(R.string.item_calendar), CalendarActivity::class.java))
-        add(ItemBean(getString(R.string.item_multi_touch), MultiTouchActivity::class.java))
-        add(ItemBean(getString(R.string.item_view_switcher), ViewSwitchActivity::class.java))
-        add(ItemBean(getString(R.string.item_invoke_app), InvokeAppActivity::class.java))
-        add(ItemBean(getString(R.string.item_notification), NotificationActivity::class.java))
-        add(ItemBean(getString(R.string.item_text_format), TextFormatActivity::class.java))
-        add(ItemBean(getString(R.string.item_text_link), TextLinkActivity::class.java))
-        add(ItemBean(getString(R.string.item_state_button), StateButtonActivity::class.java))
-        add(ItemBean(getString(R.string.item_recycler_tik_tok), TikTokActivity::class.java))
-        add(
-            ItemBean(
-                getString(R.string.item_recycler_hover), HoverRecyclerViewActivity::class.java
-            )
-        )
-        add(
-            ItemBean(
-                getString(R.string.item_recycler_touch), RecyclerTouchActivity::class.java
-            )
-        )
-        add(ItemBean(getString(R.string.item_window), WindowActivity::class.java))
-        add(ItemBean(getString(R.string.item_slidingmenu), SlidingMenuActivity::class.java))
-        add(ItemBean(getString(R.string.item_loadmore), RecyclerActivity::class.java))
-        add(ItemBean(getString(R.string.item_flowlayout), FlowLayoutActivity::class.java))
-        add(ItemBean(getString(R.string.item_24hanim), Anim24hActivity::class.java))
-        add(ItemBean(getString(R.string.item_drawerslide), DrawerSlideActivity::class.java))
-        add(ItemBean(getString(R.string.item_ad_window), ADWindowActivity::class.java))
-        add(ItemBean(getString(R.string.item_ice_switch), PageSwitchActivity::class.java))
-        add(ItemBean(getString(R.string.item_porter_duff), PorterDuffActivity::class.java))
-        add(ItemBean(getString(R.string.item_scrollview), ScrollActivity::class.java))
-        add(ItemBean(getString(R.string.item_anim_view), AnimViewActivity::class.java))
-        add(ItemBean(getString(R.string.item_edit_view), EditViewActivity::class.java))
-        add(ItemBean(getString(R.string.item_floor), FloorActivity::class.java))
-        add(ItemBean(getString(R.string.item_recorder), RecorderActivity::class.java))
-        add(ItemBean(getString(R.string.item_ripple), RippleActivity::class.java))
-        add(ItemBean(getString(R.string.item_view), ViewActivity::class.java))
-        add(
-            ItemBean(
-                getString(R.string.item_html_rich_text), HtmlRichTextActivity::class.java
-            )
-        )
-        add(
-            ItemBean(
-                getString(R.string.item_view_animation), ViewAnimationActivity::class.java
-            )
-        )
-        add(
-            ItemBean(
-                getString(R.string.item_frame_animation), FrameAnimationActivity::class.java
-            )
-        )
 
         add(TitleBean("自动化"))
         add(ItemBean(getString(R.string.item_qq_auto_msg), AppOptActivity::class.java))

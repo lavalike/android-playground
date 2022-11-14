@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.ui.activity.view.HtmlActivity;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.NetworkUtil;
 import com.wangzhen.commons.toolbar.impl.Toolbar;

@@ -1,15 +1,14 @@
-package com.android.exercise.ui.activity;
+package com.android.exercise.ui.activity.view;
 
 import android.os.Bundle;
+import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
-import com.android.exercise.ui.adapter.RecyclerImageAdapter;
+import com.android.exercise.util.AppUtil;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
@@ -19,23 +18,46 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * ImageRecyclerActivity
+ * ImageHtmlActivity
  * Created by wangzhen on 2018/12/27.
  */
-public class ImageRecyclerActivity extends BaseActivity {
+public class ImageHtmlActivity extends BaseActivity {
 
-    @BindView(R.id.recycler_image)
-    RecyclerView recyclerImage;
+    @BindView(R.id.webview)
+    WebView webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_image);
+        setContentView(R.layout.activity_web_image);
         ButterKnife.bind(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerImage.setLayoutManager(linearLayoutManager);
-        recyclerImage.setAdapter(new RecyclerImageAdapter(this, initList()));
+        String htmlCode = AppUtil.getAssetsText("html/html_image_list.html");
+        htmlCode = String.format(htmlCode, createImagesTags(initList()));
+        webview.loadDataWithBaseURL(null, htmlCode, "text/html", "utf-8", null);
+    }
+
+    @Nullable
+    @Override
+    public Toolbar createToolbar() {
+        return ToolbarFactory.themed(this, getString(R.string.item_image_html));
+    }
+
+    /**
+     * 创建Img标签
+     *
+     * @param urls urls
+     * @return tags
+     */
+    private String createImagesTags(List<String> urls) {
+        StringBuilder builder = new StringBuilder();
+        for (String url : urls) {
+            builder.append("<img");
+            builder.append(" src=\"");
+            builder.append(url);
+            builder.append("\"");
+            builder.append(" />");
+        }
+        return builder.toString();
     }
 
     private List<String> initList() {
@@ -63,11 +85,5 @@ public class ImageRecyclerActivity extends BaseActivity {
         list.add("http://rili.php.jxcraft.net/public/uploads/20181121/f89c9a6b351a3fbe78bfd872303ade93.png");
         list.add("http://rili.php.jxcraft.net/public/uploads/20181121/f4cd72082ac7929578c7acb37b3c40e3.png");
         return list;
-    }
-
-    @Nullable
-    @Override
-    public Toolbar createToolbar() {
-        return ToolbarFactory.themed(this, getString(R.string.item_image_recycler));
     }
 }

@@ -4,6 +4,6 @@
     android:id="@+id/recycler_tik_tok"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.TikTokActivity">
+    tools:context=".ui.activity.view.TikTokActivity">
 
 </androidx.recyclerview.widget.RecyclerView>

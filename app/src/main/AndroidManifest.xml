@@ -111,7 +111,7 @@
         <activity
             android:name=".ui.activity.motion.MotionLayoutActivity"
             android:exported="true" />
-        <activity android:name=".ui.activity.SwipeCloseActivity" />
+        <activity android:name=".ui.activity.view.SwipeCloseActivity" />
         <activity android:name=".ui.activity.ipc.messenger.MessengerActivity" />
         <activity android:name=".ui.activity.md5.MD5Activity" />
         <activity android:name=".ui.activity.kotlin.CoroutinesActivity" />
@@ -142,12 +142,12 @@
         <activity android:name=".ui.activity.database.ObjectBoxActivity" />
         <activity android:name=".ui.activity.player.IjkPlayerActivity" />
         <activity android:name=".ui.activity.player.ExoPlayerActivity" />
-        <activity android:name=".ui.activity.HtmlRichTextActivity" />
+        <activity android:name=".ui.activity.view.HtmlRichTextActivity" />
         <activity android:name=".ui.activity.download.DownloadActivity" />
         <activity android:name=".ui.activity.calendar.CalendarActivity" />
         <activity android:name=".ui.activity.touch.MultiTouchActivity" />
         <activity android:name=".ui.activity.ViewSwitchActivity" />
-        <activity android:name=".ui.activity.RefreshLayoutActivity" />
+        <activity android:name=".ui.activity.view.RefreshLayoutActivity" />
         <activity android:name=".ui.activity.stream.FileStreamActivity" />
         <activity android:name=".ui.activity.hashmap.HashMapTreeifyActivity" />
         <activity android:name=".ui.activity.queue.PriorityQueueActivity" />
@@ -164,10 +164,10 @@
         </activity>
         <activity android:name=".ui.activity.database.RealmActivity" />
         <activity android:name=".ui.activity.RetrofitActivity" />
-        <activity android:name=".ui.activity.HtmlActivity" />
-        <activity android:name=".ui.activity.RecyclerActivity" />
-        <activity android:name=".ui.activity.SlidingMenuActivity" />
-        <activity android:name=".ui.activity.FlowLayoutActivity" />
+        <activity android:name=".ui.activity.view.HtmlActivity" />
+        <activity android:name=".ui.activity.view.RecyclerActivity" />
+        <activity android:name=".ui.activity.view.SlidingMenuActivity" />
+        <activity android:name=".ui.activity.view.FlowLayoutActivity" />
         <activity android:name=".ui.activity.AutoServiceActivity" /> <!-- 自动化辅助服务 -->
         <service
             android:name=".service.AutoService"
@@ -200,12 +200,12 @@
         <activity android:name=".ui.activity.OKHttpActivity" />
         <activity android:name=".ui.activity.ThreadPoolActivity" />
         <activity android:name=".ui.activity.DispatchActivity" />
-        <activity android:name=".ui.activity.ConstraintLayoutActivity" />
-        <activity android:name=".ui.activity.DrawerSlideActivity" />
+        <activity android:name=".ui.activity.view.ConstraintLayoutActivity" />
+        <activity android:name=".ui.activity.view.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
         <activity android:name=".ui.activity.MinaActivity" />
-        <activity android:name=".ui.activity.RippleActivity" />
-        <activity android:name=".ui.activity.ViewActivity" />
+        <activity android:name=".ui.activity.view.RippleActivity" />
+        <activity android:name=".ui.activity.view.ViewActivity" />
         <activity android:name=".ui.activity.RxJavaActivity" />
 
         <service android:name=".service.PollService" />
@@ -235,20 +235,20 @@
 
         <activity android:name=".ui.activity.WindowActivity" />
         <activity android:name=".ui.activity.TextLinkActivity" />
-        <activity android:name=".ui.activity.RecyclerTouchActivity" />
+        <activity android:name=".ui.activity.view.RecyclerTouchActivity" />
         <activity android:name=".ui.activity.RecorderActivity" />
-        <activity android:name=".ui.activity.FloorActivity" />
-        <activity android:name=".ui.activity.EditViewActivity" />
+        <activity android:name=".ui.activity.view.FloorActivity" />
+        <activity android:name=".ui.activity.view.EditViewActivity" />
         <activity android:name=".ui.activity.WaveActivity" />
-        <activity android:name=".ui.activity.AnimViewActivity" />
-        <activity android:name=".ui.activity.PorterDuffActivity" />
-        <activity android:name=".ui.activity.ScrollActivity" />
-        <activity android:name=".ui.activity.ViewAnimationActivity" />
-        <activity android:name=".ui.activity.FrameAnimationActivity" />
-        <activity android:name=".ui.activity.ElasticActivity" />
+        <activity android:name=".ui.activity.view.AnimViewActivity" />
+        <activity android:name=".ui.activity.view.PorterDuffActivity" />
+        <activity android:name=".ui.activity.view.ScrollActivity" />
+        <activity android:name=".ui.activity.view.ViewAnimationActivity" />
+        <activity android:name=".ui.activity.view.FrameAnimationActivity" />
+        <activity android:name=".ui.activity.view.ElasticActivity" />
         <activity android:name=".ui.activity.BroadcastActivity" />
         <activity android:name=".ui.activity.PageSwitchActivity" />
-        <activity android:name=".ui.activity.ADWindowActivity" />
+        <activity android:name=".ui.activity.view.ADWindowActivity" />
         <activity
             android:name=".ui.activity.BrowserActivity"
             android:exported="true">
@@ -258,9 +258,9 @@
         </activity>
         <activity android:name=".ui.activity.RuntimeAnnotationActivity" />
         <activity android:name=".ui.activity.TextFormatActivity" />
-        <activity android:name=".ui.activity.HoverRecyclerViewActivity" />
-        <activity android:name=".ui.activity.TikTokActivity" />
-        <activity android:name=".ui.activity.StateButtonActivity" />
+        <activity android:name=".ui.activity.view.HoverRecyclerViewActivity" />
+        <activity android:name=".ui.activity.view.TikTokActivity" />
+        <activity android:name=".ui.activity.view.StateButtonActivity" />
         <activity android:name=".ui.activity.NotificationActivity" />
 
         <receiver
@@ -286,14 +286,14 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".ui.activity.InvokeAppActivity" />
-        <activity android:name=".ui.activity.PathActivity" />
-        <activity android:name=".ui.activity.PathMeasureActivity" />
-        <activity android:name=".ui.activity.PathSearchActivity" />
+        <activity android:name=".ui.activity.view.InvokeAppActivity" />
+        <activity android:name=".ui.activity.view.PathActivity" />
+        <activity android:name=".ui.activity.view.PathMeasureActivity" />
+        <activity android:name=".ui.activity.view.PathSearchActivity" />
         <activity android:name=".ui.activity.AppOptActivity" />
         <activity android:name=".ui.activity.BitOptActivity" />
-        <activity android:name=".ui.activity.ImageRecyclerActivity" />
-        <activity android:name=".ui.activity.ImageHtmlActivity" />
+        <activity android:name=".ui.activity.view.ImageRecyclerActivity" />
+        <activity android:name=".ui.activity.view.ImageHtmlActivity" />
         <activity android:name=".ui.activity.VideoRecordActivity" />
         <activity
             android:name=".ui.activity.LimitedVideoActivity"

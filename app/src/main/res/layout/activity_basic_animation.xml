@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.android.exercise.ui.activity.ViewAnimationActivity">
+    tools:context="com.android.exercise.ui.activity.view.ViewAnimationActivity">
 
     <FrameLayout
         android:id="@+id/view_translate"

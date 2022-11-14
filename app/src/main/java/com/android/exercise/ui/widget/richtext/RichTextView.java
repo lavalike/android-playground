@@ -27,7 +27,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
-import com.android.exercise.ui.activity.HtmlActivity;
+import com.android.exercise.ui.activity.view.HtmlActivity;
 import com.android.exercise.util.DataHelper;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.UIUtils;

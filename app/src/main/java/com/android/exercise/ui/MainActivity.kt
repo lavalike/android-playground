@@ -11,7 +11,7 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.databinding.ActivityMainBinding
 import com.android.exercise.domain.NotificationBean
-import com.android.exercise.repository.DataRepository.home
+import com.android.exercise.repository.DataRepository
 import com.android.exercise.ui.adapter.HomeAdapter
 import com.android.exercise.util.IKey
 import com.android.exercise.util.UIUtils
@@ -53,7 +53,7 @@ class MainActivity : BaseActivity() {
                     outRect.bottom = UIUtils.dip2px(view.context, GAP)
                 }
             })
-            adapter = HomeAdapter(home()).apply {
+            adapter = HomeAdapter(DataRepository.home()).apply {
                 addFooter(object : RecyclerItem() {
                     public override fun layout(): Int {
                         return R.layout.home_footer_layout

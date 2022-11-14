@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity;
+package com.android.exercise.ui.activity.view;
 
 import android.os.Bundle;
 import android.os.Handler;

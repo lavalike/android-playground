@@ -21,6 +21,7 @@ import com.android.exercise.base.retrofit.progress.ProgressListener;
 import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.domain.AppBean;
 import com.android.exercise.domain.GithubBean;
+import com.android.exercise.ui.activity.view.HtmlActivity;
 import com.android.exercise.ui.adapter.ReposAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.C;
