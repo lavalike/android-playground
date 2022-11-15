@@ -52,6 +52,7 @@ import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity
 import com.android.exercise.ui.activity.stream.FileStreamActivity
 import com.android.exercise.ui.activity.touch.MultiTouchActivity
 import com.android.exercise.ui.activity.view.*
+import com.android.exercise.ui.activity.view.typewriter.TypewriterActivity
 import com.android.exercise.ui.activity.websocket.WebSocketActivity
 import com.android.exercise.ui.activity.wifi.WifiActivity
 import com.android.exercise.util.AppUtil
@@ -71,7 +72,7 @@ object DataRepository {
         add(ItemBean(getString(R.string.item_dagger), Dagger2Activity::class.java))
 
         add(TitleBean("视图相关"))
-        add(ItemBean(getString(R.string.item_typewriter), PathSearchActivity::class.java))
+        add(ItemBean(getString(R.string.item_typewriter), TypewriterActivity::class.java))
         add(ItemBean(getString(R.string.item_path_search), PathSearchActivity::class.java))
         add(ItemBean(getString(R.string.item_path_measure), PathMeasureActivity::class.java))
         add(ItemBean(getString(R.string.item_path), PathActivity::class.java))
