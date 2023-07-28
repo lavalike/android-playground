@@ -112,6 +112,7 @@
     <string name="large_image_subsampling_imageview">SubsamplingScaleImageView</string>
     <string name="item_android13_post_notification">Post Notification</string>
     <string name="item_android13_new_permissions">新增权限</string>
+    <string name="item_android13_back_invoked_callback">全新Back导航</string>
 
     <string name="new_permission_explain">如果同时请求 READ_MEDIA_IMAGES 权限和 READ_MEDIA_VIDEO 权限，系统只会显示一个系统权限对话框\n\n如果应用只需要访问图片、照片和视频，请考虑使用照片选择器，而不是声明 READ_MEDIA_IMAGES 和 READ_MEDIA_VIDEO 权限\n\n如果是升级Android13之后新装的应用，并且targetSDK大于等于33，则申请READ_EXTERNAL_STORAGE权限时会自动拒绝（同理WRITE_EXTERNAL_STORAGE也是一样）</string>
     <string name="permission_external_storage">READ_EXTERNAL_STORAGE</string>

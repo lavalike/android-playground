@@ -12,6 +12,7 @@ import com.android.exercise.ui.activity.android11.ToastCompatActivity
 import com.android.exercise.ui.activity.android13.ClipboardSensitiveActivity
 import com.android.exercise.ui.activity.android13.IntentMatchActivity
 import com.android.exercise.ui.activity.android13.NewPermissionsActivity
+import com.android.exercise.ui.activity.android13.OnBackInvokedCallbackActivity
 import com.android.exercise.ui.activity.android13.PostNotificationActivity
 import com.android.exercise.ui.activity.biometric.BiometricActivity
 import com.android.exercise.ui.activity.bitmap.BitmapOptimizeActivity
@@ -65,6 +66,46 @@ import com.android.exercise.util.AppUtil
 object DataRepository {
     @JvmStatic
     fun home() = mutableListOf<BaseBean>().apply {
+
+        add(TitleBean("Android 13"))
+        add(
+            ItemBean(
+                getString(R.string.item_android13_back_invoked_callback),
+                OnBackInvokedCallbackActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_android13_post_notification),
+                PostNotificationActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_android13_new_permissions),
+                NewPermissionsActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_clipboard_sensitive), ClipboardSensitiveActivity::class.java
+            )
+        )
+        add(ItemBean(getString(R.string.item_intent_match), IntentMatchActivity::class.java))
+
+        add(TitleBean("Android 11"))
+        add(
+            ItemBean(
+                getString(R.string.item_scoped_storage), ScopedStorageActivity::class.java
+            )
+        )
+        add(
+            ItemBean(
+                getString(R.string.item_telephony_compat), TelephonyCompatActivity::class.java
+            )
+        )
+        add(ItemBean(getString(R.string.item_toast_compat), ToastCompatActivity::class.java))
+
         add(TitleBean("Dependency Injection"))
         add(ItemBean(getString(R.string.item_kodein), KodeinActivity::class.java))
         add(ItemBean(getString(R.string.item_koin), KoinActivity::class.java))
@@ -137,39 +178,6 @@ object DataRepository {
                 getString(R.string.item_frame_animation), FrameAnimationActivity::class.java
             )
         )
-
-        add(TitleBean("Android 13"))
-        add(
-            ItemBean(
-                getString(R.string.item_android13_post_notification),
-                PostNotificationActivity::class.java
-            )
-        )
-        add(
-            ItemBean(
-                getString(R.string.item_android13_new_permissions),
-                NewPermissionsActivity::class.java
-            )
-        )
-        add(
-            ItemBean(
-                getString(R.string.item_clipboard_sensitive), ClipboardSensitiveActivity::class.java
-            )
-        )
-        add(ItemBean(getString(R.string.item_intent_match), IntentMatchActivity::class.java))
-
-        add(TitleBean("Android 11"))
-        add(
-            ItemBean(
-                getString(R.string.item_scoped_storage), ScopedStorageActivity::class.java
-            )
-        )
-        add(
-            ItemBean(
-                getString(R.string.item_telephony_compat), TelephonyCompatActivity::class.java
-            )
-        )
-        add(ItemBean(getString(R.string.item_toast_compat), ToastCompatActivity::class.java))
 
         add(TitleBean("Jetpack"))
         add(ItemBean(getString(R.string.item_drag_and_drop), DragAndDropActivity::class.java))
