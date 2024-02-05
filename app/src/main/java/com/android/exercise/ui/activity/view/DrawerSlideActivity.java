@@ -96,7 +96,7 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
 
             }
         });
-        View menuView = getLayoutInflater().inflate(R.layout.activity_realm, navigationView, false);
+        View menuView = getLayoutInflater().inflate(R.layout.activity_object_box, navigationView, false);
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) menuView.getLayoutParams();
         int statusBarHeight = UIUtils.getStatusBarHeight(this);
         layoutParams.topMargin = statusBarHeight;

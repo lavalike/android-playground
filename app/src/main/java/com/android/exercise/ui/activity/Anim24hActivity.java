@@ -15,7 +15,7 @@ import android.widget.TableLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.ui.activity.database.RealmActivity;
+import com.android.exercise.ui.activity.database.ObjectBoxActivity;
 import com.wangzhen.statusbar.DarkStatusBar;
 
 import butterknife.BindView;
@@ -375,12 +375,7 @@ public class Anim24hActivity extends BaseActivity {
             }
         });
         AnimatorSet set = new AnimatorSet();
-        set.playTogether(
-                animDaysX, animDaysY,
-                animNewsX, animNewsY,
-                animServiceX, animServiceY,
-                animColumnX, animColumnY
-        );
+        set.playTogether(animDaysX, animDaysY, animNewsX, animNewsY, animServiceX, animServiceY, animColumnX, animColumnY);
         set.setDuration(2000);
         set.addListener(new Animator.AnimatorListener() {
             @Override
@@ -390,7 +385,7 @@ public class Anim24hActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(mContext, RealmActivity.class);
+                Intent intent = new Intent(mContext, ObjectBoxActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.anim_zoomin, R.anim.anim_zoomout);

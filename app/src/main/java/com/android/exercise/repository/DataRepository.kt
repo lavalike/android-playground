@@ -4,7 +4,28 @@ import com.android.exercise.R
 import com.android.exercise.domain.BaseBean
 import com.android.exercise.domain.ItemBean
 import com.android.exercise.domain.TitleBean
-import com.android.exercise.ui.activity.*
+import com.android.exercise.ui.activity.AndServerActivity
+import com.android.exercise.ui.activity.Anim24hActivity
+import com.android.exercise.ui.activity.AppOptActivity
+import com.android.exercise.ui.activity.AutoServiceActivity
+import com.android.exercise.ui.activity.BitOptActivity
+import com.android.exercise.ui.activity.BroadcastActivity
+import com.android.exercise.ui.activity.DispatchActivity
+import com.android.exercise.ui.activity.MinaActivity
+import com.android.exercise.ui.activity.NotificationActivity
+import com.android.exercise.ui.activity.OKHttpActivity
+import com.android.exercise.ui.activity.PageSwitchActivity
+import com.android.exercise.ui.activity.RecorderActivity
+import com.android.exercise.ui.activity.RetrofitActivity
+import com.android.exercise.ui.activity.RuntimeAnnotationActivity
+import com.android.exercise.ui.activity.RxJavaActivity
+import com.android.exercise.ui.activity.TextFormatActivity
+import com.android.exercise.ui.activity.TextLinkActivity
+import com.android.exercise.ui.activity.ThreadPoolActivity
+import com.android.exercise.ui.activity.VideoRecordActivity
+import com.android.exercise.ui.activity.ViewSwitchActivity
+import com.android.exercise.ui.activity.WaveActivity
+import com.android.exercise.ui.activity.WindowActivity
 import com.android.exercise.ui.activity.adapter.LoadMoreActivity
 import com.android.exercise.ui.activity.android11.ScopedStorageActivity
 import com.android.exercise.ui.activity.android11.TelephonyCompatActivity
@@ -21,7 +42,6 @@ import com.android.exercise.ui.activity.calendar.CalendarActivity
 import com.android.exercise.ui.activity.circle.CircleImageActivity
 import com.android.exercise.ui.activity.database.LitePalActivity
 import com.android.exercise.ui.activity.database.ObjectBoxActivity
-import com.android.exercise.ui.activity.database.RealmActivity
 import com.android.exercise.ui.activity.di.dagger2.Dagger2Activity
 import com.android.exercise.ui.activity.di.hilt.HiltActivity
 import com.android.exercise.ui.activity.di.kodein.KodeinActivity
@@ -51,7 +71,35 @@ import com.android.exercise.ui.activity.queue.TaskSequenceActivity
 import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity
 import com.android.exercise.ui.activity.stream.FileStreamActivity
 import com.android.exercise.ui.activity.touch.MultiTouchActivity
-import com.android.exercise.ui.activity.view.*
+import com.android.exercise.ui.activity.view.ADWindowActivity
+import com.android.exercise.ui.activity.view.AnimViewActivity
+import com.android.exercise.ui.activity.view.ConstraintLayoutActivity
+import com.android.exercise.ui.activity.view.DrawerSlideActivity
+import com.android.exercise.ui.activity.view.EditViewActivity
+import com.android.exercise.ui.activity.view.ElasticActivity
+import com.android.exercise.ui.activity.view.FloorActivity
+import com.android.exercise.ui.activity.view.FlowLayoutActivity
+import com.android.exercise.ui.activity.view.FrameAnimationActivity
+import com.android.exercise.ui.activity.view.HoverRecyclerViewActivity
+import com.android.exercise.ui.activity.view.HtmlRichTextActivity
+import com.android.exercise.ui.activity.view.ImageHtmlActivity
+import com.android.exercise.ui.activity.view.ImageRecyclerActivity
+import com.android.exercise.ui.activity.view.InvokeAppActivity
+import com.android.exercise.ui.activity.view.PathActivity
+import com.android.exercise.ui.activity.view.PathMeasureActivity
+import com.android.exercise.ui.activity.view.PathSearchActivity
+import com.android.exercise.ui.activity.view.PorterDuffActivity
+import com.android.exercise.ui.activity.view.RecyclerActivity
+import com.android.exercise.ui.activity.view.RecyclerTouchActivity
+import com.android.exercise.ui.activity.view.RefreshLayoutActivity
+import com.android.exercise.ui.activity.view.RippleActivity
+import com.android.exercise.ui.activity.view.ScrollActivity
+import com.android.exercise.ui.activity.view.SlidingMenuActivity
+import com.android.exercise.ui.activity.view.StateButtonActivity
+import com.android.exercise.ui.activity.view.SwipeCloseActivity
+import com.android.exercise.ui.activity.view.TikTokActivity
+import com.android.exercise.ui.activity.view.ViewActivity
+import com.android.exercise.ui.activity.view.ViewAnimationActivity
 import com.android.exercise.ui.activity.view.typewriter.TypewriterActivity
 import com.android.exercise.ui.activity.websocket.WebSocketActivity
 import com.android.exercise.ui.activity.wifi.WifiActivity
@@ -209,7 +257,6 @@ object DataRepository {
 
         add(TitleBean("数据存储"))
         add(ItemBean(getString(R.string.item_object_box), ObjectBoxActivity::class.java))
-        add(ItemBean(getString(R.string.item_realm), RealmActivity::class.java))
         add(ItemBean(getString(R.string.item_litepal), LitePalActivity::class.java))
         add(ItemBean(getString(R.string.item_mmkv), MMKVActivity::class.java))
 

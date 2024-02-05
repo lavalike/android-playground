@@ -1,12 +1,10 @@
 package com.android.exercise.base
 
 import androidx.multidex.MultiDexApplication
+import com.android.exercise.ui.activity.di.koin.entiry.User
 import com.android.exercise.ui.activity.di.koin.service.UserService
 import com.android.exercise.ui.activity.di.koin.service.UserServiceImpl
-import com.android.exercise.ui.activity.di.koin.entiry.User
 import com.android.exercise.util.AppUtil
-import io.realm.Realm
-import io.realm.RealmConfiguration
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -20,11 +18,6 @@ class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         AppUtil.init(this)
-        Realm.init(this)
-        Realm.setDefaultConfiguration(
-            RealmConfiguration.Builder().name("AndroidExercise.realm")
-                .deleteRealmIfMigrationNeeded().build()
-        )
         LitePal.initialize(this)
 
         startKoin {

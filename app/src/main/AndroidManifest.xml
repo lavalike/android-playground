@@ -165,7 +165,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.database.RealmActivity" />
         <activity android:name=".ui.activity.RetrofitActivity" />
         <activity android:name=".ui.activity.view.HtmlActivity" />
         <activity android:name=".ui.activity.view.RecyclerActivity" />
