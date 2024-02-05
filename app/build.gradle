@@ -1,22 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
 apply plugin: 'kotlinx-serialization'
 
 android {
-    compileSdkVersion 33
+    namespace "com.android.exercise"
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.android.exercise"
-        minSdkVersion 24
-        targetSdkVersion 33
+        minSdk 24
+        targetSdk 33
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
 
-        //指定room.schemaLocation生成的文件路径
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
@@ -39,7 +38,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    sourceSets { main { assets.srcDirs = ['src/main/assets'] } }
     dataBinding {
         enabled = true
     }

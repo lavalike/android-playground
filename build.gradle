@@ -1,7 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.objectboxVersion = '2.5.1'
-    ext.kotlin_version = "1.7.20"
     repositories {
         google()
         mavenCentral()
@@ -10,9 +8,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
-        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+        classpath "io.objectbox:objectbox-gradle-plugin:2.5.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:1.8.20"
     }
 }
 
