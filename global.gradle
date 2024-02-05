@@ -1,4 +1,0 @@
-ext {
-    exoplayer_version = '2.9.6'
-    ijkplayer_version = '0.8.8'
-}
