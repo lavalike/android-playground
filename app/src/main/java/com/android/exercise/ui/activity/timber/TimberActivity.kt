@@ -32,13 +32,45 @@ class TimberActivity : BaseActivity() {
         with(binding) {
             btnForest.setOnClickListener {
                 val forest = Timber.forest()
-                println({ "forest: $forest" })
+                val builder = StringBuilder()
+                forest.forEach {
+                    if (builder.isNotEmpty()) {
+                        builder.append("\n")
+                    }
+                    builder.append(it.toString())
+                }
+                tv.text = builder.toString()
             }
-            btnV.setOnClickListener { Timber.v("Timber Verbose") }
-            btnD.setOnClickListener { Timber.d("Timber Debug") }
-            btnI.setOnClickListener { Timber.i("Timber Info") }
-            btnW.setOnClickListener { Timber.tag("tag_w").w("Timber Warn") }
-            btnE.setOnClickListener { Timber.tag("tag_e").e("Timber Error") }
+            btnV.setOnClickListener {
+                "Timber Verbose".run {
+                    tv.text = this
+                    Timber.v(this)
+                }
+            }
+            btnD.setOnClickListener {
+                "Timber Debug".run {
+                    tv.text = this
+                    Timber.d(this)
+                }
+            }
+            btnI.setOnClickListener {
+                "Timber Info".run {
+                    tv.text = this
+                    Timber.i(this)
+                }
+            }
+            btnW.setOnClickListener {
+                "Timber Warn".run {
+                    tv.text = this
+                    Timber.tag("tag_w").w(this)
+                }
+            }
+            btnE.setOnClickListener {
+                "Timber Error".run {
+                    tv.text = this
+                    Timber.tag("tag_e").e(this)
+                }
+            }
         }
     }
 

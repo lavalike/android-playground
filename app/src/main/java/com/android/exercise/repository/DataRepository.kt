@@ -12,7 +12,6 @@ import com.android.exercise.ui.activity.BroadcastActivity
 import com.android.exercise.ui.activity.DispatchActivity
 import com.android.exercise.ui.activity.MinaActivity
 import com.android.exercise.ui.activity.NotificationActivity
-import com.android.exercise.ui.activity.OKHttpActivity
 import com.android.exercise.ui.activity.PageSwitchActivity
 import com.android.exercise.ui.activity.RecorderActivity
 import com.android.exercise.ui.activity.RetrofitActivity
@@ -74,7 +73,6 @@ import com.android.exercise.ui.activity.timber.TimberActivity
 import com.android.exercise.ui.activity.touch.MultiTouchActivity
 import com.android.exercise.ui.activity.view.ADWindowActivity
 import com.android.exercise.ui.activity.view.AnimViewActivity
-import com.android.exercise.ui.activity.view.ConstraintLayoutActivity
 import com.android.exercise.ui.activity.view.DrawerSlideActivity
 import com.android.exercise.ui.activity.view.EditViewActivity
 import com.android.exercise.ui.activity.view.ElasticActivity
@@ -83,8 +81,6 @@ import com.android.exercise.ui.activity.view.FlowLayoutActivity
 import com.android.exercise.ui.activity.view.FrameAnimationActivity
 import com.android.exercise.ui.activity.view.HoverRecyclerViewActivity
 import com.android.exercise.ui.activity.view.HtmlRichTextActivity
-import com.android.exercise.ui.activity.view.ImageHtmlActivity
-import com.android.exercise.ui.activity.view.ImageRecyclerActivity
 import com.android.exercise.ui.activity.view.InvokeAppActivity
 import com.android.exercise.ui.activity.view.PathActivity
 import com.android.exercise.ui.activity.view.PathMeasureActivity
@@ -114,29 +110,6 @@ import com.android.exercise.util.AppUtil
 object DataRepository {
     @JvmStatic
     fun home() = mutableListOf(
-        Caption("三方开源"),
-        Item(
-            getString(R.string.item_timber), TimberActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_rxjava), RxJavaActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_retrofit), RetrofitActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_okhttp), OKHttpActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_okhttp_websocket), WebSocketActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_andServer), AndServerActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_mina), MinaActivity::class.java
-        ),
-
         Caption("Android 13"),
         Item(
             getString(R.string.item_android13_back_invoked_callback),
@@ -204,13 +177,41 @@ object DataRepository {
             getString(R.string.item_navigation), NavigationActivity::class.java
         ),
         Item(
+            getString(R.string.item_work_manager), WorkManagerActivity::class.java
+        ),
+
+        Caption("数据存储"),
+        Item(
             getString(R.string.item_room), RoomActivity::class.java
         ),
         Item(
-            getString(R.string.item_work_manager), WorkManagerActivity::class.java
+            getString(R.string.item_object_box), ObjectBoxActivity::class.java
         ),
         Item(
-            getString(R.string.item_constraintlayout), ConstraintLayoutActivity::class.java
+            getString(R.string.item_litepal), LitePalActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_mmkv), MMKVActivity::class.java
+        ),
+
+        Caption("三方开源"),
+        Item(
+            getString(R.string.item_timber), TimberActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_rxjava), RxJavaActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_retrofit), RetrofitActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_okhttp_websocket), WebSocketActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_andServer), AndServerActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_mina), MinaActivity::class.java
         ),
 
         Caption("kotlin"),
@@ -219,11 +220,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_kotlin_serialization), SerializationActivity::class.java
-        ),
-
-        Caption("IPC"),
-        Item(
-            getString(R.string.item_messenger), MessengerActivity::class.java
         ),
 
         Caption("硬件相关"),
@@ -237,17 +233,6 @@ object DataRepository {
             getString(R.string.item_bluetooth), BluetoothActivity::class.java
         ),
 
-        Caption("数据存储"),
-        Item(
-            getString(R.string.item_object_box), ObjectBoxActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_litepal), LitePalActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_mmkv), MMKVActivity::class.java
-        ),
-
         Caption("图片"),
         Item(
             getString(R.string.item_large_bitmap), LargeImageActivity::class.java
@@ -255,22 +240,8 @@ object DataRepository {
         Item(
             getString(R.string.item_bitmap_optimize), BitmapOptimizeActivity::class.java
         ),
-        Item(
-            getString(R.string.item_image_html), ImageHtmlActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_image_recycler), ImageRecyclerActivity::class.java
-        ),
 
-        Caption("个人开源"),
-        Item(
-            getString(R.string.item_download), DownloadActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_refresh_layout), RefreshLayoutActivity::class.java
-        ),
-
-        Caption("视频"),
+        Caption("音视频"),
         Item(
             getString(R.string.item_camera_video), VideoRecordActivity::class.java
         ),
@@ -281,12 +252,21 @@ object DataRepository {
             getString(R.string.item_ijkplayer), IjkPlayerActivity::class.java
         ),
 
-        Caption("自动化"),
+        Caption("个人开源"),
         Item(
-            getString(R.string.item_qq_auto_msg), AppOptActivity::class.java
+            getString(R.string.item_download), DownloadActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_refresh_layout), RefreshLayoutActivity::class.java
         ),
 
         Caption("基础"),
+        Item(
+            getString(R.string.item_qq_auto_msg), AppOptActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_messenger), MessengerActivity::class.java
+        ),
         Item(
             getString(R.string.item_hook), HookActivity::class.java
         ),

@@ -17,7 +17,6 @@
     <string name="item_litepal">LitePal</string>
     <string name="item_greendao">GreenDao</string>
     <string name="item_retrofit">Retrofit 2.0</string>
-    <string name="item_okhttp">OKHttp</string>
     <string name="item_loadmore">加载更多</string>
     <string name="item_slidingmenu">自定义侧滑菜单</string>
     <string name="item_flowlayout">流式布局</string>
@@ -26,7 +25,6 @@
     <string name="item_threadpool">线程池</string>
     <string name="item_broadcast">广播</string>
     <string name="item_dispatch">事件分发</string>
-    <string name="item_constraintlayout">Constraint</string>
     <string name="item_drawerslide">DrawerLayout</string>
     <string name="item_andServer">AndServer</string>
     <string name="item_myRecycler">MyRecycler</string>
@@ -62,8 +60,6 @@
     <string name="item_path_search">PathSearch</string>
     <string name="item_qq_auto_msg">QQ自动消息</string>
     <string name="item_bit_opt">位操作</string>
-    <string name="item_image_recycler">Recycler形式</string>
-    <string name="item_image_html">Html形式</string>
     <string name="item_camera_video">录视频</string>
     <string name="item_priority_queue">PriorityQueue</string>
     <string name="item_task_sequence">顺序执行Queue</string>

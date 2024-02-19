@@ -206,10 +206,8 @@
         </service>
 
         <activity android:name=".ui.activity.Anim24hActivity" />
-        <activity android:name=".ui.activity.OKHttpActivity" />
         <activity android:name=".ui.activity.ThreadPoolActivity" />
         <activity android:name=".ui.activity.DispatchActivity" />
-        <activity android:name=".ui.activity.view.ConstraintLayoutActivity" />
         <activity android:name=".ui.activity.view.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
         <activity android:name=".ui.activity.MinaActivity" />
@@ -301,8 +299,6 @@
         <activity android:name=".ui.activity.view.PathSearchActivity" />
         <activity android:name=".ui.activity.AppOptActivity" />
         <activity android:name=".ui.activity.BitOptActivity" />
-        <activity android:name=".ui.activity.view.ImageRecyclerActivity" />
-        <activity android:name=".ui.activity.view.ImageHtmlActivity" />
         <activity android:name=".ui.activity.VideoRecordActivity" />
         <activity
             android:name=".ui.activity.LimitedVideoActivity"

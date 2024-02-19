@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context=".ui.activity.timber.TimberActivity">
 
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Timber Output" />
+
     <Button
         android:id="@+id/btn_forest"
         android:layout_width="200dp"
