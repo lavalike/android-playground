@@ -22,8 +22,7 @@
         {
           "id": "3:2229789169470529222",
           "name": "time",
-          "type": 6,
-          "flags": 4
+          "type": 6
         }
       ],
       "relations": []

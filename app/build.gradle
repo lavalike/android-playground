@@ -1,8 +1,10 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'io.objectbox'
-apply plugin: 'kotlinx-serialization'
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("kotlinx-serialization")
+    id("kotlin-kapt")
+    id("io.objectbox")
+}
 
 android {
     namespace "com.android.exercise"
@@ -39,12 +41,6 @@ android {
         dataBinding = true
         viewBinding = true
     }
-}
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-    mavenCentral()
 }
 
 dependencies {
