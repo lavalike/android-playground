@@ -5,7 +5,7 @@ package com.android.exercise.domain;
  * Created by wangzhen on 2017/2/8.
  */
 
-public class CibaBean extends BaseBean {
+public class CibaBean extends Generic {
 
     /**
      * sid : 2502

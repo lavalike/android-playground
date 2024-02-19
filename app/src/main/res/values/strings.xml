@@ -151,4 +151,6 @@
     <string name="kodein_introduction">Kodein-DI是一个非常实用的依赖注入框架，实际上，Kodein并不是一个依赖注入库，官方称之为依赖注入容器，它非常易于使用和配置。\n\n为什么要使用Kodein-DI：\n懒加载实例，需要时才会初始化对象\n不必关心依赖初始化顺序，自动查找需要使用的对象\n通过provider或factory将类或接口绑定到它们的实例\n易于调试\n\nKodein-DI的优点：\n体积小，速度快，经过优化（广泛使用内联）\n使用DSL语法，简单易读\n不受泛型擦除的影响（比如Java）\n100%兼容Java、Android\n使用kolin风格编码</string>
 
     <string name="item_typewriter">打字机</string>
+
+    <string name="item_timber">Timber</string>
 </resources>

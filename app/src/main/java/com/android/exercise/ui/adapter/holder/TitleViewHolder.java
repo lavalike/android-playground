@@ -4,14 +4,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.domain.TitleBean;
+import com.android.exercise.domain.Caption;
 import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 /**
  * TitleViewHolder
  * Created by wangzhen on 2018/11/21.
  */
-public class TitleViewHolder extends RecyclerViewHolder<TitleBean> {
+public class TitleViewHolder extends RecyclerViewHolder<Caption> {
     public TextView tv_title;
 
     public TitleViewHolder(ViewGroup parent) {

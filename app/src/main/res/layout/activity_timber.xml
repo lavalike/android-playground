@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.activity.timber.TimberActivity">
+
+    <Button
+        android:id="@+id/btn_forest"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Timber Forest" />
+
+    <Button
+        android:id="@+id/btn_v"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Timber.v" />
+
+    <Button
+        android:id="@+id/btn_d"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Timber.d" />
+
+    <Button
+        android:id="@+id/btn_i"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Timber.i" />
+
+    <Button
+        android:id="@+id/btn_w"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Timber.w" />
+
+    <Button
+        android:id="@+id/btn_e"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Timber.e" />
+
+</LinearLayout>

@@ -6,7 +6,7 @@ import java.util.List;
  * Created by wangzhen on 2017/3/1.
  */
 
-public class AppBean extends BaseBean {
+public class AppBean extends Generic {
     private String msg;
     private boolean success;
     private List<ResultBean> result;

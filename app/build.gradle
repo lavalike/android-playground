@@ -136,4 +136,7 @@ dependencies {
 
     // Kodein-DI
     implementation "org.kodein.di:kodein-di:7.15.1"
+
+    // Timber
+    implementation("com.jakewharton.timber:timber:5.0.1")
 }

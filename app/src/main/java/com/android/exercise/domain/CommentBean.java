@@ -4,7 +4,7 @@ package com.android.exercise.domain;
  * 评论bean
  * Created by wangzhen on 2017/8/10.
  */
-public class CommentBean extends BaseBean {
+public class CommentBean extends Generic {
     private String name;
     private String date;
     private String content;

@@ -4,11 +4,11 @@ package com.android.exercise.domain;
  * Created by wangzhen on 2017/2/24.
  */
 
-public class TitleBean extends BaseBean {
+public class Caption extends Generic {
     private String title;
 
-    public TitleBean(String title) {
-        this.title = title;
+    public Caption(String name) {
+        this.title = name;
     }
 
     public String getTitle() {

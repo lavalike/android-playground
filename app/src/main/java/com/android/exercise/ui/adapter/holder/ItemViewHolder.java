@@ -5,14 +5,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.exercise.R;
-import com.android.exercise.domain.ItemBean;
+import com.android.exercise.domain.Item;
 import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 /**
  * ItemViewHolder
  * Created by wangzhen on 2018/11/21.
  */
-public class ItemViewHolder extends RecyclerViewHolder<ItemBean> {
+public class ItemViewHolder extends RecyclerViewHolder<Item> {
     public TextView tv_name;
 
     public ItemViewHolder(ViewGroup parent) {
