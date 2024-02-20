@@ -1,20 +1,24 @@
 package com.android.exercise.ui.activity.bluetooth
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityBluetoothBinding
+import com.android.exercise.util.toast
 import com.wangzhen.commons.toolbar.impl.Toolbar
 import com.wangzhen.permission.PermissionManager
 import com.wangzhen.permission.callback.AbsPermissionCallback
@@ -23,13 +27,17 @@ import com.wangzhen.permission.callback.AbsPermissionCallback
  * BluetoothActivity
  * Created by wangzhen on 2020/8/20.
  */
+@SuppressLint("MissingPermission")
 class BluetoothActivity : BaseActivity() {
     private lateinit var binding: ActivityBluetoothBinding
-    private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
+    private val bluetoothAdapter: BluetoothAdapter by lazy {
+        (getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
+    }
     private var adapter: DataAdapter = DataAdapter(null)
 
     private val mReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+            println("action: ${intent.action}")
             if (TextUtils.equals(intent.action, BluetoothDevice.ACTION_FOUND)) {
                 val device: BluetoothDevice? =
                     intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
@@ -45,55 +53,39 @@ class BluetoothActivity : BaseActivity() {
         binding = ActivityBluetoothBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (bluetoothAdapter == null) {
-            Toast.makeText(this, "不支持蓝牙设备", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        binding.switchView.state = bluetoothAdapter.isEnabled
-
-        binding.switchView.setOnSwitchStateChangeListener { v, isOn ->
-            if (isOn) bluetoothAdapter.enable() else bluetoothAdapter.disable()
+        binding.btnEnable.setOnClickListener {
+            enableLauncher.launch(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE))
         }
         binding.btnFindBounded.setOnClickListener {
-            check()
-            val bondedDevices: Set<BluetoothDevice> = bluetoothAdapter.bondedDevices
-            if (bondedDevices.isNotEmpty()) {
-                val list: MutableList<BluetoothEntity> = ArrayList()
-                for (device in bondedDevices) {
-                    list.add(BluetoothEntity(device.name, device.address))
+            requirePermissions {
+                ensureState {
+                    if (bluetoothAdapter.isDiscovering) {
+                        bluetoothAdapter.cancelDiscovery()
+                    }
+                    val bondedDevices: Set<BluetoothDevice> = bluetoothAdapter.bondedDevices
+                    if (bondedDevices.isNotEmpty()) {
+                        val list: MutableList<BluetoothEntity> = ArrayList()
+                        for (device in bondedDevices) {
+                            list.add(BluetoothEntity(device.name, device.address))
+                        }
+                        adapter.setData(list)
+                    } else {
+                        "No Paired Devices".toast()
+                    }
                 }
-                adapter.setData(list)
-            } else {
-                Toast.makeText(this, "没有已配对设备", Toast.LENGTH_SHORT).show()
             }
         }
         binding.btnFind.setOnClickListener {
-            PermissionManager.request(
-                this,
-                object : AbsPermissionCallback() {
-                    override fun onDeny(
-                        deniedPermissions: Array<String>, neverAskPermissions: Array<String>
-                    ) {
-                        Toast.makeText(applicationContext, "需要位置权限", Toast.LENGTH_SHORT).show()
+            requirePermissions {
+                ensureState {
+                    "Finding".toast()
+                    adapter.setData(null)
+                    if (bluetoothAdapter.isDiscovering) {
+                        bluetoothAdapter.cancelDiscovery()
                     }
-
-                    override fun onGrant(permissions: Array<String>) {
-                        check()
-                        Toast.makeText(applicationContext, "正在查找", Toast.LENGTH_SHORT).show()
-                        adapter.datas?.clear()
-                        adapter.notifyDataSetChanged()
-                        if (bluetoothAdapter.isDiscovering) {
-                            bluetoothAdapter.cancelDiscovery()
-                        }
-                        bluetoothAdapter.startDiscovery()
-                    }
-
-                },
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.BLUETOOTH
-            )
+                    bluetoothAdapter.startDiscovery()
+                }
+            }
         }
 
         binding.recycler.layoutManager = LinearLayoutManager(this)
@@ -102,14 +94,55 @@ class BluetoothActivity : BaseActivity() {
         registerReceiver(mReceiver, IntentFilter(BluetoothDevice.ACTION_FOUND))
     }
 
-    private fun check() {
-        if (bluetoothAdapter != null) {
-            if (!bluetoothAdapter.isEnabled) {
-                bluetoothAdapter.enable()
-                binding.switchView.state = true
-            }
+    private fun ensureState(block: () -> Unit) {
+        if (bluetoothAdapter.isEnabled) {
+            block.invoke()
+        } else {
+            "Enable Bluetooth First".toast()
         }
     }
+
+    private fun requirePermissions(callback: () -> Unit) {
+        PermissionManager.request(
+            this, object : AbsPermissionCallback() {
+                override fun onDeny(
+                    deniedPermissions: Array<String>, neverAskPermissions: Array<String>
+                ) {
+                    "Lack of Bluetooth Permissions".toast()
+                }
+
+                override fun onGrant(permissions: Array<String>) {
+                    callback.invoke()
+                }
+
+                override fun onNotDeclared(permissions: Array<String>) {
+                    "Some Permissions Not Declared in Manifest".toast()
+                }
+
+            }, *obtainPermissions()
+        )
+    }
+
+    private fun obtainPermissions(): Array<String> {
+        val array = mutableListOf(
+            Manifest.permission.BLUETOOTH,
+            Manifest.permission.BLUETOOTH_ADMIN,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            array.add(Manifest.permission.BLUETOOTH_SCAN)
+            array.add(Manifest.permission.BLUETOOTH_CONNECT)
+        }
+        return array.toTypedArray()
+    }
+
+    private val enableLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                "Bluetooth Open".toast()
+            }
+        }
 
     override fun createToolbar(): Toolbar {
         return ToolbarFactory.themed(this, getString(R.string.item_bluetooth))
@@ -118,6 +151,6 @@ class BluetoothActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(mReceiver)
-        bluetoothAdapter?.cancelDiscovery()
+        bluetoothAdapter.cancelDiscovery()
     }
 }
