@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.kotlin
+package com.android.exercise.ui.activity.serialization
 
 import android.os.Bundle
 import com.android.exercise.R

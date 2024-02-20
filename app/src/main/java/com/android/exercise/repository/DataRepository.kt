@@ -56,8 +56,8 @@ import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity
-import com.android.exercise.ui.activity.kotlin.CoroutinesActivity
-import com.android.exercise.ui.activity.kotlin.SerializationActivity
+import com.android.exercise.ui.activity.coroutines.CoroutinesActivity
+import com.android.exercise.ui.activity.serialization.SerializationActivity
 import com.android.exercise.ui.activity.layer.MultiLayerActivity
 import com.android.exercise.ui.activity.md5.MD5Activity
 import com.android.exercise.ui.activity.mmkv.MMKVActivity

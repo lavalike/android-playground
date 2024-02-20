@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.kotlin
+package com.android.exercise.ui.activity.coroutines
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
