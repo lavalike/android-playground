@@ -68,10 +68,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 
-    implementation files('src/main/libs/mina-core-2.0.0.jar')
-    implementation files('src/main/libs/slf4j-api-1.5.11.jar')
-    implementation files('src/main/libs/slf4j-simple-1.5.2.jar')
-
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'com.squareup.okhttp3:mockwebserver:4.7.2'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
