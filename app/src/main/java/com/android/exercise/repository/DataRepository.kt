@@ -55,7 +55,6 @@ import com.android.exercise.ui.activity.jetpack.draganddrop.DragAndDropActivity
 import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity
-import com.android.exercise.ui.activity.jetpack.viewmodel.ViewModelActivity
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity
 import com.android.exercise.ui.activity.kotlin.CoroutinesActivity
 import com.android.exercise.ui.activity.kotlin.SerializationActivity
@@ -163,9 +162,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_data_store), DataStoreActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_view_model), ViewModelActivity::class.java
         ),
         Item(
             getString(R.string.item_lifecycle), LifecycleActivity::class.java

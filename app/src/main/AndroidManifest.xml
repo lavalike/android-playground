@@ -143,7 +143,6 @@
         <activity android:name=".ui.activity.layer.MultiLayerActivity" />
         <activity android:name=".ui.activity.mmkv.MMKVActivity" />
         <activity android:name=".ui.activity.biometric.BiometricActivity" />
-        <activity android:name=".ui.activity.jetpack.viewmodel.ViewModelActivity" />
         <activity android:name=".ui.activity.jetpack.lifecycle.LifecycleActivity" />
         <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity" />
         <activity android:name=".ui.activity.jetpack.navigation.NavigationActivity" />
