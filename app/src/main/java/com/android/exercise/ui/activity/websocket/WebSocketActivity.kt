@@ -8,10 +8,10 @@ import android.util.Log
 import android.widget.ScrollView
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
-import com.android.exercise.base.okhttp.OKHttpManager
 import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityWebSocketBinding
 import com.wangzhen.commons.toolbar.impl.Toolbar
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
@@ -59,8 +59,9 @@ class WebSocketActivity : BaseActivity() {
     private fun initClient() {
         val url = "ws://" + mWebServer.hostName + ":" + mWebServer.port
         Log.e(tag, "initClient: $url")
-        OKHttpManager.getClient()
-            .newWebSocket(Request.Builder().url(url).build(), object : WebSocketListener() {
+        OkHttpClient().newWebSocket(
+            Request.Builder().url(url).build(),
+            object : WebSocketListener() {
                 override fun onOpen(webSocket: WebSocket, response: Response) {
                     super.onOpen(webSocket, response)
                     mClientSocket = webSocket
