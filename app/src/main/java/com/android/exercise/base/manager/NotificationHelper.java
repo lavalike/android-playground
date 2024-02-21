@@ -120,7 +120,7 @@ public class NotificationHelper implements INotification {
         intent.setAction(NotifyPushReceiver.ACTION);
         intent.putExtra(IKey.PUSH_DATA, action);
         // 第二个参数不能重复，否则点击事件会没有响应
-        return PendingIntent.getBroadcast(context, notify_id, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        return PendingIntent.getBroadcast(context, notify_id, intent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     /**

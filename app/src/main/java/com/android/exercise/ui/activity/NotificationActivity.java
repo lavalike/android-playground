@@ -55,7 +55,7 @@ public class NotificationActivity extends BaseActivity {
         NotificationCompat.BigPictureStyle style = new NotificationCompat.BigPictureStyle();
         style.bigPicture(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_5));
         builder.setStyle(style);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
         notification.getNotificationManager().notify(notifyId++, builder.build());
     }
@@ -68,7 +68,7 @@ public class NotificationActivity extends BaseActivity {
         style.setBigContentTitle("看完这篇文章，你的Linux基础就差不多了").addLine("第二行").addLine("第三行").addLine("第四行").addLine("第五行").addLine("第六行").addLine("第七行").addLine("第八行");
         builder.setStyle(style);
         builder.setContentText("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层");
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
         notification.getNotificationManager().notify(notifyId++, builder.build());
     }
@@ -78,7 +78,7 @@ public class NotificationActivity extends BaseActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_ID);
         builder.setWhen(System.currentTimeMillis()).setPriority(Notification.PRIORITY_DEFAULT).setOngoing(false).setSmallIcon(R.mipmap.ic_burger).setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger)).setAutoCancel(true).setContentTitle("看完这篇文章，你的Linux基础就差不多了").setContentText("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层");
         builder.setStyle(new NotificationCompat.BigTextStyle());
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
         notification.getNotificationManager().notify(notifyId++, builder.build());
     }
@@ -89,7 +89,7 @@ public class NotificationActivity extends BaseActivity {
         builder.setWhen(System.currentTimeMillis()).setPriority(Notification.PRIORITY_DEFAULT).setOngoing(false).setSmallIcon(R.mipmap.ic_burger).setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_burger)).setAutoCancel(true).setContentTitle("自定义布局title").setContentText("自定义布局text");
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notification_custom);
         builder.setCustomBigContentView(remoteViews);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
         notification.getNotificationManager().notify(notifyId++, builder.build());
     }
