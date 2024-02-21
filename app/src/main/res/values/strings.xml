@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exercise</string>
+    <string name="app_name">技术演练场</string>
     <!--菜单-->
     <string name="action_about">关于</string>
 
