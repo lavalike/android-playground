@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.view.View;
-import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityThreadPoolBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.concurrent.ExecutorService;
@@ -18,14 +17,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class ThreadPoolActivity extends BaseActivity {
-
-    @BindView(R.id.tv_threadpool_log)
-    TextView tvThreadpoolLog;
+    private ActivityThreadPoolBinding binding;
     private StringBuilder stringBuilder;
     private ExecutorService cachedExecutor;
     private ExecutorService fixedExecutor;
@@ -35,28 +28,15 @@ public class ThreadPoolActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thread_pool);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityThreadPoolBinding.inflate(getLayoutInflater())).getRoot());
+        addEvents();
     }
 
-    @OnClick({R.id.btn_cachedthreadpool, R.id.btn_fixedthreadpool, R.id.btn_scheduledthreadpool, R.id.btn_singlethreadpool})
-    public void onClick(View view) {
-        shutdown();
-        stringBuilder = new StringBuilder();
-        switch (view.getId()) {
-            case R.id.btn_cachedthreadpool:
-                cachedThreadPool();
-                break;
-            case R.id.btn_fixedthreadpool:
-                fixedThreadPool();
-                break;
-            case R.id.btn_scheduledthreadpool:
-                scheduledThreadPool();
-                break;
-            case R.id.btn_singlethreadpool:
-                singleThreadPool();
-                break;
-        }
+    public void addEvents() {
+        binding.btnCachedthreadpool.setOnClickListener(v -> cachedThreadPool());
+        binding.btnFixedthreadpool.setOnClickListener(v -> fixedThreadPool());
+        binding.btnScheduledthreadpool.setOnClickListener(v -> scheduledThreadPool());
+        binding.btnSinglethreadpool.setOnClickListener(v -> singleThreadPool());
     }
 
     private void shutdown() {
@@ -78,6 +58,8 @@ public class ThreadPoolActivity extends BaseActivity {
      * newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
      */
     private void singleThreadPool() {
+        shutdown();
+        stringBuilder = new StringBuilder();
         singleExecutor = Executors.newSingleThreadExecutor();
         for (int i = 0; i < 10; i++) {
             final int index = i;
@@ -102,6 +84,8 @@ public class ThreadPoolActivity extends BaseActivity {
      * newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
      */
     private void scheduledThreadPool() {
+        shutdown();
+        stringBuilder = new StringBuilder();
         scheduledExecutor = Executors.newScheduledThreadPool(5);
         scheduledExecutor.schedule(new Runnable() {
             @Override
@@ -127,6 +111,8 @@ public class ThreadPoolActivity extends BaseActivity {
      * newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
      */
     private void fixedThreadPool() {
+        shutdown();
+        stringBuilder = new StringBuilder();
         fixedExecutor = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 10; i++) {
             final int index = i;
@@ -152,6 +138,8 @@ public class ThreadPoolActivity extends BaseActivity {
      * 线程池为无限大，当执行第二个任务时第一个任务已经完成，会复用执行第一个任务的线程，而不用每次新建线程。
      */
     private void cachedThreadPool() {
+        shutdown();
+        stringBuilder = new StringBuilder();
         cachedExecutor = Executors.newCachedThreadPool();
         for (int i = 0; i < 10; i++) {
             final int index = i;
@@ -173,11 +161,11 @@ public class ThreadPoolActivity extends BaseActivity {
     }
 
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(Looper.getMainLooper()) {
+    private final Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             String log = (String) msg.obj;
-            tvThreadpoolLog.setText(log);
+            binding.tvThreadpoolLog.setText(log);
         }
     };
 

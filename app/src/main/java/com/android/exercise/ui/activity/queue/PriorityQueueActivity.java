@@ -1,33 +1,27 @@
 package com.android.exercise.ui.activity.queue;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityPriorityQueueBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 优先级队列
  * Created by wangzhen on 2019/2/13.
  */
 public class PriorityQueueActivity extends BaseActivity {
-
-    @BindView(R.id.tv_content)
-    TextView tvContent;
+    private ActivityPriorityQueueBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_priority_queue);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityPriorityQueueBinding.inflate(getLayoutInflater())).getRoot());
 
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student(60, "王震"));
@@ -35,21 +29,21 @@ public class PriorityQueueActivity extends BaseActivity {
         list.add(new Student(90, "汪林杰"));
         list.add(new Student(30, "李欣科"));
 
-        tvContent.setText("原始顺序：\n");
+        binding.tvContent.setText("原始顺序：\n");
         for (Student student : list) {
-            tvContent.append(student.toString());
-            tvContent.append("\n");
+            binding.tvContent.append(student.toString());
+            binding.tvContent.append("\n");
         }
 
-        tvContent.append("\n-----按分数高低出队选座-----\n");
+        binding.tvContent.append("\n-----按分数高低出队选座-----\n");
         PriorityQueue<Student> queue = new PriorityQueue<>();
         for (Student student : list) {
             queue.offer(student);
         }
 
         while (!queue.isEmpty()) {
-            tvContent.append(queue.poll().toString());
-            tvContent.append("\n");
+            binding.tvContent.append(queue.poll().toString());
+            binding.tvContent.append("\n");
         }
 
     }

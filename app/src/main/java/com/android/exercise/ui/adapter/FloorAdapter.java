@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.exercise.R;
+import com.android.exercise.databinding.ItemCommentLayoutBinding;
 import com.android.exercise.domain.CommentBean;
 import com.android.exercise.ui.widget.FloorView;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
@@ -15,9 +15,6 @@ import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 盖楼Adapter
@@ -55,29 +52,21 @@ public class FloorAdapter extends BaseRecyclerAdapter<CommentBean, FloorAdapter.
     }
 
     class FloorViewHolder extends BaseViewHolder<CommentBean> {
-
-        @BindView(R.id.tv_name)
-        TextView tvName;
-        @BindView(R.id.tv_date)
-        TextView tvDate;
-        @BindView(R.id.floorView)
-        FloorView floorView;
-        @BindView(R.id.tv_content)
-        TextView tvContent;
+        private ItemCommentLayoutBinding binding;
 
         public FloorViewHolder(ViewGroup parent) {
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment_layout, parent, false));
-            ButterKnife.bind(this, itemView);
+            binding = ItemCommentLayoutBinding.bind(itemView);
         }
 
         @Override
         protected void bindData() {
             if (floorList == null || floorList.size() == 0) {
-                floorView.setVisibility(View.GONE);
+                binding.floorView.setVisibility(View.GONE);
             } else {
-                floorView.setVisibility(View.VISIBLE);
-                floorView.setItemClickListener(FloorAdapter.this);
-                floorView.build(floorList);
+                binding.floorView.setVisibility(View.VISIBLE);
+                binding.floorView.setItemClickListener(FloorAdapter.this);
+                binding.floorView.build(floorList);
             }
         }
     }

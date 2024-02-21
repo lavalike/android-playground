@@ -5,33 +5,18 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
+import com.android.exercise.databinding.ActivityDrawerSlideBinding;
 import com.android.exercise.util.T;
 import com.android.exercise.util.UIUtils;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class DrawerSlideActivity extends BaseActivity implements View.OnTouchListener, GestureDetector.OnGestureListener {
-
-    @BindView(R.id.drawerContent)
-    LinearLayout drawerContent;
-    @BindView(R.id.navigationView)
-    NavigationView navigationView;
-    @BindView(R.id.drawerSlide)
-    DrawerLayout mDrawerLayout;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
     private long mLastClickTime = 0;
     private int mClickTimes = 0;
     private int TOTAL_CLICK = 7;
@@ -43,42 +28,27 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
     private ArrayList<Integer> mGestureTemplate;
     private ArrayList<Integer> mGestureList;
 
+    private ActivityDrawerSlideBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawer_slide);
-        ButterKnife.bind(this);
-        initActionbar();
+        setContentView((binding = ActivityDrawerSlideBinding.inflate(getLayoutInflater())).getRoot());
+        binding.btnOpenHide.setOnClickListener(v -> openHide());
         initDrawerLayout();
         initGesture();
     }
 
-    private void initActionbar() {
-//        new ToolBarCommonHolder(this, mToolbar, getString(R.string.item_drawerslide), true);
-//        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mDrawerLayout != null) {
-//                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-//                        mDrawerLayout.closeDrawer(GravityCompat.START);
-//                    } else {
-//                        mDrawerLayout.openDrawer(GravityCompat.START);
-//                    }
-//                }
-//            }
-//        });
-    }
-
     private void initDrawerLayout() {
         //去除阴影
-        mDrawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
-        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+        binding.drawerSlide.setScrimColor(getResources().getColor(android.R.color.transparent));
+        binding.drawerSlide.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 int width = drawerView.getWidth();
                 int left = (int) (slideOffset * width + 0.5f);
-                int right = left + drawerContent.getWidth();
-                drawerContent.layout(left, drawerContent.getTop(), right, drawerContent.getBottom());
+                int right = left + binding.drawerContent.getWidth();
+                binding.drawerContent.layout(left, binding.drawerContent.getTop(), right, binding.drawerContent.getBottom());
             }
 
             @Override
@@ -96,20 +66,11 @@ public class DrawerSlideActivity extends BaseActivity implements View.OnTouchLis
 
             }
         });
-        View menuView = getLayoutInflater().inflate(R.layout.activity_object_box, navigationView, false);
+        View menuView = getLayoutInflater().inflate(R.layout.activity_object_box, binding.navigationView, false);
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) menuView.getLayoutParams();
         int statusBarHeight = UIUtils.getStatusBarHeight(this);
         layoutParams.topMargin = statusBarHeight;
-        navigationView.addHeaderView(menuView);
-    }
-
-    @OnClick(R.id.btn_openHide)
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_openHide:
-                openHide();
-                break;
-        }
+        binding.navigationView.addHeaderView(menuView);
     }
 
     /**

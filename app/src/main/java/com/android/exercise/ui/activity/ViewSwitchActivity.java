@@ -5,9 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
-import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
 import android.widget.ViewSwitcher;
 
 import androidx.core.content.ContextCompat;
@@ -15,34 +13,28 @@ import androidx.core.content.ContextCompat;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityViewSwitchBinding;
 import com.android.exercise.util.T;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * ViewSwitchActivity View轮播
  * Created by wangzhen on 2019-04-19.
  */
 public class ViewSwitchActivity extends BaseActivity {
+    private ActivityViewSwitchBinding binding;
 
     private static final int MSG_NEXT_SWITCHER = 0;
     private static final int MSG_NEXT_FLIPPER = 1;
-    @BindView(R.id.text_switcher)
-    TextSwitcher switcher;
-    @BindView(R.id.view_flipper)
-    ViewFlipper flipper;
     private ArrayList<String> list;
     private int switcherIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_switch);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityViewSwitchBinding.inflate(getLayoutInflater())).getRoot());
         init();
         initSwitcher();
         initFlipper();
@@ -57,13 +49,13 @@ public class ViewSwitchActivity extends BaseActivity {
     }
 
     private void initSwitcher() {
-        switcher.setFactory(new ViewSwitcher.ViewFactory() {
+        binding.textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
                 return getLayoutInflater().inflate(R.layout.switcher_item_layout, null);
             }
         });
-        switcher.setOnClickListener(new View.OnClickListener() {
+        binding.textSwitcher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 T.get(mContext).toast(list.get(switcherIndex % list.size()));
@@ -79,13 +71,13 @@ public class ViewSwitchActivity extends BaseActivity {
             view.setText(list.get(i));
             view.setTextColor(ContextCompat.getColor(this, R.color.color_text_color));
             view.setTextSize(18);
-            flipper.addView(view);
+            binding.viewFlipper.addView(view);
         }
-        flipper.setFlipInterval(1000 * 3);
+        binding.viewFlipper.setFlipInterval(1000 * 3);
         if (list.size() > 1) {
-            flipper.startFlipping();
+            binding.viewFlipper.startFlipping();
         } else {
-            flipper.stopFlipping();
+            binding.viewFlipper.stopFlipping();
         }
     }
 
@@ -94,7 +86,7 @@ public class ViewSwitchActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_NEXT_SWITCHER:
-                    switcher.setText(list.get(switcherIndex % list.size()));
+                    binding.textSwitcher.setText(list.get(switcherIndex % list.size()));
                     if (list.size() > 1) {
                         handler.sendEmptyMessageDelayed(MSG_NEXT_SWITCHER, 3000);
                         switcherIndex++;

@@ -1,36 +1,31 @@
 package com.android.exercise.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
 
-import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityWebBinding;
 import com.android.exercise.util.IKey;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class BrowserActivity extends BaseActivity {
-
-    @BindView(R.id.webview)
-    WebView webview;
+    private ActivityWebBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityWebBinding.inflate(getLayoutInflater())).getRoot());
         config();
-        webview.loadUrl(getIntent().getStringExtra(IKey.HTML_URL));
+        binding.webview.loadUrl(getIntent().getStringExtra(IKey.HTML_URL));
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void config() {
-        WebSettings settings = webview.getSettings();
+        WebSettings settings = binding.webview.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDefaultTextEncodingName("UTF-8");
         settings.setLoadWithOverviewMode(true);
@@ -49,6 +44,6 @@ public class BrowserActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        webview.destroy();
+        binding.webview.destroy();
     }
 }

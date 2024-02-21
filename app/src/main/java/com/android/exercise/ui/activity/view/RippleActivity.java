@@ -5,55 +5,38 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
-import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityRippleBinding;
 import com.android.exercise.util.AppUtil;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.net.URL;
 import java.util.UUID;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * RippleActivity.java
  * Created by wangzhen on 2017/4/10.
  */
 public class RippleActivity extends BaseActivity {
-
-    @BindView(R.id.tv_html)
-    TextView tvHtml;
-    @BindView(R.id.tv_unique_id)
-    TextView tvUniqueId;
+    private ActivityRippleBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ripple);
-        ButterKnife.bind(this);
-
-        tvUniqueId.setText("UniqueID:" + getUniquePsuedoID());
-        tvHtml.setText("Html内容加载中...");
+        setContentView((binding = ActivityRippleBinding.inflate(getLayoutInflater())).getRoot());
+        binding.tvUniqueId.setText("UniqueID:" + getUniquePsuedoID());
+        binding.tvHtml.setText("Html内容加载中...");
         readAssetHtml();
     }
 
     private void readAssetHtml() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String html = AppUtil.getAssetsText("html/html_template.html");
-                final Spanned spanned = Html.fromHtml(html, imgGetter, null);
-                tvHtml.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvHtml.setText(spanned);
-                    }
-                });
-            }
+        new Thread(() -> {
+            String html = AppUtil.getAssetsText("html/html_template.html");
+            final Spanned spanned = Html.fromHtml(html, imgGetter, null);
+            binding.tvHtml.post(() -> binding.tvHtml.setText(spanned));
         }).start();
     }
 

@@ -1,28 +1,21 @@
 package com.android.exercise.ui.activity.view;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
-import com.android.exercise.ui.widget.StateButton;
+import com.android.exercise.databinding.ActivityStateButtonBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class StateButtonActivity extends BaseActivity {
-
-    @BindView(R.id.btn_state)
-    StateButton btnState;
+    private ActivityStateButtonBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_state_button);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityStateButtonBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
     }
 
     @Override
@@ -30,18 +23,9 @@ public class StateButtonActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_state_button));
     }
 
-    @OnClick({R.id.btn_state, R.id.btn_reset, R.id.btn_loading, R.id.btn_success})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_reset:
-                btnState.reset();
-                break;
-            case R.id.btn_loading:
-                btnState.startLoading();
-                break;
-            case R.id.btn_success:
-                btnState.success();
-                break;
-        }
+    public void setEvents() {
+        binding.btnReset.setOnClickListener(v -> binding.btnState.reset());
+        binding.btnLoading.setOnClickListener(v -> binding.btnState.startLoading());
+        binding.btnSuccess.setOnClickListener(v -> binding.btnState.success());
     }
 }

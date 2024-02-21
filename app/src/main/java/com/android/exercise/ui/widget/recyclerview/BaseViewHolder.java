@@ -15,6 +15,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
     public T data;
     public Context context;
+    public View itemView;
 
     public BaseViewHolder(ViewGroup parent, int layoutId) {
         this(inflate(layoutId, parent, false));
@@ -22,6 +23,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
     public BaseViewHolder(View itemView) {
         super(itemView);
+        this.itemView = itemView;
         context = itemView.getContext();
     }
 

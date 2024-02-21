@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityAndServerBinding;
 import com.android.exercise.ui.activity.view.HtmlActivity;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.NetworkUtil;
@@ -20,18 +20,13 @@ import com.yanzhenjie.andserver.AndServer;
 import com.yanzhenjie.andserver.Server;
 import com.yanzhenjie.andserver.website.AssetsWebsite;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * AndServerActivity.java
  * Created by wangzhen on 2017/3/22.
  */
 public class AndServerActivity extends BaseActivity {
 
-    @BindView(R.id.btn_server_msg)
-    Button btnServerMsg;
+    private ActivityAndServerBinding binding;
     private Server mServer;
 
     private int SERVER_PORT = 8080;
@@ -41,8 +36,8 @@ public class AndServerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_and_server);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityAndServerBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
         initServer();
     }
 
@@ -57,23 +52,16 @@ public class AndServerActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_andServer));
     }
 
-    @OnClick({R.id.btn_startServer, R.id.btn_stopServer, R.id.btn_server_msg})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_startServer:
-                startServer();
-                break;
-            case R.id.btn_stopServer:
-                stopServer();
-                break;
-            case R.id.btn_server_msg:
-                if (!TextUtils.isEmpty(url)) {
-                    Intent intent = new Intent(this, HtmlActivity.class);
-                    intent.putExtra(IKey.HTML_URL, url);
-                    startActivity(intent);
-                }
-                break;
-        }
+    public void setEvents() {
+        binding.btnStartServer.setOnClickListener(v -> startServer());
+        binding.btnStopServer.setOnClickListener(v -> stopServer());
+        binding.btnServerMsg.setOnClickListener(v -> {
+            if (!TextUtils.isEmpty(url)) {
+                Intent intent = new Intent(this, HtmlActivity.class);
+                intent.putExtra(IKey.HTML_URL, url);
+                startActivity(intent);
+            }
+        });
     }
 
     private void stopServer() {
@@ -95,13 +83,13 @@ public class AndServerActivity extends BaseActivity {
             Log.e(tag, "Server Running.");
             String ipAddress = NetworkUtil.getIPAddress(this);
             if (!TextUtils.isEmpty(ipAddress)) {
-                btnServerMsg.setVisibility(View.VISIBLE);
+                binding.btnServerMsg.setVisibility(View.VISIBLE);
                 url = "http://" + ipAddress + ":" + SERVER_PORT + "/speed.html";
-                btnServerMsg.setText("点击访问:" + url);
+                binding.btnServerMsg.setText("点击访问:" + url);
             }
         } else {
             Log.e(tag, "Server Stopped.");
-            btnServerMsg.setVisibility(View.GONE);
+            binding.btnServerMsg.setVisibility(View.GONE);
         }
     }
 }

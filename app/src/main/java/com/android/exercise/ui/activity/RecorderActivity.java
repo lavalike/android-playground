@@ -1,19 +1,14 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.manager.AudioManager;
 import com.android.exercise.base.toolbar.ToolbarFactory;
-import com.android.exercise.ui.widget.RecorderButton;
+import com.android.exercise.databinding.ActivityRecorderBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Recorder
@@ -21,25 +16,19 @@ import butterknife.OnClick;
  */
 public class RecorderActivity extends BaseActivity {
 
-    @BindView(R.id.btn_system)
-    RecorderButton btnRecord;
+    private ActivityRecorderBinding binding;
     private AudioManager mAudioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recorder);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityRecorderBinding.inflate(getLayoutInflater())).getRoot());
         init();
+        setEvents();
     }
 
     private void init() {
-        btnRecord.setRecorderListener(new RecorderButton.IRecorderListener() {
-            @Override
-            public void onFinish(String path) {
-                Toast.makeText(mContext, "文件地址：" + path, Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.btnSystem.setRecorderListener(path -> Toast.makeText(mContext, "文件地址：" + path, Toast.LENGTH_SHORT).show());
         mAudioManager = AudioManager.get();
         mAudioManager.setPlayStateListener(new AudioManager.AudioPlayStateListener() {
             @Override
@@ -64,23 +53,14 @@ public class RecorderActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_recorder));
     }
 
-    @OnClick({R.id.btn_play, R.id.btn_pause, R.id.btn_resume, R.id.btn_stop})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_play:
-                String path = "http://10.100.119.192:8080/wangzhen/audio/hby.mp3";
-                mAudioManager.startPlay(path);
-                break;
-            case R.id.btn_pause:
-                mAudioManager.pausePlay();
-                break;
-            case R.id.btn_resume:
-                mAudioManager.resumePlay();
-                break;
-            case R.id.btn_stop:
-                mAudioManager.stopPlay();
-                break;
-        }
+    public void setEvents() {
+        binding.btnPlay.setOnClickListener(v -> {
+            String path = "http://10.100.119.192:8080/wangzhen/audio/hby.mp3";
+            mAudioManager.startPlay(path);
+        });
+        binding.btnPause.setOnClickListener(v -> mAudioManager.pausePlay());
+        binding.btnResume.setOnClickListener(v -> mAudioManager.resumePlay());
+        binding.btnStop.setOnClickListener(v -> mAudioManager.stopPlay());
     }
 
     @Override

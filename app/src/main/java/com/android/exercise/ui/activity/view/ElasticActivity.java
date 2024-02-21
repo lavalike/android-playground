@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,33 +11,25 @@ import androidx.annotation.Nullable;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityElasticBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
-import com.wangzhen.elastic.ElasticLayout;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class ElasticActivity extends BaseActivity {
-
-    @BindView(R.id.webview)
-    WebView webview;
-    @BindView(R.id.elastic_layout)
-    ElasticLayout elastic_layout;
+    private ActivityElasticBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elastic);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityElasticBinding.inflate(getLayoutInflater())).getRoot());
         String url = "https://juejin.cn/post/7149082070604578824";
-        webview.loadUrl(url);
+        binding.webview.loadUrl(url);
 
         View headerView = LayoutInflater.from(this).inflate(R.layout.layout_pull_behind, null);
         ((TextView) headerView.findViewById(R.id.tv_tip)).setText("网页由 " + getUrlHost(url) + " 提供");
-        elastic_layout.setHeaderView(headerView);
+        binding.elasticLayout.setHeaderView(headerView);
     }
 
     /**

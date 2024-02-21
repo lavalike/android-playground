@@ -2,21 +2,18 @@ package com.android.exercise.ui.adapter;
 
 import android.content.Context;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
+import com.android.exercise.databinding.ItemTouchLayoutBinding;
 import com.android.exercise.listener.ITouchCallback;
 import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 
 import java.util.Collections;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * ItemTouchHelper Adapter
@@ -54,18 +51,16 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
     }
 
     class TouchViewHolder extends BaseViewHolder<String> {
-
-        @BindView(R.id.tv_touch)
-        public TextView tvTouch;
+        private ItemTouchLayoutBinding binding;
 
         public TouchViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_touch_layout);
-            ButterKnife.bind(this, itemView);
+            binding = ItemTouchLayoutBinding.bind(itemView);
         }
 
         @Override
         protected void bindData() {
-            tvTouch.setText(data);
+            binding.tvTouch.setText(data);
         }
     }
 }

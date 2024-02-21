@@ -10,9 +10,6 @@ import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * 加载更多
  * Created by wangzhen on 16/11/11.
@@ -30,13 +27,11 @@ public class MoreAdapter extends BaseRecyclerAdapter<String, MoreAdapter.MoreVie
     }
 
     public class MoreViewHolder extends BaseViewHolder<String> {
-
-        @BindView(android.R.id.text1)
         TextView tv;
 
         public MoreViewHolder(ViewGroup parent) {
             super(LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_1, null));
-            ButterKnife.bind(this, itemView);
+            tv = (TextView) itemView.findViewById(android.R.id.text1);
         }
 
         @Override

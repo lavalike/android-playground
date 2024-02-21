@@ -209,7 +209,6 @@
         <activity android:name=".ui.activity.DispatchActivity" />
         <activity android:name=".ui.activity.view.DrawerSlideActivity" />
         <activity android:name=".ui.activity.AndServerActivity" />
-        <activity android:name=".ui.activity.MinaActivity" />
         <activity android:name=".ui.activity.view.RippleActivity" />
         <activity android:name=".ui.activity.view.ViewActivity" />
         <activity android:name=".ui.activity.RxJavaActivity" />
@@ -239,7 +238,6 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.activity.WindowActivity" />
         <activity android:name=".ui.activity.TextLinkActivity" />
         <activity android:name=".ui.activity.view.RecyclerTouchActivity" />
         <activity android:name=".ui.activity.RecorderActivity" />

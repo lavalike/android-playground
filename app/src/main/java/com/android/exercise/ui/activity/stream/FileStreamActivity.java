@@ -2,11 +2,11 @@ package com.android.exercise.ui.activity.stream;
 
 import android.os.Bundle;
 import android.os.Environment;
-import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityFileStreamBinding;
 import com.android.exercise.util.IOUtils;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
@@ -15,47 +15,40 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * FileStreamActivity
  * Created by wangzhen on 2019/2/25.
  */
 public class FileStreamActivity extends BaseActivity {
-
-    @BindView(R.id.tv_content)
-    TextView tvContent;
+    private ActivityFileStreamBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_file_stream);
-        ButterKnife.bind(this);
-
+        setContentView((binding = ActivityFileStreamBinding.inflate(getLayoutInflater())).getRoot());
 
         File file = new File(Environment.getExternalStorageDirectory() + File.separator + "20190211160659.mp4");
-        tvContent.append(file.getAbsolutePath());
-        tvContent.append("\n");
-        tvContent.append("file : " + getFileSize0(file));
-        tvContent.append("\n");
-        tvContent.append("stream : " + getFileSize1(file));
-        tvContent.append("\n");
+        binding.tvContent.append(file.getAbsolutePath());
+        binding.tvContent.append("\n");
+        binding.tvContent.append("file : " + getFileSize0(file));
+        binding.tvContent.append("\n");
+        binding.tvContent.append("stream : " + getFileSize1(file));
+        binding.tvContent.append("\n");
 
         file = new File(Environment.getExternalStorageDirectory() + File.separator + "1526587196650.png");
-        tvContent.append(file.getAbsolutePath());
-        tvContent.append("\n");
-        tvContent.append("file : " + getFileSize0(file));
-        tvContent.append("\n");
-        tvContent.append("stream : " + getFileSize1(file));
-        tvContent.append("\n");
+        binding.tvContent.append(file.getAbsolutePath());
+        binding.tvContent.append("\n");
+        binding.tvContent.append("file : " + getFileSize0(file));
+        binding.tvContent.append("\n");
+        binding.tvContent.append("stream : " + getFileSize1(file));
+        binding.tvContent.append("\n");
 
         file = new File(Environment.getExternalStorageDirectory() + File.separator + "MM_UDID");
-        tvContent.append(file.getAbsolutePath());
-        tvContent.append("\n");
-        tvContent.append("file : " + getFileSize0(file));
-        tvContent.append("\n");
-        tvContent.append("stream : " + getFileSize1(file));
+        binding.tvContent.append(file.getAbsolutePath());
+        binding.tvContent.append("\n");
+        binding.tvContent.append("file : " + getFileSize0(file));
+        binding.tvContent.append("\n");
+        binding.tvContent.append("stream : " + getFileSize1(file));
     }
 
     /**

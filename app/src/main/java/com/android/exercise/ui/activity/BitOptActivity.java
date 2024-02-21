@@ -2,32 +2,27 @@ package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityBitOptBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * BitOptActivity
  * Created by wangzhen on 2018/12/6.
  */
 public class BitOptActivity extends BaseActivity {
-
-    @BindView(R.id.tv_result)
-    TextView tvResult;
+    private ActivityBitOptBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bit_opt);
-        ButterKnife.bind(this);
+        binding = ActivityBitOptBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         opt();
     }
 
@@ -68,10 +63,10 @@ public class BitOptActivity extends BaseActivity {
     }
 
     private void setText(String s) {
-        String text = tvResult.getText().toString();
+        String text = binding.tvResult.getText().toString();
         if (!TextUtils.isEmpty(text)) {
             text += "\n";
         }
-        tvResult.setText(text + s);
+        binding.tvResult.setText(text + s);
     }
 }

@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.RemoteViews;
 
 import androidx.annotation.Nullable;
@@ -15,24 +14,22 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.manager.NotificationHelper;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityNotificationBinding;
 import com.android.exercise.domain.NotificationBean;
 import com.android.exercise.listener.INotification;
 import com.android.exercise.ui.MainActivity;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class NotificationActivity extends BaseActivity {
-
+    private ActivityNotificationBinding binding;
     private INotification notification;
     private int notifyId = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityNotificationBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
         notification = NotificationHelper.get(this);
     }
 
@@ -42,29 +39,13 @@ public class NotificationActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_notification));
     }
 
-    @OnClick({R.id.btn_send_normal, R.id.btn_send_custom, R.id.btn_send_big_text, R.id.btn_send_inbox, R.id.btn_send_big_picture, R.id.btn_delete})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_send_normal:
-                sendNormal();
-                break;
-            case R.id.btn_send_custom:
-                sendCustomLayout();
-                break;
-            case R.id.btn_send_big_text:
-                sendBigTextStyle();
-                break;
-            case R.id.btn_send_inbox:
-                sendInboxStyle();
-                break;
-            case R.id.btn_send_big_picture:
-                sendBigPictureStyle();
-                break;
-            case R.id.btn_delete:
-//                notification.getNotificationManager().cancelAll();
-                notification.getNotificationManager().cancel(--notifyId);
-                break;
-        }
+    public void setEvents() {
+        binding.btnSendNormal.setOnClickListener(v -> sendNormal());
+        binding.btnSendCustom.setOnClickListener(v -> sendCustomLayout());
+        binding.btnSendBigText.setOnClickListener(v -> sendBigTextStyle());
+        binding.btnSendInbox.setOnClickListener(v -> sendInboxStyle());
+        binding.btnSendBigPicture.setOnClickListener(v -> sendBigPictureStyle());
+        binding.btnDelete.setOnClickListener(v -> notification.getNotificationManager().cancel(--notifyId));
     }
 
     private void sendBigPictureStyle() {

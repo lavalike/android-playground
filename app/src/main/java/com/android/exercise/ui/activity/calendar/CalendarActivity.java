@@ -9,13 +9,10 @@ import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ThemedMenuTextToolbar;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityCalendarBinding;
 import com.haibin.calendarview.Calendar;
-import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * CalendarActivity 日历控件
@@ -23,23 +20,18 @@ import butterknife.ButterKnife;
  */
 @SuppressLint("DefaultLocale")
 public class CalendarActivity extends BaseActivity {
-
-    @BindView(R.id.calendar_layout)
-    CalendarLayout calendarLayout;
-    @BindView(R.id.calendar_view)
-    CalendarView calendarView;
+    private ActivityCalendarBinding binding;
     private ThemedMenuTextToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityCalendarBinding.inflate(getLayoutInflater())).getRoot());
         initCalendar();
     }
 
     private void initCalendar() {
-        calendarView.setOnCalendarSelectListener(new CalendarView.OnCalendarSelectListener() {
+        binding.calendarView.setOnCalendarSelectListener(new CalendarView.OnCalendarSelectListener() {
             @Override
             public void onCalendarOutOfRange(Calendar calendar) {
 
@@ -50,17 +42,17 @@ public class CalendarActivity extends BaseActivity {
                 toolbar.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendar.getYear(), calendar.getMonth(), calendar.getDay()));
             }
         });
-        toolbar.setTitle(String.format("%1$d年%2$02d月%3$02d日", calendarView.getCurYear(), calendarView.getCurMonth(), calendarView.getCurDay()));
+        toolbar.setTitle(String.format("%1$d年%2$02d月%3$02d日", binding.calendarView.getCurYear(), binding.calendarView.getCurMonth(), binding.calendarView.getCurDay()));
     }
 
     @Nullable
     @Override
     public Toolbar createToolbar() {
         toolbar = ToolbarFactory.themedMenu(this, getString(R.string.item_calendar), "视图", () -> {
-            if (calendarLayout.isExpand()) {
-                calendarLayout.shrink();
+            if (binding.calendarLayout.isExpand()) {
+                binding.calendarLayout.shrink();
             } else {
-                calendarLayout.expand();
+                binding.calendarLayout.expand();
             }
         });
         return toolbar;

@@ -28,13 +28,11 @@
     <string name="item_drawerslide">DrawerLayout</string>
     <string name="item_andServer">AndServer</string>
     <string name="item_myRecycler">MyRecycler</string>
-    <string name="item_mina">MINA</string>
     <string name="item_ripple">Ripple</string>
     <string name="item_view">View</string>
     <string name="item_text_link">TextView链接</string>
     <string name="item_text_format">TextView格式</string>
     <string name="item_rxjava">RxJava</string>
-    <string name="item_window">window</string>
     <string name="item_recycler_touch">ItemTouchHelper</string>
     <string name="item_recorder">Recorder</string>
     <string name="item_floor">评论盖楼</string>

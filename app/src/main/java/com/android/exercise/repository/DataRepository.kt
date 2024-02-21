@@ -10,7 +10,6 @@ import com.android.exercise.ui.activity.AutoServiceActivity
 import com.android.exercise.ui.activity.BitOptActivity
 import com.android.exercise.ui.activity.BroadcastActivity
 import com.android.exercise.ui.activity.DispatchActivity
-import com.android.exercise.ui.activity.MinaActivity
 import com.android.exercise.ui.activity.NotificationActivity
 import com.android.exercise.ui.activity.PageSwitchActivity
 import com.android.exercise.ui.activity.RecorderActivity
@@ -23,7 +22,6 @@ import com.android.exercise.ui.activity.ThreadPoolActivity
 import com.android.exercise.ui.activity.VideoRecordActivity
 import com.android.exercise.ui.activity.ViewSwitchActivity
 import com.android.exercise.ui.activity.WaveActivity
-import com.android.exercise.ui.activity.WindowActivity
 import com.android.exercise.ui.activity.adapter.LoadMoreActivity
 import com.android.exercise.ui.activity.android11.ScopedStorageActivity
 import com.android.exercise.ui.activity.android11.TelephonyCompatActivity
@@ -39,6 +37,7 @@ import com.android.exercise.ui.activity.bitmap.LargeImageActivity
 import com.android.exercise.ui.activity.bluetooth.BluetoothActivity
 import com.android.exercise.ui.activity.calendar.CalendarActivity
 import com.android.exercise.ui.activity.circle.CircleImageActivity
+import com.android.exercise.ui.activity.coroutines.CoroutinesActivity
 import com.android.exercise.ui.activity.database.LitePalActivity
 import com.android.exercise.ui.activity.database.ObjectBoxActivity
 import com.android.exercise.ui.activity.di.dagger2.Dagger2Activity
@@ -56,8 +55,6 @@ import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity
-import com.android.exercise.ui.activity.coroutines.CoroutinesActivity
-import com.android.exercise.ui.activity.serialization.SerializationActivity
 import com.android.exercise.ui.activity.layer.MultiLayerActivity
 import com.android.exercise.ui.activity.md5.MD5Activity
 import com.android.exercise.ui.activity.mmkv.MMKVActivity
@@ -66,6 +63,7 @@ import com.android.exercise.ui.activity.player.ExoPlayerActivity
 import com.android.exercise.ui.activity.player.IjkPlayerActivity
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity
+import com.android.exercise.ui.activity.serialization.SerializationActivity
 import com.android.exercise.ui.activity.shared_elements.SharedElementsActivity
 import com.android.exercise.ui.activity.stream.FileStreamActivity
 import com.android.exercise.ui.activity.timber.TimberActivity
@@ -205,9 +203,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_andServer), AndServerActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_mina), MinaActivity::class.java
         ),
 
         Caption("kotlin"),
@@ -366,9 +361,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_recycler_touch), RecyclerTouchActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_window), WindowActivity::class.java
         ),
         Item(
             getString(R.string.item_slidingmenu), SlidingMenuActivity::class.java

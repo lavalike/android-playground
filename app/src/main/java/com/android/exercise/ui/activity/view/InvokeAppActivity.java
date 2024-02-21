@@ -3,20 +3,16 @@ package com.android.exercise.ui.activity.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityInvokeAppBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
 import java.net.URISyntaxException;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * InvokeAppActivity
@@ -24,14 +20,13 @@ import butterknife.OnClick;
  */
 public class InvokeAppActivity extends BaseActivity {
 
-    @BindView(R.id.input_intent)
-    EditText inputIntent;
+    private ActivityInvokeAppBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_invoke_app);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityInvokeAppBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
     }
 
     @Nullable
@@ -40,16 +35,17 @@ public class InvokeAppActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_invoke_app));
     }
 
-    @OnClick(R.id.btn_invoke)
-    public void onViewClicked() {
-        String scheme = inputIntent.getText().toString();
-        if (!TextUtils.isEmpty(scheme)) {
-            try {
-                Intent intent = Intent.parseUri(scheme, Intent.URI_INTENT_SCHEME);
-                startActivity(intent);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
+    public void setEvents() {
+        binding.btnInvoke.setOnClickListener(v -> {
+            String scheme = binding.inputIntent.getText().toString();
+            if (!TextUtils.isEmpty(scheme)) {
+                try {
+                    Intent intent = Intent.parseUri(scheme, Intent.URI_INTENT_SCHEME);
+                    startActivity(intent);
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        });
     }
 }

@@ -1,12 +1,11 @@
 package com.android.exercise.ui.activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityRxJavaBinding;
 import com.android.exercise.service.PollService;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
@@ -14,9 +13,6 @@ import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
@@ -30,15 +26,13 @@ import io.reactivex.schedulers.Schedulers;
  * Created by wangzhen on 2017/4/23.
  */
 public class RxJavaActivity extends BaseActivity {
-
-    @BindView(R.id.tv_rxjava)
-    TextView mTextView;
+    private ActivityRxJavaBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rx_java);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityRxJavaBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
         PollService.setServiceAlarm(this, true);
     }
 
@@ -47,13 +41,8 @@ public class RxJavaActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_rxjava));
     }
 
-    @OnClick({R.id.btn_send})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_send:
-                launch();
-                break;
-        }
+    public void setEvents() {
+        binding.btnSend.setOnClickListener(v -> launch());
     }
 
     private void launch() {
@@ -99,7 +88,7 @@ public class RxJavaActivity extends BaseActivity {
 
             @Override
             public void onComplete() {
-                mTextView.setText(builder.toString());
+                binding.tvRxjava.setText(builder.toString());
             }
         });
     }

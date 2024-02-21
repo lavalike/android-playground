@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
@@ -14,6 +13,7 @@ import androidx.core.content.FileProvider;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityVideoRecordBinding;
 import com.android.exercise.util.IKey;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 import com.wangzhen.permission.PermissionManager;
@@ -25,20 +25,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * VideoRecordActivity 录视频
  * Created by wangzhen on 2019/1/30.
  */
 public class VideoRecordActivity extends BaseActivity {
+    private ActivityVideoRecordBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_record);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityVideoRecordBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
     }
 
     @Override
@@ -46,27 +44,33 @@ public class VideoRecordActivity extends BaseActivity {
         return ToolbarFactory.themed(this, getString(R.string.item_camera_video));
     }
 
-    @OnClick({R.id.btn_system, R.id.btn_custom})
-    public void onClick(final View view) {
-        PermissionManager.request(this, new AbsPermissionCallback() {
-
-            @Override
-            public void onGrant(@NonNull String[] strings) {
-                switch (view.getId()) {
-                    case R.id.btn_system:
-                        systemCamera();
-                        break;
-                    case R.id.btn_custom:
-                        customCamera();
-                        break;
+    public void setEvents() {
+        binding.btnSystem.setOnClickListener(view -> {
+            PermissionManager.request(this, new AbsPermissionCallback() {
+                @Override
+                public void onGrant(@NonNull String[] strings) {
+                    systemCamera();
                 }
-            }
 
-            @Override
-            public void onDeny(@NonNull String[] strings, @NonNull String[] strings1) {
+                @Override
+                public void onDeny(@NonNull String[] strings, @NonNull String[] strings1) {
 
-            }
-        }, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO);
+                }
+            }, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO);
+        });
+        binding.btnCustom.setOnClickListener(view -> {
+            PermissionManager.request(this, new AbsPermissionCallback() {
+                @Override
+                public void onGrant(@NonNull String[] strings) {
+                    customCamera();
+                }
+
+                @Override
+                public void onDeny(@NonNull String[] strings, @NonNull String[] strings1) {
+
+                }
+            }, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO);
+        });
     }
 
     private void systemCamera() {

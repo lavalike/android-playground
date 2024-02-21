@@ -6,26 +6,20 @@ import android.os.Handler;
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
-import com.android.exercise.ui.widget.RevealView;
+import com.android.exercise.databinding.ActivityPorterDuffBinding;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class PorterDuffActivity extends BaseActivity {
-
-    @BindView(R.id.revealView)
-    RevealView revealView;
+    private ActivityPorterDuffBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_porter_duff);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityPorterDuffBinding.inflate(getLayoutInflater())).getRoot());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                revealView.startRevealAnim();
+                binding.revealView.startRevealAnim();
             }
         }, 1000);
     }

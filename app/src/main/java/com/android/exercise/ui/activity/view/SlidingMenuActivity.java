@@ -1,38 +1,25 @@
 package com.android.exercise.ui.activity.view;
 
 import android.os.Bundle;
-import android.view.View;
 
-import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
-import com.android.exercise.ui.widget.SlidingMenu;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import com.android.exercise.databinding.ActivitySlidingMenuBinding;
 
 /**
  * 自定义侧滑菜单
  * Created by wangzhen on 2016/11/19
  */
 public class SlidingMenuActivity extends BaseActivity {
-
-    @BindView(R.id.slidingmenu)
-    SlidingMenu slidingmenu;
+    private ActivitySlidingMenuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sliding_menu);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivitySlidingMenuBinding.inflate(getLayoutInflater())).getRoot());
+        setEvents();
     }
 
-    @OnClick(R.id.btn_toggleMenu)
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_toggleMenu:
-                slidingmenu.toggleMenu();
-                break;
-        }
+    public void setEvents() {
+        binding.btnToggleMenu.setOnClickListener(v -> binding.slidingmenu.toggleMenu());
     }
 }

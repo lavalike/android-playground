@@ -4,11 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityHoverRecyclerViewBinding;
 import com.android.exercise.ui.adapter.HoverAdapter;
 import com.android.exercise.ui.adapter.decoration.HoverDecoration;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
@@ -16,36 +16,31 @@ import com.wangzhen.commons.toolbar.impl.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * 分组悬停
  * Created by wangzhen on 2018/6/4.
  */
 public class HoverRecyclerViewActivity extends BaseActivity implements HoverDecoration.HoverCallback {
-    @BindView(R.id.recycler_hover)
-    RecyclerView recyclerView;
+    private ActivityHoverRecyclerViewBinding binding;
     private List<Integer> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hover_recycler_view);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityHoverRecyclerViewBinding.inflate(getLayoutInflater())).getRoot());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        binding.recyclerHover.setLayoutManager(linearLayoutManager);
         HoverDecoration hoverDecoration = new HoverDecoration(this);
         hoverDecoration.setCallback(this);
-        recyclerView.addItemDecoration(hoverDecoration);
+        binding.recyclerHover.addItemDecoration(hoverDecoration);
 
         list = new ArrayList<>();
         for (int i = 1; i <= 110; i++) {
             list.add(i);
         }
         HoverAdapter adapter = new HoverAdapter(this, list);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerHover.setAdapter(adapter);
     }
 
     @Nullable

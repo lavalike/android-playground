@@ -17,31 +17,24 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityHtmlBinding;
 import com.android.exercise.util.IKey;
 import com.android.exercise.util.NetworkUtil;
 import com.android.exercise.util.T;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * HTML页面
  * created by wangzhen on 2016/11/07
  */
 public class HtmlActivity extends BaseActivity {
-
-    @BindView(R.id.webview)
-    WebView mWebView;
-    @BindView(R.id.progressbar)
-    ProgressBar progressBar;
+    private ActivityHtmlBinding binding;
 
     //文件选择
     private String MIME = "image/*";
@@ -54,8 +47,7 @@ public class HtmlActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_html);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityHtmlBinding.inflate(getLayoutInflater())).getRoot());
         if (!NetworkUtil.isNetworkAvailable(mContext)) {
             T.get(mContext).toast(getString(R.string.error_network_failure));
             return;
@@ -63,7 +55,7 @@ public class HtmlActivity extends BaseActivity {
         mUrl = getIntent().getStringExtra(IKey.HTML_URL);
         if (!TextUtils.isEmpty(mUrl)) {
             configWebView();
-            mWebView.loadUrl(mUrl);
+            binding.webview.loadUrl(mUrl);
         }
     }
 
@@ -71,7 +63,7 @@ public class HtmlActivity extends BaseActivity {
      * 配置WebView
      */
     private void configWebView() {
-        WebSettings settings = mWebView.getSettings();
+        WebSettings settings = binding.webview.getSettings();
         settings.setJavaScriptEnabled(true);
         // 不阻塞网络图片加载
         settings.setBlockNetworkImage(false);
@@ -83,7 +75,7 @@ public class HtmlActivity extends BaseActivity {
         // 网页缩放
         settings.setSupportZoom(false);
 
-        mWebView.setWebViewClient(new WebViewClient() {
+        binding.webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.startsWith("http") || url.startsWith("https")) {
@@ -102,7 +94,7 @@ public class HtmlActivity extends BaseActivity {
                 setLoading(false);
             }
         });
-        mWebView.setWebChromeClient(new UploadWebChromeClient());
+        binding.webview.setWebChromeClient(new UploadWebChromeClient());
     }
 
     @Nullable
@@ -220,7 +212,6 @@ public class HtmlActivity extends BaseActivity {
         }
         mUploadCallbackAboveL.onReceiveValue(results);
         mUploadCallbackAboveL = null;
-        return;
     }
 
     @Override
@@ -236,8 +227,8 @@ public class HtmlActivity extends BaseActivity {
     }
 
     private void closePage() {
-        if (mWebView.canGoBack()) {
-            mWebView.goBack();
+        if (binding.webview.canGoBack()) {
+            binding.webview.goBack();
         } else {
             finish();
         }
@@ -249,6 +240,6 @@ public class HtmlActivity extends BaseActivity {
      * @param loading
      */
     private void setLoading(boolean loading) {
-        progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
+        binding.progressbar.setVisibility(loading ? View.VISIBLE : View.GONE);
     }
 }

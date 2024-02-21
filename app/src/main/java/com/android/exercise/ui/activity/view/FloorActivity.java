@@ -4,11 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
+import com.android.exercise.databinding.ActivityFloorBinding;
 import com.android.exercise.domain.CommentBean;
 import com.android.exercise.ui.adapter.FloorAdapter;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
@@ -16,31 +16,25 @@ import com.wangzhen.commons.toolbar.impl.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * 评论盖楼
  * Created by wangzhen on 2017/8/10.
  */
 public class FloorActivity extends BaseActivity {
-
-    @BindView(R.id.recycler_floor)
-    RecyclerView mRecyclerView;
+    private ActivityFloorBinding binding;
     private FloorAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_floor);
-        ButterKnife.bind(this);
+        setContentView((binding = ActivityFloorBinding.inflate(getLayoutInflater())).getRoot());
         config();
         init();
     }
 
     private void config() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
+        binding.recyclerFloor.setLayoutManager(layoutManager);
     }
 
     private void init() {
@@ -49,7 +43,7 @@ public class FloorActivity extends BaseActivity {
             list.add(new CommentBean());
         }
         mAdapter = new FloorAdapter(this, list);
-        mRecyclerView.setAdapter(mAdapter);
+        binding.recyclerFloor.setAdapter(mAdapter);
     }
 
     @Nullable
