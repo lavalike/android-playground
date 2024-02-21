@@ -55,7 +55,6 @@ import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity
-import com.android.exercise.ui.activity.layer.MultiLayerActivity
 import com.android.exercise.ui.activity.md5.MD5Activity
 import com.android.exercise.ui.activity.mmkv.MMKVActivity
 import com.android.exercise.ui.activity.motion.MotionLayoutActivity
@@ -322,9 +321,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_adapter), LoadMoreActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_hero), MultiLayerActivity::class.java
         ),
         Item(
             getString(R.string.item_wave_view), WaveActivity::class.java

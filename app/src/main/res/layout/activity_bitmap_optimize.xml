@@ -16,7 +16,6 @@
             android:id="@+id/tv_raw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/fzzcysk"
             android:text="原图" />
 
         <com.wangzhen.circle.CircleImageView
@@ -32,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/fzzcysk"
             android:text="修改采样率" />
 
         <com.wangzhen.circle.CircleImageView
@@ -48,7 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/fzzcysk"
             android:text="内存重用" />
 
         <com.wangzhen.circle.CircleImageView

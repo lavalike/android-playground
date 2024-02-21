@@ -12,7 +12,7 @@
         android:layout_centerVertical="true"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:fontFamily="@font/fzzcysk"
+        android:textStyle="bold"
         tools:text="标题" />
 
 </RelativeLayout>

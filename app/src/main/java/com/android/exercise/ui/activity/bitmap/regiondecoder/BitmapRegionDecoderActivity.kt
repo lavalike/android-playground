@@ -1,6 +1,8 @@
 package com.android.exercise.ui.activity.bitmap.regiondecoder
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.databinding.ActivityBitmapRegionDecoderBinding
 
@@ -18,8 +20,9 @@ class BitmapRegionDecoderActivity : BaseActivity() {
         largeImage()
     }
 
+    @SuppressLint("ResourceType")
     private fun largeImage() {
-        val stream = assets.open("images/wandering_earth.jpg")
+        val stream = resources.openRawResource(R.mipmap.bicycle)
         binding.ivLargeImage.setInputStream(stream)
     }
 }

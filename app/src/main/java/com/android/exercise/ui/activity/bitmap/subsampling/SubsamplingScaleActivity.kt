@@ -1,6 +1,7 @@
 package com.android.exercise.ui.activity.bitmap.subsampling
 
 import android.os.Bundle
+import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.databinding.ActivitySubsamplingScaleBinding
 import com.davemorrissey.labs.subscaleview.ImageSource
@@ -17,6 +18,6 @@ class SubsamplingScaleActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySubsamplingScaleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.largeImage.setImage(ImageSource.asset("images/wandering_earth.jpg"))
+        binding.largeImage.setImage(ImageSource.resource(R.mipmap.bicycle))
     }
 }
