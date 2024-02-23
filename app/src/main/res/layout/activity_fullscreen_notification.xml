@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/colorPrimary"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/android14_fullscreen_notification"
+            android:textColor="@color/color_text_color" />
+
+        <TextView
+            android:id="@+id/btn_request_permission"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/android14_fullscreen_request_post_permission"
+            android:textColor="@color/color_text_color" />
+
+        <TextView
+            android:id="@+id/btn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/android14_fullscreen_check_settings"
+            android:textColor="@color/color_text_color" />
+
+        <TextView
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/android14_fullscreen_send_fullscreen"
+            android:textColor="@color/color_text_color" />
+
+    </LinearLayout>
+
+</ScrollView>

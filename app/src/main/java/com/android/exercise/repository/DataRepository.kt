@@ -31,6 +31,7 @@ import com.android.exercise.ui.activity.android13.IntentMatchActivity
 import com.android.exercise.ui.activity.android13.NewPermissionsActivity
 import com.android.exercise.ui.activity.android13.OnBackInvokedCallbackActivity
 import com.android.exercise.ui.activity.android13.PostNotificationActivity
+import com.android.exercise.ui.activity.android14.FullscreenNotificationActivity
 import com.android.exercise.ui.activity.biometric.BiometricActivity
 import com.android.exercise.ui.activity.bitmap.BitmapOptimizeActivity
 import com.android.exercise.ui.activity.bitmap.LargeImageActivity
@@ -106,6 +107,8 @@ import com.android.exercise.util.AppUtil
 object DataRepository {
     @JvmStatic
     fun home() = mutableListOf(
+        Caption("Android 14"),
+        Item("全屏通知", FullscreenNotificationActivity::class.java),
         Caption("Android 13"),
         Item(
             getString(R.string.item_android13_back_invoked_callback),

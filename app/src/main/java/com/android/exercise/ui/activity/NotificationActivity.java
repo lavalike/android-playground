@@ -30,7 +30,7 @@ public class NotificationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView((binding = ActivityNotificationBinding.inflate(getLayoutInflater())).getRoot());
         setEvents();
-        notification = NotificationHelper.get(this);
+        notification = NotificationHelper.getInstance(this);
     }
 
     @Nullable
@@ -95,6 +95,6 @@ public class NotificationActivity extends BaseActivity {
     }
 
     private void sendNormal() {
-        notification.send(new NotificationBean.Builder().setTitle("看完这篇文章，你的Linux基础就差不多了").setSummary("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层").build());
+        notification.send(new NotificationBean.Builder().title("看完这篇文章，你的Linux基础就差不多了").summary("内核(kernel)是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序，它提供了一个在裸设备与应用程序间的抽象层").build());
     }
 }

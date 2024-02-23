@@ -145,4 +145,9 @@
     <string name="item_typewriter">打字机</string>
 
     <string name="item_timber">Timber</string>
+
+    <string name="android14_fullscreen_notification">在 Android11（API level 30）上就可以调用 Notification.Builder.setFullScreenIntent 方法在锁屏上展示一些全屏的通知了，不过得在 Manifest 文件中申请 USE_FULL_SCREEN_INTENT 权限。\n全屏通知是为了让用户立即注意到的高优先级通知而设计的，例如来电或用户配置的闹钟，在展示全全屏通知时，用户只能上滑退出。\n从 Android14 开始，允许使用此权限的应用程序仅限于那些只提供通话和警报的应用。对于其他应用，Google Play 商店会撤销它们默认的 USE_FULL_SCREEN_INTENT 权限。\n可以使用新的 API NotificationManager.canUseFullScreenIntent() 检查应用是否有权限；如果没有，可以用新的 ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT 来启动用户可以授予该权限的设置页面。</string>
+    <string name="android14_fullscreen_request_post_permission">请求Post权限</string>
+    <string name="android14_fullscreen_check_settings">检查全屏通知权限</string>
+    <string name="android14_fullscreen_send_fullscreen">发送全屏通知</string>
 </resources>

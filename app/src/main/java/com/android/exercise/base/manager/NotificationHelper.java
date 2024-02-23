@@ -1,5 +1,6 @@
 package com.android.exercise.base.manager;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.SystemClock;
+
 import androidx.core.app.NotificationCompat;
 
 import com.android.exercise.R;
@@ -32,7 +34,7 @@ public class NotificationHelper implements INotification {
     private static NotificationManager notificationManager;
     private Context context;
 
-    public static INotification get(Context ctx) {
+    public static INotification getInstance(Context ctx) {
         if (mInstance == null) {
             synchronized (NotificationHelper.class) {
                 if (mInstance == null) {
@@ -70,18 +72,23 @@ public class NotificationHelper implements INotification {
      * @param data data
      * @return Notification
      */
+    @SuppressLint("NotificationTrampoline")
     private Notification createNotification(NotificationBean data) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
-        builder.setContentIntent(getBroadcastIntent(data))
-                .setWhen(System.currentTimeMillis())
+        builder.setWhen(System.currentTimeMillis())
                 .setPriority(Notification.PRIORITY_DEFAULT)
                 .setOngoing(false)
                 .setSmallIcon(R.mipmap.ic_burger)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_burger))
                 .setAutoCancel(true)
-                .setContentTitle(data.getTitle())
-                .setContentText(data.getSummary());
-        if (data.isBigTextStyle()) {
+                .setContentTitle(data.title)
+                .setContentText(data.summary);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && data.fullScreen) {
+            builder.setFullScreenIntent(getBroadcastIntent(data), true);
+        } else {
+            builder.setContentIntent(getBroadcastIntent(data));
+        }
+        if (data.bigTextStyle) {
             builder.setStyle(new NotificationCompat.BigTextStyle());
         }
         if (SystemClock.uptimeMillis() - mLastNotifyTime < NO_DISTURBING) {
