@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -40,25 +41,27 @@ class FullscreenNotificationActivity : BaseActivity() {
     private fun setEvents() {
         with(binding) {
             btnRequestPermission.setOnClickListener {
-                PermissionManager.request(it.context, object : AbsPermissionCallback() {
-                    override fun onDeny(
-                        deniedPermissions: Array<String>, neverAskPermissions: Array<String>
-                    ) {
-                        "permission denied".toast()
-                    }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    PermissionManager.request(it.context, object : AbsPermissionCallback() {
+                        override fun onDeny(
+                            deniedPermissions: Array<String>, neverAskPermissions: Array<String>
+                        ) {
+                            "permission denied".toast()
+                        }
 
-                    override fun onGrant(permissions: Array<String>) {
-                        "permission granted".toast()
-                    }
-                }, Manifest.permission.POST_NOTIFICATIONS)
+                        override fun onGrant(permissions: Array<String>) {
+                            "permission granted".toast()
+                        }
+                    }, Manifest.permission.POST_NOTIFICATIONS)
+                } else {
+                    "POST_NOTIFICATIONS Supported Since TIRAMISU".toast()
+                }
             }
             btnSettings.setOnClickListener {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                    if (manager.canUseFullScreenIntent()) {
-                        "FullScreen Notification Enabled".toast()
-                    } else {
-                        fullScreenLauncher.launch(Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT))
-                    }
+                    fullScreenLauncher.launch(Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT).apply {
+                        data = Uri.fromParts("package", packageName, null)
+                    })
                 } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     "FullScreen Notification Enabled".toast()
                 } else {
@@ -84,23 +87,18 @@ class FullscreenNotificationActivity : BaseActivity() {
     @RequiresApi(34)
     private val fullScreenLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == RESULT_OK) {
-            if (manager.canUseFullScreenIntent()) {
-                "FullScreen Notification Enabled".toast()
-            } else {
-                "FullScreen Notification Disabled".toast()
-            }
+    ) {
+        if (manager.canUseFullScreenIntent()) {
+            "FullScreen Notification Enabled".toast()
         } else {
-            "failed".toast()
+            "FullScreen Notification Disabled".toast()
         }
     }
 
     private fun sendFullScreenNotification() {
         NotificationHelper.getInstance(this).send(
             NotificationBean.Builder().title("全屏通知").content("全屏通知")
-                .summary("收到一条全屏通知").fullScreen(true)
-                .build()
+                .summary("收到一条全屏通知").fullScreen(true).build()
         )
 
     }
