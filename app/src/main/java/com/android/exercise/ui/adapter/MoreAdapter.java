@@ -1,12 +1,13 @@
 package com.android.exercise.ui.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.wangzhen.adapter.RecyclerAdapter;
+import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 import java.util.List;
 
@@ -15,28 +16,28 @@ import java.util.List;
  * Created by wangzhen on 16/11/11.
  */
 
-public class MoreAdapter extends BaseRecyclerAdapter<String, MoreAdapter.MoreViewHolder> {
+public class MoreAdapter extends RecyclerAdapter<String> {
 
-    public MoreAdapter(Context context, List<String> list) {
-        super(context, list);
+    public MoreAdapter(List<String> list) {
+        super(list);
     }
 
     @Override
-    public MoreViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onAbsCreateViewHolder(ViewGroup parent, int viewType) {
         return new MoreViewHolder(parent);
     }
 
-    public class MoreViewHolder extends BaseViewHolder<String> {
+    public static class MoreViewHolder extends RecyclerViewHolder<String> {
         TextView tv;
 
         public MoreViewHolder(ViewGroup parent) {
-            super(LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_1, null));
-            tv = (TextView) itemView.findViewById(android.R.id.text1);
+            super(LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false));
+            tv = itemView.findViewById(android.R.id.text1);
         }
 
         @Override
-        protected void bindData() {
-            tv.setText(data);
+        public void bind() {
+            tv.setText(mData);
         }
     }
 }

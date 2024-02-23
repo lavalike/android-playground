@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity;
+package com.android.exercise.ui.activity.media;
 
 import android.content.Context;
 import android.os.Bundle;

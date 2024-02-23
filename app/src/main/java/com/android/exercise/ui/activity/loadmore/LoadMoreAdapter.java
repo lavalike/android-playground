@@ -1,11 +1,11 @@
-package com.android.exercise.ui.activity.adapter;
+package com.android.exercise.ui.activity.loadmore;
 
 import android.os.Handler;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.exercise.ui.activity.adapter.holder.LoadViewHolder;
+import com.android.exercise.ui.activity.loadmore.holder.LoadViewHolder;
 import com.wangzhen.adapter.LoadRecyclerAdapter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.adapter;
+package com.android.exercise.ui.activity.loadmore;
 
 import android.os.Bundle;
 import android.os.Handler;

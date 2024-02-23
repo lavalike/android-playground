@@ -55,7 +55,7 @@ public class RetrofitActivity extends BaseActivity {
 
     private void initSwipe() {
         binding.swipeRepos.setColorSchemeResources(R.color.colorPrimary);
-        binding.swipeRepos.setOnRefreshListener(() -> loadGithubList());
+        binding.swipeRepos.setOnRefreshListener(this::loadGithubList);
     }
 
     private void startLoading() {
@@ -187,10 +187,9 @@ public class RetrofitActivity extends BaseActivity {
                 stopLoading();
                 if (response.isSuccessful()) {
                     mReposList = response.body();
-                    mReposList.addAll(mReposList);
-                    mReposAdapter = new ReposAdapter(mContext, mReposList);
-                    mReposAdapter.setItemClickListener((view, data) -> {
-                        String reposUrl = data.getHtml_url();
+                    mReposAdapter = new ReposAdapter(mReposList);
+                    mReposAdapter.setOnClickCallback((view, position) -> {
+                        String reposUrl = mReposList.get(position).getHtml_url();
                         Intent intent = new Intent(mContext, HtmlActivity.class);
                         intent.putExtra(IKey.HTML_URL, reposUrl);
                         startActivity(intent);

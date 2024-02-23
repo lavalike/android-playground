@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.player;
+package com.android.exercise.ui.activity.media.player;
 
 import android.os.Bundle;
 import android.view.View;

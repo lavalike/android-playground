@@ -143,7 +143,7 @@
         <activity android:name=".ui.activity.bitmap.LargeImageActivity" />
         <activity android:name=".ui.activity.bitmap.BitmapOptimizeActivity" />
         <activity android:name=".ui.activity.circle.CircleImageActivity" />
-        <activity android:name=".ui.activity.adapter.LoadMoreActivity" />
+        <activity android:name=".ui.activity.loadmore.LoadMoreActivity" />
         <activity android:name=".ui.activity.mmkv.MMKVActivity" />
         <activity android:name=".ui.activity.biometric.BiometricActivity" />
         <activity android:name=".ui.activity.jetpack.lifecycle.LifecycleActivity" />
@@ -152,8 +152,8 @@
         <activity android:name=".ui.activity.jetpack.room.RoomActivity" />
         <activity android:name=".ui.activity.jetpack.work.WorkManagerActivity" />
         <activity android:name=".ui.activity.database.ObjectBoxActivity" />
-        <activity android:name=".ui.activity.player.IjkPlayerActivity" />
-        <activity android:name=".ui.activity.player.ExoPlayerActivity" />
+        <activity android:name=".ui.activity.media.player.IjkPlayerActivity" />
+        <activity android:name=".ui.activity.media.player.ExoPlayerActivity" />
         <activity android:name=".ui.activity.view.HtmlRichTextActivity" />
         <activity android:name=".ui.activity.download.DownloadActivity" />
         <activity android:name=".ui.activity.calendar.CalendarActivity" />
@@ -243,7 +243,7 @@
 
         <activity android:name=".ui.activity.TextLinkActivity" />
         <activity android:name=".ui.activity.view.RecyclerTouchActivity" />
-        <activity android:name=".ui.activity.RecorderActivity" />
+        <activity android:name=".ui.activity.media.RecorderActivity" />
         <activity android:name=".ui.activity.view.FloorActivity" />
         <activity android:name=".ui.activity.view.EditViewActivity" />
         <activity android:name=".ui.activity.WaveActivity" />
@@ -299,9 +299,9 @@
         <activity android:name=".ui.activity.view.PathSearchActivity" />
         <activity android:name=".ui.activity.AppOptActivity" />
         <activity android:name=".ui.activity.BitOptActivity" />
-        <activity android:name=".ui.activity.VideoRecordActivity" />
+        <activity android:name=".ui.activity.media.VideoRecordActivity" />
         <activity
-            android:name=".ui.activity.LimitedVideoActivity"
+            android:name=".ui.activity.media.LimitedVideoActivity"
             android:theme="@style/AppTheme.FullScreen" />
 
         <service

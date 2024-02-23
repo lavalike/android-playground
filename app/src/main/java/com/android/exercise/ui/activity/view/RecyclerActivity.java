@@ -11,7 +11,6 @@ import com.android.exercise.base.BaseActivity;
 import com.android.exercise.base.toolbar.ToolbarFactory;
 import com.android.exercise.databinding.ActivityRecyclerBinding;
 import com.android.exercise.ui.adapter.MoreAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
 import com.android.exercise.util.T;
 import com.wangzhen.commons.toolbar.impl.Toolbar;
 
@@ -42,13 +41,8 @@ public class RecyclerActivity extends BaseActivity {
             @Override
             public void run() {
                 index = 0;
-                mMoreAdapter = new MoreAdapter(mContext, getList());
-                mMoreAdapter.setItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<String>() {
-                    @Override
-                    public void onItemClick(View view, String data) {
-                        T.get(mContext).toast(data);
-                    }
-                });
+                mMoreAdapter = new MoreAdapter(getList());
+                mMoreAdapter.setOnClickCallback((itemView, position) -> T.get(mContext).toast(mMoreAdapter.getDatas().get(position)));
                 binding.recyclerMore.setAdapter(mMoreAdapter);
                 binding.recyclerMore.setHeaderEnable(true);
                 View mHeaderView = getLayoutInflater().inflate(R.layout.activity_anim24h, binding.swipeLoadmore, false);
@@ -89,12 +83,12 @@ public class RecyclerActivity extends BaseActivity {
 
     private void initSwipeRefresh() {
         binding.swipeLoadmore.setColorSchemeResources(R.color.colorPrimary);
-        binding.swipeLoadmore.setOnRefreshListener(() -> loadList());
+        binding.swipeLoadmore.setOnRefreshListener(this::loadList);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.recyclerMore.setLayoutManager(manager);
         binding.recyclerMore.setAutoLoadMoreEnable(true);
-        binding.recyclerMore.setLoadMoreListener(() -> loadMore());
+        binding.recyclerMore.setLoadMoreListener(this::loadMore);
     }
 
     /**

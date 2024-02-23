@@ -1,6 +1,5 @@
 package com.android.exercise.ui.adapter;
 
-import android.content.Context;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -9,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.exercise.R;
 import com.android.exercise.databinding.ItemTouchLayoutBinding;
 import com.android.exercise.listener.ITouchCallback;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
+import com.wangzhen.adapter.RecyclerAdapter;
+import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,14 +18,14 @@ import java.util.List;
  * ItemTouchHelper Adapter
  * Created by wangzhen on 2017/8/1.
  */
-public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTouchAdapter.TouchViewHolder> implements ITouchCallback {
+public class RecyclerTouchAdapter extends RecyclerAdapter<String> implements ITouchCallback {
 
-    public RecyclerTouchAdapter(Context context, List<String> list) {
-        super(context, list);
+    public RecyclerTouchAdapter(List<String> list) {
+        super(list);
     }
 
     @Override
-    public TouchViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onAbsCreateViewHolder(ViewGroup parent, int viewType) {
         return new TouchViewHolder(parent);
     }
 
@@ -50,8 +49,8 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
         viewHolder.itemView.animate().scaleX(1).scaleY(1).start();
     }
 
-    class TouchViewHolder extends BaseViewHolder<String> {
-        private ItemTouchLayoutBinding binding;
+    static class TouchViewHolder extends RecyclerViewHolder<String> {
+        private final ItemTouchLayoutBinding binding;
 
         public TouchViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_touch_layout);
@@ -59,8 +58,8 @@ public class RecyclerTouchAdapter extends BaseRecyclerAdapter<String, RecyclerTo
         }
 
         @Override
-        protected void bindData() {
-            binding.tvTouch.setText(data);
+        public void bind() {
+            binding.tvTouch.setText(mData);
         }
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * 抖音效果
+ * Created by wangzhen on 2024/2/23/023
  */
 public class TikTokActivity extends BaseActivity {
     private ActivityTikTokBinding binding;
@@ -36,7 +37,7 @@ public class TikTokActivity extends BaseActivity {
         list.add(R.mipmap.bg_5);
         list.add(R.mipmap.bg_6);
 
-        TikTokAdapter tikTokAdapter = new TikTokAdapter(this, list);
+        TikTokAdapter tikTokAdapter = new TikTokAdapter(list);
         binding.recyclerTikTok.setAdapter(tikTokAdapter);
 
         SnapHelper snapHelper = new PagerSnapHelper();

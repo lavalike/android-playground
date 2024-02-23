@@ -1,16 +1,17 @@
 package com.android.exercise.ui.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.exercise.R;
 import com.android.exercise.databinding.ItemReposLayoutBinding;
 import com.android.exercise.domain.GithubBean;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.wangzhen.adapter.RecyclerAdapter;
+import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 import java.util.List;
 
@@ -18,18 +19,18 @@ import java.util.List;
  * Created by wangzhen on 16/11/8.
  */
 
-public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.ReposViewHolder> {
+public class ReposAdapter extends RecyclerAdapter<GithubBean> {
 
-    public ReposAdapter(Context context, List<GithubBean> list) {
-        super(context, list);
+    public ReposAdapter(List<GithubBean> list) {
+        super(list);
     }
 
     @Override
-    public ReposViewHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onAbsCreateViewHolder(ViewGroup parent, int viewType) {
         return new ReposViewHolder(ItemReposLayoutBinding.inflate(LayoutInflater.from(parent.getContext())));
     }
 
-    public class ReposViewHolder extends BaseViewHolder<GithubBean> {
+    public static class ReposViewHolder extends RecyclerViewHolder<GithubBean> {
         ItemReposLayoutBinding binding;
 
         public ReposViewHolder(ItemReposLayoutBinding binding) {
@@ -38,10 +39,10 @@ public class ReposAdapter extends BaseRecyclerAdapter<GithubBean, ReposAdapter.R
         }
 
         @Override
-        protected void bindData() {
-            binding.tvItemReposName.setText(data.getName());
-            binding.tvItemReposUrl.setText(data.getHtml_url());
-            Glide.with(mContext).load(data.getOwner().getAvatar_url()).apply(new RequestOptions().placeholder(R.drawable.ic_placeholder).error(R.drawable.ic_placeholder)).into(binding.ivItemReposAvatar);
+        public void bind() {
+            binding.tvItemReposName.setText(mData.getName());
+            binding.tvItemReposUrl.setText(mData.getHtml_url());
+            Glide.with(itemView.getContext()).load(mData.getOwner().getAvatar_url()).apply(new RequestOptions().placeholder(R.drawable.ic_placeholder).error(R.drawable.ic_placeholder)).into(binding.ivItemReposAvatar);
         }
     }
 }

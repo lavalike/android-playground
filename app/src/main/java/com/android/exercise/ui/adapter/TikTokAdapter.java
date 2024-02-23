@@ -1,30 +1,35 @@
 package com.android.exercise.ui.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.exercise.R;
 import com.android.exercise.databinding.ItemTikTokLayoutBinding;
-import com.android.exercise.ui.widget.recyclerview.BaseRecyclerAdapter;
-import com.android.exercise.ui.widget.recyclerview.BaseViewHolder;
 import com.bumptech.glide.Glide;
+import com.wangzhen.adapter.RecyclerAdapter;
+import com.wangzhen.adapter.base.RecyclerViewHolder;
 
 import java.util.List;
 
-public class TikTokAdapter extends BaseRecyclerAdapter<Integer, TikTokAdapter.TikTokHolder> {
+/**
+ * TikTokAdapter
+ * Created by wangzhen on 2024/2/23/023
+ */
+public class TikTokAdapter extends RecyclerAdapter<Integer> {
 
-    public TikTokAdapter(Context context, List<Integer> list) {
-        super(context, list);
+    public TikTokAdapter(List<Integer> list) {
+        super(list);
     }
 
     @Override
-    public TikTokHolder onMyCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onAbsCreateViewHolder(ViewGroup parent, int viewType) {
         return new TikTokHolder(parent);
     }
 
-    class TikTokHolder extends BaseViewHolder<Integer> {
-        private ItemTikTokLayoutBinding binding;
+    static class TikTokHolder extends RecyclerViewHolder<Integer> {
+        private final ItemTikTokLayoutBinding binding;
 
         public TikTokHolder(ViewGroup parent) {
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tik_tok_layout, parent, false));
@@ -32,8 +37,8 @@ public class TikTokAdapter extends BaseRecyclerAdapter<Integer, TikTokAdapter.Ti
         }
 
         @Override
-        protected void bindData() {
-            Glide.with(mContext).load(data).into(binding.ivTikTok);
+        public void bind() {
+            Glide.with(itemView.getContext()).load(mData).into(binding.ivTikTok);
         }
     }
 }

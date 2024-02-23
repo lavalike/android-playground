@@ -22,7 +22,6 @@ import java.util.List;
  */
 public class FloorActivity extends BaseActivity {
     private ActivityFloorBinding binding;
-    private FloorAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +41,7 @@ public class FloorActivity extends BaseActivity {
         for (int i = 0; i < 20; i++) {
             list.add(new CommentBean());
         }
-        mAdapter = new FloorAdapter(this, list);
-        binding.recyclerFloor.setAdapter(mAdapter);
+        binding.recyclerFloor.setAdapter(new FloorAdapter(list));
     }
 
     @Nullable

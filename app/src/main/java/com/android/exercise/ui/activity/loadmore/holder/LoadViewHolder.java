@@ -1,4 +1,4 @@
-package com.android.exercise.ui.activity.adapter.holder;
+package com.android.exercise.ui.activity.loadmore.holder;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

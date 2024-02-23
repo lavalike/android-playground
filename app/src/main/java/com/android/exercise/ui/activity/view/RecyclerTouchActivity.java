@@ -51,10 +51,10 @@ public class RecyclerTouchActivity extends BaseActivity {
         for (int i = 0; i < 20; i++) {
             list.add(String.valueOf(i));
         }
-        RecyclerTouchAdapter adapter = new RecyclerTouchAdapter(this, list);
+        RecyclerTouchAdapter adapter = new RecyclerTouchAdapter(list);
         itemTouchHelper = new ItemTouchHelper(new RecyclerTouchCallback(adapter));
         itemTouchHelper.attachToRecyclerView(recycler);
-        adapter.setItemLongClickListener((view, data) -> {
+        adapter.setOnLongClickCallback((view, position) -> {
             RecyclerView.ViewHolder viewHolder = recycler.getChildViewHolder(view);
             itemTouchHelper.startDrag(viewHolder);
         });

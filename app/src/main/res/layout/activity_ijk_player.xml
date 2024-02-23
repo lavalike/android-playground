@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.player.IjkPlayerActivity">
+    tools:context=".ui.activity.media.player.IjkPlayerActivity">
 
     <com.android.exercise.ui.widget.player.IjkPlayerView
         android:id="@+id/player_view"
