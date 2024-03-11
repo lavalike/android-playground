@@ -12,17 +12,14 @@ import com.android.exercise.ui.activity.BroadcastActivity
 import com.android.exercise.ui.activity.DispatchActivity
 import com.android.exercise.ui.activity.NotificationActivity
 import com.android.exercise.ui.activity.PageSwitchActivity
-import com.android.exercise.ui.activity.media.RecorderActivity
 import com.android.exercise.ui.activity.RetrofitActivity
 import com.android.exercise.ui.activity.RuntimeAnnotationActivity
 import com.android.exercise.ui.activity.RxJavaActivity
 import com.android.exercise.ui.activity.TextFormatActivity
 import com.android.exercise.ui.activity.TextLinkActivity
 import com.android.exercise.ui.activity.ThreadPoolActivity
-import com.android.exercise.ui.activity.media.VideoRecordActivity
 import com.android.exercise.ui.activity.ViewSwitchActivity
 import com.android.exercise.ui.activity.WaveActivity
-import com.android.exercise.ui.activity.loadmore.LoadMoreActivity
 import com.android.exercise.ui.activity.android11.ScopedStorageActivity
 import com.android.exercise.ui.activity.android11.TelephonyCompatActivity
 import com.android.exercise.ui.activity.android11.ToastCompatActivity
@@ -48,6 +45,7 @@ import com.android.exercise.ui.activity.di.koin.KoinActivity
 import com.android.exercise.ui.activity.download.DownloadActivity
 import com.android.exercise.ui.activity.hashmap.HashMapTreeifyActivity
 import com.android.exercise.ui.activity.hook.HookActivity
+import com.android.exercise.ui.activity.innovation.playback.EventPlaybackActivity
 import com.android.exercise.ui.activity.ipc.messenger.MessengerActivity
 import com.android.exercise.ui.activity.jetpack.databinding.DataBindingActivity
 import com.android.exercise.ui.activity.jetpack.datastore.DataStoreActivity
@@ -56,11 +54,14 @@ import com.android.exercise.ui.activity.jetpack.lifecycle.LifecycleActivity
 import com.android.exercise.ui.activity.jetpack.navigation.NavigationActivity
 import com.android.exercise.ui.activity.jetpack.room.RoomActivity
 import com.android.exercise.ui.activity.jetpack.work.WorkManagerActivity
+import com.android.exercise.ui.activity.loadmore.LoadMoreActivity
 import com.android.exercise.ui.activity.md5.MD5Activity
-import com.android.exercise.ui.activity.mmkv.MMKVActivity
-import com.android.exercise.ui.activity.motion.MotionLayoutActivity
+import com.android.exercise.ui.activity.media.RecorderActivity
+import com.android.exercise.ui.activity.media.VideoRecordActivity
 import com.android.exercise.ui.activity.media.player.ExoPlayerActivity
 import com.android.exercise.ui.activity.media.player.IjkPlayerActivity
+import com.android.exercise.ui.activity.mmkv.MMKVActivity
+import com.android.exercise.ui.activity.motion.MotionLayoutActivity
 import com.android.exercise.ui.activity.queue.PriorityQueueActivity
 import com.android.exercise.ui.activity.queue.TaskSequenceActivity
 import com.android.exercise.ui.activity.serialization.SerializationActivity
@@ -107,8 +108,13 @@ import com.android.exercise.util.AppUtil
 object DataRepository {
     @JvmStatic
     fun home() = mutableListOf(
+        Caption("创新场景"),
+        Item(getString(R.string.item_event_playback), EventPlaybackActivity::class.java),
         Caption("Android 14"),
-        Item("全屏通知", FullscreenNotificationActivity::class.java),
+        Item(
+            getString(R.string.item_android14_fullscreen_notification),
+            FullscreenNotificationActivity::class.java
+        ),
         Caption("Android 13"),
         Item(
             getString(R.string.item_android13_back_invoked_callback),

@@ -57,6 +57,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".ui.activity.innovation.playback.EventPlaybackActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.android14.FullscreenNotificationActivity"
             android:exported="false" />
         <activity
