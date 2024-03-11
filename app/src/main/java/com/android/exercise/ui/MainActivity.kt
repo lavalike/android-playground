@@ -1,6 +1,7 @@
 package com.android.exercise.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
@@ -34,7 +35,10 @@ class MainActivity : BaseActivity() {
 
     private fun initRecycler() {
         with(binding.recyclerview) {
-            layoutManager = GridLayoutManager(mContext, 3).apply {
+            layoutManager = GridLayoutManager(
+                mContext,
+                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) 3 else 6
+            ).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int) = adapter?.let { adapter ->
                         val type = adapter.getItemViewType(position)
