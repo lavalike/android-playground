@@ -6,6 +6,7 @@ import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.base.toolbar.ToolbarFactory
 import com.android.exercise.databinding.ActivityEventPlaybackBinding
+import com.android.exercise.util.toast
 
 /**
  * 基于Activity事件的录制与回放
@@ -28,7 +29,11 @@ class EventPlaybackActivity : BaseActivity() {
             btnStop.setOnClickListener { EventRecorder.stopRecord() }
             btnPlayback.setOnClickListener {
                 clearText()
-                EventRecorder.playback(this@EventPlaybackActivity)
+                if (EventRecorder.hasEvents()) {
+                    EventRecorder.playback(this@EventPlaybackActivity)
+                } else {
+                    "请先录制事件".toast()
+                }
             }
             btnStopPlayback.setOnClickListener { EventRecorder.stopPlayback() }
             btnOne.setOnClickListener { appendText("1") }

@@ -22,7 +22,7 @@ object EventRecorder {
 
     private val handler = Handler(Looper.getMainLooper())
 
-    fun isPlaying() = isPlaying
+    fun hasEvents() = touchEvents.isNotEmpty()
 
     fun startRecord() {
         if (isRecording) return
