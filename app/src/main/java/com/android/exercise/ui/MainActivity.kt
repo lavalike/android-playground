@@ -2,18 +2,15 @@ package com.android.exercise.ui
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Rect
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.android.exercise.R
 import com.android.exercise.base.BaseActivity
 import com.android.exercise.databinding.ActivityMainBinding
 import com.android.exercise.domain.NotificationBean
 import com.android.exercise.repository.DataRepository
 import com.android.exercise.ui.adapter.HomeAdapter
+import com.android.exercise.ui.widget.decoration.GridSpaceItemDecoration
 import com.android.exercise.util.IKey
 import com.android.exercise.util.UIUtils
 import com.wangzhen.adapter.base.RecyclerItem
@@ -46,17 +43,9 @@ class MainActivity : BaseActivity() {
                     } ?: 1
                 }
             }
-            addItemDecoration(object : ItemDecoration() {
-                override fun getItemOffsets(
-                    outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State
-                ) {
-                    super.getItemOffsets(outRect, view, parent, state)
-                    outRect.left = UIUtils.dip2px(view.context, GAP)
-                    outRect.right = UIUtils.dip2px(view.context, GAP)
-                    outRect.top = UIUtils.dip2px(view.context, GAP)
-                    outRect.bottom = UIUtils.dip2px(view.context, GAP)
-                }
-            })
+
+            addItemDecoration(GridSpaceItemDecoration(UIUtils.dip2px(context, GAP)))
+
             adapter = HomeAdapter(DataRepository.home()).apply {
                 addFooter(object : RecyclerItem() {
                     public override fun layout(): Int {
@@ -80,6 +69,6 @@ class MainActivity : BaseActivity() {
     }
 
     companion object {
-        private const val GAP = 1f
+        private const val GAP = 2f
     }
 }
