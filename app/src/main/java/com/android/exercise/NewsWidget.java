@@ -52,7 +52,7 @@ public class NewsWidget extends AppWidgetProvider {
 
         Intent intent = new Intent(context, NewsWidget.class);
         intent.setAction(ACTION);
-        views.setOnClickPendingIntent(R.id.imageView, PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT));
+        views.setOnClickPendingIntent(R.id.imageView, PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE));
         return views;
     }
 
