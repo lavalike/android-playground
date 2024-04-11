@@ -24,10 +24,25 @@ android {
             }
         }
     }
+
+    signingConfigs {
+        release {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('platform.keystore')
+            storePassword 'android'
+        }
+    }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     lintOptions {
