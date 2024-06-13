@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     dependencies {
-        classpath("io.objectbox:objectbox-gradle-plugin:3.7.1")
+        classpath("io.objectbox:objectbox-gradle-plugin:4.0.1")
         classpath("org.jetbrains.kotlin:kotlin-serialization:1.8.20")
     }
 }
