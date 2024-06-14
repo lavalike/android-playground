@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@mipmap/bg_dog"
-    tools:context="com.android.exercise.ui.activity.PageSwitchActivity">
+    tools:context="com.android.playground.ui.activity.PageSwitchActivity">
 
-    <com.android.exercise.ui.widget.PageSwitchView
+    <com.android.playground.ui.widget.PageSwitchView
         android:id="@+id/switch_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

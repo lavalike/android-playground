@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <com.android.exercise.ui.widget.richtext.RichTextView
+        <com.android.playground.ui.widget.richtext.RichTextView
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:textSize="16sp"
             tools:text="您好，该问题已经经过处理，请耐心等待解决。" />
 
-        <com.android.exercise.ui.widget.richtext.RichTextView
+        <com.android.playground.ui.widget.richtext.RichTextView
             android:id="@+id/tv_brief"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <com.android.exercise.ui.widget.PathSearchView
+    <com.android.playground.ui.widget.PathSearchView
         android:id="@+id/path_search_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

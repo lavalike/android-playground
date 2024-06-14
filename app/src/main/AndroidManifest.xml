@@ -94,7 +94,7 @@
             android:name=".ui.activity.android13.NewPermissionsActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.android.exercise.android13.permissions" />
+                <action android:name="com.android.playground.android13.permissions" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.A" />
@@ -242,7 +242,7 @@
             android:name=".receiver.NotifyPushReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.android.exercise.push.click" />
+                <action android:name="com.android.playground.push.click" />
             </intent-filter>
         </receiver>
 

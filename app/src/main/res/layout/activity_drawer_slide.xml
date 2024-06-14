@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.android.exercise.ui.activity.view.DrawerSlideActivity">
+    tools:context="com.android.playground.ui.activity.view.DrawerSlideActivity">
 
     <LinearLayout
         android:id="@+id/drawerContent"

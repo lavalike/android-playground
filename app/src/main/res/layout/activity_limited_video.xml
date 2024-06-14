@@ -6,7 +6,7 @@
     android:background="@color/black"
     tools:context=".ui.activity.media.LimitedVideoActivity">
 
-    <com.android.exercise.ui.widget.CameraSurfaceView
+    <com.android.playground.ui.widget.CameraSurfaceView
         android:id="@+id/surface_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

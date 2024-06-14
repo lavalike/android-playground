@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.exercise.ui.activity.WaveActivity">
+    tools:context="com.android.playground.ui.activity.WaveActivity">
 
-    <com.android.exercise.ui.widget.WaveView
+    <com.android.playground.ui.widget.WaveView
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <com.android.exercise.ui.widget.VoiceWaveView
+    <com.android.playground.ui.widget.VoiceWaveView
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="70dp"
         app:wave_color="#3361cc5f" />
 
-    <com.android.exercise.ui.widget.VoiceWaveView
+    <com.android.playground.ui.widget.VoiceWaveView
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="bottom"

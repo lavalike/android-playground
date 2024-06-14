@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.android.exercise"
+    namespace = "com.android.playground"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.android.exercise"
+        applicationId = "com.android.playground"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

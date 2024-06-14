@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.android.exercise.ui.widget.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.playground.ui.widget.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,4 +29,4 @@
         android:transitionName="grid_title"
         tools:text="dog 1" />
 
-</com.android.exercise.ui.widget.SquareLayout>
+</com.android.playground.ui.widget.SquareLayout>

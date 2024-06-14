@@ -35,7 +35,7 @@
             android:onClick="onClick"
             android:text="圆角" />
 
-        <com.android.exercise.ui.activity.circle.CircleImageView
+        <com.android.playground.ui.activity.circle.CircleImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -43,7 +43,7 @@
             android:scaleType="centerCrop"
             android:src="@mipmap/bg_dog" />
 
-        <com.android.exercise.ui.activity.circle.CircleImageView
+        <com.android.playground.ui.activity.circle.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="10dp"
@@ -51,7 +51,7 @@
             android:src="@mipmap/bg_dog"
             app:oval="true" />
 
-        <com.android.exercise.ui.activity.circle.CircleImageView
+        <com.android.playground.ui.activity.circle.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="10dp"
@@ -59,7 +59,7 @@
             android:src="@mipmap/bg_dog"
             app:radius="20dp" />
 
-        <com.android.exercise.ui.activity.circle.CircleImageView
+        <com.android.playground.ui.activity.circle.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="10dp"
@@ -68,7 +68,7 @@
             app:radius_bottom_right="20dp"
             app:radius_top_left="20dp" />
 
-        <com.android.exercise.ui.activity.circle.CircleImageView
+        <com.android.playground.ui.activity.circle.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="10dp"

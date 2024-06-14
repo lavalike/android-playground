@@ -4,7 +4,7 @@
     android:id="@+id/elastic_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.exercise.ui.activity.view.ElasticActivity">
+    tools:context="com.android.playground.ui.activity.view.ElasticActivity">
 
     <WebView
         android:id="@+id/webview"

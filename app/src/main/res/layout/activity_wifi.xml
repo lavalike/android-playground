@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.wifi.WifiActivity">
 
-    <com.android.exercise.ui.widget.SwitchView
+    <com.android.playground.ui.widget.SwitchView
         android:id="@+id/switch_view"
         android:layout_width="50dp"
         android:layout_height="30dp"

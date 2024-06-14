@@ -7,7 +7,7 @@
     android:padding="16dp"
     tools:context=".ui.activity.view.typewriter.TypewriterActivity">
 
-    <com.android.exercise.ui.activity.view.typewriter.CoupletView
+    <com.android.playground.ui.activity.view.typewriter.CoupletView
         android:id="@+id/banner"
         android:layout_width="200dp"
         android:layout_height="50dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.android.exercise.ui.activity.view.typewriter.CoupletView
+    <com.android.playground.ui.activity.view.typewriter.CoupletView
         android:id="@+id/left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/banner" />
 
-    <com.android.exercise.ui.activity.view.typewriter.CoupletView
+    <com.android.playground.ui.activity.view.typewriter.CoupletView
         android:id="@+id/right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

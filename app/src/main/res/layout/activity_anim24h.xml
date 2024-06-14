@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context="com.android.exercise.ui.activity.Anim24hActivity">
+    tools:context="com.android.playground.ui.activity.Anim24hActivity">
 
     <!--九宫栏目面板-->
     <TableLayout

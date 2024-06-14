@@ -7,9 +7,9 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.android.exercise.ui.activity.view.PorterDuffActivity">
+    tools:context="com.android.playground.ui.activity.view.PorterDuffActivity">
 
-    <com.android.exercise.ui.widget.RevealView
+    <com.android.playground.ui.widget.RevealView
         android:id="@+id/revealView"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -17,7 +17,7 @@
         app:rl_src="@mipmap/ic_ice" />
 
 
-    <com.android.exercise.ui.widget.LoadingView
+    <com.android.playground.ui.widget.LoadingView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"

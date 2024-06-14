@@ -6,11 +6,11 @@
 
         <variable
             name="user"
-            type="com.android.exercise.ui.activity.jetpack.databinding.User" />
+            type="com.android.playground.ui.activity.jetpack.databinding.User" />
 
         <variable
             name="handlers"
-            type="com.android.exercise.ui.activity.jetpack.databinding.ClickHandlers" />
+            type="com.android.playground.ui.activity.jetpack.databinding.ClickHandlers" />
 
 
         <import type="android.view.View" />

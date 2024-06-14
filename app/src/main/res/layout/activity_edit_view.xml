@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.android.exercise.ui.activity.view.EditViewActivity">
+    tools:context="com.android.playground.ui.activity.view.EditViewActivity">
 
-    <com.android.exercise.ui.widget.PasswordView
+    <com.android.playground.ui.widget.PasswordView
         android:id="@+id/password_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"

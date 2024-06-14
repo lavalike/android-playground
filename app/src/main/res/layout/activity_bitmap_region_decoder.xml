@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.bitmap.LargeImageActivity">
 
-    <com.android.exercise.ui.activity.bitmap.regiondecoder.LargeImageView
+    <com.android.playground.ui.activity.bitmap.regiondecoder.LargeImageView
         android:id="@+id/iv_large_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

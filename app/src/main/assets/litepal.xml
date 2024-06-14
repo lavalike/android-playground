@@ -3,6 +3,6 @@
     <dbname value="lite_pal" />
     <version value="1" />
     <list>
-        <mapping class="com.android.exercise.domain.litepal.Album" />
+        <mapping class="com.android.playground.domain.litepal.Album" />
     </list>
 </litepal>

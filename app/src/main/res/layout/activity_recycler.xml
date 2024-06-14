@@ -4,9 +4,9 @@
     android:id="@+id/swipe_loadmore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.exercise.ui.activity.view.RecyclerActivity">
+    tools:context="com.android.playground.ui.activity.view.RecyclerActivity">
 
-    <com.android.exercise.ui.widget.recyclerview.ZRecyclerView
+    <com.android.playground.ui.widget.recyclerview.ZRecyclerView
         android:id="@+id/recycler_more"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -17,7 +17,7 @@
 
     <!---->
 
-    <!--<com.android.exercise.ui.widget.RecyclerViewHeader-->
+    <!--<com.android.playground.ui.widget.RecyclerViewHeader-->
     <!--android:id="@+id/recycler_header"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
@@ -25,7 +25,7 @@
 
     <!--<include layout="@layout/activity_anim24h" />-->
 
-    <!--</com.android.exercise.ui.widget.RecyclerViewHeader>-->
+    <!--</com.android.playground.ui.widget.RecyclerViewHeader>-->
 
     <!--</FrameLayout>-->
 

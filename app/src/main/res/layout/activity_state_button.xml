@@ -8,7 +8,7 @@
     android:padding="16dp"
     tools:context=".ui.activity.view.StateButtonActivity">
 
-    <com.android.exercise.ui.widget.StateButton
+    <com.android.playground.ui.widget.StateButton
         android:id="@+id/btn_state"
         android:layout_width="300dp"
         android:layout_height="40dp"

@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg_dog"
-    tools:context="com.android.exercise.ui.activity.view.ViewActivity">
+    tools:context="com.android.playground.ui.activity.view.ViewActivity">
 
-    <com.android.exercise.ui.widget.progress.HorizontalProgressBar
+    <com.android.playground.ui.widget.progress.HorizontalProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"

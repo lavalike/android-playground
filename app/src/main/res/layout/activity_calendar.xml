@@ -22,14 +22,14 @@
             android:background="#fff"
             app:current_day_text_color="#fdc247"
             app:current_month_text_color="#3b424c"
-            app:month_view="com.android.exercise.ui.activity.calendar.view.HourMonthView"
+            app:month_view="com.android.playground.ui.activity.calendar.view.HourMonthView"
             app:month_view_auto_select_day="last_select_day_ignore_current"
             app:month_view_show_mode="mode_fix"
             app:other_month_text_color="#eeeeee"
             app:selected_text_color="#ffffff"
             app:selected_theme_color="#3b424c"
             app:week_start_with="mon"
-            app:week_view="com.android.exercise.ui.activity.calendar.view.HourWeekView"
+            app:week_view="com.android.playground.ui.activity.calendar.view.HourWeekView"
             app:week_view_scrollable="true" />
 
         <androidx.core.widget.NestedScrollView

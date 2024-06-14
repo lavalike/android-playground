@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.android.exercise.ui.activity.RetrofitActivity">
+    tools:context="com.android.playground.ui.activity.RetrofitActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.android.exercise.ui.widget.FlowLayout
+        <com.android.playground.ui.widget.FlowLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MultipartBody.Part上传" />
-        </com.android.exercise.ui.widget.FlowLayout>
+        </com.android.playground.ui.widget.FlowLayout>
 
         <TextView
             android:id="@+id/tv_upload_progress"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.android.exercise.ui.widget.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.playground.ui.widget.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:wangzhen="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slidingmenu"
@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:overScrollMode="never"
     android:scrollbars="none"
-    tools:context="com.android.exercise.ui.activity.view.SlidingMenuActivity"
+    tools:context="com.android.playground.ui.activity.view.SlidingMenuActivity"
     wangzhen:menuRightPadding="80dp">
 
     <LinearLayout
@@ -36,4 +36,4 @@
 
     </LinearLayout>
 
-</com.android.exercise.ui.widget.SlidingMenu>
+</com.android.playground.ui.widget.SlidingMenu>

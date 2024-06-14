@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.android.exercise.ui.activity.view.AnimViewActivity">
+    tools:context="com.android.playground.ui.activity.view.AnimViewActivity">
 
-    <com.android.exercise.ui.widget.AnimView
+    <com.android.playground.ui.widget.AnimView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

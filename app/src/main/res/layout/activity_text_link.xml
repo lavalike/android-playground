@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.android.exercise.ui.activity.TextLinkActivity">
+    tools:context="com.android.playground.ui.activity.TextLinkActivity">
 
     <com.wangzhen.linktextview.LinkTextView
         android:id="@+id/tv_link_html"

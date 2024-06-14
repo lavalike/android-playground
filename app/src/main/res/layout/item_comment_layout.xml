@@ -30,7 +30,7 @@
 
     </RelativeLayout>
 
-    <com.android.exercise.ui.widget.FloorView
+    <com.android.playground.ui.widget.FloorView
         android:id="@+id/floorView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
