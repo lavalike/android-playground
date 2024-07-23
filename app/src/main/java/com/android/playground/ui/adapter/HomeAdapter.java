@@ -68,20 +68,18 @@ public class HomeAdapter extends RecyclerAdapter<Generic> {
             super(parent, R.layout.item_function_layout);
             this.tv_name = findViewById(R.id.item_name);
             itemView.setOnClickListener((v) -> {
-                Class<?> targetClass = mData.clazz;
-                if (targetClass != null) {
-                    Intent intent = new Intent(v.getContext(), targetClass);
-                    if (mData.bundle != null) {
-                        intent.putExtras(mData.bundle);
-                    }
-                    v.getContext().startActivity(intent);
+                Class<?> targetClass = mData.getClazz();
+                Intent intent = new Intent(v.getContext(), targetClass);
+                if (mData.getBundle() != null) {
+                    intent.putExtras(mData.getBundle());
                 }
+                v.getContext().startActivity(intent);
             });
         }
 
         @Override
         public void bind() {
-            tv_name.setText(mData.name);
+            tv_name.setText(mData.getName());
         }
     }
 }

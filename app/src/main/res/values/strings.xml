@@ -158,4 +158,9 @@
     <string name="event_stop_record">停止录制</string>
     <string name="event_start_playback">回放</string>
     <string name="event_stop_playback">停止回放</string>
+
+    <string name="item_picture_in_picture">画中画(PIP)</string>
+    <string name="pip_enter">进入画中画(PIP)</string>
+    <string name="pip_mode_pip">画中画(PIP)模式</string>
+    <string name="pip_mode_normal">正常模式</string>
 </resources>

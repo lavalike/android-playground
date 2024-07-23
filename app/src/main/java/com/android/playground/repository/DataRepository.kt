@@ -52,6 +52,7 @@ import com.android.playground.ui.activity.jetpack.datastore.DataStoreActivity
 import com.android.playground.ui.activity.jetpack.draganddrop.DragAndDropActivity
 import com.android.playground.ui.activity.jetpack.lifecycle.LifecycleActivity
 import com.android.playground.ui.activity.jetpack.navigation.NavigationActivity
+import com.android.playground.ui.activity.jetpack.pip.PipActivity
 import com.android.playground.ui.activity.jetpack.room.RoomActivity
 import com.android.playground.ui.activity.jetpack.work.WorkManagerActivity
 import com.android.playground.ui.activity.loadmore.LoadMoreActivity
@@ -108,13 +109,41 @@ import com.android.playground.util.AppUtil
 object DataRepository {
     @JvmStatic
     fun home() = mutableListOf(
+        Caption("Jetpack"),
+        Item(
+            getString(R.string.item_picture_in_picture), PipActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_drag_and_drop), DragAndDropActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_motion_layout), MotionLayoutActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_data_store), DataStoreActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_lifecycle), LifecycleActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_data_binding), DataBindingActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_navigation), NavigationActivity::class.java
+        ),
+        Item(
+            getString(R.string.item_work_manager), WorkManagerActivity::class.java
+        ),
+
         Caption("创新场景"),
         Item(getString(R.string.item_event_playback), EventPlaybackActivity::class.java),
+
         Caption("Android 14"),
         Item(
             getString(R.string.item_android14_fullscreen_notification),
             FullscreenNotificationActivity::class.java
         ),
+
         Caption("Android 13"),
         Item(
             getString(R.string.item_android13_back_invoked_callback),
@@ -157,29 +186,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_dagger), Dagger2Activity::class.java
-        ),
-
-        Caption("Jetpack"),
-        Item(
-            getString(R.string.item_drag_and_drop), DragAndDropActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_motion_layout), MotionLayoutActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_data_store), DataStoreActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_lifecycle), LifecycleActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_data_binding), DataBindingActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_navigation), NavigationActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_work_manager), WorkManagerActivity::class.java
         ),
 
         Caption("数据存储"),

@@ -1,23 +1,12 @@
-package com.android.playground.domain;
+package com.android.playground.domain
 
-import android.os.Bundle;
+import android.os.Bundle
 
 /**
  * Created by wangzhen on 2017/2/24.
  */
-
-public class Item extends Generic {
-    public String name;
-    public Class<?> clazz;
-    public Bundle bundle;
-
-    public Item(String name, Class<?> clazz) {
-        this(name, clazz, null);
-    }
-
-    public Item(String name, Class<?> clazz, Bundle bundle) {
-        this.name = name;
-        this.clazz = clazz;
-        this.bundle = bundle;
-    }
-}
+data class Item(
+    val name: String,
+    val clazz: Class<*>,
+    val bundle: Bundle? = null,
+) : Generic()
