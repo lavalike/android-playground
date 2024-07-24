@@ -108,20 +108,19 @@ dependencies {
     implementation("com.yanzhenjie:andserver:1.0.2")
     implementation("com.jcodecraeer:xrecyclerview:1.6.0")
     implementation("com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0")
+    implementation("com.haibin:calendarview:3.6.4")
 
     // lavalike
-    implementation("com.wangzhen:LinkTextView:1.0.0")
-    implementation("com.wangzhen:GradientLayout:1.0.0")
-    implementation("com.wangzhen:ElasticLayout:0.0.3")
-    implementation("com.wangzhen:dark-status-bar:1.0.1")
-    implementation("com.wangzhen:refresh-layout:0.2.0")
-    implementation("com.haibin:calendarview:3.6.4")
-    implementation("com.wangzhen:download-client-android:0.0.2")
     implementation("com.github.lavalike:circle-imageview:0.0.1")
     implementation("com.github.lavalike:adapter:0.2.0")
     implementation("com.github.lavalike:permission:0.0.2")
     implementation("com.github.lavalike:commons:0.0.3")
-    implementation("com.github.lavalike:utils:0.0.2")
+    implementation("com.github.lavalike:darkstatusbar:1.0.0")
+    implementation("com.github.lavalike:refreshlayout:0.2.6")
+    implementation("com.github.lavalike:elasticlayout:0.0.2")
+    implementation("com.github.lavalike:gradientlayout:0.0.1")
+    implementation("com.github.lavalike:linktextview:1.0.0")
+    implementation("com.github.lavalike:download-client-android:0.0.2")
 
     // player
     //noinspection GradleDependency
