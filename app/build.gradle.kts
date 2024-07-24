@@ -77,7 +77,7 @@ dependencies {
     // Jetpack
     implementation("androidx.work:work-runtime:2.8.1")
     implementation("androidx.room:room-runtime:2.5.1")
-    implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.activity:activity-ktx:1.8.0")
     kapt("androidx.room:room-compiler:2.5.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
@@ -113,7 +113,7 @@ dependencies {
     // lavalike
     implementation("com.github.lavalike:circle-imageview:0.0.1")
     implementation("com.github.lavalike:adapter:0.2.0")
-    implementation("com.github.lavalike:permission:0.0.2")
+    implementation("com.github.lavalike:permission:0.0.3")
     implementation("com.github.lavalike:commons:0.0.3")
     implementation("com.github.lavalike:darkstatusbar:1.0.0")
     implementation("com.github.lavalike:refreshlayout:0.2.6")
