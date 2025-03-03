@@ -97,7 +97,6 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.14.2")
 
     // database
-    implementation("org.litepal.guolindev:core:3.2.1")
     implementation("com.tencent:mmkv-static:1.2.9")
 
     // rxjava
@@ -106,9 +105,7 @@ dependencies {
 
     // other
     implementation("com.yanzhenjie:andserver:1.0.2")
-    implementation("com.jcodecraeer:xrecyclerview:1.6.0")
     implementation("com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0")
-    implementation("com.haibin:calendarview:3.6.4")
 
     // lavalike
     implementation("com.github.lavalike:circle-imageview:0.0.1")
@@ -121,19 +118,6 @@ dependencies {
     implementation("com.github.lavalike:gradientlayout:0.0.1")
     implementation("com.github.lavalike:linktextview:1.0.0")
     implementation("com.github.lavalike:download-client-android:0.0.2")
-
-    // player
-    //noinspection GradleDependency
-    implementation("com.google.android.exoplayer:exoplayer:2.9.6")
-    //noinspection GradleDependency
-    implementation("com.google.android.exoplayer:exoplayer-core:2.9.6")
-    //noinspection GradleDependency
-    implementation("com.google.android.exoplayer:exoplayer-dash:2.9.6")
-    //noinspection GradleDependency
-    implementation("com.google.android.exoplayer:exoplayer-ui:2.9.6")
-
-    implementation("tv.danmaku.ijk.media:ijkplayer-java:0.8.8")
-    implementation("tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8")
 
     // dagger2
     implementation("com.google.dagger:dagger:2.35")

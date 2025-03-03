@@ -14,7 +14,6 @@
     <string name="tip_permission_cancel">取消</string>
     <string name="tip_permission_msg">需要开启权限才能使用此功能</string>
 
-    <string name="item_litepal">LitePal</string>
     <string name="item_greendao">GreenDao</string>
     <string name="item_retrofit">Retrofit 2.0</string>
     <string name="item_loadmore">加载更多</string>
@@ -66,12 +65,9 @@
     <string name="item_refresh_layout">RefreshLayout</string>
     <string name="item_view_switcher">View轮播</string>
     <string name="item_multi_touch">多点触摸</string>
-    <string name="item_calendar">日历</string>
     <string name="item_download">DownloadClient</string>
     <string name="item_html_rich_text">Html富文本</string>
     <string name="item_kotlin">kotlin</string>
-    <string name="item_exoplayer">ExoPlayer</string>
-    <string name="item_ijkplayer">ijkPlayer</string>
     <string name="item_object_box">ObjectBox</string>
     <string name="item_work_manager">WorkManager</string>
     <string name="item_room">Room</string>

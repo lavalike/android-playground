@@ -33,10 +33,8 @@ import com.android.playground.ui.activity.biometric.BiometricActivity
 import com.android.playground.ui.activity.bitmap.BitmapOptimizeActivity
 import com.android.playground.ui.activity.bitmap.LargeImageActivity
 import com.android.playground.ui.activity.bluetooth.BluetoothActivity
-import com.android.playground.ui.activity.calendar.CalendarActivity
 import com.android.playground.ui.activity.circle.CircleImageActivity
 import com.android.playground.ui.activity.coroutines.CoroutinesActivity
-import com.android.playground.ui.activity.database.LitePalActivity
 import com.android.playground.ui.activity.database.ObjectBoxActivity
 import com.android.playground.ui.activity.di.dagger2.Dagger2Activity
 import com.android.playground.ui.activity.di.hilt.HiltActivity
@@ -59,8 +57,6 @@ import com.android.playground.ui.activity.loadmore.LoadMoreActivity
 import com.android.playground.ui.activity.md5.MD5Activity
 import com.android.playground.ui.activity.media.RecorderActivity
 import com.android.playground.ui.activity.media.VideoRecordActivity
-import com.android.playground.ui.activity.media.player.ExoPlayerActivity
-import com.android.playground.ui.activity.media.player.IjkPlayerActivity
 import com.android.playground.ui.activity.mmkv.MMKVActivity
 import com.android.playground.ui.activity.motion.MotionLayoutActivity
 import com.android.playground.ui.activity.queue.PriorityQueueActivity
@@ -196,9 +192,6 @@ object DataRepository {
             getString(R.string.item_object_box), ObjectBoxActivity::class.java
         ),
         Item(
-            getString(R.string.item_litepal), LitePalActivity::class.java
-        ),
-        Item(
             getString(R.string.item_mmkv), MMKVActivity::class.java
         ),
 
@@ -249,12 +242,6 @@ object DataRepository {
         Caption("音视频"),
         Item(
             getString(R.string.item_camera_video), VideoRecordActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_exoplayer), ExoPlayerActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_ijkplayer), IjkPlayerActivity::class.java
         ),
 
         Caption("个人开源"),
@@ -339,9 +326,6 @@ object DataRepository {
         ),
         Item(
             getString(R.string.item_wave_view), WaveActivity::class.java
-        ),
-        Item(
-            getString(R.string.item_calendar), CalendarActivity::class.java
         ),
         Item(
             getString(R.string.item_multi_touch), MultiTouchActivity::class.java
