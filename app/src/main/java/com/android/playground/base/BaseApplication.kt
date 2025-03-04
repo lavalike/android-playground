@@ -9,7 +9,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import org.litepal.LitePal
 
 /**
  * Created by Administrator on 2016/4/12.
@@ -18,7 +17,6 @@ class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         AppUtil.init(this)
-        LitePal.initialize(this)
 
         startKoin {
             androidLogger()
