@@ -2,11 +2,11 @@
 buildscript {
     dependencies {
         classpath("io.objectbox:objectbox-gradle-plugin:4.0.1")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:1.8.20")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:2.0.21")
     }
 }
 plugins {
-    id("com.android.application").version("8.4.0").apply(false)
-    id("com.android.library").version("8.4.0").apply(false)
-    id("org.jetbrains.kotlin.android").version("1.8.20").apply(false)
+    id("com.android.application").version("8.10.0").apply(false)
+    id("com.android.library").version("8.10.0").apply(false)
+    id("org.jetbrains.kotlin.android").version("2.0.21").apply(false)
 }

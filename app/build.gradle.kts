@@ -50,8 +50,11 @@ android {
         abortOnError = false
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    kotlinOptions {
+        jvmTarget = "21"
     }
     buildFeatures {
         dataBinding = true
@@ -120,10 +123,10 @@ dependencies {
     implementation("com.github.lavalike:download-client-android:0.0.2")
 
     // dagger2
-    implementation("com.google.dagger:dagger:2.35")
-    implementation("com.google.dagger:dagger-android-support:2.28.3")
-    kapt("com.google.dagger:dagger-compiler:2.29")
-    kapt("com.google.dagger:dagger-android-processor:2.28.3")
+    implementation("com.google.dagger:dagger:2.56")
+    implementation("com.google.dagger:dagger-android-support:2.56")
+    kapt("com.google.dagger:dagger-compiler:2.56")
+    kapt("com.google.dagger:dagger-android-processor:2.56")
 
     // Koin main features for Android
     implementation("io.insert-koin:koin-android:3.3.0")
